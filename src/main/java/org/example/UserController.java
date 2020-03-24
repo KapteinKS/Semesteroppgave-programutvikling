@@ -6,6 +6,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
+import java.io.IOException;
+
 public class UserController {
 
 	@FXML
@@ -50,7 +52,20 @@ public class UserController {
 	}
 
 	@FXML
-	void loginAdmin(ActionEvent event) {
+	void loginAdmin(ActionEvent event) throws IOException {
+
+		App.setRoot("admin");
+
+		/*
+
+		THIS CHANGES THE VIEW TO 'admin.fxml', BUT REQUIRES
+		A LOGON TO DO SO.
+
+		FOR THE HAND-IN, WE WILL THEN HAVE TO PROIVDE SENSOR WITH
+		THIS INFORMATION.
+
+
+		 */
 
 	}
 

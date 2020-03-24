@@ -59,49 +59,49 @@
                   </ChoiceBox>
 
                   <Label text="Skjermkort:" GridPane.rowIndex="2" />
-                  <ChoiceBox fx:id="choiceBox2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+                  <ChoiceBox fx:id="choiceBox2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                       <items>
 
                       </items>
                   </ChoiceBox>
 
                   <Label text="Skjermkort:" GridPane.rowIndex="3" />
-                  <ChoiceBox fx:id="choiceBox3" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" >
+                  <ChoiceBox fx:id="choiceBox3" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                       <items>
 
                       </items>
                   </ChoiceBox>
 
                   <Label text="Minne:" GridPane.rowIndex="4" />
-                  <ChoiceBox fx:id="choiceBox4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" >
+                  <ChoiceBox fx:id="choiceBox4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                       <items>
 
                       </items>
                   </ChoiceBox>
 
                    <Label text="Lagring:" GridPane.rowIndex="5" />
-                  <ChoiceBox fx:id="choiceBox5" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" >
+                  <ChoiceBox fx:id="choiceBox5" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                       <items>
 
                       </items>
                   </ChoiceBox>
 
                    <Label text="Lagring:" GridPane.rowIndex="6" />
-                  <ChoiceBox fx:id="choiceBox6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" >
+                  <ChoiceBox fx:id="choiceBox6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                       <items>
 
                       </items>
                   </ChoiceBox>
 
                    <Label text="Strømforsyning:" GridPane.rowIndex="7" />
-                  <ChoiceBox fx:id="choiceBox7" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" >
+                  <ChoiceBox fx:id="choiceBox7" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                       <items>
 
                       </items>
                   </ChoiceBox>
 
                    <Label text="Tilbehør:" GridPane.rowIndex="8" />
-                  <ChoiceBox fx:id="choiceBox8" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" >
+                  <ChoiceBox fx:id="choiceBox8" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                       <items>
 
                       </items>
@@ -111,12 +111,12 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <TextArea fx:id="txtPreview" layoutX="336.0" layoutY="91.0" prefHeight="200.0" prefWidth="223.0" />
+      <TextArea fx:id="txtPreview" editable="false" layoutX="336.0" layoutY="91.0" prefHeight="200.0" prefWidth="223.0" />
       <Button layoutX="465.0" layoutY="326.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="94.0" text="Plasser Ordre" />
       <Button layoutX="53.0" layoutY="326.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="106.0" text="Analyser Build" />
       <Line endX="255.0" layoutX="302.0" layoutY="315.0" startX="-249.0" />
-      <Label fx:id="lblAnalyze" layoutX="52.0" layoutY="374.0" prefHeight="72.0" prefWidth="223.0" />
-      <Label fx:id="lblOrdre" layoutX="342.0" layoutY="376.0" prefHeight="72.0" prefWidth="223.0" />
+      <Label fx:id="lblAnalyze" layoutX="52.0" layoutY="374.0" prefHeight="72.0" prefWidth="223.0" text="HER KOMMER ANALYSEN" />
+      <Label fx:id="lblOrdre" layoutX="342.0" layoutY="376.0" prefHeight="72.0" prefWidth="223.0" text="HER KOMMER ORDREKOMFIRM" />
       <Label layoutX="100.0" layoutY="61.0" text="VELG KOMPONENTER" />
       <Label layoutX="420.0" layoutY="61.0" text="DIN ORDRE:" />
       <MenuBar prefHeight="29.0" prefWidth="600.0">

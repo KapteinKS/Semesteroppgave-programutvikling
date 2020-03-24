@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.AdminController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AdminController">
+    <children>
+        <MenuBar prefHeight="29.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#saveOrder" text="Save Order" />
+                        <MenuItem mnemonicParsing="false" onAction="#loadOrder" text="Load Order" />
+                    </items>
+                </Menu>
+            <Menu mnemonicParsing="false" text="Vis...">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#showComponents" text="Vis Alle Komponenter" />
+                  <MenuItem mnemonicParsing="false" onAction="#showOrders" text="Vis Alle Ordrer" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Lag...">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#createComponent" text="Registrer Ny Komponent" />
+              </items>
+            </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToUser" text="User View" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+      <TextArea fx:id="txtOutput" editable="false" layoutX="100.0" layoutY="86.0" prefHeight="350.0" prefWidth="400.0" wrapText="true" />
+      <Label fx:id="lblOutput" layoutX="276.0" layoutY="52.0" text="L A B E L" />
+    </children>
 </AnchorPane>

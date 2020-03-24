@@ -1,5 +1,16 @@
 package org.example.components;
 
+/*
+
+Component classes should have attributes, from which, compatibility can be gauged.
+Say the user chooses an AMD motherboard, and we have in our "store", an Intel i5 CPU
+the i5 should then be grayed out for the user, as it's incompatible.
+This should be done with a checker-method (SEE CHECKER.java)
+}
+
+ */
+
+
 public class CPU extends Component{
 	private int threads;
 	private double clockSpeed;
