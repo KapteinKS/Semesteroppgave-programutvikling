@@ -1,6 +1,8 @@
 package org.example.components;
 
-public class Cabinet extends Component implements {
+import java.io.Serializable;
+
+public class Cabinet extends Component implements Serializable {
     private int height;
     private int width;
     private int depth;

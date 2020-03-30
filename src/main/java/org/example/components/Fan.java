@@ -1,6 +1,8 @@
 package org.example.components;
 
-public class Fan extends Component {
+import java.io.Serializable;
+
+public class Fan extends Component implements Serializable {
     private int diameter;
     private double airPressure;
     private int maxNoiseVolume;

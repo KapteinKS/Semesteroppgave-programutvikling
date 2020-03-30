@@ -1,6 +1,8 @@
 package org.example.components;
 
-public class Motherboard extends Component {
+import java.io.Serializable;
+
+public class Motherboard extends Component implements Serializable {
 	private String[] ports;
 	private double wattsRequired;
 

@@ -1,6 +1,8 @@
 package org.example.components;
 
-public class PowerSupply extends Component {
+import java.io.Serializable;
+
+public class PowerSupply extends Component implements Serializable {
     private int energy; //WATT, feel free to refactor -> rename
     private int inVoltage;
     private int outVoltage;

@@ -1,6 +1,8 @@
 package org.example.components;
 
-public class Component {
+import java.io.Serializable;
+
+public class Component implements Serializable {
 	private String name;
 	private String manufacturer;
 	private double price;

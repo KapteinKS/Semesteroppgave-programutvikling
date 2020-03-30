@@ -1,6 +1,8 @@
 package org.example.components;
 
-public class GraphicCard extends Component {
+import java.io.Serializable;
+
+public class GraphicCard extends Component implements Serializable {
     private int ram;
     private String ramType;
     private int hertz;

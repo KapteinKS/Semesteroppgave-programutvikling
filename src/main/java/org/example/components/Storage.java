@@ -1,6 +1,8 @@
 package org.example.components;
 
-public class Storage extends Component {
+import java.io.Serializable;
+
+public class Storage extends Component implements Serializable {
     private String type;
     private String capacity;
 

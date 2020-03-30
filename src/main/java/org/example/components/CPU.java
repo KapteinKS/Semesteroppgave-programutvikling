@@ -11,7 +11,9 @@ This should be done with a checker-method (SEE CHECKER.java)
  */
 
 
-public class CPU extends Component{
+import java.io.Serializable;
+
+public class CPU extends Component implements Serializable {
 	private int threads;
 	private double clockSpeed;
 
