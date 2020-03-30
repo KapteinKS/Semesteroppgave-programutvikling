@@ -1,11 +1,11 @@
-package org.example.controllers;
+package org.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class StorageController {
+public class CabinetController {
 
     @FXML
     private TextField inName;
@@ -17,25 +17,30 @@ public class StorageController {
     private TextField inPrice;
 
     @FXML
-    private TextField inType;
+    private TextField inHeight;
 
     @FXML
-    private TextField inCapacity;
+    private TextField inWidth;
+
+    @FXML
+    private TextField inDepth;
+
+    @FXML
+    private TextField inWeght;
 
     @FXML
     private Button regButton;
 
     @FXML
-    private Button cancelButton;
+    private Button cancelButten;
+
+    @FXML
+    void registerCabinet(ActionEvent event) {
+
+    }
 
     @FXML
     void cancelRegistration(ActionEvent event) {
 
     }
-
-    @FXML
-    void regStorage(ActionEvent event) {
-
-    }
-
 }
