@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="347.0" prefWidth="450.0"
             xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.ComponentCreatorController">
+            fx:controller="org.example.controllers.ComponentCreatorController">
    <children>
       <ComboBox layoutX="246.0" layoutY="48.0" onAction="#startComponentCreator" prefWidth="150.0" visibleRowCount="0" />
       <Label layoutX="55.0" layoutY="53.0" prefHeight="17.0" prefWidth="150.0" text="Velg komponenttype:" />
