@@ -2,9 +2,9 @@ package org.example.components;
 
 public class Storage extends Component {
     private String type;
-    private int capacity;
+    private String capacity;
 
-    public Storage(String name, String manufacturer, double price, String type, int capacity) {
+    public Storage(String name, String manufacturer, double price, String type, String capacity) {
         super(name, manufacturer, price);
         this.type = type;
         this.capacity = capacity;
@@ -18,11 +18,11 @@ public class Storage extends Component {
         this.type = type;
     }
 
-    public int getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 }

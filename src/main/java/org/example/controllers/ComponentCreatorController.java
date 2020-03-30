@@ -1,8 +1,9 @@
-package org.example;
+package org.example.controllers;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.example.App;
 
 import java.io.IOException;
 

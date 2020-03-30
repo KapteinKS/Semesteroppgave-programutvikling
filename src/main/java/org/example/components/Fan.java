@@ -1,15 +1,15 @@
 package org.example.components;
 
-public class Cooling extends Component {
+public class Fan extends Component {
     private int diameter;
     private double airPressure;
-    private int maxNoiceVolume;
+    private int maxNoiseVolume;
 
-    public Cooling(String name, String manufacturer, double price, int diameter, double airPressure, int maxNoiceVolume) {
+    public Fan(String name, String manufacturer, double price, int diameter, double airPressure, int maxNoiseVolume) {
         super(name, manufacturer, price);
         this.diameter = diameter;
         this.airPressure = airPressure;
-        this.maxNoiceVolume = maxNoiceVolume;
+        this.maxNoiseVolume = maxNoiseVolume;
     }
 
     public int getDiameter() {
@@ -28,11 +28,11 @@ public class Cooling extends Component {
         this.airPressure = airPressure;
     }
 
-    public int getMaxNoiceVolume() {
-        return maxNoiceVolume;
+    public int getMaxNoiseVolume() {
+        return maxNoiseVolume;
     }
 
-    public void setMaxNoiceVolume(int maxNoiceVolume) {
-        this.maxNoiceVolume = maxNoiceVolume;
+    public void setMaxNoiseVolume(int maxNoiceVolume) {
+        this.maxNoiseVolume = maxNoiceVolume;
     }
 }

@@ -1,9 +1,10 @@
-package org.example;
+package org.example.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import org.example.App;
 
 import java.io.IOException;
 
