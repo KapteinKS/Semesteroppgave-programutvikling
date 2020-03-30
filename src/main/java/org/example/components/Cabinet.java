@@ -1,6 +1,6 @@
 package org.example.components;
 
-public class Cabinet extends Component {
+public class Cabinet extends Component implements {
     private int height;
     private int width;
     private int depth;
