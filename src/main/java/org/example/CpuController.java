@@ -1,11 +1,11 @@
-package org.example.controllers;
+package org.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class GraphicCardController {
+public class CpuController {
 
     @FXML
     private TextField inName;
@@ -17,13 +17,10 @@ public class GraphicCardController {
     private TextField inPrice;
 
     @FXML
-    private TextField inRAM;
+    private TextField inThreads;
 
     @FXML
-    private TextField inType;
-
-    @FXML
-    private TextField inHertz;
+    private TextField inClockSpeed;
 
     @FXML
     private Button regButton;
@@ -37,8 +34,7 @@ public class GraphicCardController {
     }
 
     @FXML
-    void registerGraphicCard(ActionEvent event) {
+    void registerCPU(ActionEvent event) {
 
     }
-
 }

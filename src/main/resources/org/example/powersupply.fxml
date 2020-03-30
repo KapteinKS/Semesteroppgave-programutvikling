@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="250.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PowersupplyController">
+<AnchorPane prefHeight="250.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PowersupplyController">
     <children>
         <Label layoutX="20.0" layoutY="20.0" text="Name" />
         <TextField fx:id="inName" layoutX="176.0" layoutY="16.0" />

@@ -1,11 +1,11 @@
-package org.example.controllers;
+package org.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class PowersupplyController {
+public class StorageController {
 
     @FXML
     private TextField inName;
@@ -17,19 +17,16 @@ public class PowersupplyController {
     private TextField inPrice;
 
     @FXML
-    private TextField inEnergy;
+    private TextField inType;
 
     @FXML
-    private TextField inVoltageIn;
-
-    @FXML
-    private TextField inVoltageOut;
+    private TextField inCapacity;
 
     @FXML
     private Button regButton;
 
     @FXML
-    private Button cancelButten;
+    private Button cancelButton;
 
     @FXML
     void cancelRegistration(ActionEvent event) {
@@ -37,7 +34,7 @@ public class PowersupplyController {
     }
 
     @FXML
-    void registerPowerSupply(ActionEvent event) {
+    void regStorage(ActionEvent event) {
 
     }
 
