@@ -21,10 +21,13 @@ public class Checker {
 		'enoughPower' method, that summarizes all the individual components power-consumption,
 		and if it exceeds selected PSU, it will return FALSE.
 
+		*INSERT SUICIDE MEME HERE*
+
 
  	*/
 
 
+//<<<<<<< HEAD
 
 	public boolean isCompatible(Component a, Component b) {
 
@@ -32,6 +35,19 @@ public class Checker {
 			return true;
 		} else {
 			return false;
+
+//=======
+    /*
+	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
+        try{
+            if (a.getManufacturer.equals(b.getManufacturer)) {
+                return true;
+		}catch(ComponentCompatibilityException cce){
+		    throw new ComponentCompatibilityException("Komponenter ikke kompitable");
+		    return false;
+
+     */
+//>>>>>>> 0d0f9ddeca9a5190f8d173704fcfc3c537af90bf
 		}
 	}
 
