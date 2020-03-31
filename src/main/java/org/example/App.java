@@ -15,10 +15,11 @@ public class App extends Application {
 
 
     private static Scene scene;
-
+    private static Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
         //This initializer reads data, and sets up GUI.
+        this.stage = stage;
         Initializer.initialize();
         scene = new Scene(loadFXML("start"));
         System.out.print(".");
@@ -27,6 +28,12 @@ public class App extends Application {
         System.out.print(".");
         System.out.print("\n\n---------------\n\n");
 
+    }
+
+    public static void setRoot(String fxml, double width, double height) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+        stage.setHeight(height);
+        stage.setWidth(width);
     }
 
     public static void setRoot(String fxml) throws IOException {
