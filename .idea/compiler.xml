@@ -10,8 +10,5 @@
         <module name="Semesteroppgave programutvikling" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Semesteroppgave-programutvikling" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
