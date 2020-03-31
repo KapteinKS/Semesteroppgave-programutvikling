@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Deeper;
 import org.example.components.Component;
 
 public class Checker {
@@ -27,16 +27,6 @@ public class Checker {
  	*/
 
 
-//<<<<<<< HEAD
-
-	public boolean isCompatible(Component a, Component b) {
-
-		if (a.getManufacturer().equals(b.getManufacturer())) {
-			return true;
-		} else {
-			return false;
-
-//=======
     /*
 	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
         try{
@@ -45,10 +35,7 @@ public class Checker {
 		}catch(ComponentCompatibilityException cce){
 		    throw new ComponentCompatibilityException("Komponenter ikke kompitable");
 		    return false;
-
-     */
-//>>>>>>> 0d0f9ddeca9a5190f8d173704fcfc3c537af90bf
 		}
-	}
+     */
 
 }

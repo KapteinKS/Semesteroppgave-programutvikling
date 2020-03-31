@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.Deeper.Initializer;
 
 import java.io.IOException;
 
@@ -23,6 +24,11 @@ public class App extends Application {
         Initializer.initialize();
         scene = new Scene(loadFXML("start"));
         System.out.print(".");
+        stage.setMinHeight(450.00);
+        stage.setMinWidth(750.00);
+        stage.setMaxHeight(750.00);
+        stage.setMaxWidth(1080.00);
+        stage.setResizable(true);
         stage.setScene(scene);
         stage.show();
         System.out.print(".");
