@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class CpuController {
 
     @FXML
@@ -29,12 +31,13 @@ public class CpuController {
     private Button cancelButten;
 
     @FXML
-    void cancelRegistration(ActionEvent event) {
-
+    void cancelRegistration(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
     }
 
     @FXML
-    void registerCPU(ActionEvent event) {
+    void registerCPU(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 }

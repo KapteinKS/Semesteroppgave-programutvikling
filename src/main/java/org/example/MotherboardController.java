@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class MotherboardController {
 
     @FXML
@@ -29,12 +31,14 @@ public class MotherboardController {
     private Button cancelButten;
 
     @FXML
-    void cancelRegistration(ActionEvent event) {
+    void cancelRegistration(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 
     @FXML
-    void registerMotherboard(ActionEvent event) {
+    void registerMotherboard(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 

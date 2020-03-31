@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class fanController {
+import java.io.IOException;
+
+public class FanController {
 
     @FXML
     private TextField inName;
@@ -32,12 +34,14 @@ public class fanController {
     private Button cancelButton;
 
     @FXML
-    void cancelRegistration(ActionEvent event) {
+    void cancelRegistration(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 
     @FXML
-    void registerFan(ActionEvent event) {
+    void registerFan(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 

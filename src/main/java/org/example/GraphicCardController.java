@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class GraphicCardController {
 
     @FXML
@@ -32,12 +34,14 @@ public class GraphicCardController {
     private Button cancelButten;
 
     @FXML
-    void cancelRegistration(ActionEvent event) {
+    void cancelRegistration(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 
     @FXML
-    void registerGraphicCard(ActionEvent event) {
+    void registerGraphicCard(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 

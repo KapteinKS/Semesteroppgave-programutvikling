@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class PowersupplyController {
 
     @FXML
@@ -32,12 +34,14 @@ public class PowersupplyController {
     private Button cancelButten;
 
     @FXML
-    void cancelRegistration(ActionEvent event) {
+    void cancelRegistration(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 
     @FXML
-    void registerPowerSupply(ActionEvent event) {
+    void registerPowerSupply(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 

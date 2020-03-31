@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class CabinetController {
 
     @FXML
@@ -35,12 +37,14 @@ public class CabinetController {
     private Button cancelButten;
 
     @FXML
-    void registerCabinet(ActionEvent event) {
+    void registerCabinet(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 
     @FXML
-    void cancelRegistration(ActionEvent event) {
+    void cancelRegistration(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 }

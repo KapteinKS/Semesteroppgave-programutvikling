@@ -5,14 +5,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.FXCollections?>
 
 
-<AnchorPane prefHeight="347.0" prefWidth="450.0"
-            xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.ComponentCreatorController">
+<?import java.lang.String?>
+<AnchorPane prefHeight="347.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ComponentCreatorController">
    <children>
-      <ComboBox layoutX="246.0" layoutY="48.0" onAction="#startComponentCreator" prefWidth="150.0" visibleRowCount="0" />
+      <ComboBox fx:id="componentChooser" layoutX="246.0" layoutY="48.0" onAction="#startComponentCreator" prefWidth="150.0" >
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Cabinet"/>
+               <String fx:value="CPU"/>
+               <String fx:value="Fan"/>
+               <String fx:value="GraphicCard"/>
+               <String fx:value="Motherboard"/>
+               <String fx:value="PowerSupply"/>
+               <String fx:value="Storage"/>
+            </FXCollections>
+         </items>
+      </ComboBox>
       <Label layoutX="55.0" layoutY="53.0" prefHeight="17.0" prefWidth="150.0" text="Velg komponenttype:" />
       <Label layoutX="156.0" layoutY="116.0" text="[DIN NYE KOMPONENT]" />
       <TextArea layoutX="55.0" layoutY="142.0" prefHeight="120.0" prefWidth="341.0" />

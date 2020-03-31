@@ -3,10 +3,15 @@ package org.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import org.example.components.Component;
 
 import java.io.IOException;
 
 public class ComponentCreatorController {
+
+	@FXML
+	private ComboBox<?> componentChooser;
 
 	@FXML
 	void cancelComponentCreator(ActionEvent event) throws IOException {
@@ -36,8 +41,33 @@ public class ComponentCreatorController {
 	}
 
 	@FXML
-	void startComponentCreator(ActionEvent event) {
+	void startComponentCreator(ActionEvent event) throws IOException {
 
+		switch ((String) componentChooser.getValue()){
+			case "Cabinet":
+				App.setRoot("cabinet", 365,300);
+				break;
+			case "CPU":
+				App.setRoot("cpu", 365, 240);
+				break;
+			case "Fan":
+				App.setRoot("fan", 365, 270);
+				break;
+			case "GraphicCard":
+				App.setRoot("graphiccard", 365, 270);
+				break;
+			case "Motherboard":
+				App.setRoot("motherboard", 365, 240);
+				break;
+			case "PowerSupply":
+				App.setRoot("powersupply", 365, 270);
+				break;
+			case "Storage":
+				App.setRoot("storage", 365, 240);
+				break;
+			default:
+
+		}
 		/*
 
 		THIS STARTS A SERIES OF PROMPTS, WHERE THE ADMIN

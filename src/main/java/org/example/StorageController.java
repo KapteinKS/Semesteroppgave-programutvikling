@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class StorageController {
 
     @FXML
@@ -29,12 +31,13 @@ public class StorageController {
     private Button cancelButton;
 
     @FXML
-    void cancelRegistration(ActionEvent event) {
-
+    void cancelRegistration(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
     }
 
     @FXML
-    void regStorage(ActionEvent event) {
+    void regStorage(ActionEvent event) throws IOException {
+        App.setRoot("componentCreator", 460, 360);
 
     }
 
