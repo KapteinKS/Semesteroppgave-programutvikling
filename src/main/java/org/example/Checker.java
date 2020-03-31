@@ -22,6 +22,8 @@ public class Checker{
 		'enoughPower' method, that summarizes all the individual components power-consumption,
 		and if it exceeds selected PSU, it will return FALSE.
 
+		*INSERT SUICIDE MEME HERE*
+
 
  	*/
 
