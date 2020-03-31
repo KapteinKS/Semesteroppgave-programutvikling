@@ -18,7 +18,7 @@ public class AdminController {
 	@FXML
 	void createComponent(ActionEvent event) throws IOException {
 
-		App.setRoot("componentCreator", 460, 360);
+		App.setRoot("componentCreator", 460, 360, "Component Creator");
 
 		/*
 
@@ -35,7 +35,7 @@ public class AdminController {
 
 	@FXML
 	void changeToUser(ActionEvent event) throws IOException {
-		App.setRoot("user");
+		App.setRoot("user", 600, 500, "End User");
 	}
 
 	@FXML

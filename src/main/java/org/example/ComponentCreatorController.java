@@ -16,7 +16,8 @@ public class ComponentCreatorController {
 	@FXML
 	void cancelComponentCreator(ActionEvent event) throws IOException {
 
-		App.setRoot("admin");
+		App.setRoot("admin", 600, 500, "Admin");
+
 
 		/*
 
@@ -30,7 +31,8 @@ public class ComponentCreatorController {
 	@FXML
 	void registerNewComponent(ActionEvent event) throws IOException {
 
-		App.setRoot("admin");
+		App.setRoot("admin", 600, 500, "Admin");
+
 		/*
 
 		THIS SAVES THE NEW REGISTERED COMPONENT,
@@ -45,25 +47,25 @@ public class ComponentCreatorController {
 
 		switch ((String) componentChooser.getValue()){
 			case "Cabinet":
-				App.setRoot("cabinet", 365,300);
+				App.setRoot("cabinet", 365, 300, "Cabinet Registration");
 				break;
 			case "CPU":
-				App.setRoot("cpu", 365, 240);
+				App.setRoot("cpu", 365, 240, "CPU Registration");
 				break;
 			case "Fan":
-				App.setRoot("fan", 365, 270);
+				App.setRoot("fan", 365, 270, "Fan Registration");
 				break;
 			case "GraphicCard":
-				App.setRoot("graphiccard", 365, 270);
+				App.setRoot("graphiccard", 365, 270, "Graphic Card Registration");
 				break;
 			case "Motherboard":
-				App.setRoot("motherboard", 365, 240);
+				App.setRoot("motherboard", 365, 240,"Motherboard Registration");
 				break;
 			case "PowerSupply":
-				App.setRoot("powersupply", 365, 270);
+				App.setRoot("powersupply", 365, 270,"Power Supply Registration");
 				break;
 			case "Storage":
-				App.setRoot("storage", 365, 240);
+				App.setRoot("storage", 365, 240,"Storage Registration");
 				break;
 			default:
 
