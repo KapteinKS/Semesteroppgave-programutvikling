@@ -22,7 +22,7 @@ public class App extends Application {
         //This initializer reads data, and sets up GUI.
         this.stage = stage;
         Initializer.initialize();
-        scene = new Scene(loadFXML("start"));
+        scene = new Scene(loadFXML("user"));
         System.out.print(".");
         stage.setScene(scene);
         stage.show();
