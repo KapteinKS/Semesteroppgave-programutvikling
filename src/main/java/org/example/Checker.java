@@ -26,13 +26,14 @@ public class Checker{
  	*/
 
 
-	/*
-	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
 
+	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
+        try{
 		if (a.getManufacturer.equals(b.getManufacturer)) {
 			return true;
-		} else {
-			return false;
+		}catch(ComponentCompatibilityException cce){
+		    throw new ComponentCompatibilityException("Komponenter ikke kompitable");
+		    return false;
 		}
 	}
 
