@@ -1,7 +1,7 @@
 package org.example;
 import org.example.components.Component;
 
-public class Checker {
+public class Checker{
 //None of this is working yet =))
 
 
