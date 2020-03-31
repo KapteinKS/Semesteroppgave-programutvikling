@@ -1,4 +1,5 @@
 package org.example;
+import org.example.Exceptions.ComponentCompatibilityException;
 import org.example.components.Component;
 
 public class Checker{
@@ -26,7 +27,7 @@ public class Checker{
 
 
 	/*
-	public boolean isCompatible(Component a, Component b) {
+	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
 
 		if (a.getManufacturer.equals(b.getManufacturer)) {
 			return true;
