@@ -1,13 +1,13 @@
 package org.example;
 
-public class Kunde {
+public class Customer {
     private String navn;
     private String adresse;
     private String postnummer;
     private String poststed;
     private String telefonnummer;
 
-    public Kunde(String navn, String adresse, String postnummer, String poststed, String telefonnummer) {
+    public Customer(String navn, String adresse, String postnummer, String poststed, String telefonnummer) {
         this.navn = navn;
         this.adresse = adresse;
         this.postnummer = postnummer;

@@ -3,23 +3,33 @@ package org.example.components;
 import java.io.Serializable;
 
 public class Motherboard extends Component implements Serializable {
-	private String[] ports;
+	private String socket;
+	private String ramType;
 	private double wattsRequired;
 
 	public Motherboard() {}
 
-	public Motherboard(String name, String manufacturer, double price, String[] ports, double wattsRequired) {
+	public Motherboard(String name, String manufacturer, double price, String socket, String ramType, double wattsRequired) {
 		super(name, manufacturer, price);
-		this.ports = ports;
+		this.socket = socket;
+		this.ramType = ramType;
 		this.wattsRequired = wattsRequired;
 	}
 
-	public String[] getPorts() {
-		return ports;
+	public String getSocket() {
+		return socket;
 	}
 
-	public void setPorts(String[] ports) {
-		this.ports = ports;
+	public void setSocket(String socket) {
+		this.socket = socket;
+	}
+
+	public String getRamType() {
+		return ramType;
+	}
+
+	public void setRamType(String ramType) {
+		this.ramType = ramType;
 	}
 
 	public double getWattsRequired() {

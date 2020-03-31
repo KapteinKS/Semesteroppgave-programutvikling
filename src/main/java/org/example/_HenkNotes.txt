@@ -5,9 +5,11 @@ Våre data:
 kundeData
 komponentData
 
-hver linje hos disse representerer et objekt.
+hver linje hos disse representerer et objekt, lagres som CSV
 
-hver av disse trenger en leser.
+componentData.csv;
+
+
 
 
 

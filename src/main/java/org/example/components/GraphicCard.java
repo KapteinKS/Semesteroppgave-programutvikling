@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class GraphicCard extends Component implements Serializable {
     private int ram;
     private String ramType;
-    private int hertz;
+    private String clockSpeed;
 
-    public GraphicCard(String name, String manufacturer, double price, int ram, String ramType, int hertz) {
+    public GraphicCard(String name, String manufacturer, double price, int ram, String ramType, String clockSpeed) {
         super(name, manufacturer, price);
         this.ram = ram;
         this.ramType = ramType;
-        this.hertz = hertz;
+        this.clockSpeed = clockSpeed;
     }
 
     public int getRam() {
@@ -30,11 +30,11 @@ public class GraphicCard extends Component implements Serializable {
         this.ramType = ramType;
     }
 
-    public int getHertz() {
-        return hertz;
+    public String getClockSpeed() {
+        return clockSpeed;
     }
 
-    public void setHertz(int hertz) {
-        this.hertz = hertz;
+    public void setClockSpeed(String clockSpeed) {
+        this.clockSpeed = clockSpeed;
     }
 }
