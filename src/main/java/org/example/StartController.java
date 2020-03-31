@@ -10,12 +10,12 @@ public class StartController {
 
     @FXML
     void switchToAdmin(ActionEvent event) throws IOException {
-        App.setRoot("admin", 500, 450);
+        App.setRoot("admin", 600, 500);
     }
 
     @FXML
     void switchToCustomer(ActionEvent event) throws IOException {
-        App.setRoot("user");
+        App.setRoot("user", 600, 500);
     }
 
 }
