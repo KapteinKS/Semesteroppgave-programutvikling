@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Deeper;
 import org.example.components.Component;
 
 public class Checker {
