@@ -25,15 +25,14 @@ public class Checker {
  	*/
 
 
-	/*
+
 	public boolean isCompatible(Component a, Component b) {
 
-		if (a.getManufacturer.equals(b.getManufacturer)) {
+		if (a.getManufacturer().equals(b.getManufacturer())) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
- */
 }
