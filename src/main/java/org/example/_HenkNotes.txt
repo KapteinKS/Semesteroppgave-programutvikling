@@ -1,0 +1,50 @@
+Programmet:
+
+Våre data:
+
+kundeData
+komponentData
+
+hver linje hos disse representerer et objekt.
+
+hver av disse trenger en leser.
+
+
+
+
+
+
+
+User GUI:
+
+    user.fxml
+
+        denne har en scrollbox,
+        som populeres fra en observableArrayList,
+        som leses fra fil.
+
+
+        Velg komponenter
+
+        Chassi:
+        Hovedkort:
+        Prosessor:
+        Skjermkort:
+        Skjermkort:
+        Minne:
+        Lagring:
+        Lagring:
+        Strømforsyning:
+        Ekstra:
+        Ekstra:
+        Ekstra:
+        Ekstra:
+
+
+        når appen kjøres må user.fxml  initialiseres
+
+
+
+
+Komponenter:
+    komponentController

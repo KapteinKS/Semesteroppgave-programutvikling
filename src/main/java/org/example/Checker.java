@@ -1,8 +1,7 @@
 package org.example;
-import org.example.Exceptions.ComponentCompatibilityException;
 import org.example.components.Component;
 
-public class Checker{
+public class Checker {
 //None of this is working yet =))
 
 
@@ -26,16 +25,14 @@ public class Checker{
  	*/
 
 
-    /*
-	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
-        try{
-		if (a.getManufacturer.equals(b.getManufacturer)) {
+
+	public boolean isCompatible(Component a, Component b) {
+
+		if (a.getManufacturer().equals(b.getManufacturer())) {
 			return true;
-		}catch(ComponentCompatibilityException cce){
-		    throw new ComponentCompatibilityException("Komponenter ikke kompitable");
-		    return false;
+		} else {
+			return false;
 		}
 	}
 
- */
 }

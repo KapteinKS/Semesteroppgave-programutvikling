@@ -13,13 +13,20 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
+        //This initializer reads data, and sets up GUI.
+        Initializer.initialize();
         scene = new Scene(loadFXML("user"));
+        System.out.print(".");
         stage.setScene(scene);
         stage.show();
+        System.out.print(".");
+        System.out.print("\n\n---------------\n\n");
+
     }
 
     public static void setRoot(String fxml) throws IOException {
