@@ -4,10 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import org.example.Deeper.Customer;
+import org.example.Deeper.CustomerCollection;
+import org.example.Filemanagement.ReadCustomerFromFile;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class AdminController {
+
+	private CustomerCollection customers = new CustomerCollection();
 
 	@FXML
 	private TextArea txtOutput;
@@ -29,8 +36,14 @@ public class AdminController {
 	}
 
 	@FXML
-	void loadOrder(ActionEvent event) {
+	void loadOrder(ActionEvent event) throws IOException {
 
+		// Testing filereader
+
+		ReadCustomerFromFile.open(customers, Paths.get("_customerData.txt"));
+		for (Customer c : customers.getCustomers()){
+			System.out.println(c.toString());
+		}
 	}
 
 	@FXML

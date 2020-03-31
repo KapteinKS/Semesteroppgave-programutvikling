@@ -16,25 +16,37 @@ import java.nio.file.Path;
 
 public class ReadCustomerFromFile extends Reader {
 
-	public void open(CustomerCollection customerCollection, Path customerFilePath) throws IOException {
+	public static void open(CustomerCollection customerCollection, Path customerFilePath) throws IOException {
 		customerCollection.removeAll();
-		try (BufferedReader bufferedReader = Files.newBufferedReader(customerFilePath)){
+		try (BufferedReader bufferedReader = Files.newBufferedReader(customerFilePath)) {
 			String line;
-			while ((line = bufferedReader.readLine()) != null){
+			while ((line = bufferedReader.readLine()) != null) {
 				customerCollection.addCustomer(parseCustomer(line));
 			}
+		} catch (InvalidCustomerException e) {
+			e.printStackTrace();
 		}
-		}
+	}
 
-
-		public Customer parseCustomer(String line) throws InvalidCustomerException {
+	private static Customer parseCustomer(String line) throws InvalidCustomerException {
 		String[] split = line.split(",");
-		if (split.length != 5){
+		if (split.length != 7) {
 			throw new InvalidCustomerException("ERROR! Values not separated by ,");
 		}
-		String name = split[0];
-		String email = split[3];
-		String phone = split[4];
 
-		};
+		//We could do some checks on some of these, but we should keep them as Strings, as we're not calculating ever.
+		String customerId = split[0];
+		String name = split[1];
+		String address = split[2];
+		String postalCode = split[3];
+		String postalArea = split[4];
+		String phoneNumber = split[5];
+		String email = split[6];
+
+		try {
+			return new Customer(customerId, name, address, postalCode, postalArea, phoneNumber, email);
+		} catch (IllegalArgumentException e) {
+			throw new InvalidCustomerException(e.getMessage());
+		}
+	}
 }
