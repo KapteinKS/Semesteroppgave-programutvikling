@@ -26,7 +26,7 @@ public class Checker{
  	*/
 
 
-
+    /*
 	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
         try{
 		if (a.getManufacturer.equals(b.getManufacturer)) {
