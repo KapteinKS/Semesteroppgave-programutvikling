@@ -20,7 +20,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         //This initializer reads data, and sets up GUI.
         Initializer.initialize();
-        scene = new Scene(loadFXML("user"));
+        scene = new Scene(loadFXML("start"));
         System.out.print(".");
         stage.setScene(scene);
         stage.show();
