@@ -1,4 +1,4 @@
 package org.example.Filemanagement;
 
-public class ReadComponentsFromFile {
+public class ReadComponentsFromFile extends Reader {
 }
