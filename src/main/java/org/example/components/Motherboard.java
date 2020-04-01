@@ -1,43 +1,46 @@
 package org.example.components;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 
 public class Motherboard extends Component implements Serializable {
-	private String socket;
-	private String ramType;
-	private double wattsRequired;
+	private SimpleStringProperty socket;
+	private SimpleStringProperty ramType;
+	private SimpleDoubleProperty wattsRequired;
 
 	public Motherboard() {}
 
 	public Motherboard(String name, String manufacturer, double price, String socket, String ramType, double wattsRequired) {
 		super(name, manufacturer, price);
-		this.socket = socket;
-		this.ramType = ramType;
-		this.wattsRequired = wattsRequired;
+		this.socket = new SimpleStringProperty(socket);
+		this.ramType = new SimpleStringProperty(ramType);
+		this.wattsRequired = new SimpleDoubleProperty(wattsRequired);
 	}
 
 	public String getSocket() {
-		return socket;
+		return socket.getValue();
 	}
 
 	public void setSocket(String socket) {
-		this.socket = socket;
+		this.socket.set(socket);
 	}
 
 	public String getRamType() {
-		return ramType;
+		return ramType.getValue();
 	}
 
 	public void setRamType(String ramType) {
-		this.ramType = ramType;
+		this.ramType.set(ramType);
 	}
 
 	public double getWattsRequired() {
-		return wattsRequired;
+		return wattsRequired.getValue();
 	}
 
 	public void setWattsRequired(double wattsRequired) {
-		this.wattsRequired = wattsRequired;
+		this.wattsRequired.set(wattsRequired);
 	}
 
 	@Override

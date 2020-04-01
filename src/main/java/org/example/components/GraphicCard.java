@@ -1,41 +1,44 @@
 package org.example.components;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 
 public class GraphicCard extends Component implements Serializable {
-    private int ram;
-    private String ramType;
-    private String clockSpeed;
+    private SimpleIntegerProperty ram;
+    private SimpleStringProperty ramType;
+    private SimpleStringProperty clockSpeed;
 
     public GraphicCard(String name, String manufacturer, double price, int ram, String ramType, String clockSpeed) {
         super(name, manufacturer, price);
-        this.ram = ram;
-        this.ramType = ramType;
-        this.clockSpeed = clockSpeed;
+        this.ram = new SimpleIntegerProperty(ram);
+        this.ramType = new SimpleStringProperty(ramType);
+        this.clockSpeed = new SimpleStringProperty(clockSpeed);
     }
 
     public int getRam() {
-        return ram;
+        return ram.getValue();
     }
 
     public void setRam(int ram) {
-        this.ram = ram;
+        this.ram.set(ram);
     }
 
     public String getRamType() {
-        return ramType;
+        return ramType.getValue();
     }
 
     public void setRamType(String ramType) {
-        this.ramType = ramType;
+        this.ramType.set(ramType);
     }
 
     public String getClockSpeed() {
-        return clockSpeed;
+        return clockSpeed.getValue();
     }
 
     public void setClockSpeed(String clockSpeed) {
-        this.clockSpeed = clockSpeed;
+        this.clockSpeed.set(clockSpeed);
     }
 
     @Override

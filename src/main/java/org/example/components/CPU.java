@@ -11,32 +11,35 @@ This should be done with a checker-method (SEE CHECKER.java)
  */
 
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.io.Serializable;
 
 public class CPU extends Component implements Serializable {
-	private int threads;
-	private double clockSpeed;
+	private SimpleIntegerProperty threads;
+	private SimpleDoubleProperty clockSpeed;
 
 	public CPU(String name, String manufacturer, double price, int threads, double clockSpeed){
 		super(name,manufacturer,price);
-		this.threads = threads;
-		this.clockSpeed = clockSpeed;
+		this.threads = new SimpleIntegerProperty(threads);
+		this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
 	}
 
 	public int getThreads() {
-		return threads;
+		return threads.getValue();
 	}
 
 	public void setThreads(int threads) {
-		this.threads = threads;
+		this.threads.set(threads);
 	}
 
 	public double getClockSpeed() {
-		return clockSpeed;
+		return clockSpeed.getValue();
 	}
 
 	public void setClockSpeed(double clockSpeed) {
-		this.clockSpeed = clockSpeed;
+		this.clockSpeed.set(clockSpeed);
 	}
 
 	@Override

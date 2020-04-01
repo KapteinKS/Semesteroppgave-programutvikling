@@ -1,41 +1,44 @@
 package org.example.components;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.io.Serializable;
 
 public class Fan extends Component implements Serializable {
-    private int diameter;
-    private double airPressure;
-    private int maxNoiseVolume;
+    private SimpleIntegerProperty diameter;
+    private SimpleDoubleProperty airPressure;
+    private SimpleIntegerProperty maxNoiseVolume;
 
     public Fan(String name, String manufacturer, double price, int diameter, double airPressure, int maxNoiseVolume) {
         super(name, manufacturer, price);
-        this.diameter = diameter;
-        this.airPressure = airPressure;
-        this.maxNoiseVolume = maxNoiseVolume;
+        this.diameter = new SimpleIntegerProperty(diameter);
+        this.airPressure = new SimpleDoubleProperty(airPressure);
+        this.maxNoiseVolume = new SimpleIntegerProperty(maxNoiseVolume);
     }
 
     public int getDiameter() {
-        return diameter;
+        return diameter.getValue();
     }
 
     public void setDiameter(int diameter) {
-        this.diameter = diameter;
+        this.diameter.set(diameter);
     }
 
     public double getAirPressure() {
-        return airPressure;
+        return airPressure.getValue();
     }
 
     public void setAirPressure(double airPressure) {
-        this.airPressure = airPressure;
+        this.airPressure.set(airPressure);
     }
 
     public int getMaxNoiseVolume() {
-        return maxNoiseVolume;
+        return maxNoiseVolume.getValue();
     }
 
     public void setMaxNoiseVolume(int maxNoiceVolume) {
-        this.maxNoiseVolume = maxNoiceVolume;
+        this.maxNoiseVolume.setValue(maxNoiceVolume);
     }
 
     @Override

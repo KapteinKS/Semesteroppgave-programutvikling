@@ -1,41 +1,44 @@
 package org.example.components;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.io.Serializable;
 
 public class PowerSupply extends Component implements Serializable {
-    private int energy; //WATT, feel free to refactor -> rename
-    private int inVoltage;
-    private int outVoltage;
+    private SimpleIntegerProperty energy; //WATT, feel free to refactor -> rename
+    private SimpleIntegerProperty inVoltage;
+    private SimpleIntegerProperty outVoltage;
 
     public PowerSupply(String name, String manufacturer, double price, int energy, int inVoltage, int outVoltage) {
         super(name, manufacturer, price);
-        this.energy = energy;
-        this.inVoltage = inVoltage;
-        this.outVoltage = outVoltage;
+        this.energy = new SimpleIntegerProperty(energy);
+        this.inVoltage = new SimpleIntegerProperty(inVoltage);
+        this.outVoltage = new SimpleIntegerProperty(outVoltage);
     }
 
     public int getEnergy() {
-        return energy;
+        return energy.getValue();
     }
 
     public void setEnergy(int energy) {
-        this.energy = energy;
+        this.energy.set(energy);
     }
 
     public int getInVoltage() {
-        return inVoltage;
+        return inVoltage.getValue();
     }
 
     public void setInVoltage(int inVoltage) {
-        this.inVoltage = inVoltage;
+        this.inVoltage.set(inVoltage);
     }
 
     public int getOutVoltage() {
-        return outVoltage;
+        return outVoltage.getValue();
     }
 
     public void setOutVoltage(int outVoltage) {
-        this.outVoltage = outVoltage;
+        this.outVoltage.set(outVoltage);
     }
 
     @Override
