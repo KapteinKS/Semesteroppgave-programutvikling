@@ -1,4 +1,4 @@
-package org.example.Filemanagement;
+package org.example.io;
 
 public class ReadComponentsFromFile extends Reader {
 }

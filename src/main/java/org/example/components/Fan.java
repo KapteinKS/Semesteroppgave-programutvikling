@@ -37,4 +37,10 @@ public class Fan extends Component implements Serializable {
     public void setMaxNoiseVolume(int maxNoiceVolume) {
         this.maxNoiseVolume = maxNoiceVolume;
     }
+
+    @Override
+    public String toString(){
+        return "Fan" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+                + "," + getDiameter() + "," + getAirPressure() + "," + getMaxNoiseVolume();
+    }
 }

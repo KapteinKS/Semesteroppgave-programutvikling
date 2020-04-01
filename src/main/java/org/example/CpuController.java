@@ -34,7 +34,7 @@ public class CpuController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
     }
 
     @FXML
@@ -60,7 +60,7 @@ public class CpuController {
         //Save new object to our register.
         //  CODE  HERE  //
 
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
 
     }
 }

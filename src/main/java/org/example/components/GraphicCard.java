@@ -37,4 +37,10 @@ public class GraphicCard extends Component implements Serializable {
     public void setClockSpeed(String clockSpeed) {
         this.clockSpeed = clockSpeed;
     }
+
+    @Override
+    public String toString(){
+        return "GraphicCard" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+                + "," + getRam() + "," + getRamType() + "," + getClockSpeed();
+    }
 }

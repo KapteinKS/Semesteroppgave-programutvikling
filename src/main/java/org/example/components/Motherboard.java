@@ -39,4 +39,11 @@ public class Motherboard extends Component implements Serializable {
 	public void setWattsRequired(double wattsRequired) {
 		this.wattsRequired = wattsRequired;
 	}
+
+	@Override
+	public String toString(){
+		return "Motherboard" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+				+ "," + getSocket() + "," + getRamType() + "," + getWattsRequired();
+	}
+
 }

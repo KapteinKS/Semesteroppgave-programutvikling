@@ -38,4 +38,10 @@ public class CPU extends Component implements Serializable {
 	public void setClockSpeed(double clockSpeed) {
 		this.clockSpeed = clockSpeed;
 	}
+
+	@Override
+	public String toString(){
+		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+				+ "," + getThreads() + "," + getClockSpeed();
+	}
 }

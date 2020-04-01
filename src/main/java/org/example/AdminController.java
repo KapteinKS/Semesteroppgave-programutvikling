@@ -6,10 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import org.example.Deeper.Customer;
 import org.example.Deeper.CustomerCollection;
-import org.example.Filemanagement.ReadCustomerFromFile;
+import org.example.io.ReadCustomerFromFile;
+import org.example.io.WriteCustomerToFile;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class AdminController {
@@ -52,7 +52,10 @@ public class AdminController {
 	}
 
 	@FXML
-	void saveOrder(ActionEvent event) {
+	void saveOrder(ActionEvent event) throws IOException {
+
+		// Testing filesaver!
+		WriteCustomerToFile.save(customers,Paths.get("newFile.txt"));
 
 	}
 

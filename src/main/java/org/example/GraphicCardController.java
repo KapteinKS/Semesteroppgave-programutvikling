@@ -36,7 +36,7 @@ public class GraphicCardController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
     }
 
     @FXML
@@ -66,7 +66,7 @@ public class GraphicCardController {
         // Otherwise, it's updated everytime we switch views?
 
 
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
 
     }
 

@@ -38,7 +38,7 @@ public class FanController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
 
     }
 
@@ -70,7 +70,7 @@ public class FanController {
         //  CODE  HERE  //
 
 
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
 
     }
 

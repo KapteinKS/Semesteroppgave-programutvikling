@@ -34,7 +34,7 @@ public class StorageController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
     }
 
     @FXML
@@ -55,7 +55,7 @@ public class StorageController {
         Storage strg = new Storage(name, manufacturer, price, type, capacity);
 
 
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
 
     }
 

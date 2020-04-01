@@ -21,8 +21,7 @@ public class CustomerCollection {
 	}
 	@Override
 	public String toString(){
-
 		//THIS MUST RETURN CSV!!
-		return "";
+		return "Hei! Dette er CustomerCollection sin toString! =) Dette må egentlig være en samling av CSVdata";
 	}
 }

@@ -37,7 +37,7 @@ public class MotherboardController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
 
     }
 
@@ -63,7 +63,7 @@ public class MotherboardController {
         // THIS IS ERRONIOUS!!
         Motherboard mb = new Motherboard(name, manufacturer, price, "MISSING", "MISSING", watts);
 
-        App.setRoot("componentCreator", 460, 360);
+        App.setRoot("componentCreator", 460, 360, "Component Creator");
 
     }
 

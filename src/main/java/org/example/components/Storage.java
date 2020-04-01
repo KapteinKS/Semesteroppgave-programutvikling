@@ -27,4 +27,11 @@ public class Storage extends Component implements Serializable {
     public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
+
+    @Override
+    public String toString(){
+        return "Storage" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+                + "," + getType() + "," + getCapacity();
+    }
+
 }

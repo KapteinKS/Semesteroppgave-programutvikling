@@ -1,7 +1,7 @@
-package org.example.Filemanagement;
+package org.example.io;
 
 
-// This handles TXT.
+// This handles .txt files.
 
 import org.example.Deeper.Customer;
 import org.example.Deeper.CustomerCollection;
@@ -9,8 +9,6 @@ import org.example.Exceptions.InvalidCustomerException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -31,7 +29,7 @@ public class ReadCustomerFromFile extends Reader {
 	private static Customer parseCustomer(String line) throws InvalidCustomerException {
 		String[] split = line.split(",");
 		if (split.length != 7) {
-			throw new InvalidCustomerException("ERROR! Values not separated by ,");
+			throw new InvalidCustomerException("ERROR! Values not separated by ',' !!");
 		}
 
 		//We could do some checks on some of these, but we should keep them as Strings, as we're not calculating ever.
