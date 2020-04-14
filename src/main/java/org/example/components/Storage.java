@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 public class Storage extends Component implements Serializable {
     private String type;
-    private String capacity;
+    private int capacity;
+    private String capacityType;
 
-    public Storage(String name, String manufacturer, double price, String type, String capacity) {
+    public Storage(String name, String manufacturer, double price, String type, int capacity, String capacityType) {
         super(name, manufacturer, price);
         this.type = type;
         this.capacity = capacity;
+        this.capacityType = capacityType;
     }
 
     public String getType() {
@@ -20,11 +22,19 @@ public class Storage extends Component implements Serializable {
         this.type = type;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public String getCapacityType() {
+        return capacityType;
+    }
+
+    public void setCapacityType(String capacityType) {
+        this.capacityType = capacityType;
     }
 }
