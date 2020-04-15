@@ -1,5 +1,7 @@
 package org.example.Exceptions;
 
+import java.io.IOException;
+
 public class ExceptionHandler {
     public double priceCheck(double price) throws IllegalPriceException {
         if(price < 0){
@@ -64,5 +66,49 @@ public class ExceptionHandler {
             throw new IllegalNoiseException("Denne viften kommer til å forårsake hørselskader");
         }
         return noise;
+    }
+    public int checkRAM (int ram) throws IllegalRAMException{
+        if(ram < 0){
+            throw new IllegalRAMException("RAM utenfor lovlig område");
+        }
+        return ram;
+    }
+    public double checkWatts(double watts) throws IllegalWattsException {
+        if(watts < 0){
+            throw new IllegalWattsException("Energiforbruk utenfor lovlig område");
+        }
+        return watts;
+    }
+    public int checkWatts(int watts) throws IllegalWattsException {
+        if(watts < 0){
+            throw new IllegalWattsException("Energiforbruk utenfor lovlig område");
+        }
+        return watts;
+    }
+    public int checkVoltageIn(int voltage) throws IllegalVoltageException {
+        if(voltage < 120 || voltage > 250){
+            throw new IllegalVoltageException("Spenning inn utenfor lovlig område");
+        }
+        return voltage;
+    }
+    public int checkVoltageout(int voltage) throws IllegalVoltageException {
+        if(voltage < 10 || voltage > 15){
+            throw new IllegalVoltageException("Spenning ut utenfor lovlig område");
+        }
+        return voltage;
+    }
+    public int checkStorage (int storage, String type) throws IllegalCapacityException, IOException {
+        if(type.equals("TB")){
+            if (storage < 1 || storage > 15){
+                throw new IllegalCapacityException("Lagring utenfor lovlig område");
+            }
+        } else if (type.equals("GB")){
+            if (storage < 124 || storage > 2048){
+                throw new IllegalCapacityException("Lagring utenfor lovlig område");
+            }
+        } else {
+            throw new IOException("Ingen størrelsesorden valgt for lagring");
+        }
+        return storage;
     }
 }

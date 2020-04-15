@@ -56,10 +56,10 @@ public class FanController {
                 App.closeWindow();
             } catch (IllegalPriceException | IllegalDimensionsException | IllegalPressureException | IllegalNoiseException e){
                 System.err.println(e.getMessage());
+            } catch (NumberFormatException n){
+                System.err.println("Tallfelt kan ikke være tomme");
             }
-
         }
-
     }
 
 }

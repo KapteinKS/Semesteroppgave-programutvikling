@@ -4,12 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.components.Cabinet;
+import org.example.Exceptions.ExceptionHandler;
+import org.example.Exceptions.IllegalPriceException;
+import org.example.Exceptions.IllegalRAMException;
 import org.example.components.GraphicCard;
 
 import java.io.IOException;
 
 public class GraphicCardController {
+
+    ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
     private TextField inName;
@@ -42,19 +46,20 @@ public class GraphicCardController {
 
     @FXML
     void registerGraphicCard(ActionEvent event) throws IOException {
-
-        String name = inName.getText(), manufacturer = inManufac.getText(),
-            ramType = inType.getText(), clockspeed = inHertz.getText();
-        try{
-            double price = Double.parseDouble(inPrice.getText());
-            int ram = Integer.parseInt(inRAM.getText());
-            GraphicCard graphicCard = new GraphicCard(name, manufacturer, price, ram, ramType, clockspeed);
-            App.saveToCollection(graphicCard);
-        } catch (Exception e){
-            System.err.println(e.getMessage());
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufac.getText(),
+                    ramType = inType.getText(), clockspeed = inHertz.getText();
+            try {
+                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                int ram = exHan.checkRAM(Integer.parseInt(inRAM.getText()));
+                GraphicCard graphicCard = new GraphicCard(name, manufacturer, price, ram, ramType, clockspeed);
+                App.saveToCollection(graphicCard);
+                App.closeWindow();
+            } catch(IllegalRAMException | IllegalPriceException e){
+                System.err.println(e.getMessage());
+            } catch (NumberFormatException n){
+                System.err.println("Tallfelt kan ikke være tomme");
+            }
         }
-
-        App.closeWindow();
     }
-
 }

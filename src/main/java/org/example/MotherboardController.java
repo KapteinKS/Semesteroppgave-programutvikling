@@ -4,11 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.example.Exceptions.ExceptionHandler;
+import org.example.Exceptions.IllegalPriceException;
+import org.example.Exceptions.IllegalWattsException;
 import org.example.components.Motherboard;
 
 import java.io.IOException;
 
 public class MotherboardController {
+
+    ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
     private TextField inName;
@@ -41,16 +46,19 @@ public class MotherboardController {
 
     @FXML
     void registerMotherboard(ActionEvent event) throws IOException {
-        String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSockets.getText(), ramType = inRamType.getText();
-        try {
-            double price = Double.parseDouble(inPrice.getText());
-            double wattsRequired = Double.parseDouble(inWatts.getText());
-            Motherboard motherboard = new Motherboard(name, manufacturer, price, socket, ramType, wattsRequired);
-            App.saveToCollection(motherboard);
-            } catch (Exception e){
-            System.err.println(e.getMessage());
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSockets.getText(), ramType = inRamType.getText();
+            try {
+                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
+                Motherboard motherboard = new Motherboard(name, manufacturer, price, socket, ramType, wattsRequired);
+                App.saveToCollection(motherboard);
+                App.closeWindow();
+            } catch (IllegalPriceException | IllegalWattsException e){
+                System.err.println(e.getMessage());
+            } catch (NumberFormatException n){
+                System.err.println("Tallfelt kan ikke være tomme");
+            }
         }
-        App.closeWindow();
     }
-
 }
