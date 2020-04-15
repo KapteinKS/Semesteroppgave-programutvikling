@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class AdminController {
 
 	private CustomerCollection customers;
+	private ComponentCollection collection;
 
 	@FXML
 	private TextArea txtOutput;
@@ -60,7 +61,7 @@ public class AdminController {
 	}
 
 	@FXML
-	void loadOrder(ActionEvent event) {
+	void loadOrder(ActionEvent event) throws IOException {
 
 		// Testing filereader
 
