@@ -42,4 +42,10 @@ public class RAM extends Component implements Serializable {
     public void setAmountOfRAMPieces(String amountOfRAMPieces) {
         this.amountOfRAMPieces.set(amountOfRAMPieces);
     }
+
+    @Override
+    public String toString(){
+        return "RAM" + "," + getName() + "," + getManufacturer() + "," +
+                getPrice() + "," + getMemory() + "," + getAmountOfRAMPieces();
+    }
 }
