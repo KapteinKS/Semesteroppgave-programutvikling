@@ -18,6 +18,6 @@
         <Label layoutX="20.0" layoutY="138.0" text="Clock Speed" />
         <TextField fx:id="inClockSpeed" layoutX="153.0" layoutY="134.0" />
         <Button fx:id="regButton" layoutX="77.0" layoutY="175.0" mnemonicParsing="false" onAction="#registerCPU" text="Register" />
-        <Button fx:id="cancelButten" layoutX="216.0" layoutY="175.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
+        <Button fx:id="cancelButton" layoutX="216.0" layoutY="175.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
     </children>
 </AnchorPane>

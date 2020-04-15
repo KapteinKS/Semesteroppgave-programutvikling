@@ -20,6 +20,6 @@
         <Label layoutX="20.0" layoutY="170.0" text="Frequenzy (MHz)" />
         <TextField fx:id="inHertz" layoutX="176.0" layoutY="166.0" />
         <Button fx:id="regButton" layoutX="77.0" layoutY="205.0" mnemonicParsing="false" onAction="#registerGraphicCard" text="Register" />
-        <Button fx:id="cancelButten" layoutX="216.0" layoutY="205.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
+        <Button fx:id="cancelButton" layoutX="216.0" layoutY="205.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
     </children>
 </AnchorPane>

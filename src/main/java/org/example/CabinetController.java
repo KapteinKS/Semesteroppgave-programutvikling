@@ -2,10 +2,10 @@ package org.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.components.Cabinet;
-import org.example.components.PowerSupply;
 
 import java.io.IOException;
 
@@ -30,53 +30,40 @@ public class CabinetController {
     private TextField inDepth;
 
     @FXML
-    private TextField inWeght;
+    private TextField inWeight;
 
     @FXML
     private Button regButton;
 
     @FXML
-    private Button cancelButten;
+    private Button cancelButton;
 
     @FXML
     void registerCabinet(ActionEvent event) throws IOException {
 
+        String name = inName.getText(), manufacturer = inManufac.getText();
 
-        // Get all parameters.
-        String name = inName.getText();
-        String manufacturer = inManufac.getText();
-        String priceString = inPrice.getText();
+        try{
+            double price = Double.parseDouble(inPrice.getText());
+            int height = Integer.parseInt(inHeight.getText());
+            int width = Integer.parseInt(inWidth.getText());
+            int depth = Integer.parseInt(inDepth.getText());
+            int weight = Integer.parseInt(inDepth.getText());
+            Cabinet cabinet = new Cabinet(name, manufacturer, price, height, width, depth, weight);
+            App.saveToCollection(cabinet);
 
-        // try - Catch, input validation here!
-        double price = Double.parseDouble(priceString);
-
-
-        String heightString = inHeight.getText();
-        int height = Integer.parseInt(heightString);
-
-        String widthString = inWidth.getText();
-        int width = Integer.parseInt(widthString);
-
-        String depthString = inDepth.getText();
-        int depth = Integer.parseInt(depthString);
-
-        String weightString = inWeght.getText();
-        double weight = Double.parseDouble(weightString);
+        } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
 
 
-
-        //Create new object
-        Cabinet cab = new Cabinet(name, manufacturer, price, height, width, depth, weight);
-
-
-
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
 
     }
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
 
     }
 }

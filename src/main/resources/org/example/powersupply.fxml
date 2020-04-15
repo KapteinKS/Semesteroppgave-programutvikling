@@ -20,7 +20,7 @@
         <Label layoutX="20.0" layoutY="170.0" text="Voltage out (V)" />
         <TextField fx:id="inVoltageOut" layoutX="176.0" layoutY="166.0" />
         <Button fx:id="regButton" layoutX="77.0" layoutY="205.0" mnemonicParsing="false" onAction="#registerPowerSupply" text="Register" />
-        <Button fx:id="cancelButten" layoutX="216.0" layoutY="205.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
+        <Button fx:id="cancelButton" layoutX="216.0" layoutY="205.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
     </children>
 
 </AnchorPane>

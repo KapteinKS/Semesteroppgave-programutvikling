@@ -4,23 +4,35 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import org.example.Deeper.Customer;
-import org.example.Deeper.CustomerCollection;
-import org.example.io.ReadCustomerFromFile;
-import org.example.io.WriteCustomerToFile;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
 public class AdminController {
-
-	private CustomerCollection customers = new CustomerCollection();
 
 	@FXML
 	private TextArea txtOutput;
 
 	@FXML
 	private Label lblOutput;
+
+	@FXML
+	private TableView<ComponentCollection> tableView;
+
+	@FXML
+	private TableColumn<Component, String> tvName;
+
+	@FXML
+	private TableColumn<Component, String> tvManufacturer;
+
+	@FXML
+	private TableColumn<Component, Integer> tvPrice;
+
+	@FXML
+	private TableColumn<Component, String> tvType;
+
+	public void initialize(URL url, ResourceBundle resourceBundle){
+		collection.attachTableView(tableView);
+	}
 
 	@FXML
 	void createComponent(ActionEvent event) throws IOException {
@@ -36,7 +48,7 @@ public class AdminController {
 	}
 
 	@FXML
-	void loadOrder(ActionEvent event) throws IOException {
+	void loadOrder(ActionEvent event) {
 
 		// Testing filereader
 
@@ -52,10 +64,7 @@ public class AdminController {
 	}
 
 	@FXML
-	void saveOrder(ActionEvent event) throws IOException {
-
-		// Testing filesaver!
-		WriteCustomerToFile.save(customers,Paths.get("newFile.txt"));
+	void saveOrder(ActionEvent event) {
 
 	}
 
