@@ -36,8 +36,7 @@ public class FanController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+        App.closeWindow();
     }
 
     @FXML
@@ -54,8 +53,7 @@ public class FanController {
             System.err.println(e.getMessage());
         }
 
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+        App.closeWindow();
     }
 
 }

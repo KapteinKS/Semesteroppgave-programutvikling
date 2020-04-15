@@ -43,19 +43,40 @@ public class AdminController implements Initializable {
 	}
 
 	@FXML
-	void createComponent(ActionEvent event) throws IOException {
-
-		App.newWindow("componentCreator");
-
-		//App.setRoot("componentCreator", 460, 360, "Component Creator");
-
-		/*
-
-		THIS MENU CHANGES THE VIEW TO 'componentCreator.fxml'!
-
-		 */
-
+	void createCPU(ActionEvent event) throws IOException {
+		App.newWindow("cpu");
 	}
+
+	@FXML
+	void createCabinet(ActionEvent event) throws IOException {
+		App.newWindow("cabinet");
+	}
+
+	@FXML
+	void createFan(ActionEvent event) throws IOException {
+		App.newWindow("fan");
+	}
+
+	@FXML
+	void createGraphicCard(ActionEvent event) throws IOException {
+		App.newWindow("graphiccard");
+	}
+
+	@FXML
+	void createMotherboard(ActionEvent event) throws IOException {
+		App.newWindow("motherboard");
+	}
+
+	@FXML
+	void createPowerSupply(ActionEvent event) throws IOException {
+		App.newWindow("powersupply");
+	}
+
+	@FXML
+	void createStorage(ActionEvent event) throws IOException {
+		App.newWindow("storage");
+	}
+
 
 	@FXML
 	void loadOrder(ActionEvent event) {

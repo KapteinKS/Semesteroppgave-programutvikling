@@ -37,8 +37,7 @@ public class GraphicCardController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+        App.closeWindow();
     }
 
     @FXML
@@ -55,8 +54,7 @@ public class GraphicCardController {
             System.err.println(e.getMessage());
         }
 
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+        App.closeWindow();
     }
 
 }

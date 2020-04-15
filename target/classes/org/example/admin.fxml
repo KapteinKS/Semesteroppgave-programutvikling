@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AdminController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AdminController">
     <children>
         <MenuBar prefHeight="29.0" prefWidth="600.0">
             <menus>
@@ -25,9 +25,15 @@
                   <MenuItem mnemonicParsing="false" onAction="#showOrders" text="Vis Alle Ordrer" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Lag...">
+            <Menu mnemonicParsing="false" text="Registrer komponent">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#createComponent" text="Registrer Ny Komponent" />
+                <MenuItem mnemonicParsing="false" onAction="#createCabinet" text="Kabinett" />
+                  <MenuItem mnemonicParsing="false" onAction="#createCPU" text="CPU" />
+                  <MenuItem mnemonicParsing="false" onAction="#createFan" text="Vifte" />
+                  <MenuItem mnemonicParsing="false" onAction="#createGraphicCard" text="Grafikkort" />
+                  <MenuItem mnemonicParsing="false" onAction="#createMotherboard" text="Hovedkort" />
+                  <MenuItem mnemonicParsing="false" onAction="#createPowerSupply" text="Strømforsyning" />
+                  <MenuItem mnemonicParsing="false" onAction="#createStorage" text="Lagring" />
               </items>
             </Menu>
                 <Menu mnemonicParsing="false" text="Help">

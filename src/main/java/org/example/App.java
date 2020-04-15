@@ -49,12 +49,15 @@ public class App extends Application {
         stage2.show();
     }
 
+    /*
     public static void changeSecondaryWindow(String fxml, double width, double height, String title) throws IOException {
         scene2.setRoot(loadFXML(fxml));
         stage2.setHeight(height);
         stage2.setWidth(width);
         stage2.setTitle(title);
     }
+
+     */
 
     public static void saveToCollection(Component component){
         collection.add(component);

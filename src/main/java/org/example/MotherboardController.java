@@ -36,8 +36,7 @@ public class MotherboardController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+        App.closeWindow();
     }
 
     @FXML
@@ -51,8 +50,7 @@ public class MotherboardController {
             } catch (Exception e){
             System.err.println(e.getMessage());
         }
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+        App.closeWindow();
     }
 
 }
