@@ -3,11 +3,23 @@ package org.example;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import org.example.Deeper.ComponentCollection;
+import org.example.Deeper.Customer;
+import org.example.Deeper.CustomerCollection;
+import org.example.components.Component;
+import org.example.io.ReadCustomerFromFile;
 
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
+import java.util.ResourceBundle;
 
 public class AdminController {
+
+	private CustomerCollection customers;
 
 	@FXML
 	private TextArea txtOutput;
