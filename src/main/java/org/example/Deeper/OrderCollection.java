@@ -19,9 +19,30 @@ public class OrderCollection {
 	public void removeAll(){
 		orders.clear();
 	}
+
+	public String printOrders(String customerID){
+		String out = "Ordrene til kunde " + customerID + "\n";
+		for (Order o : orders){
+			String theOrders = "";
+			if (o.getCustomerID().equals(customerID)){
+				theOrders += o.printOrder() + "\n";
+			}
+			if (theOrders.equals("")){
+				out = "Kunde " + customerID + " har ingen tidligere ordre!";
+			}
+			else{
+				out += theOrders;
+			}
+		}
+		return out;
+	}
+
 	@Override
 	public String toString(){
-		//THIS MUST RETURN CSV!!
-		return "Hei! Dette er OrderCollection sin toString! =) Dette må egentlig være en samling av CSVdata";
+		String out = "";
+		for (Order o : orders){
+			out += o.toString() + "\n";
+		}
+		return  out; // Does this work? I do not know.
 	}
 }

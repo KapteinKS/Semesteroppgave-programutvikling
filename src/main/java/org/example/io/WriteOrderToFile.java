@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-//Loads ORDERCollection (.txt)
+//Saves ORDERCollection (.txt)
 
 public class WriteOrderToFile extends Writer {
 

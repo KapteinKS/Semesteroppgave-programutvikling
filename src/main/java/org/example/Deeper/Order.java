@@ -1,14 +1,18 @@
 package org.example.Deeper;
 
+import java.util.Date;
+
 public class Order {
 	private String customerID;
 	private String orderID;
+	private Date date;
 	private String[] componentsOrdered;
 	private double price;
 
-	public Order(String customerID, String orderID, String[]componentsOrdered, double price){
+	public Order(String customerID, String orderID, Date date, String[]componentsOrdered, double price){
 		this.customerID = customerID;
 		this.orderID = orderID;
+		this.date = date;
 		this.componentsOrdered = componentsOrdered;
 		this.price = price;
 	}
@@ -29,6 +33,14 @@ public class Order {
 		this.orderID = orderID;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public String[] getComponentsOrdered() {
 		return componentsOrdered;
 	}
@@ -45,9 +57,21 @@ public class Order {
 		this.price = price;
 	}
 
+		//This prints the specific order
+	public String printOrder(){
+		String out = "OrderID: " + orderID
+				+ "\n" + "Dato: " + date
+				+ "\n" + "Komponenter bestilt:" + "\n";
+		for (String cmpnnt : componentsOrdered){
+			out += cmpnnt + "\n";
+		}
+		out += "Pris: " + price;
+		return out;
+	}
+
 	@Override
 	public String toString(){
-		String out = "" +  customerID + ",";
+		String out = "" +  customerID + "," + orderID + "," + date + ",";
 		for (String cmpnnt : componentsOrdered){
 			out += cmpnnt + ",";
 		}

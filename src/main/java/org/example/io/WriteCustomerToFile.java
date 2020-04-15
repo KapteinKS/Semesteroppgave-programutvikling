@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-//Loads CUSTOMERS (.txt)
+//Saves CUSTOMERS (.txt)
 
 public class WriteCustomerToFile extends Writer {
 
