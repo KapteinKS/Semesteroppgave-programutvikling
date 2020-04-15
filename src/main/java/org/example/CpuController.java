@@ -4,12 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.example.Exceptions.ExceptionHandler;
+import org.example.Exceptions.IllegalClockSpeedException;
+import org.example.Exceptions.IllegalPriceException;
+import org.example.Exceptions.IllegalThreadsException;
 import org.example.components.CPU;
 import org.example.components.Cabinet;
 
 import java.io.IOException;
 
 public class CpuController {
+
+    ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
     private TextField inName;
@@ -38,19 +44,25 @@ public class CpuController {
     }
 
     @FXML
-    void registerCPU(ActionEvent event) throws IOException {String name = inName.getText(), manufacturer = inManufac.getText();
+    void registerCPU(ActionEvent event) throws IOException {
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufac.getText();
 
-        try{
-            double price = Double.parseDouble(inPrice.getText());
-            int threads = Integer.parseInt(inThreads.getText());
-            double clockspeed = Double.parseDouble(inClockSpeed.getText());
-            CPU cpu = new CPU(name, manufacturer, price, threads, clockspeed);
-            App.saveToCollection(cpu);
+            try {
+                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                int threads = exHan.checkThreads(Integer.parseInt(inThreads.getText()));
+                double clockspeed = exHan.chechClockSpeed(Double.parseDouble(inClockSpeed.getText()));
 
-        } catch (Exception e){
-            System.err.println(e.getMessage());
+                CPU cpu = new CPU(name, manufacturer, price, threads, clockspeed);
+                App.saveToCollection(cpu);
+                App.closeWindow();
+            } catch (IllegalClockSpeedException | IllegalPriceException | IllegalThreadsException e) {
+                System.err.println(e.getMessage());
+            } catch (NumberFormatException n){
+                System.err.println("Tallfelt kan ikke være tomme");
+
+            }
+
         }
-
-        App.closeWindow();
     }
 }
