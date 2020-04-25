@@ -1,4 +1,4 @@
-package org.example.components;
+package org.example.componentClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -11,8 +11,8 @@ public class Cabinet extends Component implements Serializable {
     private SimpleIntegerProperty depth;
     private SimpleDoubleProperty weight;
 
-    public Cabinet(String name, String manufacturer, double price, int height, int width, int depth, double weight) {
-        super(name, manufacturer, price);
+    public Cabinet(String name, String manufacturer, double wattsRequired, double price, int height, int width, int depth, double weight) {
+        super(name, manufacturer, wattsRequired, price);
         this.height = new SimpleIntegerProperty(height);
         this.width = new SimpleIntegerProperty(width);
         this.depth = new SimpleIntegerProperty(depth);
@@ -53,7 +53,7 @@ public class Cabinet extends Component implements Serializable {
 
     @Override
     public String toString(){
-        return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+        return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getHeight() + "," + getWidth() + "," + getDepth() + "," + getWeight();
     }
 }

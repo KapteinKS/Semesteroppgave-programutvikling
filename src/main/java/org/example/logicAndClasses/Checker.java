@@ -1,5 +1,4 @@
-package org.example.Deeper;
-import org.example.components.Component;
+package org.example.logicAndClasses;
 
 public class Checker {
 //None of this is working yet =))

@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import org.example.components.Storage;
+import org.example.componentClasses.Storage;
 
 import java.io.IOException;
 import java.net.URL;

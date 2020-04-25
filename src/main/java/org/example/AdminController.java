@@ -6,10 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import org.example.Deeper.ComponentCollection;
-import org.example.Deeper.Customer;
-import org.example.Deeper.CustomerCollection;
-import org.example.components.Component;
+import org.example.logicAndClasses.ComponentCollection;
+import org.example.logicAndClasses.Customer;
+import org.example.logicAndClasses.CustomerCollection;
+import org.example.componentClasses.Component;
 import org.example.io.ReadCustomerFromFile;
 
 import java.io.IOException;

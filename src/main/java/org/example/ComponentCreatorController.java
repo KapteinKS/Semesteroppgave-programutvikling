@@ -4,7 +4,6 @@ package org.example;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import org.example.components.Component;
 
 import java.io.IOException;
 

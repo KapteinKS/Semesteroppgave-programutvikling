@@ -1,6 +1,6 @@
 package org.example.io;
 
-import org.example.Deeper.OrderCollection;
+import org.example.logicAndClasses.OrderCollection;
 
 import java.io.IOException;
 import java.nio.file.Files;

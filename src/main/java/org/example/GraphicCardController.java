@@ -4,8 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.components.Cabinet;
-import org.example.components.GraphicCard;
+import org.example.componentClasses.GraphicCard;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package org.example.components;
+package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -10,8 +10,8 @@ public class GraphicCard extends Component implements Serializable {
     private SimpleStringProperty ramType;
     private SimpleStringProperty clockSpeed;
 
-    public GraphicCard(String name, String manufacturer, double price, int ram, String ramType, String clockSpeed) {
-        super(name, manufacturer, price);
+    public GraphicCard(String name, String manufacturer, double wattsRequired, double price, int ram, String ramType, String clockSpeed) {
+        super(name, manufacturer, wattsRequired, price);
         this.ram = new SimpleIntegerProperty(ram);
         this.ramType = new SimpleStringProperty(ramType);
         this.clockSpeed = new SimpleStringProperty(clockSpeed);
@@ -43,7 +43,7 @@ public class GraphicCard extends Component implements Serializable {
 
     @Override
     public String toString(){
-        return "GraphicCard" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+        return "GraphicCard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getRam() + "," + getRamType() + "," + getClockSpeed();
     }
 }

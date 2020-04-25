@@ -1,4 +1,4 @@
-package org.example.components;
+package org.example.componentClasses;
 
 /*
 
@@ -20,8 +20,8 @@ public class CPU extends Component implements Serializable {
 	private SimpleIntegerProperty threads;
 	private SimpleDoubleProperty clockSpeed;
 
-	public CPU(String name, String manufacturer, double price, int threads, double clockSpeed){
-		super(name,manufacturer,price);
+	public CPU(String name, String manufacturer, double wattsRequired, double price, int threads, double clockSpeed){
+		super(name,manufacturer,wattsRequired,price);
 		this.threads = new SimpleIntegerProperty(threads);
 		this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
 	}
@@ -44,7 +44,7 @@ public class CPU extends Component implements Serializable {
 
 	@Override
 	public String toString(){
-		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
 				+ "," + getThreads() + "," + getClockSpeed();
 	}
 }

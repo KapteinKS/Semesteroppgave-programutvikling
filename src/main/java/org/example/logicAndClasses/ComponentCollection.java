@@ -1,9 +1,9 @@
-package org.example.Deeper;
+package org.example.logicAndClasses;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-import org.example.components.Component;
+import org.example.componentClasses.Component;
 
 public class ComponentCollection {
 
@@ -20,8 +20,5 @@ public class ComponentCollection {
 	public void attachTableView(TableView tv){
 		tv.setItems(componentList);
 	}
-
-}
-
 
 }

@@ -1,6 +1,5 @@
-package org.example.components;
+package org.example.componentClasses;
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
@@ -8,15 +7,13 @@ import java.io.Serializable;
 public class Motherboard extends Component implements Serializable {
 	private SimpleStringProperty socket;
 	private SimpleStringProperty ramType;
-	private SimpleDoubleProperty wattsRequired;
 
 	public Motherboard() {}
 
-	public Motherboard(String name, String manufacturer, double price, String socket, String ramType, double wattsRequired) {
-		super(name, manufacturer, price);
+	public Motherboard(String name, String manufacturer, double wattsRequired, double price, String socket, String ramType) {
+		super(name, manufacturer,wattsRequired, price);
 		this.socket = new SimpleStringProperty(socket);
 		this.ramType = new SimpleStringProperty(ramType);
-		this.wattsRequired = new SimpleDoubleProperty(wattsRequired);
 	}
 
 	public String getSocket() {
@@ -35,17 +32,9 @@ public class Motherboard extends Component implements Serializable {
 		this.ramType.set(ramType);
 	}
 
-	public double getWattsRequired() {
-		return wattsRequired.getValue();
-	}
-
-	public void setWattsRequired(double wattsRequired) {
-		this.wattsRequired.set(wattsRequired);
-	}
-
 	@Override
 	public String toString(){
-		return "Motherboard" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+		return "Motherboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
 				+ "," + getSocket() + "," + getRamType() + "," + getWattsRequired();
 	}
 

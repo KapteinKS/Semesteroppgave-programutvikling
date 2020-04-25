@@ -2,10 +2,9 @@ package org.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.components.Cabinet;
+import org.example.componentClasses.Cabinet;
 
 import java.io.IOException;
 

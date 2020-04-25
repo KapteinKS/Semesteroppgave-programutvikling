@@ -1,4 +1,4 @@
-package org.example.components;
+package org.example.componentClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -10,8 +10,8 @@ public class Fan extends Component implements Serializable {
     private SimpleDoubleProperty airPressure;
     private SimpleIntegerProperty maxNoiseVolume;
 
-    public Fan(String name, String manufacturer, double price, int diameter, double airPressure, int maxNoiseVolume) {
-        super(name, manufacturer, price);
+    public Fan(String name, String manufacturer, double wattsRequired, double price, int diameter, double airPressure, int maxNoiseVolume) {
+        super(name, manufacturer, wattsRequired, price);
         this.diameter = new SimpleIntegerProperty(diameter);
         this.airPressure = new SimpleDoubleProperty(airPressure);
         this.maxNoiseVolume = new SimpleIntegerProperty(maxNoiseVolume);
@@ -43,7 +43,7 @@ public class Fan extends Component implements Serializable {
 
     @Override
     public String toString(){
-        return "Fan" + "," + getName() + "," + getManufacturer() + "," + getPrice()
+        return "Fan" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getDiameter() + "," + getAirPressure() + "," + getMaxNoiseVolume();
     }
 }

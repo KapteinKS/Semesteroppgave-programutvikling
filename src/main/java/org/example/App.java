@@ -7,9 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.example.Deeper.ComponentCollection;
-import org.example.Deeper.Initializer;
-import org.example.components.Component;
+import org.example.logicAndClasses.ComponentCollection;
+import org.example.logicAndClasses.Initializer;
+import org.example.componentClasses.Component;
 
 import java.io.IOException;
 

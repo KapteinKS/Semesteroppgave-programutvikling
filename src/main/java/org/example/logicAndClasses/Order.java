@@ -1,4 +1,4 @@
-package org.example.Deeper;
+package org.example.logicAndClasses;
 
 import java.util.Date;
 
