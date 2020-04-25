@@ -2,21 +2,37 @@ package org.example.componentClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
 public class Cabinet extends Component implements Serializable {
+    //This should have a SizeType String (M-ATX) Perhaps called FormFactor, which corresponds to MB
+    private SimpleStringProperty mbFormFactor;
     private SimpleIntegerProperty height;
     private SimpleIntegerProperty width;
     private SimpleIntegerProperty depth;
     private SimpleDoubleProperty weight;
 
-    public Cabinet(String name, String manufacturer, double wattsRequired, double price, int height, int width, int depth, double weight) {
-        super(name, manufacturer, wattsRequired, price);
+    public Cabinet(String name, String manufacturer, double price, String mbFormFactor, int height, int width, int depth, double weight) {
+        super(name, manufacturer, 0, price);
+        this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
         this.height = new SimpleIntegerProperty(height);
         this.width = new SimpleIntegerProperty(width);
         this.depth = new SimpleIntegerProperty(depth);
         this.weight = new SimpleDoubleProperty(weight);
+    }
+
+    public String getMbFormFactor() {
+        return mbFormFactor.get();
+    }
+
+    public SimpleStringProperty mbFormFactorProperty() {
+        return mbFormFactor;
+    }
+
+    public void setMbFormFactor(String mbFormFactor) {
+        this.mbFormFactor.set(mbFormFactor);
     }
 
     public int getHeight() {

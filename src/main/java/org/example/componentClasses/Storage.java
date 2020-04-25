@@ -7,8 +7,8 @@ public class Storage extends Component implements Serializable {
     private int capacity;
     private String capacityType;
 
-    public Storage(String name, String manufacturer, double wattsRequired, double price, String type, int capacity, String capacityType) {
-        super(name, manufacturer, wattsRequired, price);
+    public Storage(String name, String manufacturer, double price, String type, int capacity, String capacityType) {
+        super(name, manufacturer, 0, price);
         this.type = type;
         this.capacity = capacity;
         this.capacityType = capacityType;

@@ -45,10 +45,10 @@ public class PowersupplyController {
         String name = inName.getText(), manufacturer = inManufac.getText();
         try {
             double price = Double.parseDouble(inPrice.getText());
-            int energy = Integer.parseInt(inEnergy.getText());
+            double wattsRequired = Double.parseDouble(inEnergy.getText());
             int voltageIn = Integer.parseInt(inVoltageIn.getText());
             int voltageOut = Integer.parseInt(inVoltageOut.getText());
-            PowerSupply powerSupply = new PowerSupply(name, manufacturer, price, energy, voltageIn, voltageOut);
+            PowerSupply powerSupply = new PowerSupply(name, manufacturer, wattsRequired, price, voltageIn, voltageOut);
             App.saveToCollection(powerSupply);
         } catch (Exception e){
             System.err.println(e.getMessage());

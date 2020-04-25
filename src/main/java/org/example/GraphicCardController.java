@@ -17,6 +17,9 @@ public class GraphicCardController {
     private TextField inManufac;
 
     @FXML
+    private TextField inWatts;
+
+    @FXML
     private TextField inPrice;
 
     @FXML
@@ -46,9 +49,10 @@ public class GraphicCardController {
         String name = inName.getText(), manufacturer = inManufac.getText(),
             ramType = inType.getText(), clockspeed = inHertz.getText();
         try{
+            double wattsRequired = Double.parseDouble(inWatts.getText());
             double price = Double.parseDouble(inPrice.getText());
             int ram = Integer.parseInt(inRAM.getText());
-            GraphicCard graphicCard = new GraphicCard(name, manufacturer, price, ram, ramType, clockspeed);
+            GraphicCard graphicCard = new GraphicCard(name, manufacturer, wattsRequired, price, ram, ramType, clockspeed);
             App.saveToCollection(graphicCard);
         } catch (Exception e){
             System.err.println(e.getMessage());

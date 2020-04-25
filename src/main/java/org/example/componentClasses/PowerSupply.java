@@ -8,7 +8,7 @@ public class PowerSupply extends Component implements Serializable {
     private SimpleIntegerProperty inVoltage;
     private SimpleIntegerProperty outVoltage;
 
-    public PowerSupply(String name, String manufacturer, double wattsRequired, double price, int energy, int inVoltage, int outVoltage) {
+    public PowerSupply(String name, String manufacturer, double wattsRequired, double price, int inVoltage, int outVoltage) {
         super(name, manufacturer, wattsRequired, price);
         this.inVoltage = new SimpleIntegerProperty(inVoltage);
         this.outVoltage = new SimpleIntegerProperty(outVoltage);

@@ -20,6 +20,9 @@ public class MotherboardController {
     private TextField inPrice;
 
     @FXML
+    private TextField inFormFactor;
+
+    @FXML
     private TextField inSockets;
 
     @FXML
@@ -43,10 +46,13 @@ public class MotherboardController {
     @FXML
     void registerMotherboard(ActionEvent event) throws IOException {
         String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSockets.getText(), ramType = inRamType.getText();
+
+        String formFactor = inFormFactor.getText();  // This must have checks, tests round it.
+
         try {
             double price = Double.parseDouble(inPrice.getText());
             double wattsRequired = Double.parseDouble(inWatts.getText());
-            Motherboard motherboard = new Motherboard(name, manufacturer, price, socket, ramType, wattsRequired);
+            Motherboard motherboard = new Motherboard(name, manufacturer, price, wattsRequired, formFactor, socket, ramType);
             App.saveToCollection(motherboard);
             } catch (Exception e){
             System.err.println(e.getMessage());

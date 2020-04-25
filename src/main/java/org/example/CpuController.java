@@ -17,6 +17,9 @@ public class CpuController {
     private TextField inManufac;
 
     @FXML
+    private TextField inWatts;
+
+    @FXML
     private TextField inPrice;
 
     @FXML
@@ -40,10 +43,11 @@ public class CpuController {
     void registerCPU(ActionEvent event) throws IOException {String name = inName.getText(), manufacturer = inManufac.getText();
 
         try{
+            double wattsRequired = Double.parseDouble(inWatts.getText());
             double price = Double.parseDouble(inPrice.getText());
             int threads = Integer.parseInt(inThreads.getText());
             double clockspeed = Double.parseDouble(inClockSpeed.getText());
-            CPU cpu = new CPU(name, manufacturer, price, threads, clockspeed);
+            CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed);
             App.saveToCollection(cpu);
 
         } catch (Exception e){

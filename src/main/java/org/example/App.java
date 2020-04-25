@@ -23,13 +23,24 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene2;
     private static Stage stage2;
+
     private static ComponentCollection collection = new ComponentCollection();
+
+
+   private static Initializer init = new Initializer();    //By making a new Initializer-object, ...
+            // ... we can keep our collections in memory, when the app is refreshed (I THINK)
 
     @Override
     public void start(Stage stage) throws IOException {
         //This initializer reads data, and sets up GUI.
         this.stage = stage;
-        Initializer.initialize();
+
+        //
+        init.initialize();
+        //ComponentCollection componentCollection = init.readComponents();
+
+
+
         scene = new Scene(loadFXML("start"));
         System.out.print(".");
         stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));

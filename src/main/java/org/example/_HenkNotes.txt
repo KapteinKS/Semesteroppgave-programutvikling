@@ -30,6 +30,8 @@ User GUI:
         Lagring:
         Lagring:
         Strømforsyning:
+        Vifte:
+        Vifte:
         Ekstra:
         Ekstra:
         Ekstra:

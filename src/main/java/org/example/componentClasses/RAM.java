@@ -9,17 +9,11 @@ public class RAM extends Component implements Serializable {
     private SimpleStringProperty memoryType;
     private SimpleStringProperty amountOfRAMPieces;
 
-    public RAM(SimpleStringProperty size, SimpleStringProperty memoryType, SimpleStringProperty amountOfRAMPieces) {
-        this.size = size;
-        this.memoryType = memoryType;
-        this.amountOfRAMPieces = amountOfRAMPieces;
-    }
-
-    public RAM(String name, String manufacturer, double wattsRequired, double price, SimpleStringProperty size, SimpleStringProperty memoryType, SimpleStringProperty amountOfRAMPieces) {
-        super(name, manufacturer, wattsRequired, price);
-        this.size = size;
-        this.memoryType = memoryType;
-        this.amountOfRAMPieces = amountOfRAMPieces;
+    public RAM(String name, String manufacturer, double price, String size, String memoryType, int amountOfRAMPieces) {
+        super(name, manufacturer, 0, price);
+        this.size = new SimpleStringProperty(size);
+        this.memoryType = new SimpleStringProperty(memoryType);
+        this.amountOfRAMPieces = new SimpleStringProperty(""+amountOfRAMPieces);
     }
 
     public String getSize() {
