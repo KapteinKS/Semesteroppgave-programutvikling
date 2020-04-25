@@ -1,39 +1,40 @@
 package org.example.components;
 
-import javafx.beans.property.SimpleStringProperty;
-
 import java.io.Serializable;
 
 public class Storage extends Component implements Serializable {
-    private SimpleStringProperty type;
-    private SimpleStringProperty capacity;
+    private String type;
+    private int capacity;
+    private String capacityType;
 
-    public Storage(String name, String manufacturer, double price, String type, String capacity) {
+    public Storage(String name, String manufacturer, double price, String type, int capacity, String capacityType) {
         super(name, manufacturer, price);
-        this.type = new SimpleStringProperty(type);
-        this.capacity = new SimpleStringProperty(capacity);
+        this.type = type;
+        this.capacity = capacity;
+        this.capacityType = capacityType;
     }
 
     public String getType() {
-        return type.getValue();
+        return type;
     }
 
     public void setType(String type) {
-        this.type.set(type);
+        this.type = type;
     }
 
-    public String getCapacity() {
-        return capacity.getValue();
+    public int getCapacity() {
+        return capacity;
     }
 
-    public void setCapacity(String capacity) {
-        this.capacity.set(capacity);
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
-    @Override
-    public String toString(){
-        return "Storage" + "," + getName() + "," + getManufacturer() + "," + getPrice()
-                + "," + getType() + "," + getCapacity();
+    public String getCapacityType() {
+        return capacityType;
     }
 
+    public void setCapacityType(String capacityType) {
+        this.capacityType = capacityType;
+    }
 }

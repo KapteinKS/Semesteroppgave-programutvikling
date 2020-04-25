@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.components.CPU;
-import org.example.components.GraphicCard;
+import org.example.components.Cabinet;
 
 import java.io.IOException;
 
@@ -30,37 +30,28 @@ public class CpuController {
     private Button regButton;
 
     @FXML
-    private Button cancelButten;
+    private Button cancelButton;
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
     }
 
     @FXML
-    void registerCPU(ActionEvent event) throws IOException {
+    void registerCPU(ActionEvent event) throws IOException {String name = inName.getText(), manufacturer = inManufac.getText();
 
-        // Get all parameters.
-        String name = inName.getText();
-        String manufacturer = inManufac.getText();
-        String priceString = inPrice.getText();
+        try{
+            double price = Double.parseDouble(inPrice.getText());
+            int threads = Integer.parseInt(inThreads.getText());
+            double clockspeed = Double.parseDouble(inClockSpeed.getText());
+            CPU cpu = new CPU(name, manufacturer, price, threads, clockspeed);
+            App.saveToCollection(cpu);
 
-        // try - Catch, input validation here!
-        double price = Double.parseDouble(priceString);
+        } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
 
-        String threadsString = inThreads.getText();
-        int threads = Integer.parseInt(threadsString);
-
-        String clockSpeedString = inClockSpeed.getText();
-        double clockSpeed = Double.parseDouble(clockSpeedString);
-
-        //Create new object
-        CPU cpu = new CPU(name, manufacturer, price, threads, clockSpeed);
-
-        //Save new object to our register.
-        //  CODE  HERE  //
-
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
 
     }
 }

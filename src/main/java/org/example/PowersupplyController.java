@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.components.CPU;
 import org.example.components.PowerSupply;
 
 import java.io.IOException;
@@ -33,39 +32,28 @@ public class PowersupplyController {
     private Button regButton;
 
     @FXML
-    private Button cancelButten;
+    private Button cancelButton;
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
 
     }
 
     @FXML
     void registerPowerSupply(ActionEvent event) throws IOException {
-
-        // Get all parameters.
-        String name = inName.getText();
-        String manufacturer = inManufac.getText();
-        String priceString = inPrice.getText();
-
-        // try - Catch, input validation here!
-        double price = Double.parseDouble(priceString);
-
-
-        String energyString = inEnergy.getText();
-        int energy = Integer.parseInt(energyString);
-        String voltageInString = inVoltageIn.getText();
-        int voltageIn = Integer.parseInt(voltageInString);
-        String voltageOutString = inVoltageOut.getText();
-        int voltageOut = Integer.parseInt(voltageOutString);
-
-
-
-        //Create new object
-        PowerSupply psu = new PowerSupply(name, manufacturer, price, energy, voltageIn, voltageOut);
-
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        String name = inName.getText(), manufacturer = inManufac.getText();
+        try {
+            double price = Double.parseDouble(inPrice.getText());
+            int energy = Integer.parseInt(inEnergy.getText());
+            int voltageIn = Integer.parseInt(inVoltageIn.getText());
+            int voltageOut = Integer.parseInt(inVoltageOut.getText());
+            PowerSupply powerSupply = new PowerSupply(name, manufacturer, price, energy, voltageIn, voltageOut);
+            App.saveToCollection(powerSupply);
+        } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
 
     }
 

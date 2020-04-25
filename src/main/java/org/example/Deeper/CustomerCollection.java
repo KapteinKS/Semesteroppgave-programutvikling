@@ -19,9 +19,13 @@ public class CustomerCollection {
 	public void removeAll(){
 		customers.clear();
 	}
+
 	@Override
 	public String toString(){
-		//THIS MUST RETURN CSV!!
-		return "Hei! Dette er CustomerCollection sin toString! =) Dette må egentlig være en samling av CSVdata";
+		String out = "";
+		for (Customer c : customers){
+			out += c.toString();
+		}
+		return out;
 	}
 }
