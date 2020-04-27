@@ -3,6 +3,7 @@ package org.example.components;
 import java.io.Serializable;
 
 public class Fan extends Component implements Serializable {
+    private String type = "Fan";
     private int diameter;
     private double airPressure;
     private int maxNoiseVolume;
@@ -12,6 +13,10 @@ public class Fan extends Component implements Serializable {
         this.diameter = diameter;
         this.airPressure = airPressure;
         this.maxNoiseVolume = maxNoiseVolume;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public int getDiameter() {

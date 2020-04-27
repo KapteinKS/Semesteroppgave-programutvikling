@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import java.io.Serializable;
 
 public class Cabinet extends Component implements Serializable {
+    private String type = "Cabinet";
     private transient SimpleIntegerProperty height;
     private transient SimpleIntegerProperty width;
     private transient SimpleIntegerProperty depth;
@@ -17,6 +18,10 @@ public class Cabinet extends Component implements Serializable {
         this.width = new SimpleIntegerProperty(width);
         this.depth = new SimpleIntegerProperty(depth);
         this.weight = new SimpleDoubleProperty(weight);
+    }
+
+    public String getType() {
+        return type;
     }
 
     public int getHeight() {

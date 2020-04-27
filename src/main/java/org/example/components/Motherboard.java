@@ -3,6 +3,7 @@ package org.example.components;
 import java.io.Serializable;
 
 public class Motherboard extends Component implements Serializable {
+	private String type = "Motherboard";
 	private String socket;
 	private String ramType;
 	private double wattsRequired;
@@ -13,6 +14,10 @@ public class Motherboard extends Component implements Serializable {
 		this.socket = socket;
 		this.ramType = ramType;
 		this.wattsRequired = wattsRequired;
+	}
+
+	public String getType() {
+		return type;
 	}
 
 	public String getSocket() {
