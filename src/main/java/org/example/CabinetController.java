@@ -4,8 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.components.Cabinet;
-import org.example.Exceptions.*;
+import org.example.componentClasses.Cabinet;
+
 
 import java.io.IOException;
 
@@ -21,6 +21,9 @@ public class CabinetController {
 
     @FXML
     private TextField inPrice;
+
+    @FXML
+    private TextField inFormFactor;
 
     @FXML
     private TextField inHeight;
@@ -43,6 +46,7 @@ public class CabinetController {
     @FXML
     void registerCabinet(ActionEvent event) throws IOException {
 
+
         if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText();
 
@@ -60,6 +64,7 @@ public class CabinetController {
             } catch (NumberFormatException n) {
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+
         }
     }
 

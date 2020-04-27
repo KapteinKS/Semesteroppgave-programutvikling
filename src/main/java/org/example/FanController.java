@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import org.example.Exceptions.*;
 import org.example.components.Fan;
 
+
 import java.io.IOException;
 
 public class FanController {

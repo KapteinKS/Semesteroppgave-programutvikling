@@ -9,6 +9,7 @@ import org.example.Exceptions.IllegalPriceException;
 import org.example.Exceptions.IllegalRAMException;
 import org.example.components.GraphicCard;
 
+
 import java.io.IOException;
 
 public class GraphicCardController {
@@ -20,6 +21,9 @@ public class GraphicCardController {
 
     @FXML
     private TextField inManufac;
+
+    @FXML
+    private TextField inWatts;
 
     @FXML
     private TextField inPrice;
@@ -46,6 +50,7 @@ public class GraphicCardController {
 
     @FXML
     void registerGraphicCard(ActionEvent event) throws IOException {
+
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText(),
                     ramType = inType.getText(), clockspeed = inHertz.getText();
@@ -60,6 +65,8 @@ public class GraphicCardController {
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+
+
         }
     }
 }
