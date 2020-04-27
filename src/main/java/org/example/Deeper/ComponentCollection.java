@@ -7,7 +7,7 @@ import org.example.components.Component;
 
 public class ComponentCollection {
 
-	private static ObservableList<Component> componentList = FXCollections.observableArrayList();
+	private ObservableList<Component> componentList = FXCollections.observableArrayList();
 
 	public void add (Component component){
 		componentList.add(component);
