@@ -14,6 +14,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.UserController">
    <children>
        <MenuBar prefHeight="25.0" prefWidth="600.0">
@@ -58,20 +60,53 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="cbCabinet" text="Kabinett" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
-                  <Label fx:id="cbMotherboard" text="Hovedkort" GridPane.rowIndex="1" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="cbCPU" text="Prosessor" GridPane.rowIndex="2" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="cbGPU1" text="Skjermkort" GridPane.rowIndex="3" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="cbGPU2" text="Skjermkort" GridPane.rowIndex="4" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="cbRAM1" text="Minne" GridPane.rowIndex="5" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label fx:id="cbRAM2" text="Minne" GridPane.rowIndex="6" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label text="Kabinett" />
+                  <ComboBox fx:id="cbCabinet" prefWidth="150.0" GridPane.columnIndex="1">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item1"/>
+                              <String fx:value="Item2"/>
+                              <String fx:value="Item3"/>
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <Label text="Hovedkort" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="cbMotherboard" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+                      <items>
+                      <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item1"/>
+                          <String fx:value="Item2"/>
+                          <String fx:value="Item3"/>
+                      </FXCollections>
+                  </items>
+                  </ComboBox>
+                  <Label text="Prosessor" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbCPU" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item1"/>
+                              <String fx:value="Item2"/>
+                              <String fx:value="Item3"/>
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <Label text="Skjermkort" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cbGPU1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" >
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item1"/>
+                              <String fx:value="Item2"/>
+                              <String fx:value="Item3"/>
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                   <!-- I stopped here, for testing purposes-->
+                  <Label text="Skjermkort" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cbGPU2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Minne" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cbRAM1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label text="Minne" GridPane.rowIndex="6" />
+                  <ComboBox fx:id="cbRAM2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Label text="Lagring" GridPane.rowIndex="7" />
                   <ComboBox fx:id="cbStorage1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <Label text="Lagring" GridPane.rowIndex="8" />

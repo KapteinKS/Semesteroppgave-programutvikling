@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import org.example.componentClasses.Cabinet;
 import org.example.componentClasses.Component;
 import org.example.logicAndClasses.ComponentCollection;
 
@@ -17,67 +18,66 @@ public class UserController {
 
 	private static ComponentCollection componentCollection = new ComponentCollection();
 	//* Populating ComboBox-Logic *//
-	ObservableList<String> cabinetList = displayComponentList(componentCollection.getComponentByType("Cabinet"));
-	ObservableList<Component> cpuList = componentCollection.getComponentByType("CPU");
-	ObservableList<Component> fanList = componentCollection.getComponentByType("Fan");
-	ObservableList<Component> gpuList = componentCollection.getComponentByType("GraphicCard");
-	ObservableList<Component> mbList = componentCollection.getComponentByType("Motherboard");
-	ObservableList<Component> psuList = componentCollection.getComponentByType("PowerSupply");
-	ObservableList<Component> ramList = componentCollection.getComponentByType("RAM");
-	ObservableList<Component> storageList = componentCollection.getComponentByType("Storage");
+	private static ObservableList<String> cabinetList = displayComponentList(componentCollection.getComponentByType("Cabinet"));
+	private static ObservableList<String> cpuList = displayComponentList(componentCollection.getComponentByType("CPU"));
+	private static ObservableList<String> fanList = displayComponentList(componentCollection.getComponentByType("Fan"));
+	private static ObservableList<String> gpuList = displayComponentList(componentCollection.getComponentByType("GraphicCard"));
+	private static ObservableList<String> mbList = displayComponentList(componentCollection.getComponentByType("Motherboard"));
+	private static ObservableList<String> psuList = displayComponentList(componentCollection.getComponentByType("PowerSupply"));
+	private static ObservableList<String> ramList = displayComponentList(componentCollection.getComponentByType("RAM"));
+	private static ObservableList<String> storageList = displayComponentList(componentCollection.getComponentByType("Storage"));
 
-
-
-
+	//
+	private static ObservableList<String> testList = test();
 	//**//
 
 	@FXML
-	private ComboBox<?> cbCabinet;
+	private ComboBox<String> cbCabinet;
 
 	@FXML
-	private ComboBox<?> cbMotherboard;
+	private ComboBox<String> cbMotherboard;
 
 	@FXML
-	private ComboBox<?> cbCPU;
+	private ComboBox<String> cbCPU;
 
 	@FXML
-	private ComboBox<?> cbGPU1;
+	private ComboBox<String> cbGPU1;
 
 	@FXML
-	private ComboBox<?> cbGPU2;
+	private ComboBox<String> cbGPU2;
 
 	@FXML
-	private ComboBox<?> cbRAM1;
+	private ComboBox<String> cbRAM1;
 
 	@FXML
-	private ComboBox<?> cbRAM2;
+	private ComboBox<String> cbRAM2;
 
 	@FXML
-	private ComboBox<?> cbStorage1;
+	private ComboBox<String> cbStorage1;
 
 	@FXML
-	private ComboBox<?> cbStorage2;
+	private ComboBox<String> cbStorage2;
 
 	@FXML
-	private ComboBox<?> cbPSU;
+	private ComboBox<String> cbPSU;
 
 	@FXML
-	private ComboBox<?> cbFan1;
+	private ComboBox<String> cbFan1;
 
 	@FXML
-	private ComboBox<?> cbFan2;
+	private ComboBox<String> cbFan2;
 
 	@FXML
-	private ComboBox<?> cbExtra1;
+	private ComboBox<String> cbExtra1;
 
 	@FXML
-	private ComboBox<?> cbExtra2;
+	private ComboBox<String> cbExtra2;
 
 	@FXML
-	private ComboBox<Component> cbExtra3;
+	private ComboBox<String> cbExtra3;
 
 	@FXML
-	private ComboBox<?> cbExtra4;
+	private ComboBox<String> cbExtra4;
 
 	@FXML
 	private TextArea txtPreview;
@@ -147,7 +147,7 @@ public class UserController {
 		cbCabinet.setItems(cabinetList);
 		cbMotherboard.setItems(mbList);
 		cbCPU.setItems(cpuList);
-		cbGPU1.setItems(gpuList);
+		cbGPU1.setItems(testList);
 		cbGPU2.setItems(gpuList);
 		cbRAM1.setItems(ramList);
 		cbRAM2.setItems(ramList);
@@ -156,18 +156,29 @@ public class UserController {
 		cbPSU.setItems(psuList);
 		cbFan1.setItems(fanList);
 		cbFan2.setItems(fanList);
-		cbExtra1.setItems(componentCollection.getComponentList());
-		cbExtra2.setItems(componentCollection.getComponentList());
-		cbExtra3.setItems(componentCollection.getComponentList());
-		cbExtra4.setItems(componentCollection.getComponentList());
+		cbExtra1.setItems(displayComponentList(componentCollection.getComponentList()));
+		cbExtra2.setItems(displayComponentList(componentCollection.getComponentList()));
+		cbExtra3.setItems(displayComponentList(componentCollection.getComponentList()));
+		cbExtra4.setItems(displayComponentList(componentCollection.getComponentList()));
 
 	}
 
-	public ObservableList<String> displayComponentList(ObservableList<Component> inputList){
+	public static ObservableList<String> displayComponentList(ObservableList<Component> inputList){
 		ObservableList<String> outList = FXCollections.observableArrayList();
 		for (Component entry : inputList){
 			outList.add(entry.displayComponent());
 		}
 		return outList;
 	}
+
+	// TEST STUFF
+	public static ObservableList<String> test(){
+		ObservableList<String> outlist = FXCollections.observableArrayList();
+		outlist.add("Linje Nummer 1");
+		outlist.add("Linje NUmmer 2");
+		outlist.add("LINJE TREEEE");
+		return outlist;
+	}
+
+
 }

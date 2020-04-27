@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.componentClasses.Cabinet;
@@ -33,6 +34,14 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        //* COMBOBOX POPULATION *//
+
+        // FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
+        // UserController userController = loader.getController();
+        // userController.populateComboBox();
+
+        //**//
+
         //This initializer reads data, and sets up GUI.
         this.stage = stage;
         //
@@ -40,12 +49,11 @@ public class App extends Application {
         //ComponentCollection componentCollection = init.readComponents();
 
 
-
-
         scene = new Scene(loadFXML("start"));
         System.out.print(".");
         stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));
         stage.setScene(scene);
+
         stage.setTitle("Start");
         stage.show();
         System.out.print(".");

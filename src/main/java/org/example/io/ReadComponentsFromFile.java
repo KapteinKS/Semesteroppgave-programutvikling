@@ -1,6 +1,6 @@
 package org.example.io;
 
-import org.example.Deeper.ComponentCollection;
+import org.example.logicAndClasses.ComponentCollection;
 
 import java.io.IOException;
 import java.io.InputStream;
