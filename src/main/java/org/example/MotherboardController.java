@@ -4,12 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
 import org.example.Exceptions.ExceptionHandler;
 import org.example.Exceptions.IllegalPriceException;
 import org.example.Exceptions.IllegalWattsException;
 import org.example.components.Motherboard;
-
 
 import java.io.IOException;
 
@@ -25,9 +23,6 @@ public class MotherboardController {
 
     @FXML
     private TextField inPrice;
-
-    @FXML
-    private TextField inFormFactor;
 
     @FXML
     private TextField inSockets;
@@ -51,7 +46,6 @@ public class MotherboardController {
 
     @FXML
     void registerMotherboard(ActionEvent event) throws IOException {
-
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSockets.getText(), ramType = inRamType.getText();
             try {
@@ -65,7 +59,6 @@ public class MotherboardController {
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             }
-
         }
     }
 }

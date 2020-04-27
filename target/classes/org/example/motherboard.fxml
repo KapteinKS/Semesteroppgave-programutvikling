@@ -5,23 +5,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="317.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MotherboardController">
+<AnchorPane prefHeight="250.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MotherboardController">
     <children>
         <Label layoutX="20.0" layoutY="20.0" text="Name" />
-        <TextField fx:id="inName" layoutX="188.0" layoutY="14.0" />
+        <TextField fx:id="inName" layoutX="176.0" layoutY="16.0" />
         <Label layoutX="20.0" layoutY="50.0" text="Manufacturer" />
-        <TextField fx:id="inManufac" layoutX="188.0" layoutY="44.0" />
+        <TextField fx:id="inManufac" layoutX="176.0" layoutY="46.0" />
         <Label layoutX="20.0" layoutY="80.0" text="Price" />
-        <TextField fx:id="inPrice" layoutX="188.0" layoutY="75.0" />
-        <Label layoutX="21.0" layoutY="149.0" text="Socket" />
-        <TextField fx:id="inSockets" layoutX="189.0" layoutY="143.0" />
-      <Label layoutX="21.0" layoutY="179.0" text="Ram Type" />
-      <TextField fx:id="inRamType" layoutX="189.0" layoutY="175.0" />
-        <Label layoutX="21.0" layoutY="209.0" text="Required Watt Output" />
-        <TextField fx:id="inWatts" layoutX="189.0" layoutY="203.0" />
-        <Button fx:id="regButton" layoutX="78.0" layoutY="243.0" mnemonicParsing="false" onAction="#registerMotherboard" text="Register" />
-        <Button fx:id="cancelButton" layoutX="229.0" layoutY="241.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
-      <Label layoutX="20.0" layoutY="114.0" text="Form-Factor (M-ATX, ATX..)" />
-      <TextField fx:id="inFormFactor" layoutX="188.0" layoutY="109.0" />
+        <TextField fx:id="inPrice" layoutX="176.0" layoutY="77.0" />
+        <Label layoutX="20.0" layoutY="110.0" text="Socket" />
+        <TextField fx:id="inSockets" layoutX="176.0" layoutY="106.0" />
+      <Label layoutX="20.0" layoutY="140.0" text="Ram Type" />
+      <TextField fx:id="inRamType" layoutX="176.0" layoutY="138.0" />
+        <Label layoutX="20.0" layoutY="170.0" text="Required Watt Output" />
+        <TextField fx:id="inWatts" layoutX="176.0" layoutY="166.0" />
+        <Button fx:id="regButton" layoutX="77.0" layoutY="204.0" mnemonicParsing="false" onAction="#registerMotherboard" text="Register" />
+        <Button fx:id="cancelButton" layoutX="216.0" layoutY="204.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
     </children>
 </AnchorPane>

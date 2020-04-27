@@ -11,7 +11,6 @@ import org.example.Exceptions.IllegalThreadsException;
 import org.example.components.CPU;
 import org.example.components.Cabinet;
 
-
 import java.io.IOException;
 
 public class CpuController {
@@ -23,9 +22,6 @@ public class CpuController {
 
     @FXML
     private TextField inManufac;
-
-    @FXML
-    private TextField inWatts;
 
     @FXML
     private TextField inPrice;
@@ -51,12 +47,11 @@ public class CpuController {
     void registerCPU(ActionEvent event) throws IOException {
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText();
-            
+
             try {
                 double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
                 int threads = exHan.checkThreads(Integer.parseInt(inThreads.getText()));
                 double clockspeed = exHan.chechClockSpeed(Double.parseDouble(inClockSpeed.getText()));
-
 
                 CPU cpu = new CPU(name, manufacturer, price, threads, clockspeed);
                 App.saveToCollection(cpu);

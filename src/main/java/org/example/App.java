@@ -1,18 +1,15 @@
 package org.example;
 
 import javafx.application.Application;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.example.componentClasses.Cabinet;
-import org.example.logicAndClasses.ComponentCollection;
-import org.example.logicAndClasses.Initializer;
-import org.example.componentClasses.Component;
-
+import org.example.Deeper.ComponentCollection;
+import org.example.Deeper.Initializer;
+import org.example.components.*;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -27,23 +24,13 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene2;
     private static Stage stage2;
-
-    private static ComponentCollection componentCollection = new ComponentCollection();
-    private static Initializer init = new Initializer();    //By making a new Initializer-object, ...
-            // ... we can keep our collections in memory, when the app is refreshed (I THINK)
+    private static ComponentCollection collection = new ComponentCollection();
 
     @Override
     public void start(Stage stage) throws IOException {
-
         //This initializer reads data, and sets up GUI.
         this.stage = stage;
-        //
-        init.initialize();
-        //ComponentCollection componentCollection = init.readComponents();
-
-
-
-
+        Initializer.initialize();
         scene = new Scene(loadFXML("start"));
         System.out.print(".");
         stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));
@@ -52,10 +39,6 @@ public class App extends Application {
         stage.show();
         System.out.print(".");
         System.out.print("\n\n---------------\n\n");
-
-    }
-
-    public void populateBoxes(){
 
     }
 
@@ -78,13 +61,11 @@ public class App extends Application {
      */
 
     public static void saveToCollection(Component component){
-        componentCollection.add(component);
+        collection.add(component);
     }
-
 
     public static ComponentCollection getList(){
         return collection;
-
     }
 
     public static void closeWindow(){
@@ -109,7 +90,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
-
 
 }
