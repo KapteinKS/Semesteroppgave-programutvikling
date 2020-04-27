@@ -1,10 +1,9 @@
 package org.example;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import org.example.components.Component;
+import org.example.logicAndClasses.ComponentCollection;
 
 import java.io.IOException;
 
@@ -16,7 +15,7 @@ public class ComponentCreatorController {
 	@FXML
 	void cancelComponentCreator(ActionEvent event) throws IOException {
 
-		App.setRoot("admin", 600, 500, "Admin");
+		App.closeWindow();
 
 
 		/*
@@ -31,7 +30,7 @@ public class ComponentCreatorController {
 	@FXML
 	void registerNewComponent(ActionEvent event) throws IOException {
 
-		App.setRoot("admin", 600, 500, "Admin");
+		App.closeWindow();
 
 		/*
 
@@ -47,25 +46,25 @@ public class ComponentCreatorController {
 
 		switch ((String) componentChooser.getValue()){
 			case "Cabinet":
-				App.setRoot("cabinet", 365, 300, "Cabinet Registration");
+				App.changeSecondaryWindow("cabinet", 365, 310, "Cabinet Registration");
 				break;
 			case "CPU":
-				App.setRoot("cpu", 365, 240, "CPU Registration");
+				App.changeSecondaryWindow("cpu", 365, 250, "CPU Registration");
 				break;
 			case "Fan":
-				App.setRoot("fan", 365, 270, "Fan Registration");
+				App.changeSecondaryWindow("fan", 365, 280, "Fan Registration");
 				break;
 			case "GraphicCard":
-				App.setRoot("graphiccard", 365, 270, "Graphic Card Registration");
+				App.changeSecondaryWindow("graphiccard", 365, 280, "Graphic Card Registration");
 				break;
 			case "Motherboard":
-				App.setRoot("motherboard", 365, 240,"Motherboard Registration");
+				App.changeSecondaryWindow("motherboard", 365, 280,"Motherboard Registration");
 				break;
 			case "PowerSupply":
-				App.setRoot("powersupply", 365, 270,"Power Supply Registration");
+				App.changeSecondaryWindow("powersupply", 365, 280,"Power Supply Registration");
 				break;
 			case "Storage":
-				App.setRoot("storage", 365, 240,"Storage Registration");
+				App.changeSecondaryWindow("storage", 365, 280,"Storage Registration");
 				break;
 			default:
 

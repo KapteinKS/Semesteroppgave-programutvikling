@@ -1,12 +1,12 @@
 package org.example.io;
 
-import org.example.Deeper.CustomerCollection;
+import org.example.logicAndClasses.CustomerCollection;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-//Writes CUSTOMERS (.txt)
+//Saves CUSTOMERS (.txt)
 
 public class WriteCustomerToFile extends Writer {
 

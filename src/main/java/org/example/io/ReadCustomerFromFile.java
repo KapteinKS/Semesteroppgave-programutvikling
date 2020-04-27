@@ -3,9 +3,9 @@ package org.example.io;
 
 // This handles .txt files.
 
-import org.example.Deeper.Customer;
-import org.example.Deeper.CustomerCollection;
-import org.example.Exceptions.InvalidCustomerException;
+import org.example.logicAndClasses.Customer;
+import org.example.logicAndClasses.CustomerCollection;
+import org.example.exceptions.InvalidCustomerException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

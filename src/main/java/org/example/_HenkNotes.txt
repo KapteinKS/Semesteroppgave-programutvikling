@@ -9,15 +9,6 @@ hver linje hos disse representerer et objekt, lagres som CSV
 
 componentData.csv;
 
- _       _________ _______  _______  _______  _______
-( (    /|\__   __/(  ____ \(  ____ \(  ____ \(  ____ )
-|  \  ( |   ) (   | (    \/| (    \/| (    \/| (    )|
-|   \ | |   | |   | |      | |      | (__    | (____)|
-| (\ \) |   | |   | | ____ | | ____ |  __)   |     __)
-| | \   |   | |   | | \_  )| | \_  )| (      | (\ (
-| )  \  |___) (___| (___) || (___) || (____/\| ) \ \__
-|/    )_)\_______/(_______)(_______)(_______/|/   \__/
-
 
 User GUI:
 
@@ -39,11 +30,12 @@ User GUI:
         Lagring:
         Lagring:
         Strømforsyning:
+        Vifte:
+        Vifte:
         Ekstra:
         Ekstra:
         Ekstra:
         Ekstra:
-
 
         når appen kjøres må user.fxml  initialiseres
 

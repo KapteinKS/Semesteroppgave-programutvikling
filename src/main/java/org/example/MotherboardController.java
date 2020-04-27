@@ -4,8 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.components.CPU;
-import org.example.components.Motherboard;
+import org.example.componentClasses.Motherboard;
 
 import java.io.IOException;
 
@@ -20,11 +19,14 @@ public class MotherboardController {
     @FXML
     private TextField inPrice;
 
-    // WE NEED RAM-TYPE FIELD
-    // AND SOCKET-FIELD
+    @FXML
+    private TextField inFormFactor;
 
     @FXML
-    private TextField inPorts;
+    private TextField inSockets;
+
+    @FXML
+    private TextField inRamType;
 
     @FXML
     private TextField inWatts;
@@ -33,37 +35,29 @@ public class MotherboardController {
     private Button regButton;
 
     @FXML
-    private Button cancelButten;
+    private Button cancelButton;
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
 
     }
 
     @FXML
     void registerMotherboard(ActionEvent event) throws IOException {
+        String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSockets.getText(), ramType = inRamType.getText();
 
-        // Get all parameters.
-        String name = inName.getText();
-        String manufacturer = inManufac.getText();
-        String priceString = inPrice.getText();
+        String formFactor = inFormFactor.getText();  // This must have checks, tests round it.
 
-        // try - Catch, input validation here!
-        double price = Double.parseDouble(priceString);
-
-        String portsString = inPorts.getText();
-        int ports = Integer.parseInt(portsString);
-        String wattsString = inWatts.getText();
-        double watts = Double.parseDouble(wattsString);
-
-        //
-
-        //Create new object
-        // THIS IS ERRONIOUS!!
-        Motherboard mb = new Motherboard(name, manufacturer, price, "MISSING", "MISSING", watts);
-
-        App.setRoot("componentCreator", 460, 360, "Component Creator");
+        try {
+            double price = Double.parseDouble(inPrice.getText());
+            double wattsRequired = Double.parseDouble(inWatts.getText());
+            Motherboard motherboard = new Motherboard(name, manufacturer, price, wattsRequired, formFactor, socket, ramType);
+            App.saveToCollection(motherboard);
+            } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
 
     }
 
