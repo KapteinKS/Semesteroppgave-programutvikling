@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Initializer {
 
-	public void initialize() {
+	public static void initialize() {
 
 		// This function populates the Component-ComboBoxes in the User GUI
 		// Meaning; this function reads from the .jobj file containing all
@@ -19,9 +19,9 @@ public class Initializer {
 		//
 
 		System.out.print("\ninitializing.");
-		readComponents();
-		readCustomers();		// these don't work, but this
-		readOrders();
+		//readComponents();
+		//readCustomers();		// these don't work, but this
+		//readOrders();
 		//** Maybe surround the following logic in a new thread (Logic that reads data into an ObservableArrayList)
 
 

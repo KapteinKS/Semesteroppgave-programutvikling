@@ -26,42 +26,29 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene2;
     private static Stage stage2;
-
     private static ComponentCollection componentCollection = new ComponentCollection();
-    private static Initializer init = new Initializer();    //By making a new Initializer-object, ...
-            // ... we can keep our collections in memory, when the app is refreshed (I THINK)
 
     @Override
     public void start(Stage stage) throws IOException {
 
-        //* COMBOBOX POPULATION *//
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
+        Parent root = loader.load();
 
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
-        // UserController userController = loader.getController();
-        // userController.populateComboBox();
+        UserController userController = loader.getController();
 
-        //**//
-
-        //This initializer reads data, and sets up GUI.
-        this.stage = stage;
-        //
-        init.initialize();
-        //ComponentCollection componentCollection = init.readComponents();
-
-
-        scene = new Scene(loadFXML("start"));
-        System.out.print(".");
-        stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));
+        //this.stage = stage;
+        //Initializer.initialize();
+        scene = new Scene(loadFXML("user"));
+        //System.out.print(".");
+        //stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));
         stage.setScene(scene);
-
-        stage.setTitle("Start");
+        //stage.setTitle("Start");
         stage.show();
+
+        userController.populateComboBox();
+
         System.out.print(".");
         System.out.print("\n\n---------------\n\n");
-
-    }
-
-    public void populateBoxes(){
 
     }
 
