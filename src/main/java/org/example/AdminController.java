@@ -53,6 +53,7 @@ public class AdminController {
 		App.setRoot("componentCreator", 460, 360, "Component Creator");
 
 		/*
+		
 
 		THIS MENU CHANGES THE VIEW TO 'componentCreator.fxml'!
 
