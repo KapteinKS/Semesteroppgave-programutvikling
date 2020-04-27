@@ -1,42 +1,41 @@
 package org.example.components;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 import java.io.Serializable;
 
 public class Component implements Serializable {
-	private transient SimpleStringProperty name;
-	private transient SimpleStringProperty manufacturer;
-	private transient SimpleDoubleProperty price;
+	private String name;
+	private String manufacturer;
+	private double price;
+
+	public Component(){}
 
 	public Component(String name, String manufacturer, double price){
-		this.name = new SimpleStringProperty(name);
-		this.manufacturer = new SimpleStringProperty(manufacturer);
-		this.price = new SimpleDoubleProperty(price);
+		this.name = name;
+		this.manufacturer = manufacturer;
+		this.price = price;
 	}
 
 	public String getName(){
-		return name.getValue();
+		return name;
 	}
 
 	public void setName(String name){
-		this.name.set(name);
+		this.name = name;
 	}
 
 	public double getPrice() {
-		return price.getValue();
+		return price;
 	}
 
 	public void setPrice(double price){
-		this.price.set(price);
+		this.price = price;
 	}
 
 	public String getManufacturer(){
-		return manufacturer.getValue();
+		return manufacturer;
 	}
 
 	public void setManufacturer(String manufacturer){
-		this.manufacturer.set(manufacturer);
+		this.manufacturer = manufacturer;
 	}
 }

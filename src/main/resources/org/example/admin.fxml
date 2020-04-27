@@ -7,8 +7,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AdminController">
@@ -48,42 +46,12 @@
         </MenuBar>
       <TextArea fx:id="txtOutput" editable="false" layoutX="100.0" layoutY="86.0" prefHeight="350.0" prefWidth="400.0" wrapText="true" />
       <Label fx:id="lblOutput" layoutX="276.0" layoutY="52.0" text="L A B E L" />
-
-      <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="600.0">
+      <TableView fx:id="tableView" layoutY="86.0" prefHeight="399.0" prefWidth="600.0">
         <columns>
-            <TableColumn fx:id="tvType" prefWidth="144.0" text="Type">
-               <cellValueFactory>
-                  <PropertyValueFactory property="type" />
-               </cellValueFactory>
-               <cellFactory>
-                  <TextFieldTableCell fx:factory="forTableColumn" />
-               </cellFactory>
-            </TableColumn>
-
-            <TableColumn fx:id="tvName" prefWidth="121.0" text="Name">
-                <cellValueFactory>
-                    <PropertyValueFactory property="name" />
-                </cellValueFactory>
-                <cellFactory>
-                    <TextFieldTableCell fx:factory="forTableColumn" />
-                </cellFactory>
-            </TableColumn>
-
-            <TableColumn fx:id="tvManufacturer" prefWidth="171.0" text="Manufacturer">
-                <cellValueFactory>
-                    <PropertyValueFactory property="manufacturer" />
-                </cellValueFactory>
-                <cellFactory>
-                    <TextFieldTableCell fx:factory="forTableColumn" />
-                </cellFactory>
-            </TableColumn>
-
-            <TableColumn fx:id="tvPrice" prefWidth="163.0" text="Price">
-                <cellValueFactory>
-                    <PropertyValueFactory property="price" />
-                </cellValueFactory>
-            </TableColumn>
-
+          <TableColumn fx:id="tvName" prefWidth="156.0" text="Name" />
+            <TableColumn fx:id="tvManufacturer" prefWidth="148.0" text="Manufacturer" />
+            <TableColumn fx:id="tvPrice" prefWidth="156.0" text="Price" />
+            <TableColumn fx:id="tvType" prefWidth="156.0" text="Type" />
         </columns>
       </TableView>
     </children>

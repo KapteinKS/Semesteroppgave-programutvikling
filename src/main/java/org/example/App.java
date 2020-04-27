@@ -9,10 +9,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.Deeper.ComponentCollection;
 import org.example.Deeper.Initializer;
-import org.example.components.*;
+import org.example.components.Component;
 
 import java.io.IOException;
-import java.util.Collection;
 
 /**
  * JavaFX App
@@ -64,8 +63,8 @@ public class App extends Application {
         collection.add(component);
     }
 
-    public static ComponentCollection getList(){
-        return collection;
+    public static ObservableList<Component> getList(){
+        return collection.getComponentList();
     }
 
     public static void closeWindow(){

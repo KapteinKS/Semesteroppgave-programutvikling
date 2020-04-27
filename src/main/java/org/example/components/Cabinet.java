@@ -1,53 +1,50 @@
 package org.example.components;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-
 import java.io.Serializable;
 
 public class Cabinet extends Component implements Serializable {
-    private transient SimpleIntegerProperty height;
-    private transient SimpleIntegerProperty width;
-    private transient SimpleIntegerProperty depth;
-    private transient SimpleDoubleProperty weight;
+    private int height;
+    private int width;
+    private int depth;
+    private double weight;
 
     public Cabinet(String name, String manufacturer, double price, int height, int width, int depth, double weight) {
         super(name, manufacturer, price);
-        this.height = new SimpleIntegerProperty(height);
-        this.width = new SimpleIntegerProperty(width);
-        this.depth = new SimpleIntegerProperty(depth);
-        this.weight = new SimpleDoubleProperty(weight);
+        this.height = height;
+        this.width = width;
+        this.depth = depth;
+        this.weight = weight;
     }
 
     public int getHeight() {
-        return height.getValue();
+        return height;
     }
 
     public void setHeight(int height) {
-        this.height.set(height);
+        this.height = height;
     }
 
     public int getWidth() {
-        return width.getValue();
+        return width;
     }
 
     public void setWidth(int width) {
-        this.width.set(width);
+        this.width = width;
     }
 
     public int getDepth() {
-        return depth.getValue();
+        return depth;
     }
 
     public void setDepth(int depth) {
-        this.depth.set(depth);
+        this.depth = depth;
     }
 
     public double getWeight() {
-        return weight.getValue();
+        return weight;
     }
 
     public void setWeight(double weight) {
-        this.weight.set(weight);
+        this.weight = weight;
     }
 }
