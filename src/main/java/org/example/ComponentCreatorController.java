@@ -1,9 +1,9 @@
 package org.example;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import org.example.logicAndClasses.ComponentCollection;
 
 import java.io.IOException;
 

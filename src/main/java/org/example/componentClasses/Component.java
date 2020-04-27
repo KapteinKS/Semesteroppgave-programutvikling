@@ -55,4 +55,8 @@ public class Component implements Serializable {
 	public void setManufacturer(String manufacturer){
 		this.manufacturer.set(manufacturer);
 	}
+
+	public String displayComponent(){
+		return this.getManufacturer() + " " + this.getName() + ", " + this.getPrice() + " NOK";
+	}
 }

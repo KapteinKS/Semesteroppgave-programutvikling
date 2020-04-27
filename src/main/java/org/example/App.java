@@ -1,12 +1,14 @@
 package org.example;
 
 import javafx.application.Application;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.example.componentClasses.Cabinet;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.logicAndClasses.Initializer;
 import org.example.componentClasses.Component;
@@ -24,20 +26,19 @@ public class App extends Application {
     private static Scene scene2;
     private static Stage stage2;
 
-    private static ComponentCollection collection = new ComponentCollection();
-
-
-   private static Initializer init = new Initializer();    //By making a new Initializer-object, ...
+    private static ComponentCollection componentCollection = new ComponentCollection();
+    private static Initializer init = new Initializer();    //By making a new Initializer-object, ...
             // ... we can keep our collections in memory, when the app is refreshed (I THINK)
 
     @Override
     public void start(Stage stage) throws IOException {
+
         //This initializer reads data, and sets up GUI.
         this.stage = stage;
-
         //
         init.initialize();
         //ComponentCollection componentCollection = init.readComponents();
+
 
 
 
@@ -49,6 +50,10 @@ public class App extends Application {
         stage.show();
         System.out.print(".");
         System.out.print("\n\n---------------\n\n");
+
+    }
+
+    public void populateBoxes(){
 
     }
 
@@ -68,11 +73,10 @@ public class App extends Application {
     }
 
     public static void saveToCollection(Component component){
-        collection.add(component);
+        componentCollection.add(component);
     }
-
     public static ObservableList<Component> getList(){
-        return collection.getComponentList();
+        return componentCollection.getComponentList();
     }
 
     public static void closeWindow(){
@@ -97,5 +101,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+
 
 }

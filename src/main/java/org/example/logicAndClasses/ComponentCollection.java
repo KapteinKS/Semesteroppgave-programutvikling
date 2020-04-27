@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import org.example.componentClasses.Component;
 
+import java.util.stream.Collectors;
+
 public class ComponentCollection {
 
 	private ObservableList<Component> componentList = FXCollections.observableArrayList();
@@ -21,4 +23,14 @@ public class ComponentCollection {
 		tv.setItems(componentList);
 	}
 
+	public ObservableList<Component> getComponentByType(String type){
+		try {
+			return componentList.stream().
+					filter(cmp -> cmp.getClass().getSimpleName().equals(type)).
+					collect(Collectors.toCollection(FXCollections::observableArrayList));
+		} catch (Exception e){
+			e.getMessage();
+			return componentList;
+		}
+	}
 }
