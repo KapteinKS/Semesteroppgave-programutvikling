@@ -7,7 +7,6 @@ public class Motherboard extends Component implements Serializable {
 	private String ramType;
 	private double wattsRequired;
 
-	public Motherboard() {}
 
 	public Motherboard(String name, String manufacturer, double price, String socket, String ramType, double wattsRequired) {
 		super(name, manufacturer, price);
