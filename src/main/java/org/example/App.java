@@ -9,10 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.example.componentClasses.Cabinet;
+import org.example.componentClasses.*;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.logicAndClasses.Initializer;
-import org.example.componentClasses.Component;
 
 import java.io.IOException;
 
@@ -30,6 +29,46 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
+        //*  SOME COMPONENTS  *//
+        GraphicCard gpu1 = new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6","1605 Mhz");
+        GraphicCard gpu2 = new GraphicCard("Radeon RX 5500","Sapphire",200,3299.00,8,"DDR6","1300 Mhz");
+        CPU cpu1 = new CPU("Core i7","Intel",100,5199.99,8,3.60);
+        CPU cpu2 = new CPU("Core i5","Intel",100,3299.00, 8, 3.20);
+        CPU cpu3 = new CPU("Ryzen 9 3900X", "AMD", 105,5190.00,24,3.80);
+        Fan fan1 = new Fan("MasterFan SF242","Cooler Master", 499.99,120,59.25,30);
+        Fan fan2 = new Fan("QuietMaster29", "BeQuiet", 799.00,140,32.5,20);
+        Motherboard mb1 = new Motherboard("GigaZap 2000k","ASUS",500.00,1299.99,"ATX","LGA-1151","DDR3");
+        Motherboard mb2 = new Motherboard("MiniGigaZap 1500k", "ASUS", 350.00, 1099.99,"M-ATX","LGA-1151","DDR3");
+        Motherboard mb3 = new Motherboard("ZWXtreme 4242k","AMD",400.00,1100.00,"ATX","AM4","DDR4");
+        PowerSupply psu1 = new PowerSupply("Focus GX 750","Seasonic",750.00,1499.00);
+        PowerSupply psu2 = new PowerSupply("RM650x","Corsair",650.00,1399.00);
+        RAM ram1 = new RAM("ValueRam","Kingston",635.00,"8 GB","DDR3",1);
+        RAM ram2 = new RAM("Vengance LPX", "Corsair", 1260.00, "16 GB","DDR4",2);
+        Storage stg1 = new Storage("KC2000","Kingston",882.00,"SSD",250,"GB");
+        Storage stg2 = new Storage("Mobile Black", "WD",807.00,"HDD",1,"TB");
+
+        componentCollection.add(gpu1);
+        componentCollection.add(gpu2);
+        componentCollection.add(cpu1);
+        componentCollection.add(cpu2);
+        componentCollection.add(cpu3);
+        componentCollection.add(fan1);
+        componentCollection.add(fan2);
+        componentCollection.add(mb1);
+        componentCollection.add(mb2);
+        componentCollection.add(mb3);
+        componentCollection.add(psu1);
+        componentCollection.add(psu2);
+        componentCollection.add(ram1);
+        componentCollection.add(ram2);
+        componentCollection.add(stg1);
+        componentCollection.add(stg2);
+
+
+
+        //**//
+
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
         Parent root = loader.load();

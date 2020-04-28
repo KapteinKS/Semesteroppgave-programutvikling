@@ -48,7 +48,7 @@ public class PowersupplyController {
             double wattsRequired = Double.parseDouble(inEnergy.getText());
             int voltageIn = Integer.parseInt(inVoltageIn.getText());
             int voltageOut = Integer.parseInt(inVoltageOut.getText());
-            PowerSupply powerSupply = new PowerSupply(name, manufacturer, wattsRequired, price, voltageIn, voltageOut);
+            PowerSupply powerSupply = new PowerSupply(name, manufacturer, wattsRequired, price);
             App.saveToCollection(powerSupply);
         } catch (Exception e){
             System.err.println(e.getMessage());
