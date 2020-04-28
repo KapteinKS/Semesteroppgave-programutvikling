@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -7,9 +11,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AdminController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AdminController">
     <children>
         <MenuBar prefHeight="29.0" prefWidth="600.0">
             <menus>
@@ -25,9 +32,15 @@
                   <MenuItem mnemonicParsing="false" onAction="#showOrders" text="Vis Alle Ordrer" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Lag...">
+            <Menu mnemonicParsing="false" text="Registrer komponent">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#createComponent" text="Registrer Ny Komponent" />
+                <MenuItem mnemonicParsing="false" onAction="#createCabinet" text="Kabinett" />
+                  <MenuItem mnemonicParsing="false" onAction="#createCPU" text="CPU" />
+                  <MenuItem mnemonicParsing="false" onAction="#createFan" text="Vifte" />
+                  <MenuItem mnemonicParsing="false" onAction="#createGraphicCard" text="Grafikkort" />
+                  <MenuItem mnemonicParsing="false" onAction="#createMotherboard" text="Hovedkort" />
+                  <MenuItem mnemonicParsing="false" onAction="#createPowerSupply" text="Strømforsyning" />
+                  <MenuItem mnemonicParsing="false" onAction="#createStorage" text="Lagring" />
               </items>
             </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -39,13 +52,56 @@
             </menus>
         </MenuBar>
       <TextArea fx:id="txtOutput" editable="false" layoutX="100.0" layoutY="86.0" prefHeight="350.0" prefWidth="400.0" wrapText="true" />
-      <Label fx:id="lblOutput" layoutX="276.0" layoutY="52.0" text="L A B E L" />
-      <TableView fx:id="tableView" layoutY="86.0" prefHeight="399.0" prefWidth="600.0">
+      <Label fx:id="lblOutput" layoutX="54.0" layoutY="52.0" text="L A B E L" />
+      <TextField fx:id="filterArea" layoutX="236.0" layoutY="48.0" promptText="Søk..." />
+
+      <ChoiceBox fx:id="filterBox" layoutX="385.0" layoutY="48.0" prefWidth="150.0" value="Navn">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Navn" />
+                  <String fx:value="Produsent" />
+                  <String fx:value="Høyeste Pris" />
+                  <String fx:value="Type" />
+              </FXCollections>
+          </items>
+      </ChoiceBox>
+      <Button fx:id="filterBtn" layoutX="535.0" layoutY="48.0" mnemonicParsing="false" onAction="#filter" text="Button" />
+
+      <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="tvName" prefWidth="156.0" text="Name" />
-            <TableColumn fx:id="tvManufacturer" prefWidth="148.0" text="Manufacturer" />
-            <TableColumn fx:id="tvPrice" prefWidth="156.0" text="Price" />
-            <TableColumn fx:id="tvType" prefWidth="156.0" text="Type" />
+            <TableColumn fx:id="tvType" prefWidth="144.0" text="Type">
+               <cellValueFactory>
+                  <PropertyValueFactory property="type" />
+               </cellValueFactory>
+               <cellFactory>
+                  <TextFieldTableCell fx:factory="forTableColumn" />
+               </cellFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="tvName" prefWidth="121.0" text="Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="tvManufacturer" prefWidth="171.0" text="Manufacturer">
+                <cellValueFactory>
+                    <PropertyValueFactory property="manufacturer" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="tvPrice" prefWidth="163.0" text="Price">
+                <cellValueFactory>
+                    <PropertyValueFactory property="price" />
+                </cellValueFactory>
+            </TableColumn>
+
         </columns>
       </TableView>
     </children>

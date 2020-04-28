@@ -7,13 +7,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import org.example.componentClasses.Storage;
+import org.example.Exceptions.ExceptionHandler;
+import org.example.Exceptions.IllegalCapacityException;
+import org.example.Exceptions.IllegalPriceException;
+import org.example.components.Storage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class StorageController implements Initializable {
+
+    ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
     private TextField inName;
@@ -51,26 +56,30 @@ public class StorageController implements Initializable {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
+        App.closeWindow();
     }
 
     @FXML
     void regStorage(ActionEvent event) throws IOException {
-        String name = inName.getText(), manufacturer = inManufac.getText(), type = inType.getText(), capacityType = "";
-        if(radioGB.isSelected()){
-            capacityType = "GB";
-        }   else if (radioTB.isSelected()) {
-            capacityType = "TB";
-        }
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufac.getText(), type = inType.getText(), capacityType = "";
+            if (radioGB.isSelected()) {
+                capacityType = "GB";
+            } else if (radioTB.isSelected()) {
+                capacityType = "TB";
+            }
             try {
-                double price = Double.parseDouble(inPrice.getText());
-                int capacity = Integer.parseInt(inCapacity.getText());
+                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                int capacity = exHan.checkStorage(Integer.parseInt(inCapacity.getText()), capacityType);
                 Storage storage = new Storage(name, manufacturer, price, type, capacity, capacityType);
                 App.saveToCollection(storage);
-            } catch (Exception e){
+                App.closeWindow();
+            } catch (NumberFormatException n){
+                System.err.println("Tallfelt kan ikke være tomme");
+            } catch (IllegalPriceException | IllegalCapacityException e) {
                 System.err.println(e.getMessage());
             }
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
+        }
 
     }
 }

@@ -4,11 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.componentClasses.Cabinet;
+import org.example.components.Cabinet;
+import org.example.Exceptions.*;
 
 import java.io.IOException;
 
 public class CabinetController {
+
+    private ExceptionHandler exHand = new ExceptionHandler();
 
     @FXML
     private TextField inName;
@@ -18,9 +21,6 @@ public class CabinetController {
 
     @FXML
     private TextField inPrice;
-
-    @FXML
-    private TextField inFormFactor;
 
     @FXML
     private TextField inHeight;
@@ -43,33 +43,28 @@ public class CabinetController {
     @FXML
     void registerCabinet(ActionEvent event) throws IOException {
 
-        String name = inName.getText(), manufacturer = inManufac.getText();
+        if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufac.getText();
 
-        //This needs some tests around it
-        String formFactor = inFormFactor.getText();
-        //
-
-        try{
-            double price = Double.parseDouble(inPrice.getText());
-            int height = Integer.parseInt(inHeight.getText());
-            int width = Integer.parseInt(inWidth.getText());
-            int depth = Integer.parseInt(inDepth.getText());
-            int weight = Integer.parseInt(inDepth.getText());
-            Cabinet cabinet = new Cabinet(name, manufacturer, price, formFactor, height, width, depth, weight);
-            App.saveToCollection(cabinet);
-
-        } catch (Exception e){
-            System.err.println(e.getMessage());
+            try {
+                double price = exHand.priceCheck(Double.parseDouble(inPrice.getText()));
+                int height = exHand.checkHeight(Integer.parseInt(inHeight.getText()));
+                int width = exHand.checkWidth(Integer.parseInt(inWidth.getText()));
+                int depth = exHand.checkDepth(Integer.parseInt(inDepth.getText()));
+                int weight = exHand.checkWeight(Integer.parseInt(inDepth.getText()));
+                Cabinet cabinet = new Cabinet(name, manufacturer, price, height, width, depth, weight);
+                App.saveToCollection(cabinet);
+                App.closeWindow();
+            } catch (IllegalWeightException | IllegalDimensionsException | IllegalPriceException e) {
+                System.err.println(e.getMessage());
+            } catch (NumberFormatException n) {
+                System.err.println("Tallfelt kan ikke være tomme");
+            }
         }
-
-
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
     }
 
     @FXML
-    void cancelRegistration(ActionEvent event) throws IOException {
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+    void cancelRegistration(ActionEvent event)  {
+        App.closeWindow();
     }
 }

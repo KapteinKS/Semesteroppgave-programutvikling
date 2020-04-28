@@ -4,11 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.componentClasses.Fan;
+import org.example.Exceptions.*;
+import org.example.components.Fan;
 
 import java.io.IOException;
 
 public class FanController {
+
+    ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
     private TextField inName;
@@ -36,26 +39,27 @@ public class FanController {
 
     @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
+        App.closeWindow();
     }
 
     @FXML
     void registerFan(ActionEvent event) throws IOException {
-        String name = inName.getText(), manufacturer = inManufacturer.getText();
-        try{
-            double price = Double.parseDouble(inPrice.getText());
-            int diameter = Integer.parseInt(inDiameter.getText());
-            double airPressure = Double.parseDouble(inPressure.getText());
-            int maxNoiseVolume = Integer.parseInt(inNoiseVolume.getText());
-            Fan fan = new Fan(name, manufacturer, price, diameter, airPressure, maxNoiseVolume);
-            App.saveToCollection(fan);
-        } catch (Exception e){
-            System.err.println(e.getMessage());
+        if (!inName.getText().isEmpty() && !inManufacturer.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufacturer.getText();
+            try {
+                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                int diameter = exHan.checkDiameter(Integer.parseInt(inDiameter.getText()));
+                double airPressure = exHan.checkAirPressure(Double.parseDouble(inPressure.getText()));
+                int maxNoiseVolume = exHan.checkNoise(Integer.parseInt(inNoiseVolume.getText()));
+                Fan fan = new Fan(name, manufacturer, price, diameter, airPressure, maxNoiseVolume);
+                App.saveToCollection(fan);
+                App.closeWindow();
+            } catch (IllegalPriceException | IllegalDimensionsException | IllegalPressureException | IllegalNoiseException e){
+                System.err.println(e.getMessage());
+            } catch (NumberFormatException n){
+                System.err.println("Tallfelt kan ikke være tomme");
+            }
         }
-
-        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
     }
 
 }
