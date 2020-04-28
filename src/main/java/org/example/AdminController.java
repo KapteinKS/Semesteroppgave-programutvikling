@@ -53,37 +53,37 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void createCPU(ActionEvent event) throws IOException {
-		App.newWindow("cpu");
+		App.newWindow("cpu", "Register CPU");
 	}
 
 	@FXML
 	void createCabinet(ActionEvent event) throws IOException {
-		App.newWindow("cabinet");
+		App.newWindow("cabinet", "Register Cabinet");
 	}
 
 	@FXML
 	void createFan(ActionEvent event) throws IOException {
-		App.newWindow("fan");
+		App.newWindow("fan", "Register Fan");
 	}
 
 	@FXML
 	void createGraphicCard(ActionEvent event) throws IOException {
-		App.newWindow("graphiccard");
+		App.newWindow("graphiccard", "Register Graphic Card");
 	}
 
 	@FXML
 	void createMotherboard(ActionEvent event) throws IOException {
-		App.newWindow("motherboard");
+		App.newWindow("motherboard", "Register Motherboard");
 	}
 
 	@FXML
 	void createPowerSupply(ActionEvent event) throws IOException {
-		App.newWindow("powersupply");
+		App.newWindow("powersupply", "Register Power Supply");
 	}
 
 	@FXML
 	void createStorage(ActionEvent event) throws IOException {
-		App.newWindow("storage");
+		App.newWindow("storage", "Register Storage");
 	}
 
 

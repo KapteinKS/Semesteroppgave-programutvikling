@@ -53,9 +53,9 @@
         </MenuBar>
       <TextArea fx:id="txtOutput" editable="false" layoutX="100.0" layoutY="86.0" prefHeight="350.0" prefWidth="400.0" wrapText="true" />
       <Label fx:id="lblOutput" layoutX="54.0" layoutY="52.0" text="L A B E L" />
-      <TextField fx:id="filterArea" layoutX="236.0" layoutY="48.0" promptText="Søk..." />
+      <TextField fx:id="filterArea" layoutX="248.0" layoutY="48.0" promptText="Søk..." />
 
-      <ChoiceBox fx:id="filterBox" layoutX="385.0" layoutY="48.0" prefWidth="150.0" value="Navn">
+      <ChoiceBox fx:id="filterBox" layoutX="397.0" layoutY="48.0" prefHeight="25.0" prefWidth="106.0" value="Navn">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Navn" />
@@ -65,7 +65,7 @@
               </FXCollections>
           </items>
       </ChoiceBox>
-      <Button fx:id="filterBtn" layoutX="535.0" layoutY="48.0" mnemonicParsing="false" onAction="#filter" text="Button" />
+      <Button fx:id="filterBtn" layoutX="503.0" layoutY="48.0" mnemonicParsing="false" onAction="#filter" text="Filtrer" />
 
       <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="600.0">
         <columns>

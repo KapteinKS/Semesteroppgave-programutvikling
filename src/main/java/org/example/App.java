@@ -33,7 +33,7 @@ public class App extends Application {
         Initializer.initialize();
         scene = new Scene(loadFXML("start"));
         System.out.print(".");
-        stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));
+        stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
         stage.setScene(scene);
         stage.setTitle("Start");
         stage.show();
@@ -42,11 +42,12 @@ public class App extends Application {
 
     }
 
-    public static void newWindow(String fxml) throws IOException{
+    public static void newWindow(String fxml, String title) throws IOException{
         stage2 = new Stage();
         scene2 = new Scene(loadFXML(fxml));
+        stage2.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
         stage2.setScene(scene2);
-        stage2.setTitle("Hællæ");
+        stage2.setTitle(title);
         stage2.show();
     }
 
