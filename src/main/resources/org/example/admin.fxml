@@ -69,7 +69,7 @@
 
       <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="600.0">
         <columns>
-            <TableColumn fx:id="tvType" prefWidth="144.0" text="Type">
+            <TableColumn fx:id="tvType" prefWidth="144.0" text="Type" editable="false">
                <cellValueFactory>
                   <PropertyValueFactory property="type" />
                </cellValueFactory>
@@ -78,7 +78,7 @@
                </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvName" prefWidth="121.0" text="Name">
+            <TableColumn fx:id="tvName" prefWidth="121.0" text="Name" editable="true" onEditCommit="#editName">
                 <cellValueFactory>
                     <PropertyValueFactory property="name" />
                 </cellValueFactory>
@@ -87,7 +87,7 @@
                 </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvManufacturer" prefWidth="171.0" text="Manufacturer">
+            <TableColumn fx:id="tvManufacturer" prefWidth="171.0" text="Manufacturer" editable="true" onEditCommit="#editManufacturer">
                 <cellValueFactory>
                     <PropertyValueFactory property="manufacturer" />
                 </cellValueFactory>
@@ -96,7 +96,7 @@
                 </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvPrice" prefWidth="163.0" text="Price">
+            <TableColumn fx:id="tvPrice" prefWidth="163.0" text="Price" editable="true" onEditCommit="#editPrice">
                 <cellValueFactory>
                     <PropertyValueFactory property="price" />
                 </cellValueFactory>

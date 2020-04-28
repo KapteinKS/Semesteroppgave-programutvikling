@@ -5,16 +5,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import org.example.Deeper.ComponentCollection;
+import org.example.Exceptions.ExceptionHandler;
+import org.example.Exceptions.IllegalPriceException;
 import org.example.components.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
 	private ComponentCollection collection = App.getList();
+	private ExceptionHandler.DoubleStringConverter doubleStringConverter
+			= new ExceptionHandler.DoubleStringConverter();
 
 	@FXML
 	private TextArea txtOutput;
@@ -49,6 +53,7 @@ public class AdminController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle resourceBundle){
 		collection.attachTableView(tableView);
+		tvPrice.setCellFactory(TextFieldTableCell.forTableColumn(doubleStringConverter));
 	}
 
 	@FXML
@@ -143,4 +148,22 @@ public class AdminController implements Initializable {
 		}
 	}
 
+	public void editName(TableColumn.CellEditEvent<Component, String> event){
+		event.getRowValue().setName(event.getNewValue());
+	}
+
+	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event){
+		event.getRowValue().setManufacturer(event.getNewValue());
+	}
+
+	public void editPrice(TableColumn.CellEditEvent<Component, Double> event){
+		try {
+			if (doubleStringConverter.wasSuccessful())
+				event.getRowValue().setPrice(event.getNewValue());
+		} catch (NumberFormatException e){
+			System.out.println("Du må skrive inn et positivt tall!");
+		} catch (IllegalArgumentException e){
+			System.out.println("Ugyldig input: " + e.getMessage());
+		}
+	}
 }
