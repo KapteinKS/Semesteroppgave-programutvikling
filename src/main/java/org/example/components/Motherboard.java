@@ -3,21 +3,16 @@ package org.example.components;
 import java.io.Serializable;
 
 public class Motherboard extends Component implements Serializable {
-	private String type = "Motherboard";
 	private String socket;
 	private String ramType;
 	private double wattsRequired;
 
 
 	public Motherboard(String name, String manufacturer, double price, String socket, String ramType, double wattsRequired) {
-		super(name, manufacturer, price);
+		super(name, manufacturer, price, "Hovedkort");
 		this.socket = socket;
 		this.ramType = ramType;
 		this.wattsRequired = wattsRequired;
-	}
-
-	public String getType() {
-		return type;
 	}
 
 	public String getSocket() {

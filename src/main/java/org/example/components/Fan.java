@@ -3,20 +3,15 @@ package org.example.components;
 import java.io.Serializable;
 
 public class Fan extends Component implements Serializable {
-    private String type = "Fan";
     private int diameter;
     private double airPressure;
     private int maxNoiseVolume;
 
     public Fan(String name, String manufacturer, double price, int diameter, double airPressure, int maxNoiseVolume) {
-        super(name, manufacturer, price);
+        super(name, manufacturer, price, "Vifte");
         this.diameter = diameter;
         this.airPressure = airPressure;
         this.maxNoiseVolume = maxNoiseVolume;
-    }
-
-    public String getType() {
-        return type;
     }
 
     public int getDiameter() {

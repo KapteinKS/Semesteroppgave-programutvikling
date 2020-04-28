@@ -3,22 +3,17 @@ package org.example.components;
 import java.io.Serializable;
 
 public class Storage extends Component implements Serializable {
-    private String type = "Storage";
     private String Storagetype;
     private int capacity;
     private String capacityType;
 
     public Storage(String name, String manufacturer, double price, String Storagetype, int capacity, String capacityType) {
-        super(name, manufacturer, price);
+        super(name, manufacturer, price, "Lagring");
         this.Storagetype = Storagetype;
         this.capacity = capacity;
         this.capacityType = capacityType;
     }
 
-    public String getType() {
-        return type;
-    }
-    
     public String getStoragetype() {
         return Storagetype;
     }

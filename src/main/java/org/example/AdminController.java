@@ -1,12 +1,10 @@
 package org.example;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import org.example.Deeper.ComponentCollection;
 import org.example.components.*;
 
@@ -23,6 +21,15 @@ public class AdminController implements Initializable {
 
 	@FXML
 	private Label lblOutput;
+
+	@FXML
+	private TextField filterArea;
+
+	@FXML
+	private ChoiceBox<?> filterBox;
+
+	@FXML
+	private Button filterBtn;
 
 	@FXML
 	private TableView<Component> tableView;
@@ -120,6 +127,20 @@ public class AdminController implements Initializable {
 		lblOutput.setText("ALL ORDERS: ");
 		txtOutput.setText("THIS IS ANOTHER TEST" + lorem + "THIS IS ANOTHER TEST");
 
+	}
+
+	@FXML
+	void filter(ActionEvent event) {
+		String choiceBoxValue = (String) filterBox.getValue();
+		String filterInput = filterArea.getText();
+
+		if(!filterInput.isEmpty()){
+			ObservableList<Component> newList = ComponentCollection.filter(choiceBoxValue, filterInput);
+
+			tableView.setItems(newList);
+		} else {
+			tableView.setItems(collection.getComponentList());
+		}
 	}
 
 }

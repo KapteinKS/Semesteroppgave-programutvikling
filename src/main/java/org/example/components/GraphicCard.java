@@ -3,20 +3,15 @@ package org.example.components;
 import java.io.Serializable;
 
 public class GraphicCard extends Component implements Serializable {
-    private String type = "Graphic Card";
     private int ram;
     private String ramType;
     private String clockSpeed;
 
     public GraphicCard(String name, String manufacturer, double price, int ram, String ramType, String clockSpeed) {
-        super(name, manufacturer, price);
+        super(name, manufacturer, price, "Grafikkort");
         this.ram = ram;
         this.ramType = ramType;
         this.clockSpeed = clockSpeed;
-    }
-
-    public String getType() {
-        return type;
     }
 
     public int getRam() {

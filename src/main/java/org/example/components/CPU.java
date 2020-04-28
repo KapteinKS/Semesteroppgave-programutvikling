@@ -14,18 +14,13 @@ This should be done with a checker-method (SEE CHECKER.java)
 import java.io.Serializable;
 
 public class CPU extends Component implements Serializable {
-	private String type = "CPU";
 	private int threads;
 	private double clockSpeed;
 
 	public CPU(String name, String manufacturer, double price, int threads, double clockSpeed){
-		super(name,manufacturer,price);
+		super(name,manufacturer,price, "CPU");
 		this.threads = threads;
 		this.clockSpeed = clockSpeed;
-	}
-
-	public String getType() {
-		return type;
 	}
 
 	public int getThreads() {
