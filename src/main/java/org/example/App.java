@@ -29,7 +29,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
         //*  SOME COMPONENTS  *//
         GraphicCard gpu1 = new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6","1605 Mhz");
         GraphicCard gpu2 = new GraphicCard("Radeon RX 5500","Sapphire",200,3299.00,8,"DDR6","1300 Mhz");
@@ -64,10 +63,9 @@ public class App extends Application {
         componentCollection.add(ram2);
         componentCollection.add(stg1);
         componentCollection.add(stg2);
-
-
-
         //**//
+
+
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
@@ -82,12 +80,18 @@ public class App extends Application {
         //stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));
         stage.setScene(scene);
         //stage.setTitle("Start");
+
+
+
         stage.show();
 
         userController.populateComboBox();
 
+
         System.out.print(".");
         System.out.print("\n\n---------------\n\n");
+        userController.populateComboBox();
+
 
     }
 
