@@ -61,15 +61,10 @@ public class AdminController implements Initializable {
 		App.newWindow("cabinet");
 	}
 
-<<<<<<< HEAD
 	@FXML
 	void createFan(ActionEvent event) throws IOException {
 		App.newWindow("fan");
 	}
-=======
-		/*
-		
->>>>>>> master
 
 	@FXML
 	void createGraphicCard(ActionEvent event) throws IOException {
