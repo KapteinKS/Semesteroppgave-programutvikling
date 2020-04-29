@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class ComponentCollection {
 
-	private ObservableList<Component> componentList = FXCollections.observableArrayList();
+	private static ObservableList<Component> componentList = FXCollections.observableArrayList();
 
 	public void add (Component component){
 		componentList.add(component);
