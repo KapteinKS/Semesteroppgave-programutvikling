@@ -30,6 +30,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //*  SOME COMPONENTS  *//
+        /*
         GraphicCard gpu1 = new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6","1605 Mhz");
         GraphicCard gpu2 = new GraphicCard("Radeon RX 5500","Sapphire",200,3299.00,8,"DDR6","1300 Mhz");
         CPU cpu1 = new CPU("Core i7","Intel",100,5199.99,8,3.60);
@@ -63,8 +64,8 @@ public class App extends Application {
         componentCollection.add(ram2);
         componentCollection.add(stg1);
         componentCollection.add(stg2);
+        */
         //**//
-
 
 
 
@@ -84,13 +85,10 @@ public class App extends Application {
 
 
         stage.show();
-
         userController.populateComboBox();
-
 
         System.out.print(".");
         System.out.print("\n\n---------------\n\n");
-        userController.populateComboBox();
 
 
     }
@@ -103,7 +101,7 @@ public class App extends Application {
         stage2.show();
     }
 
-    public static void changeSecondaryWindow(String fxml, double width, double height, String title) throws IOException {
+    public static void changeSecondaryWindow(String fxml, double width, double height, String title) throws IOException{
         scene2.setRoot(loadFXML(fxml));
         stage2.setHeight(height);
         stage2.setWidth(width);
