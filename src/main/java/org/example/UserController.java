@@ -16,7 +16,13 @@ import java.util.ArrayList;
 
 public class UserController {
 
-	private static ComponentCollection componentCollection = new ComponentCollection();
+	private static ComponentCollection componentCollection;
+	//
+
+
+
+	//
+
 	//* Populating ComboBox-Logic *//
 	private ObservableList<String> cabinetList = displayComponentList(componentCollection.getComponentByType("Cabinet"));
 	private ObservableList<String> cpuList = displayComponentList(componentCollection.getComponentByType("CPU"));
@@ -127,6 +133,7 @@ public class UserController {
 	}
 
 	public void populateComboBox(){
+		componentCollection = App.getComponentCollection();
 
 		cbCabinet.getItems().clear();
 		cbMotherboard.getItems().clear();
@@ -147,7 +154,7 @@ public class UserController {
 
 		cbCabinet.setItems(testList);
 
-		/*
+
 		cbCabinet.setItems(testList);
 		cbMotherboard.setItems(mbList);
 		cbCPU.setItems(cpuList);
@@ -164,7 +171,6 @@ public class UserController {
 		cbExtra2.setItems(displayComponentList(componentCollection.getComponentList()));
 		cbExtra3.setItems(displayComponentList(componentCollection.getComponentList()));
 		cbExtra4.setItems(displayComponentList(componentCollection.getComponentList()));
-		*/
 
 	}
 
