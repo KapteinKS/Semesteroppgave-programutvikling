@@ -31,6 +31,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         //*  SOME COMPONENTS  *//
+        Cabinet cab1 = new Cabinet("BigBoyCab 3010","Corsair",900.00,"ATX",400,150,600,10.00);
+        Cabinet cab2 = new Cabinet("Sleek 11","Asus",660.00,"M-ATX",300,150,300,4.25);
         GraphicCard gpu1 = new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6","1605 Mhz");
         GraphicCard gpu2 = new GraphicCard("Radeon RX 5500","Sapphire",200,3299.00,8,"DDR6","1300 Mhz");
         CPU cpu1 = new CPU("Core i7","Intel",100,5199.99,8,3.60);
@@ -48,6 +50,8 @@ public class App extends Application {
         Storage stg1 = new Storage("KC2000","Kingston",882.00,"SSD",250,"GB");
         Storage stg2 = new Storage("Mobile Black", "WD",807.00,"HDD",1,"TB");
 
+        componentCollection.add(cab1);
+        componentCollection.add(cab2);
         componentCollection.add(gpu1);
         componentCollection.add(gpu2);
         componentCollection.add(cpu1);
@@ -64,6 +68,7 @@ public class App extends Application {
         componentCollection.add(ram2);
         componentCollection.add(stg1);
         componentCollection.add(stg2);
+
         //**//
 
 

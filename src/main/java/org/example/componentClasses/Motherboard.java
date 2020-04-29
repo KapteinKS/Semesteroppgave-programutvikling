@@ -12,7 +12,7 @@ public class Motherboard extends Component implements Serializable {
 	public Motherboard() {}
 
 	public Motherboard(String name, String manufacturer, double wattsRequired, double price, String mbFormFactor, String socket, String ramType) {
-		super(name, manufacturer,wattsRequired, price);
+		super("Motherboard", name, manufacturer,wattsRequired, price);
 		this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
 		this.socket = new SimpleStringProperty(socket);
 		this.ramType = new SimpleStringProperty(ramType);

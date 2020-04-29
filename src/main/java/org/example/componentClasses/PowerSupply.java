@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class PowerSupply extends Component implements Serializable {
 
     public PowerSupply(String name, String manufacturer, double wattsRequired, double price) {
-        super(name, manufacturer, wattsRequired, price);
+        super("PowerSupply",name, manufacturer, wattsRequired, price);
     }
 
     @Override

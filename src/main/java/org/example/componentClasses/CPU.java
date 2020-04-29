@@ -21,7 +21,7 @@ public class CPU extends Component implements Serializable {
 	private SimpleDoubleProperty clockSpeed;
 
 	public CPU(String name, String manufacturer, double wattsRequired, double price, int threads, double clockSpeed){
-		super(name,manufacturer,wattsRequired,price);
+		super("CPU",name,manufacturer,wattsRequired,price);
 		this.threads = new SimpleIntegerProperty(threads);
 		this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
 	}

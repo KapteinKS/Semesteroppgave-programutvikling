@@ -10,7 +10,7 @@ public class RAM extends Component implements Serializable {
     private SimpleStringProperty amountOfRAMPieces;
 
     public RAM(String name, String manufacturer, double price, String size, String memoryType, int amountOfRAMPieces) {
-        super(name, manufacturer, 0, price);
+        super("RAM",name, manufacturer, 0, price);
         this.size = new SimpleStringProperty(size);
         this.memoryType = new SimpleStringProperty(memoryType);
         this.amountOfRAMPieces = new SimpleStringProperty(""+amountOfRAMPieces);

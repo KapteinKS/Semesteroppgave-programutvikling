@@ -24,7 +24,9 @@ public class UserController {
 	//
 
 	//* Populating ComboBox-Logic *//
-	private ObservableList<String> cabinetList = displayComponentList(componentCollection.getComponentByType("Cabinet"));
+
+	/*
+	private ObservableList<String> cabinetList = displayComponentList(ComponentCollection.filter("Type","Cabinet"));
 	private ObservableList<String> cpuList = displayComponentList(componentCollection.getComponentByType("CPU"));
 	private ObservableList<String> fanList = displayComponentList(componentCollection.getComponentByType("Fan"));
 	private ObservableList<String> gpuList = displayComponentList(componentCollection.getComponentByType("GraphicCard"));
@@ -33,6 +35,8 @@ public class UserController {
 	private ObservableList<String> ramList = displayComponentList(componentCollection.getComponentByType("RAM"));
 	private ObservableList<String> storageList = displayComponentList(componentCollection.getComponentByType("Storage"));
 
+
+	 */
 	//
 	private ObservableList<String> testList = test();
 	//**//
@@ -135,6 +139,8 @@ public class UserController {
 	public void populateComboBox(){
 		componentCollection = App.getComponentCollection();
 
+
+
 		cbCabinet.getItems().clear();
 		cbMotherboard.getItems().clear();
 		cbCPU.getItems().clear();
@@ -152,21 +158,18 @@ public class UserController {
 		cbExtra3.getItems().clear();
 		cbExtra4.getItems().clear();
 
-		cbCabinet.setItems(testList);
-
-
-		cbCabinet.setItems(testList);
-		cbMotherboard.setItems(mbList);
-		cbCPU.setItems(cpuList);
-		cbGPU1.setItems(testList);
-		cbGPU2.setItems(gpuList);
-		cbRAM1.setItems(ramList);
-		cbRAM2.setItems(ramList);
-		cbStorage1.setItems(storageList);
-		cbStorage2.setItems(storageList);
-		cbPSU.setItems(psuList);
-		cbFan1.setItems(fanList);
-		cbFan2.setItems(fanList);
+		cbCabinet.setItems(displayComponentList(componentCollection.filter("Type","Cabinet")));
+		cbMotherboard.setItems(displayComponentList(componentCollection.filter("Type","Motherboard")));
+		cbCPU.setItems(displayComponentList(componentCollection.filter("Type","CPU")));
+		cbGPU1.setItems(displayComponentList(componentCollection.filter("Type","GraphicCard")));
+		cbGPU2.setItems(displayComponentList(componentCollection.filter("Type","GraphicCard")));
+		cbRAM1.setItems(displayComponentList(componentCollection.filter("Type","RAM")));
+		cbRAM2.setItems(displayComponentList(componentCollection.filter("Type","RAM")));
+		cbStorage1.setItems(displayComponentList(componentCollection.filter("Type","Storage")));
+		cbStorage2.setItems(displayComponentList(componentCollection.filter("Type","Storage")));
+		cbPSU.setItems(displayComponentList(componentCollection.filter("Type","PowerSupply")));
+		cbFan1.setItems(displayComponentList(componentCollection.filter("Type","Fan")));
+		cbFan2.setItems(displayComponentList(componentCollection.filter("Type","Fan")));
 		cbExtra1.setItems(displayComponentList(componentCollection.getComponentList()));
 		cbExtra2.setItems(displayComponentList(componentCollection.getComponentList()));
 		cbExtra3.setItems(displayComponentList(componentCollection.getComponentList()));

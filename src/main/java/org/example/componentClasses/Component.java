@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class Component implements Serializable {
+	private SimpleStringProperty type;
 	private SimpleStringProperty name;
 	private SimpleStringProperty manufacturer;
 	private SimpleDoubleProperty wattsRequired;
@@ -13,11 +14,16 @@ public class Component implements Serializable {
 
 	public Component(){}
 
-	public Component(String name, String manufacturer, double wattsRequired, double price){
+	public Component(String type, String name, String manufacturer, double wattsRequired, double price){
+		this.type = new SimpleStringProperty(type);
 		this.name = new SimpleStringProperty(name);
 		this.manufacturer = new SimpleStringProperty(manufacturer);
 		this.wattsRequired = new SimpleDoubleProperty(wattsRequired);
 		this.price = new SimpleDoubleProperty(price);
+	}
+
+	public String getType() {
+		return type.get();
 	}
 
 	public String getName(){

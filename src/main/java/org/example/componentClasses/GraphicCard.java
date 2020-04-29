@@ -11,7 +11,7 @@ public class GraphicCard extends Component implements Serializable {
     private SimpleStringProperty clockSpeed;
 
     public GraphicCard(String name, String manufacturer, double wattsRequired, double price, int ram, String ramType, String clockSpeed) {
-        super(name, manufacturer, wattsRequired, price);
+        super("GraphicCard",name, manufacturer, wattsRequired, price);
         this.ram = new SimpleIntegerProperty(ram);
         this.ramType = new SimpleStringProperty(ramType);
         this.clockSpeed = new SimpleStringProperty(clockSpeed);

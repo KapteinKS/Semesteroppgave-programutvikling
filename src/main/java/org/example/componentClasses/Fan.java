@@ -11,7 +11,7 @@ public class Fan extends Component implements Serializable {
     private SimpleIntegerProperty maxNoiseVolume;
 
     public Fan(String name, String manufacturer, double price, int diameter, double airPressure, int maxNoiseVolume) {
-        super(name, manufacturer, 0, price);
+        super("Fan", name, manufacturer, 0, price);
         this.diameter = new SimpleIntegerProperty(diameter);
         this.airPressure = new SimpleDoubleProperty(airPressure);
         this.maxNoiseVolume = new SimpleIntegerProperty(maxNoiseVolume);

@@ -15,7 +15,7 @@ public class Cabinet extends Component implements Serializable {
     private SimpleDoubleProperty weight;
 
     public Cabinet(String name, String manufacturer, double price, String mbFormFactor, int height, int width, int depth, double weight) {
-        super(name, manufacturer, 0, price);
+        super("Cabinet",name, manufacturer, 0, price);
         this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
         this.height = new SimpleIntegerProperty(height);
         this.width = new SimpleIntegerProperty(width);
