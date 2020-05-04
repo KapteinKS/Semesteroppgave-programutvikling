@@ -7,8 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import org.example.componentClasses.Cabinet;
-import org.example.componentClasses.Component;
+import org.example.componentClasses.*;
+import org.example.logicAndClasses.Checker;
 import org.example.logicAndClasses.ComponentCollection;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class UserController {
 
-	private static ComponentCollection componentCollection;
+	private static ComponentCollection componentCollection = App.getComponentCollection();
 	//
 
 
@@ -120,6 +120,25 @@ public class UserController {
 		 */
 
 	}
+	@FXML
+	void analyzeOrder(ActionEvent event){
+		//Cabinet selectedCab = componentCollection.getComponentByDisplayString(cbCabinet.getSelectionModel().getSelectedItem());
+		Motherboard selectedMB = componentCollection.getComponentByDisplayString(cbMotherboard.getSelectionModel().getSelectedItem());
+		CPU selectedCPU = componentCollection.getComponentByDisplayString(cbCPU.getSelectionModel().getSelectedItem());
+		//GraphicCard selectedGPU1 = componentCollection.getComponentByDisplayString(cbGPU1.getSelectionModel().getSelectedItem());
+		//GraphicCard selectedGPU2 = componentCollection.getComponentByDisplayString(cbGPU2.getSelectionModel().getSelectedItem());
+		//RAM selectedRAM1 = componentCollection.getComponentByDisplayString(cbRAM1.getSelectionModel().getSelectedItem());
+		//RAM selectedRAM2 = componentCollection.getComponentByDisplayString(cbRAM2.getSelectionModel().getSelectedItem());
+		//Storage selectedStrg1 = componentCollection.getComponentByDisplayString(cbStorage1.getSelectionModel().getSelectedItem());
+		//Storage selectedStrg2 = componentCollection.getComponentByDisplayString(cbStorage1.getSelectionModel().getSelectedItem());
+		//PowerSupply selectedPSU = componentCollection.getComponentByDisplayString(cbPSU.getSelectionModel().getSelectedItem());
+		//Fan selectedFan1 = componentCollection.getComponentByDisplayString(cbFan1.getSelectionModel().getSelectedItem());
+		//Fan selectedFan2 = componentCollection.getComponentByDisplayString(cbFan2.getSelectionModel().getSelectedItem());
+
+		String result = Checker.checkMotherboardxCPU(selectedMB,selectedCPU);
+
+		txtPreview.setText(result);
+	}
 
 	@FXML
 	void placeOrder(ActionEvent event) {
@@ -135,8 +154,31 @@ public class UserController {
 	void showAbout(ActionEvent event) {
 
 	}
+	public void populateComboBoxes(){
+		//componentCollection = App.getComponentCollection();
 
-	public void populateComboBox(){
+		populateSingleComboBox(cbCabinet,"Cabinet", componentCollection);
+		populateSingleComboBox(cbMotherboard,"Motherboard", componentCollection);
+		populateSingleComboBox(cbCPU, "CPU", componentCollection);
+		populateSingleComboBox(cbGPU1, "GraphicCard", componentCollection);
+		populateSingleComboBox(cbGPU2, "GraphicCard", componentCollection);
+		populateSingleComboBox(cbRAM1, "RAM", componentCollection);
+		populateSingleComboBox(cbRAM2, "RAM", componentCollection);
+		populateSingleComboBox(cbStorage1, "Storage", componentCollection);
+		populateSingleComboBox(cbStorage2, "Storage", componentCollection);
+		populateSingleComboBox(cbPSU, "PowerSupply", componentCollection);
+		populateSingleComboBox(cbFan1, "Fan", componentCollection);
+		populateSingleComboBox(cbFan2, "Fan", componentCollection);
+		populateSingleComboBox(cbExtra1, "None", componentCollection);
+		populateSingleComboBox(cbExtra2, "None", componentCollection);
+		populateSingleComboBox(cbExtra3, "None", componentCollection);
+		populateSingleComboBox(cbExtra4, "None", componentCollection);
+
+	}
+
+	/*
+	 AN OLD SAFER VERSION
+	public void populateComboBoxes(){
 		componentCollection = App.getComponentCollection();
 
 
@@ -175,13 +217,46 @@ public class UserController {
 		cbExtra3.setItems(displayComponentList(componentCollection.getComponentList()));
 		cbExtra4.setItems(displayComponentList(componentCollection.getComponentList()));
 
+		cbCabinet.getSelectionModel().selectLast();
+		cbMotherboard.getSelectionModel().selectLast();
+		cbCPU.getSelectionModel().selectLast();
+		cbGPU1.getSelectionModel().selectLast();
+		cbGPU2.getSelectionModel().selectLast();
+		cbRAM1.getSelectionModel().selectLast();
+		cbRAM2.getSelectionModel().selectLast();
+		cbStorage1.getSelectionModel().selectLast();
+		cbStorage2.getSelectionModel().selectLast();
+		cbPSU.getSelectionModel().selectLast();
+		cbFan1.getSelectionModel().selectLast();
+		cbFan2.getSelectionModel().selectLast();
+		cbExtra1.getSelectionModel().selectLast();
+		cbExtra2.getSelectionModel().selectLast();
+		cbExtra3.getSelectionModel().selectLast();
+		cbExtra4.getSelectionModel().selectLast();
+
+	}
+	 */
+
+	//Method for populating a selected comboBox (only used here)
+	private void populateSingleComboBox(ComboBox<String> comboBox, String filterInput, ComponentCollection componentCollection){
+		comboBox.getItems().clear();
+		if(filterInput.equals("None")){
+			comboBox.setItems(displayComponentList(componentCollection.getComponentList()));
+		}
+		else{
+			comboBox.setItems(displayComponentList(componentCollection.filter("Type", filterInput)));
+		}
+		comboBox.getSelectionModel().selectLast();
+
 	}
 
-	public ObservableList<String> displayComponentList(ObservableList<Component> inputList){
+	//Method for displaying a component.
+	private ObservableList<String> displayComponentList(ObservableList<Component> inputList){
 		ObservableList<String> outList = FXCollections.observableArrayList();
 		for (Component entry : inputList){
 			outList.add(entry.displayComponent());
 		}
+		outList.add("---");
 		return outList;
 	}
 
@@ -193,6 +268,5 @@ public class UserController {
 		outlist.add("LINJE TREEEE");
 		return outlist;
 	}
-
 
 }

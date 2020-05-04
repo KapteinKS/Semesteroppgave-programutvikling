@@ -13,17 +13,20 @@ This should be done with a checker-method (SEE CHECKER.java)
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
 public class CPU extends Component implements Serializable {
 	private SimpleIntegerProperty threads;
 	private SimpleDoubleProperty clockSpeed;
+	private SimpleStringProperty socket;
 
-	public CPU(String name, String manufacturer, double wattsRequired, double price, int threads, double clockSpeed){
+	public CPU(String name, String manufacturer, double wattsRequired, double price, int threads, double clockSpeed, String socket){
 		super("CPU",name,manufacturer,wattsRequired,price);
 		this.threads = new SimpleIntegerProperty(threads);
 		this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
+		this.socket = new SimpleStringProperty(socket);
 	}
 
 	public int getThreads() {
@@ -42,9 +45,17 @@ public class CPU extends Component implements Serializable {
 		this.clockSpeed.set(clockSpeed);
 	}
 
+	public String getSocket() {
+		return socket.get();
+	}
+
+	public void setSocket(String socket) {
+		this.socket.set(socket);
+	}
+
 	@Override
 	public String toString(){
 		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-				+ "," + getThreads() + "," + getClockSpeed();
+				+ "," + getThreads() + "," + getClockSpeed() + "," + getSocket();
 	}
 }

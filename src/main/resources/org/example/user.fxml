@@ -131,7 +131,7 @@
       </ScrollPane>
       <TextArea fx:id="txtPreview" editable="false" layoutX="374.0" layoutY="78.0" prefHeight="327.0" prefWidth="303.0" />
       <Button layoutX="180.0" layoutY="368.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="118.0" text="Plasser Ordre" />
-      <Button layoutX="52.0" layoutY="368.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="118.0" text="Analyser Build" />
+      <Button layoutX="52.0" layoutY="368.0" mnemonicParsing="false" onAction="#analyzeOrder" prefHeight="27.0" prefWidth="118.0" text="Analyser Build" />
       <Line endX="29.0" endY="2.0" layoutX="302.0" layoutY="359.0" startX="-273.0" startY="2.0" />
       <Label fx:id="lblAnalyze" layoutX="52.0" layoutY="418.0" prefHeight="72.0" prefWidth="223.0" text="HER KOMMER ANALYSEN" />
       <Label fx:id="lblOrdre" layoutX="435.0" layoutY="418.0" prefHeight="72.0" prefWidth="223.0" text="HER KOMMER ORDREKOMFIRM" />

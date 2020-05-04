@@ -62,6 +62,7 @@ public class Component implements Serializable {
 		this.manufacturer.set(manufacturer);
 	}
 
+	//Method to 'print-display' the component (used, for instance, when populating comboBoxes in user GUI)
 	public String displayComponent(){
 		return this.getManufacturer() + " " + this.getName() + ", " + this.getPrice() + " NOK";
 	}

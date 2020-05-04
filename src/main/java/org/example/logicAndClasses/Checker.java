@@ -1,7 +1,19 @@
 package org.example.logicAndClasses;
 
+import org.example.componentClasses.CPU;
+import org.example.componentClasses.Component;
+import org.example.componentClasses.Motherboard;
+
 public class Checker {
 //None of this is working yet =))
+	public static String checkMotherboardxCPU(Motherboard mb, CPU cpu){
+		String out = "FINEremovethisLine";
+		if (!(mb.getSocket().equals(cpu.getSocket()))){
+			out = "" + "Sockets don't match!\nMotherboard: " + mb.getManufacturer() + " " + mb.getName() + " : \n  Socket: " + mb.getSocket()
+					+ "\nCPU: " + cpu.getManufacturer() + " " + cpu.getName() + " : \n  Socket: " + cpu.getSocket();
+		}
+		return out;
+	}
 
 
 	/*

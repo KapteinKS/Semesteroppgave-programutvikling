@@ -29,6 +29,9 @@ public class CpuController {
     private TextField inClockSpeed;
 
     @FXML
+    private TextField inSocket;
+
+    @FXML
     private Button regButton;
 
     @FXML
@@ -47,7 +50,8 @@ public class CpuController {
             double price = Double.parseDouble(inPrice.getText());
             int threads = Integer.parseInt(inThreads.getText());
             double clockspeed = Double.parseDouble(inClockSpeed.getText());
-            CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed);
+            String socket = inSocket.getText();
+            CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed, socket);
             App.saveToCollection(cpu);
 
         } catch (Exception e){
