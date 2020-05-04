@@ -51,7 +51,7 @@ public class CabinetController {
                 int height = exHand.checkHeight(Integer.parseInt(inHeight.getText()));
                 int width = exHand.checkWidth(Integer.parseInt(inWidth.getText()));
                 int depth = exHand.checkDepth(Integer.parseInt(inDepth.getText()));
-                int weight = exHand.checkWeight(Integer.parseInt(inDepth.getText()));
+                int weight = exHand.checkWeight(Integer.parseInt(inWeight.getText()));
                 Cabinet cabinet = new Cabinet(name, manufacturer, price, height, width, depth, weight);
                 App.saveToCollection(cabinet);
                 App.closeWindow();

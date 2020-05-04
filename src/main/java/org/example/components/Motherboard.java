@@ -38,4 +38,8 @@ public class Motherboard extends Component implements Serializable {
 	public void setWattsRequired(double wattsRequired) {
 		this.wattsRequired = wattsRequired;
 	}
+
+	public String getInfo(){
+		return "Socket: " + getSocket() + "\nRamtype: " + getRamType() + "\nNødvendig energi: " + getWattsRequired() + "W";
+	}
 }

@@ -37,4 +37,8 @@ public class Storage extends Component implements Serializable {
     public void setCapacityType(String capacityType) {
         this.capacityType = capacityType;
     }
+
+    public String getInfo(){
+        return "Lagringstype: " + getStoragetype() + "\nKapasitet: " + getCapacity() + getCapacityType();
+    }
 }

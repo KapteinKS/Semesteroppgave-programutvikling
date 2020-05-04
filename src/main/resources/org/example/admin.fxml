@@ -67,9 +67,9 @@
       </ChoiceBox>
       <Button fx:id="filterBtn" layoutX="503.0" layoutY="48.0" mnemonicParsing="false" onAction="#filter" text="Filtrer" />
 
-      <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="600.0">
+      <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="585.0" >
         <columns>
-            <TableColumn fx:id="tvType" prefWidth="144.0" text="Type" editable="false">
+            <TableColumn fx:id="tvType" editable="false" prefWidth="84.0" text="Type" reorderable="false">
                <cellValueFactory>
                   <PropertyValueFactory property="type" />
                </cellValueFactory>
@@ -78,7 +78,7 @@
                </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvName" prefWidth="121.0" text="Name" editable="true" onEditCommit="#editName">
+            <TableColumn fx:id="tvName" editable="true" onEditCommit="#editName" prefWidth="104.0" text="Navn" reorderable="false">
                 <cellValueFactory>
                     <PropertyValueFactory property="name" />
                 </cellValueFactory>
@@ -87,7 +87,7 @@
                 </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvManufacturer" prefWidth="171.0" text="Manufacturer" editable="true" onEditCommit="#editManufacturer">
+            <TableColumn fx:id="tvManufacturer" editable="true" onEditCommit="#editManufacturer" prefWidth="126.0" text="Produsent" reorderable="false">
                 <cellValueFactory>
                     <PropertyValueFactory property="manufacturer" />
                 </cellValueFactory>
@@ -96,10 +96,16 @@
                 </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvPrice" prefWidth="163.0" text="Price" editable="true" onEditCommit="#editPrice">
+            <TableColumn fx:id="tvPrice" editable="true" onEditCommit="#editPrice" prefWidth="71.0" text="Pris" reorderable="false">
                 <cellValueFactory>
                     <PropertyValueFactory property="price" />
                 </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="tvInfo" editable="false" prefWidth="216.0" text="Info" reorderable="false">
+               <cellValueFactory>
+                  <PropertyValueFactory property="info" />
+               </cellValueFactory>
             </TableColumn>
 
         </columns>

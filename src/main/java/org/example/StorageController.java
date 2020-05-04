@@ -30,9 +30,6 @@ public class StorageController implements Initializable {
     private TextField inPrice;
 
     @FXML
-    private TextField inType;
-
-    @FXML
     private TextField inCapacity;
 
     @FXML
@@ -47,11 +44,20 @@ public class StorageController implements Initializable {
     @FXML
     private Button cancelButton;
 
+    @FXML
+    private RadioButton radioHDD;
+
+    @FXML
+    private RadioButton radioSSD;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        final ToggleGroup group = new ToggleGroup();
-        radioTB.setToggleGroup(group);
-        radioGB.setToggleGroup(group);
+        final ToggleGroup CapacityGroup = new ToggleGroup();
+        radioTB.setToggleGroup(CapacityGroup);
+        radioGB.setToggleGroup(CapacityGroup);
+        final ToggleGroup TypeGroup = new ToggleGroup();
+        radioHDD.setToggleGroup(TypeGroup);
+        radioSSD.setToggleGroup(TypeGroup);
     }
 
     @FXML
@@ -62,7 +68,12 @@ public class StorageController implements Initializable {
     @FXML
     void regStorage(ActionEvent event) throws IOException {
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
-            String name = inName.getText(), manufacturer = inManufac.getText(), type = inType.getText(), capacityType = "";
+            String name = inName.getText(), manufacturer = inManufac.getText(), type = "", capacityType = "";
+            if (radioSSD.isSelected()) {
+                type = "SSD";
+            } else if (radioHDD.isSelected()) {
+                type = "HDD";
+            }
             if (radioGB.isSelected()) {
                 capacityType = "GB";
             } else if (radioTB.isSelected()) {

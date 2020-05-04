@@ -50,6 +50,9 @@ public class AdminController implements Initializable {
 	@FXML
 	private TableColumn<TableView<Component>, Double> tvPrice;
 
+	@FXML
+	private TableColumn<TableView<Component>, String> tvInfo;
+
 
 	public void initialize(URL url, ResourceBundle resourceBundle){
 		collection.attachTableView(tableView);
@@ -99,7 +102,7 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void changeToUser(ActionEvent event) throws IOException {
-		App.setRoot("user", 600, 500, "End User");
+		App.setRoot("user", 625, 525, "End User");
 	}
 
 	@FXML

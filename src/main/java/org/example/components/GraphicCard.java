@@ -37,4 +37,8 @@ public class GraphicCard extends Component implements Serializable {
     public void setClockSpeed(String clockSpeed) {
         this.clockSpeed = clockSpeed;
     }
+
+    public String getInfo(){
+        return "RAM: " + getRam() + "GB \nRamtype: " + getRamType() + "\nKlokkehastighet: " + getClockSpeed() + "mHz";
+    }
 }

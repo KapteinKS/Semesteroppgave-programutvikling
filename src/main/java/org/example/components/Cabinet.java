@@ -50,4 +50,9 @@ public class Cabinet extends Component implements Serializable {
     public void setWeight(double weight) {
         this.weight.set(weight);
     }
+
+    public String getInfo(){
+        return "Høyde: " + getHeight() + "cm \nBredde: " + getWidth() + "cm \nDybde: " + getDepth() +
+                "cm \nVekt: " + getWeight() + "kg";
+    }
 }

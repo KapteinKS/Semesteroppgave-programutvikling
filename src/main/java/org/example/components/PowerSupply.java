@@ -37,4 +37,9 @@ public class PowerSupply extends Component implements Serializable {
     public void setOutVoltage(int outVoltage) {
         this.outVoltage = outVoltage;
     }
+
+    public String getInfo(){
+        return "Energiforbruk: " + getEnergy() + "W \nSpenning inn: " + getInVoltage() +
+                "V \nSpenning ut: " + getOutVoltage() + "V";
+    }
 }
