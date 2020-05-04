@@ -122,20 +122,113 @@ public class UserController {
 	}
 	@FXML
 	void analyzeOrder(ActionEvent event){
-		//Cabinet selectedCab = componentCollection.getComponentByDisplayString(cbCabinet.getSelectionModel().getSelectedItem());
-		Motherboard selectedMB = componentCollection.getComponentByDisplayString(cbMotherboard.getSelectionModel().getSelectedItem());
-		CPU selectedCPU = componentCollection.getComponentByDisplayString(cbCPU.getSelectionModel().getSelectedItem());
-		//GraphicCard selectedGPU1 = componentCollection.getComponentByDisplayString(cbGPU1.getSelectionModel().getSelectedItem());
-		//GraphicCard selectedGPU2 = componentCollection.getComponentByDisplayString(cbGPU2.getSelectionModel().getSelectedItem());
-		//RAM selectedRAM1 = componentCollection.getComponentByDisplayString(cbRAM1.getSelectionModel().getSelectedItem());
-		//RAM selectedRAM2 = componentCollection.getComponentByDisplayString(cbRAM2.getSelectionModel().getSelectedItem());
-		//Storage selectedStrg1 = componentCollection.getComponentByDisplayString(cbStorage1.getSelectionModel().getSelectedItem());
-		//Storage selectedStrg2 = componentCollection.getComponentByDisplayString(cbStorage1.getSelectionModel().getSelectedItem());
-		//PowerSupply selectedPSU = componentCollection.getComponentByDisplayString(cbPSU.getSelectionModel().getSelectedItem());
-		//Fan selectedFan1 = componentCollection.getComponentByDisplayString(cbFan1.getSelectionModel().getSelectedItem());
-		//Fan selectedFan2 = componentCollection.getComponentByDisplayString(cbFan2.getSelectionModel().getSelectedItem());
+		ObservableList<Component> listOfSelected = FXCollections.observableArrayList();
 
-		String result = Checker.checkMotherboardxCPU(selectedMB,selectedCPU);
+		txtPreview.setText("");
+		String result = "";
+		String cab = cbCabinet.getSelectionModel().getSelectedItem(),
+				mb = cbMotherboard.getSelectionModel().getSelectedItem(),
+				cpu = cbCPU.getSelectionModel().getSelectedItem(),
+				gpu1 = cbGPU1.getSelectionModel().getSelectedItem(),
+				gpu2 = cbGPU2.getSelectionModel().getSelectedItem(),
+				ram1 = cbRAM1.getSelectionModel().getSelectedItem(),
+				ram2 = cbRAM2.getSelectionModel().getSelectedItem(),
+				strg1 = cbStorage1.getSelectionModel().getSelectedItem(),
+				strg2 = cbStorage2.getSelectionModel().getSelectedItem(),
+				psu = cbPSU.getSelectionModel().getSelectedItem(),
+				fan1 = cbFan1.getSelectionModel().getSelectedItem(),
+				fan2 = cbFan2.getSelectionModel().getSelectedItem(),
+				extra1 = cbExtra1.getSelectionModel().getSelectedItem(),
+				extra2 = cbExtra2.getSelectionModel().getSelectedItem(),
+				extra3 = cbExtra3.getSelectionModel().getSelectedItem(),
+				extra4 = cbExtra4.getSelectionModel().getSelectedItem();
+
+		try {
+			Cabinet selectedCab = componentCollection.getComponentByDisplayString(cab);
+			Motherboard selectedMb = componentCollection.getComponentByDisplayString(mb);
+			result += Checker.checkMotherboardAndCabinet(selectedMb,selectedCab);
+		} catch (Exception e){}
+		try {
+			Motherboard selectedMb = componentCollection.getComponentByDisplayString(mb);
+			RAM selectedRAM1 = componentCollection.getComponentByDisplayString(ram1);
+			result += Checker.checkMotherboardAndRAM(selectedMb, selectedRAM1);
+		} catch (Exception e){}
+		try {
+			Motherboard selectedMB = componentCollection.getComponentByDisplayString(mb);
+			RAM selectedRAM2 = componentCollection.getComponentByDisplayString(ram2);
+			result += Checker.checkMotherboardAndRAM(selectedMB, selectedRAM2);
+		} catch (Exception e){}
+		try {
+			Motherboard selectedMB = componentCollection.getComponentByDisplayString(mb);
+			CPU selectedCPU = componentCollection.getComponentByDisplayString(cpu);
+			result += Checker.checkMotherboardAndCPU(selectedMB, selectedCPU);
+		} catch (Exception e){}
+
+		if (!(cab.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cab));
+		}
+		if (!(mb.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(mb));
+		}
+		if (!(ram1.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(ram1));
+		}
+		if (!(ram2.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(ram2));
+		}
+		if (!(cpu.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cpu));
+		}
+		if (!(gpu1.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(gpu1));
+		}
+		if (!(gpu2.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(gpu2));
+		}
+		if (!(strg1.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(strg1));
+		}
+		if (!(strg2.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(strg2));
+		}
+		if (!(psu.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(psu));
+		}
+		if (!(fan1.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(fan1));
+		}
+		if (!(fan2.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(fan2));
+		}
+		//Checking voltage for main build
+		double wattsUsed = Checker.summarizeWatts(listOfSelected);
+		try{
+			double wattsDelivered = componentCollection.getComponentByDisplayString(psu).getWattsRequired();
+			if(wattsUsed > wattsDelivered){
+				result += "\nNot enough power for selected components: "
+						+ "\nPSU-watts: " + wattsDelivered + "\nWatts used in total: " + wattsUsed;
+			}
+		}catch (Exception e) {}
+
+		//Extras don't count to voltage
+		if (!(extra1.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra1.getSelectionModel().getSelectedItem()));
+		}
+		if (!(extra2.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra2.getSelectionModel().getSelectedItem()));
+		}
+		if (!(extra3.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra3.getSelectionModel().getSelectedItem()));
+		}
+		if (!(extra4.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra4.getSelectionModel().getSelectedItem()));
+		}
+
+		double totalPrice = Checker.summarizePrice(listOfSelected);
+
+
+		result += ("\n--------------------\nWatts used: " + wattsUsed + "\nTotal Price: " + totalPrice + " NOK");
+		//}
 
 		txtPreview.setText(result);
 	}
