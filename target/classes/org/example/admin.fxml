@@ -78,7 +78,7 @@
                </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvName" editable="true" onEditCommit="#editName" prefWidth="104.0" text="Navn" reorderable="false">
+            <TableColumn fx:id="tvName" editable="true" onEditCommit="#editName" prefWidth="104.0" text="Navn" >
                 <cellValueFactory>
                     <PropertyValueFactory property="name" />
                 </cellValueFactory>

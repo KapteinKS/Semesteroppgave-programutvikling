@@ -42,7 +42,7 @@ public class GraphicCard extends Component implements Serializable {
     }
 
     public String getInfo(){
-        return "RAM: " + getRam() + "GB \nRamtype: " + getRamType() + "\nKlokkehastighet: " + getClockSpeed() + "mHz";
+        return "RAM: " + getRam() + "GB \nRamtype: " + getRamType() + "\nKlokkehastighet: " + getClockSpeed() + "MHz";
     }
 
     @Override

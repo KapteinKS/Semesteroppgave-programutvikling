@@ -33,8 +33,8 @@ public class App extends Application {
         //*  SOME COMPONENTS  *//
         Cabinet cab1 = new Cabinet("BigBoyCab 3010","Corsair",900.00,"ATX",400,150,600,10.00);
         Cabinet cab2 = new Cabinet("Sleek 11","Asus",660.00,"M-ATX",300,150,300,4.25);
-        GraphicCard gpu1 = new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6","1605 Mhz");
-        GraphicCard gpu2 = new GraphicCard("Radeon RX 5500","Sapphire",200,3299.00,8,"DDR6","1300 Mhz");
+        GraphicCard gpu1 = new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6","1605");
+        GraphicCard gpu2 = new GraphicCard("Radeon RX 5500","Sapphire",200,3299.00,8,"DDR6","1300");
         CPU cpu1 = new CPU("Core i7","Intel",100,5199.99,8,3.60, "LGA-1151");
         CPU cpu2 = new CPU("Core i5","Intel",100,3299.00, 8, 3.20, "LGA-1151");
         CPU cpu3 = new CPU("Ryzen 9 3900X", "AMD", 105,5190.00,24,3.80, "AM4");

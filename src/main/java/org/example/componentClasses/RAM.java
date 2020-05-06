@@ -17,7 +17,7 @@ public class RAM extends Component implements Serializable {
     }
 
     public String getSize() {
-        return size.get();
+        return size.getValue();
     }
 
     public SimpleStringProperty sizeProperty() {
@@ -29,11 +29,11 @@ public class RAM extends Component implements Serializable {
     }
 
     public String getMemoryType() {
-        return memoryType.get();
+        return memoryType.getValue();
     }
 
-    public SimpleStringProperty memoryTypeProperty() {
-        return memoryType;
+    public String memoryTypeProperty() {
+        return memoryType.getValue();
     }
 
     public void setMemoryType(String memoryType) {
@@ -44,12 +44,16 @@ public class RAM extends Component implements Serializable {
         return amountOfRAMPieces.get();
     }
 
-    public SimpleStringProperty amountOfRAMPiecesProperty() {
-        return amountOfRAMPieces;
+    public String amountOfRAMPiecesProperty() {
+        return amountOfRAMPieces.getValue();
     }
 
     public void setAmountOfRAMPieces(String amountOfRAMPieces) {
         this.amountOfRAMPieces.set(amountOfRAMPieces);
+    }
+
+    public String getInfo(){
+        return "Minne: " + getSize() + "GB " + getMemoryType();
     }
 
     @Override
