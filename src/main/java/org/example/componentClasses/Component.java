@@ -6,16 +6,24 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class Component implements Serializable {
+	private transient SimpleStringProperty type;
 	private transient SimpleStringProperty name;
 	private transient SimpleStringProperty manufacturer;
+	private transient SimpleDoubleProperty wattsRequired;
 	private transient SimpleDoubleProperty price;
-	private String type;
 
-	public Component(String name, String manufacturer, double price, String type){
+	public Component(){}
+
+	public Component(String type, String name, String manufacturer, double wattsRequired, double price){
+		this.type = new SimpleStringProperty(type);
 		this.name = new SimpleStringProperty(name);
 		this.manufacturer = new SimpleStringProperty(manufacturer);
+		this.wattsRequired = new SimpleDoubleProperty(wattsRequired);
 		this.price = new SimpleDoubleProperty(price);
-		this.type = type;
+	}
+
+	public String getType() {
+		return type.get();
 	}
 
 	public String getName(){
@@ -34,6 +42,18 @@ public class Component implements Serializable {
 		this.price.set(price);
 	}
 
+	public double getWattsRequired() {
+		return wattsRequired.get();
+	}
+
+	public SimpleDoubleProperty wattsRequiredProperty() {
+		return wattsRequired;
+	}
+
+	public void setWattsRequired(double wattsRequired) {
+		this.wattsRequired.set(wattsRequired);
+	}
+
 	public String getManufacturer(){
 		return manufacturer.getValue();
 	}
@@ -42,14 +62,10 @@ public class Component implements Serializable {
 		this.manufacturer.set(manufacturer);
 	}
 
-	public String getType() {
-		return type;
+	//Method to 'print-display' the component (used, for instance, when populating comboBoxes in user GUI)
+	public String displayComponent(){
+		return this.getManufacturer() + " " + this.getName() + ", " + this.getPrice() + " NOK";
 	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public String getInfo(){
 		return "";
 	}

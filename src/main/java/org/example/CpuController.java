@@ -23,6 +23,9 @@ public class CpuController {
     private TextField inManufac;
 
     @FXML
+    private TextField inWatts;
+
+    @FXML
     private TextField inPrice;
 
     @FXML
@@ -30,6 +33,9 @@ public class CpuController {
 
     @FXML
     private TextField inClockSpeed;
+
+    @FXML
+    private TextField inSocket;
 
     @FXML
     private Button regButton;
@@ -48,9 +54,15 @@ public class CpuController {
             String name = inName.getText(), manufacturer = inManufac.getText();
 
             try {
+                //New
+                double wattsRequired = Double.parseDouble(inWatts.getText());
+
                 double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
                 int threads = exHan.checkThreads(Integer.parseInt(inThreads.getText()));
                 double clockspeed = exHan.chechClockSpeed(Double.parseDouble(inClockSpeed.getText()));
+
+                //New
+                String socket = inSocket.getText();
 
                 CPU cpu = new CPU(name, manufacturer, price, threads, clockspeed);
                 App.saveToCollection(cpu);
@@ -62,6 +74,7 @@ public class CpuController {
 
             }
 
-        }
+        App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
+
     }
 }

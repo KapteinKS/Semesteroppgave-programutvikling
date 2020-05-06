@@ -11,35 +11,55 @@ This should be done with a checker-method (SEE CHECKER.java)
  */
 
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 
 public class CPU extends Component implements Serializable {
-	private int threads;
-	private double clockSpeed;
+	private SimpleIntegerProperty threads;
+	private SimpleDoubleProperty clockSpeed;
+	private SimpleStringProperty socket;
 
-	public CPU(String name, String manufacturer, double price, int threads, double clockSpeed){
-		super(name,manufacturer,price, "CPU");
-		this.threads = threads;
-		this.clockSpeed = clockSpeed;
+	public CPU(String name, String manufacturer, double wattsRequired, double price, int threads, double clockSpeed, String socket){
+		super("CPU",name,manufacturer,wattsRequired,price);
+		this.threads = new SimpleIntegerProperty(threads);
+		this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
+		this.socket = new SimpleStringProperty(socket);
 	}
 
 	public int getThreads() {
-		return threads;
+		return threads.getValue();
 	}
 
 	public void setThreads(int threads) {
-		this.threads = threads;
+		this.threads.set(threads);
 	}
 
 	public double getClockSpeed() {
-		return clockSpeed;
+		return clockSpeed.getValue();
 	}
 
 	public void setClockSpeed(double clockSpeed) {
-		this.clockSpeed = clockSpeed;
+		this.clockSpeed.set(clockSpeed);
+	}
+
+	public String getSocket() {
+		return socket.get();
+	}
+
+	public void setSocket(String socket) {
+		this.socket.set(socket);
 	}
 
 	public String getInfo(){
 		return "Tråder: " + getThreads() + "\nKlokkehastighet: " + getClockSpeed();
+	}
+
+	@Override
+	public String toString(){
+		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+				+ "," + getThreads() + "," + getClockSpeed() + "," + getSocket();
 	}
 }

@@ -1,42 +1,55 @@
 package org.example.componentClasses;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 
 public class Motherboard extends Component implements Serializable {
-	private String socket;
-	private String ramType;
-	private double wattsRequired;
+	private SimpleStringProperty mbFormFactor;
+	private SimpleStringProperty socket;
+	private SimpleStringProperty ramType;
 
+	public Motherboard() {}
 
-	public Motherboard(String name, String manufacturer, double price, String socket, String ramType, double wattsRequired) {
-		super(name, manufacturer, price, "Hovedkort");
-		this.socket = socket;
-		this.ramType = ramType;
-		this.wattsRequired = wattsRequired;
+	public Motherboard(String name, String manufacturer, double wattsRequired, double price, String mbFormFactor, String socket, String ramType) {
+		super("Motherboard", name, manufacturer,wattsRequired, price);
+		this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
+		this.socket = new SimpleStringProperty(socket);
+		this.ramType = new SimpleStringProperty(ramType);
+	}
+
+	public String getMbFormFactor() {
+		return mbFormFactor.get();
+	}
+
+	public SimpleStringProperty mbFormFactorProperty() {
+		return mbFormFactor;
+	}
+
+	public void setMbFormFactor(String mbFormFactor) {
+		this.mbFormFactor.set(mbFormFactor);
 	}
 
 	public String getSocket() {
-		return socket;
+		return socket.getValue();
 	}
 
 	public void setSocket(String socket) {
-		this.socket = socket;
+		this.socket.set(socket);
 	}
 
 	public String getRamType() {
-		return ramType;
+		return ramType.getValue();
 	}
 
 	public void setRamType(String ramType) {
-		this.ramType = ramType;
+		this.ramType.set(ramType);
 	}
 
-	public double getWattsRequired() {
-		return wattsRequired;
-	}
-
-	public void setWattsRequired(double wattsRequired) {
-		this.wattsRequired = wattsRequired;
+	@Override
+	public String toString(){
+		return "Motherboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+				+ "," + getSocket() + "," + getRamType() + "," + getWattsRequired();
 	}
 
 	public String getInfo(){

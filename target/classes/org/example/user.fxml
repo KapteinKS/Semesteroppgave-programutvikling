@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -14,9 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.UserController">
+<AnchorPane prefHeight="628.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.UserController">
    <children>
-       <MenuBar prefHeight="25.0" prefWidth="600.0">
+       <MenuBar prefHeight="29.0" prefWidth="700.0">
            <menus>
                <Menu mnemonicParsing="false" text="File">
                    <items>
@@ -32,12 +34,12 @@
                </Menu>
            </menus>
        </MenuBar>
-      <ScrollPane layoutX="50.0" layoutY="91.0" prefHeight="200.0" prefWidth="223.0">
+      <ScrollPane layoutX="28.0" layoutY="78.0" prefHeight="376.0" prefWidth="303.0">
          <content>
-            <GridPane>
+            <GridPane prefHeight="476.0" prefWidth="284.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="97.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="187.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -49,92 +51,90 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-
-                  <Label prefHeight="17.0" prefWidth="85.0" text="Hovedkort:" />
-                  <ChoiceBox fx:id="choiceBox0" prefWidth="150.0" GridPane.columnIndex="1">
-                   <items>
-                       <!--
-                       List of all motherboards
-                       Maybe have an observableList?
-                       -->
-                   </items>
-                  </ChoiceBox>
-
-                  <Label text="Prosessor:" GridPane.rowIndex="1" />
-                  <ChoiceBox fx:id="choiceBox1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                          <items>
-                              <!--
-                              List of all processors,
-                              here, unavailable options should be grayed out
-                              (If the motherboard is AMD, all Intel processors
-                              should be grayed out)
-                              -->
-                          </items>
-                  </ChoiceBox>
-
-                  <Label text="Skjermkort:" GridPane.rowIndex="2" />
-                  <ChoiceBox fx:id="choiceBox2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label text="Kabinett" />
+                  <ComboBox fx:id="cbCabinet" prefHeight="27.0" prefWidth="186.0" GridPane.columnIndex="1">
                       <items>
-
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item1" />
+                              <String fx:value="Item2" />
+                              <String fx:value="Item3" />
+                          </FXCollections>
                       </items>
-                  </ChoiceBox>
-
-                  <Label text="Skjermkort:" GridPane.rowIndex="3" />
-                  <ChoiceBox fx:id="choiceBox3" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  </ComboBox>
+                  <Label text="Hovedkort" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="cbMotherboard" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                       <items>
-
-                      </items>
-                  </ChoiceBox>
-
-                  <Label text="Minne:" GridPane.rowIndex="4" />
-                  <ChoiceBox fx:id="choiceBox4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                      <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item1" />
+                          <String fx:value="Item2" />
+                          <String fx:value="Item3" />
+                      </FXCollections>
+                  </items>
+                  </ComboBox>
+                  <Label text="Prosessor" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbCPU" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                       <items>
-
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item1" />
+                              <String fx:value="Item2" />
+                              <String fx:value="Item3" />
+                          </FXCollections>
                       </items>
-                  </ChoiceBox>
-
-                   <Label text="Lagring:" GridPane.rowIndex="5" />
-                  <ChoiceBox fx:id="choiceBox5" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  </ComboBox>
+                  <Label text="Skjermkort" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cbGPU1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                       <items>
-
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item1" />
+                              <String fx:value="Item2" />
+                              <String fx:value="Item3" />
+                          </FXCollections>
                       </items>
-                  </ChoiceBox>
-
-                   <Label text="Lagring:" GridPane.rowIndex="6" />
-                  <ChoiceBox fx:id="choiceBox6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                      <items>
-
-                      </items>
-                  </ChoiceBox>
-
-                   <Label text="Strømforsyning:" GridPane.rowIndex="7" />
-                  <ChoiceBox fx:id="choiceBox7" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                      <items>
-
-                      </items>
-                  </ChoiceBox>
-
-                   <Label text="Tilbehør:" GridPane.rowIndex="8" />
-                  <ChoiceBox fx:id="choiceBox8" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                      <items>
-
-                      </items>
-                  </ChoiceBox>
-
+                  </ComboBox>
+                   <!-- I stopped here, for testing purposes-->
+                  <Label text="Skjermkort" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cbGPU2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Minne" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cbRAM1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label text="Minne" GridPane.rowIndex="6" />
+                  <ComboBox fx:id="cbRAM2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label text="Lagring" GridPane.rowIndex="7" />
+                  <ComboBox fx:id="cbStorage1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label text="Lagring" GridPane.rowIndex="8" />
+                  <ComboBox fx:id="cbStorage2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label text="Strømforsyning" GridPane.rowIndex="9" />
+                  <ComboBox fx:id="cbPSU" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Label text="Vifte" GridPane.rowIndex="10" />
+                  <ComboBox fx:id="cbFan1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Label text="Vifte" GridPane.rowIndex="11" />
+                  <ComboBox fx:id="cbFan2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Label text="Ekstra" GridPane.rowIndex="12" />
+                  <ComboBox fx:id="cbExtra1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <Label text="Ekstra" GridPane.rowIndex="13" />
+                  <ComboBox fx:id="cbExtra2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                  <Label text="Ekstra" GridPane.rowIndex="14" />
+                  <ComboBox fx:id="cbExtra3" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                  <Label text="Ekstra" GridPane.rowIndex="15" />
+                  <ComboBox fx:id="cbExtra4" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="15" />
                </children>
             </GridPane>
          </content>
       </ScrollPane>
-      <TextArea fx:id="txtPreview" editable="false" layoutX="327.0" layoutY="91.0" prefHeight="200.0" prefWidth="223.0" />
-      <Button layoutX="457.0" layoutY="326.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="94.0" text="Plasser Ordre" />
-      <Button layoutX="53.0" layoutY="326.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="106.0" text="Analyser Build" />
-      <Line endX="248.0" layoutX="302.0" layoutY="315.0" startX="-249.0" />
-      <Label fx:id="lblAnalyze" layoutX="52.0" layoutY="374.0" prefHeight="72.0" prefWidth="223.0" text="HER KOMMER ANALYSEN" />
-      <Label fx:id="lblOrdre" layoutX="342.0" layoutY="376.0" prefHeight="72.0" prefWidth="223.0" text="HER KOMMER ORDREKOMFIRM" />
-      <Label layoutX="100.0" layoutY="61.0" text="VELG KOMPONENTER" />
-      <Label layoutX="406.0" layoutY="61.0" text="DIN ORDRE:" />
+      <TextArea fx:id="txtPreview" editable="false" layoutX="358.0" layoutY="78.0" prefHeight="476.0" prefWidth="319.0" />
+      <Button layoutX="182.0" layoutY="480.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="118.0" text="Plasser Ordre" />
+      <Button layoutX="54.0" layoutY="480.0" mnemonicParsing="false" onAction="#analyzeOrder" prefHeight="27.0" prefWidth="118.0" text="Analyser Build" />
+      <Line endX="33.0" endY="204.0" layoutX="299.0" layoutY="267.0" startX="-272.0" startY="204.0" />
+      <Label layoutX="100.0" layoutY="48.0" text="VELG KOMPONENTER" />
+      <Label layoutX="492.0" layoutY="48.0" text="DIN ORDRE:" />
 
    </children>
 </AnchorPane>

@@ -6,17 +6,31 @@ import javafx.beans.property.SimpleIntegerProperty;
 import java.io.Serializable;
 
 public class Cabinet extends Component implements Serializable {
+    private transient SimpleStringProperty mbFormFactor;
     private transient SimpleIntegerProperty height;
     private transient SimpleIntegerProperty width;
     private transient SimpleIntegerProperty depth;
     private transient SimpleDoubleProperty weight;
 
-    public Cabinet(String name, String manufacturer, double price, int height, int width, int depth, double weight) {
-        super(name, manufacturer, price, "Kabinett");
+    public Cabinet(String name, String manufacturer, double price, String mbFormFactor, int height, int width, int depth, double weight) {
+        super("Cabinet", name, manufacturer, 0, price);
+        this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
         this.height = new SimpleIntegerProperty(height);
         this.width = new SimpleIntegerProperty(width);
         this.depth = new SimpleIntegerProperty(depth);
         this.weight = new SimpleDoubleProperty(weight);
+    }
+
+    public String getMbFormFactor() {
+        return mbFormFactor.get();
+    }
+
+    public SimpleStringProperty mbFormFactorProperty() {
+        return mbFormFactor;
+    }
+
+    public void setMbFormFactor(String mbFormFactor) {
+        this.mbFormFactor.set(mbFormFactor);
     }
 
     public int getHeight() {
@@ -54,5 +68,11 @@ public class Cabinet extends Component implements Serializable {
     public String getInfo(){
         return "Høyde: " + getHeight() + "cm \nBredde: " + getWidth() + "cm \nDybde: " + getDepth() +
                 "cm \nVekt: " + getWeight() + "kg";
+    }
+
+    @Override
+    public String toString(){
+        return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getHeight() + "," + getWidth() + "," + getDepth() + "," + getWeight();
     }
 }
