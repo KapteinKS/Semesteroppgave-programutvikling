@@ -8,7 +8,7 @@ import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalClockSpeedException;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalThreadsException;
-import org.example.components.CPU;
+import org.example.componentClasses.CPU;
 
 import java.io.IOException;
 

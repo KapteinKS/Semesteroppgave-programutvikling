@@ -10,7 +10,7 @@ import javafx.scene.control.ToggleGroup;
 import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalCapacityException;
 import org.example.exceptions.IllegalPriceException;
-import org.example.components.Storage;
+import org.example.componentClasses.Storage;
 
 import java.io.IOException;
 import java.net.URL;

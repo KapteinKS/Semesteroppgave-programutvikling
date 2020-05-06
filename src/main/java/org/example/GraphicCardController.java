@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalRAMException;
-import org.example.components.GraphicCard;
+import org.example.componentClasses.GraphicCard;
 
 import java.io.IOException;
 

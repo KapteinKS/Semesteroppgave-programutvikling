@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.exceptions.*;
-import org.example.components.Fan;
+import org.example.componentClasses.Fan;
 
 import java.io.IOException;
 

@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalWattsException;
-import org.example.components.Motherboard;
+import org.example.componentClasses.Motherboard;
 
 import java.io.IOException;
 

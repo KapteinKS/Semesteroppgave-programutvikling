@@ -1,4 +1,4 @@
-package org.example.components;
+package org.example.componentClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;

@@ -8,7 +8,7 @@ import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalVoltageException;
 import org.example.exceptions.IllegalWattsException;
-import org.example.components.PowerSupply;
+import org.example.componentClasses.PowerSupply;
 
 import java.io.IOException;
 

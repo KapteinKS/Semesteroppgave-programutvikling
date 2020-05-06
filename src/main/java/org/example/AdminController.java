@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
-import org.example.components.*;
+import org.example.componentClasses.*;
 
 import java.io.IOException;
 import java.net.URL;

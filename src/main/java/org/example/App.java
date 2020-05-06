@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.logicAndClasses.Initializer;
-import org.example.components.*;
+import org.example.componentClasses.*;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene2;
     private static Stage stage2;
-    private static ComponentCollection collection = new ComponentCollection();
+    private static ComponentCollection componentCollection = new ComponentCollection();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -60,11 +60,11 @@ public class App extends Application {
      */
 
     public static void saveToCollection(Component component){
-        collection.add(component);
+        componentCollection.add(component);
     }
 
     public static ComponentCollection getList(){
-        return collection;
+        return componentCollection;
     }
 
     public static void closeWindow(){
