@@ -113,7 +113,14 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void showAbout(ActionEvent event) {
-
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("About");
+		alert.setHeaderText("This GUI allows you to see all created components\nand create new ones");
+		alert.setContentText("Press 'Registrer komponent' and choose a type of component to start the creation tool." +
+				"Some attributes of each component are also editable, such as name, price and manufacturer.\n" +
+				"You can also switch to the End User GUI by clicking 'Help' -> 'User View'.");
+		alert.setResizable(false);
+		alert.showAndWait();
 	}
 
 	@FXML
