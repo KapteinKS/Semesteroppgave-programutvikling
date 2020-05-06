@@ -7,10 +7,10 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MotherboardController">
     <children>
-        <Label layoutX="20.0" layoutY="20.0" text="Name" />
-        <TextField fx:id="inName" layoutX="176.0" layoutY="16.0" />
-        <Label layoutX="20.0" layoutY="50.0" text="Manufacturer" />
-        <TextField fx:id="inManufac" layoutX="176.0" layoutY="46.0" />
+        <Label layoutX="20.0" layoutY="20.0" text="Manufacturer" />
+        <TextField fx:id="inManufac" layoutX="176.0" layoutY="16.0" />
+        <Label layoutX="20.0" layoutY="50.0" text="Name" />
+        <TextField fx:id="inName" layoutX="176.0" layoutY="46.0" />
         <Label layoutX="20.0" layoutY="80.0" text="Price" />
         <TextField fx:id="inPrice" layoutX="176.0" layoutY="77.0" />
       <Label layoutX="20.0" layoutY="110.0" text="Motherboard-Form-Factor:" />
@@ -21,7 +21,7 @@
       <TextField fx:id="inRamType" layoutX="176.0" layoutY="166.0" />
         <Label layoutX="20.0" layoutY="200.0" text="Required Watt Output" />
         <TextField fx:id="inWatts" layoutX="176.0" layoutY="196.0" />
-        <Button fx:id="regButton" layoutX="77.0" layoutY="236.0" mnemonicParsing="false" onAction="#registerMotherboard" text="Register" />
-        <Button fx:id="cancelButton" layoutX="216.0" layoutY="236.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
+        <Button fx:id="regButton" layoutX="85.0" layoutY="240.0" mnemonicParsing="false" onAction="#registerMotherboard" text="Register" />
+        <Button fx:id="cancelButton" layoutX="200.0" layoutY="240.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
     </children>
 </AnchorPane>

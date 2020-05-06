@@ -7,10 +7,10 @@
 
 <AnchorPane prefHeight="284.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.GraphicCardController">
     <children>
-        <Label layoutX="20.0" layoutY="20.0" text="Name" />
-        <TextField fx:id="inName" layoutX="176.0" layoutY="16.0" />
-        <Label layoutX="20.0" layoutY="50.0" text="Manufacturer" />
-        <TextField fx:id="inManufac" layoutX="176.0" layoutY="46.0" />
+        <Label layoutX="20.0" layoutY="20.0" text="Manufacturer" />
+        <TextField fx:id="inManufac" layoutX="176.0" layoutY="16.0" />
+        <Label layoutX="20.0" layoutY="50.0" text="Name" />
+        <TextField fx:id="inName" layoutX="176.0" layoutY="46.0" />
         <Label layoutX="20.0" layoutY="80.0" text="Price" />
         <TextField fx:id="inPrice" layoutX="176.0" layoutY="76.0" />
         <Label layoutX="20.0" layoutY="110.0" text="RAM (GB)" />
@@ -21,7 +21,7 @@
         <TextField fx:id="inHertz" layoutX="176.0" layoutY="166.0" />
       <Label layoutX="20.0" layoutY="200.0" text="Watts Required" />
       <TextField fx:id="inWatts" layoutX="176.0" layoutY="196.0" />
-        <Button fx:id="regButton" layoutX="80.0" layoutY="230.0" mnemonicParsing="false" onAction="#registerGraphicCard" text="Register" />
-        <Button fx:id="cancelButton" layoutX="214.0" layoutY="230.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
+        <Button fx:id="regButton" layoutX="85.0" layoutY="240.0" mnemonicParsing="false" onAction="#registerGraphicCard" text="Register" />
+        <Button fx:id="cancelButton" layoutX="200.0" layoutY="240.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
     </children>
 </AnchorPane>
