@@ -16,11 +16,11 @@
       <TextField fx:id="inPrice" layoutX="176.0" layoutY="76.0" />
       <Label layoutX="20.0" layoutY="110.0" text="Memory Capacity" />
       <TextField fx:id="inCapacity" layoutX="176.0" layoutY="106.0" />
-      <RadioButton fx:id="radioGB" layoutX="193.0" layoutY="147.0" mnemonicParsing="false" text="GB" />
-      <RadioButton fx:id="radioTB" layoutX="263.0" layoutY="147.0" mnemonicParsing="false" text="TB" />
+      <RadioButton fx:id="radioGB" layoutX="193.0" layoutY="140.0" mnemonicParsing="false" text="GB" />
+      <RadioButton fx:id="radioTB" layoutX="264.0" layoutY="140.0" mnemonicParsing="false" text="TB" />
       <Button fx:id="regButton" layoutX="65.0" layoutY="208.0" mnemonicParsing="false" onAction="#regStorage" text="Register" />
       <Button fx:id="cancelButton" layoutX="229.0" layoutY="208.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
-      <RadioButton fx:id="radioHDD" layoutX="193.0" layoutY="175.0" mnemonicParsing="false" text="HDD" />
-      <RadioButton fx:id="radioSSD" layoutX="263.0" layoutY="175.0" mnemonicParsing="false" text="SSD" />
+      <RadioButton fx:id="radioHDD" layoutX="193.0" layoutY="170.0" mnemonicParsing="false" text="HDD" />
+      <RadioButton fx:id="radioSSD" layoutX="264.0" layoutY="170.0" mnemonicParsing="false" text="SSD" />
    </children>
 </AnchorPane>

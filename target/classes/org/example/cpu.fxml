@@ -5,23 +5,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="359.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.CpuController">
+<AnchorPane prefHeight="359.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.CpuController">
     <children>
-        <Label layoutX="24.0" layoutY="19.0" text="Name" />
-        <TextField fx:id="inName" layoutX="159.0" layoutY="14.0" />
-        <Label layoutX="25.0" layoutY="48.0" text="Manufacturer" />
-        <TextField fx:id="inManufac" layoutX="158.0" layoutY="44.0" />
-        <Label layoutX="26.0" layoutY="113.0" text="Price" />
-        <TextField fx:id="inPrice" layoutX="159.0" layoutY="109.0" />
-        <Label layoutX="26.0" layoutY="143.0" text="Threads" />
-        <TextField fx:id="inThreads" layoutX="159.0" layoutY="139.0" />
-        <Label layoutX="26.0" layoutY="173.0" text="Clock Speed" />
-        <TextField fx:id="inClockSpeed" layoutX="159.0" layoutY="169.0" />
+        <Label layoutX="20.0" layoutY="20.0" text="Name" />
+        <TextField fx:id="inName" layoutX="176.0" layoutY="16.0" />
+        <Label layoutX="20.0" layoutY="50.0" text="Manufacturer" />
+        <TextField fx:id="inManufac" layoutX="176.0" layoutY="46.0" />
+      <Label layoutX="20.0" layoutY="80.0" text="Watts Required" />
+      <TextField fx:id="inWatts" layoutX="176.0" layoutY="76.0" />
+        <Label layoutX="20.0" layoutY="110.0" text="Price" />
+        <TextField fx:id="inPrice" layoutX="176.0" layoutY="106.0" />
+        <Label layoutX="20.0" layoutY="140.0" text="Threads" />
+        <TextField fx:id="inThreads" layoutX="176.0" layoutY="136.0" />
+        <Label layoutX="20.0" layoutY="170.0" text="Clock Speed" />
+        <TextField fx:id="inClockSpeed" layoutX="176.0" layoutY="166.0" />
+      <Label layoutX="20.0" layoutY="200.0" text="Socket" />
+      <TextField fx:id="inSocket" layoutX="176.0" layoutY="196.0" />
         <Button fx:id="regButton" layoutX="82.0" layoutY="251.0" mnemonicParsing="false" onAction="#registerCPU" text="Register" />
         <Button fx:id="cancelButton" layoutX="221.0" layoutY="251.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
-      <Label layoutX="26.0" layoutY="81.0" text="Watts Required" />
-      <TextField fx:id="inWatts" layoutX="159.0" layoutY="77.0" />
-      <Label layoutX="26.0" layoutY="206.0" text="Socket" />
-      <TextField fx:id="inSocket" layoutX="159.0" layoutY="202.0" />
     </children>
 </AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MotherboardController">
+<AnchorPane prefHeight="300.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MotherboardController">
     <children>
         <Label layoutX="20.0" layoutY="20.0" text="Name" />
         <TextField fx:id="inName" layoutX="176.0" layoutY="16.0" />
@@ -13,15 +13,15 @@
         <TextField fx:id="inManufac" layoutX="176.0" layoutY="46.0" />
         <Label layoutX="20.0" layoutY="80.0" text="Price" />
         <TextField fx:id="inPrice" layoutX="176.0" layoutY="77.0" />
-        <Label layoutX="20.0" layoutY="142.0" text="Socket" />
-        <TextField fx:id="inSockets" layoutX="176.0" layoutY="138.0" />
-      <Label layoutX="20.0" layoutY="172.0" text="Ram Type" />
-      <TextField fx:id="inRamType" layoutX="176.0" layoutY="170.0" />
-        <Label layoutX="20.0" layoutY="202.0" text="Required Watt Output" />
-        <TextField fx:id="inWatts" layoutX="176.0" layoutY="198.0" />
+      <Label layoutX="20.0" layoutY="110.0" text="Motherboard-Form-Factor:" />
+      <TextField fx:id="inMbFormFactor" layoutX="176.0" layoutY="106.0" />
+        <Label layoutX="20.0" layoutY="140.0" text="Socket" />
+        <TextField fx:id="inSockets" layoutX="176.0" layoutY="136.0" />
+      <Label layoutX="20.0" layoutY="170.0" text="Ram Type" />
+      <TextField fx:id="inRamType" layoutX="176.0" layoutY="166.0" />
+        <Label layoutX="20.0" layoutY="200.0" text="Required Watt Output" />
+        <TextField fx:id="inWatts" layoutX="176.0" layoutY="196.0" />
         <Button fx:id="regButton" layoutX="77.0" layoutY="236.0" mnemonicParsing="false" onAction="#registerMotherboard" text="Register" />
         <Button fx:id="cancelButton" layoutX="216.0" layoutY="236.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
-      <Label layoutX="18.0" layoutY="107.0" text="Motherboard-Form-Factor:" />
-      <TextField fx:id="inMbFormFactor" layoutX="174.0" layoutY="104.0" />
     </children>
 </AnchorPane>

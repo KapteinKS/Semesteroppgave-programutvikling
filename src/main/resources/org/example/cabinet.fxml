@@ -5,25 +5,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="349.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.CabinetController">
+<AnchorPane prefHeight="349.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.CabinetController">
    <children>
-      <Label layoutX="20.0" layoutY="18.0" text="Name" />
-      <TextField fx:id="inName" layoutX="176.0" layoutY="14.0" />
-      <Label layoutX="20.0" layoutY="48.0" text="Manufacturer" />
-      <TextField fx:id="inManufac" layoutX="176.0" layoutY="44.0" />
-      <Label layoutX="20.0" layoutY="78.0" text="Price" />
-      <TextField fx:id="inPrice" layoutX="176.0" layoutY="74.0" />
-      <Label layoutX="18.0" layoutY="139.0" text="Height (cm)" />
-      <TextField fx:id="inHeight" layoutX="174.0" layoutY="135.0" />
-      <Label layoutX="18.0" layoutY="169.0" text="Width (cm)" />
-      <TextField fx:id="inWidth" layoutX="174.0" layoutY="165.0" />
-      <Label layoutX="18.0" layoutY="199.0" text="Depth (cm)" />
-      <TextField fx:id="inDepth" layoutX="174.0" layoutY="195.0" />
-      <Label layoutX="18.0" layoutY="229.0" text="Weight (kg)" />
-      <TextField fx:id="inWeight" layoutX="174.0" layoutY="225.0" />
-      <Button fx:id="regButton" layoutX="79.0" layoutY="266.0" mnemonicParsing="false" onAction="#registerCabinet" text="Register" />
-      <Button fx:id="cancelButton" layoutX="218.0" layoutY="266.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
-      <Label layoutX="18.0" layoutY="105.0" text="Motherboard Form-Factor:" />
-      <TextField fx:id="inMbFormFactor" layoutX="174.0" layoutY="101.0" />
+      <Label layoutX="20.0" layoutY="20.0" text="Name" />
+      <TextField fx:id="inName" layoutX="176.0" layoutY="16.0" />
+      <Label layoutX="20.0" layoutY="50.0" text="Manufacturer" />
+      <TextField fx:id="inManufac" layoutX="176.0" layoutY="46.0" />
+      <Label layoutX="20.0" layoutY="80.0" text="Price" />
+      <TextField fx:id="inPrice" layoutX="176.0" layoutY="76.0" />
+      <Label layoutX="20.0" layoutY="110.0" text="Motherboard Form-Factor:" />
+      <TextField fx:id="inMbFormFactor" layoutX="176.0" layoutY="106.0" />
+      <Label layoutX="20.0" layoutY="140.0" text="Height (cm)" />
+      <TextField fx:id="inHeight" layoutX="176.0" layoutY="136.0" />
+      <Label layoutX="20.0" layoutY="170.0" text="Width (cm)" />
+      <TextField fx:id="inWidth" layoutX="176.0" layoutY="166.0" />
+      <Label layoutX="20.0" layoutY="200.0" text="Depth (cm)" />
+      <TextField fx:id="inDepth" layoutX="176.0" layoutY="196.0" />
+      <Label layoutX="20.0" layoutY="230.0" text="Weight (kg)" />
+      <TextField fx:id="inWeight" layoutX="176.0" layoutY="226.0" />
+      <Button fx:id="regButton" layoutX="85.0" layoutY="270.0" mnemonicParsing="false" onAction="#registerCabinet" text="Register" />
+      <Button fx:id="cancelButton" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />
    </children>
 </AnchorPane>
