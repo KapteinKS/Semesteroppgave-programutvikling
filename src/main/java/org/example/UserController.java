@@ -87,17 +87,6 @@ public class UserController {
 
 		App.setRoot("admin", 625, 525, "Admin");
 
-		/*
-
-		THIS CHANGES THE VIEW TO 'admin.fxml', BUT REQUIRES
-		A LOGON TO DO SO.
-
-		FOR THE HAND-IN, WE WILL THEN HAVE TO PROIVDE SENSOR WITH
-		THIS INFORMATION.
-
-
-		 */
-
 	}
 	@FXML
 	ObservableList<Component> analyzeOrder(ActionEvent event){
