@@ -85,7 +85,7 @@ public class UserController {
 	@FXML
 	void loginAdmin(ActionEvent event) throws IOException {
 
-		App.setRoot("admin", 600, 500, "Admin");
+		App.setRoot("admin", 625, 525, "Admin");
 
 		/*
 

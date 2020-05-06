@@ -96,7 +96,7 @@
                 </cellFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvPrice" editable="true" onEditCommit="#editPrice" prefWidth="71.0" text="Pris">
+            <TableColumn fx:id="tvPrice" editable="true" onEditCommit="#editPrice" prefWidth="71.0" text="Pris (kr)">
                 <cellValueFactory>
                     <PropertyValueFactory property="price" />
                 </cellValueFactory>

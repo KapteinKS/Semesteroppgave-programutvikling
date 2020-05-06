@@ -103,7 +103,7 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void changeToUser(ActionEvent event) throws IOException {
-		App.setRoot("user", 625, 525, "End User");
+		App.setRoot("user", 700, 640, "End User");
 	}
 
 	@FXML
