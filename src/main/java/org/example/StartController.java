@@ -15,7 +15,8 @@ public class StartController {
 
     @FXML
     void switchToCustomer(ActionEvent event) throws IOException {
-        App.setRoot("user", 600, 500, "End User");
+
+        App.setRoot("user", 700, 640, "End User");
     }
 
 }

@@ -1,15 +1,19 @@
 package org.example.logicAndClasses;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.example.componentClasses.Component;
+
 import java.util.Date;
 
 public class Order {
 	private String customerID;
 	private String orderID;
 	private Date date;
-	private String[] componentsOrdered;
+	ObservableList<Component> componentsOrdered;
 	private double price;
 
-	public Order(String customerID, String orderID, Date date, String[]componentsOrdered, double price){
+	public Order(String customerID, String orderID, Date date, ObservableList<Component>componentsOrdered, double price){
 		this.customerID = customerID;
 		this.orderID = orderID;
 		this.date = date;
@@ -41,11 +45,11 @@ public class Order {
 		this.date = date;
 	}
 
-	public String[] getComponentsOrdered() {
+	public ObservableList<Component> getComponentsOrdered() {
 		return componentsOrdered;
 	}
 
-	public void setComponentsOrdered(String[] componentsOrdered) {
+	public void setComponentsOrdered(ObservableList<Component> componentsOrdered) {
 		this.componentsOrdered = componentsOrdered;
 	}
 
@@ -62,7 +66,7 @@ public class Order {
 		String out = "OrderID: " + orderID
 				+ "\n" + "Dato: " + date
 				+ "\n" + "Komponenter bestilt:" + "\n";
-		for (String cmpnnt : componentsOrdered){
+		for (Component cmpnnt : componentsOrdered){
 			out += cmpnnt + "\n";
 		}
 		out += "Pris: " + price;
@@ -72,7 +76,7 @@ public class Order {
 	@Override
 	public String toString(){
 		String out = "" +  customerID + "," + orderID + "," + date + ",";
-		for (String cmpnnt : componentsOrdered){
+		for (Component cmpnnt : componentsOrdered){
 			out += cmpnnt + ",";
 		}
 		out += price + ",";

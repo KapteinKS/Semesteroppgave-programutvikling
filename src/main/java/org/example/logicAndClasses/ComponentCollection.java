@@ -18,7 +18,7 @@ public class ComponentCollection {
 		componentList.add(component);
 	}
 
-	// By this method, we can use the intermediary display string to a component. (COMBOBOX STUFF)
+	// By this method, we can use the intermediary "display-string" to fetch a component. (COMBOBOX STUFF)
 	public <T extends Component> T getComponentByDisplayString(String componentDisplayString) {
 		//Here, we create a dummy GraphicCard, never actually returned;
 		T e = (T) new GraphicCard("ERROR","Error",00,00,0,"error","errRor");

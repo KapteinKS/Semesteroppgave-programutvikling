@@ -4,42 +4,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import org.example.componentClasses.*;
 import org.example.logicAndClasses.Checker;
 import org.example.logicAndClasses.ComponentCollection;
+import org.example.logicAndClasses.Order;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Optional;
 
 public class UserController {
 
 	private static ComponentCollection componentCollection = App.getComponentCollection();
-	//
+	private ObservableList<Component> currentSelectedList;
+	private double totalPrice;
+	private boolean buildIsCompatible;
 
-
-
-	//
-
-	//* Populating ComboBox-Logic *//
-
-	/*
-	private ObservableList<String> cabinetList = displayComponentList(ComponentCollection.filter("Type","Cabinet"));
-	private ObservableList<String> cpuList = displayComponentList(componentCollection.getComponentByType("CPU"));
-	private ObservableList<String> fanList = displayComponentList(componentCollection.getComponentByType("Fan"));
-	private ObservableList<String> gpuList = displayComponentList(componentCollection.getComponentByType("GraphicCard"));
-	private ObservableList<String> mbList = displayComponentList(componentCollection.getComponentByType("Motherboard"));
-	private ObservableList<String> psuList = displayComponentList(componentCollection.getComponentByType("PowerSupply"));
-	private ObservableList<String> ramList = displayComponentList(componentCollection.getComponentByType("RAM"));
-	private ObservableList<String> storageList = displayComponentList(componentCollection.getComponentByType("Storage"));
-
-
-	 */
-	//
-	private ObservableList<String> testList = test();
-	//**//
 
 	@FXML
 	public ComboBox<String> cbCabinet;
@@ -92,11 +76,6 @@ public class UserController {
 	@FXML
 	private TextArea txtPreview;
 
-	@FXML
-	private Label lblAnalyze;
-
-	@FXML
-	private Label lblOrdre;
 
 	@FXML
 	void loadOrder(ActionEvent event) {
@@ -121,10 +100,13 @@ public class UserController {
 
 	}
 	@FXML
-	void analyzeOrder(ActionEvent event){
-		ObservableList<Component> listOfSelected = FXCollections.observableArrayList();
+	ObservableList<Component> analyzeOrder(ActionEvent event){
 
+		ObservableList<Component> listOfSelected = FXCollections.observableArrayList();
+		buildIsCompatible = false;
 		txtPreview.setText("");
+
+		//We build a string 'result', that adds all error-messages together
 		String result = "";
 		String cab = cbCabinet.getSelectionModel().getSelectedItem(),
 				mb = cbMotherboard.getSelectionModel().getSelectedItem(),
@@ -143,27 +125,21 @@ public class UserController {
 				extra3 = cbExtra3.getSelectionModel().getSelectedItem(),
 				extra4 = cbExtra4.getSelectionModel().getSelectedItem();
 
+		//These try-blocks attempt to check compatibility between (some) components
 		try {
-			Cabinet selectedCab = componentCollection.getComponentByDisplayString(cab);
-			Motherboard selectedMb = componentCollection.getComponentByDisplayString(mb);
-			result += Checker.checkMotherboardAndCabinet(selectedMb,selectedCab);
+			result += Checker.checkMotherboardAndCabinet(componentCollection.getComponentByDisplayString(mb),componentCollection.getComponentByDisplayString(cab));
 		} catch (Exception e){}
 		try {
-			Motherboard selectedMb = componentCollection.getComponentByDisplayString(mb);
-			RAM selectedRAM1 = componentCollection.getComponentByDisplayString(ram1);
-			result += Checker.checkMotherboardAndRAM(selectedMb, selectedRAM1);
+			result += Checker.checkMotherboardAndRAM(componentCollection.getComponentByDisplayString(mb), componentCollection.getComponentByDisplayString(ram1));
 		} catch (Exception e){}
 		try {
-			Motherboard selectedMB = componentCollection.getComponentByDisplayString(mb);
-			RAM selectedRAM2 = componentCollection.getComponentByDisplayString(ram2);
-			result += Checker.checkMotherboardAndRAM(selectedMB, selectedRAM2);
+			result += Checker.checkMotherboardAndRAM(componentCollection.getComponentByDisplayString(mb), componentCollection.getComponentByDisplayString(ram2));
 		} catch (Exception e){}
 		try {
-			Motherboard selectedMB = componentCollection.getComponentByDisplayString(mb);
-			CPU selectedCPU = componentCollection.getComponentByDisplayString(cpu);
-			result += Checker.checkMotherboardAndCPU(selectedMB, selectedCPU);
+			result += Checker.checkMotherboardAndCPU(componentCollection.getComponentByDisplayString(mb), componentCollection.getComponentByDisplayString(cpu));
 		} catch (Exception e){}
 
+		// These if-blocks add components if they are selected.
 		if (!(cab.equals("---"))){
 			listOfSelected.add(componentCollection.getComponentByDisplayString(cab));
 		}
@@ -200,13 +176,15 @@ public class UserController {
 		if (!(fan2.equals("---"))){
 			listOfSelected.add(componentCollection.getComponentByDisplayString(fan2));
 		}
-		//Checking voltage for main build
+
+		//Checking voltage for main build (meaning extra-components are ignored)
 		double wattsUsed = Checker.summarizeWatts(listOfSelected);
 		try{
 			double wattsDelivered = componentCollection.getComponentByDisplayString(psu).getWattsRequired();
 			if(wattsUsed > wattsDelivered){
-				result += "\nNot enough power for selected components: "
-						+ "\nPSU-watts: " + wattsDelivered + "\nWatts used in total: " + wattsUsed;
+				result += "Not enough power for selected components: "
+						+ "\nPSU-watts: " + wattsDelivered + "\nWatts used in total: " + wattsUsed
+						+ "\n--------------------\n";
 			}
 		}catch (Exception e) {}
 
@@ -224,18 +202,104 @@ public class UserController {
 			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra4.getSelectionModel().getSelectedItem()));
 		}
 
-		double totalPrice = Checker.summarizePrice(listOfSelected);
+		totalPrice = Checker.summarizePrice(listOfSelected);
 
+		// We use the built 'result' String as a way to check if there are no incompatibilities,
+		// if it's empty, that means there were no incompatibilities.
+		if (result.equals("")){
+			result += "Build is compatible!" + "\n--------------------\n";
+			buildIsCompatible = true;
+		}
 
-		result += ("\n--------------------\nWatts used: " + wattsUsed + "\nTotal Price: " + totalPrice + " NOK");
-		//}
+		result += "Watts used: " + wattsUsed + "\nTotal Price: " + String.format("%.2f", totalPrice) + " NOK";
 
 		txtPreview.setText(result);
+		return listOfSelected;
 	}
 
 	@FXML
 	void placeOrder(ActionEvent event) {
+		currentSelectedList = analyzeOrder(event);
+		int size;
+		try{
+			size = currentSelectedList.size();
+		}catch (Exception e){
+			size = 0;
+			txtPreview.setText("");
+		}
+		if(size == 0){
+			Alert emptyOrder = new Alert(Alert.AlertType.INFORMATION);
+			emptyOrder.setTitle("Error!");
+			emptyOrder.setHeaderText("Empty order!");
+			emptyOrder.setContentText("You cannot place an empty order!\nBuy something, will ya?");
+			emptyOrder.showAndWait();
+		}
+		else{
+			boolean bufferBuildIsCompatible = false;
+			String promptTitle = "ERROR";
+			String promptHeader = "ERROR";
+			String promptText = "ERROR";
 
+			if (txtPreview.getText().equals("") || buildIsCompatible){ // I think the error is here.
+				analyzeOrder(event);
+				bufferBuildIsCompatible = buildIsCompatible;
+			}
+
+			if (bufferBuildIsCompatible) {
+				promptTitle = "Success!";
+				promptHeader = "Build is compatible!";
+				promptText = "Place order?";
+			}
+			else{
+				promptTitle = "Warning!";
+				promptHeader = "WARNING!\nBuild has incompabilities, things might not add together!";
+				promptText = "Do you still wish to place the order?";
+			}
+
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle(promptTitle);
+			alert.setHeaderText(promptHeader);
+			alert.setContentText(promptText);
+			alert.setResizable(false);
+			Optional<ButtonType> confirm = alert.showAndWait();
+			ButtonType click = confirm.orElse(ButtonType.CANCEL);
+
+			if (click == ButtonType.OK) {
+				//SAVE ORDER METHOD; ORDER PLACE LOGIC
+
+				Order order = new Order("0124124", "001", Calendar.getInstance().getTime(),
+						currentSelectedList, totalPrice);
+
+				//
+				Alert orderPlacedAlert = new Alert(Alert.AlertType.INFORMATION);
+				orderPlacedAlert.setTitle("Success!");
+				orderPlacedAlert.setHeaderText("Order has been placed!");
+				orderPlacedAlert.setContentText("Thank you for your purchase!");
+				orderPlacedAlert.showAndWait();
+				resetSelection(event);
+			}
+			txtPreview.setText("");
+		}
+	}
+
+	@FXML
+	void resetSelection(ActionEvent event) {
+		cbCabinet.getSelectionModel().selectLast();
+		cbMotherboard.getSelectionModel().selectLast();
+		cbCPU.getSelectionModel().selectLast();
+		cbGPU1.getSelectionModel().selectLast();
+		cbGPU2.getSelectionModel().selectLast();
+		cbRAM1.getSelectionModel().selectLast();
+		cbRAM2.getSelectionModel().selectLast();
+		cbStorage1.getSelectionModel().selectLast();
+		cbStorage2.getSelectionModel().selectLast();
+		cbPSU.getSelectionModel().selectLast();
+		cbFan1.getSelectionModel().selectLast();
+		cbFan2.getSelectionModel().selectLast();
+		cbExtra1.getSelectionModel().selectLast();
+		cbExtra2.getSelectionModel().selectLast();
+		cbExtra3.getSelectionModel().selectLast();
+		cbExtra4.getSelectionModel().selectLast();
 	}
 
 	@FXML
@@ -248,7 +312,6 @@ public class UserController {
 
 	}
 	public void populateComboBoxes(){
-		//componentCollection = App.getComponentCollection();
 
 		populateSingleComboBox(cbCabinet,"Cabinet", componentCollection);
 		populateSingleComboBox(cbMotherboard,"Motherboard", componentCollection);
@@ -268,67 +331,6 @@ public class UserController {
 		populateSingleComboBox(cbExtra4, "None", componentCollection);
 
 	}
-
-	/*
-	 AN OLD SAFER VERSION
-	public void populateComboBoxes(){
-		componentCollection = App.getComponentCollection();
-
-
-
-		cbCabinet.getItems().clear();
-		cbMotherboard.getItems().clear();
-		cbCPU.getItems().clear();
-		cbGPU1.getItems().clear();
-		cbGPU2.getItems().clear();
-		cbRAM1.getItems().clear();
-		cbRAM2.getItems().clear();
-		cbStorage1.getItems().clear();
-		cbStorage2.getItems().clear();
-		cbPSU.getItems().clear();
-		cbFan1.getItems().clear();
-		cbFan2.getItems().clear();
-		cbExtra1.getItems().clear();
-		cbExtra2.getItems().clear();
-		cbExtra3.getItems().clear();
-		cbExtra4.getItems().clear();
-
-		cbCabinet.setItems(displayComponentList(componentCollection.filter("Type","Cabinet")));
-		cbMotherboard.setItems(displayComponentList(componentCollection.filter("Type","Motherboard")));
-		cbCPU.setItems(displayComponentList(componentCollection.filter("Type","CPU")));
-		cbGPU1.setItems(displayComponentList(componentCollection.filter("Type","GraphicCard")));
-		cbGPU2.setItems(displayComponentList(componentCollection.filter("Type","GraphicCard")));
-		cbRAM1.setItems(displayComponentList(componentCollection.filter("Type","RAM")));
-		cbRAM2.setItems(displayComponentList(componentCollection.filter("Type","RAM")));
-		cbStorage1.setItems(displayComponentList(componentCollection.filter("Type","Storage")));
-		cbStorage2.setItems(displayComponentList(componentCollection.filter("Type","Storage")));
-		cbPSU.setItems(displayComponentList(componentCollection.filter("Type","PowerSupply")));
-		cbFan1.setItems(displayComponentList(componentCollection.filter("Type","Fan")));
-		cbFan2.setItems(displayComponentList(componentCollection.filter("Type","Fan")));
-		cbExtra1.setItems(displayComponentList(componentCollection.getComponentList()));
-		cbExtra2.setItems(displayComponentList(componentCollection.getComponentList()));
-		cbExtra3.setItems(displayComponentList(componentCollection.getComponentList()));
-		cbExtra4.setItems(displayComponentList(componentCollection.getComponentList()));
-
-		cbCabinet.getSelectionModel().selectLast();
-		cbMotherboard.getSelectionModel().selectLast();
-		cbCPU.getSelectionModel().selectLast();
-		cbGPU1.getSelectionModel().selectLast();
-		cbGPU2.getSelectionModel().selectLast();
-		cbRAM1.getSelectionModel().selectLast();
-		cbRAM2.getSelectionModel().selectLast();
-		cbStorage1.getSelectionModel().selectLast();
-		cbStorage2.getSelectionModel().selectLast();
-		cbPSU.getSelectionModel().selectLast();
-		cbFan1.getSelectionModel().selectLast();
-		cbFan2.getSelectionModel().selectLast();
-		cbExtra1.getSelectionModel().selectLast();
-		cbExtra2.getSelectionModel().selectLast();
-		cbExtra3.getSelectionModel().selectLast();
-		cbExtra4.getSelectionModel().selectLast();
-
-	}
-	 */
 
 	//Method for populating a selected comboBox (only used here)
 	private void populateSingleComboBox(ComboBox<String> comboBox, String filterInput, ComponentCollection componentCollection){
@@ -352,14 +354,4 @@ public class UserController {
 		outList.add("---");
 		return outList;
 	}
-
-	// TEST STUFF
-	public static ObservableList<String> test(){
-		ObservableList<String> outlist = FXCollections.observableArrayList();
-		outlist.add("Linje Nummer 1");
-		outlist.add("Linje NUmmer 2");
-		outlist.add("LINJE TREEEE");
-		return outlist;
-	}
-
 }

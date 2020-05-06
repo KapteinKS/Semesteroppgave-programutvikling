@@ -45,6 +45,7 @@ public class App extends Application {
         Motherboard mb3 = new Motherboard("ZWXtreme 4242k","AMD",400.00,1100.00,"ATX","AM4","DDR4");
         PowerSupply psu1 = new PowerSupply("Focus GX 750","Seasonic",750.00,1499.00);
         PowerSupply psu2 = new PowerSupply("RM650x","Corsair",650.00,1399.00);
+        PowerSupply psu3 = new PowerSupply("ZXZ1500", "Asus", 1500.00, 1799.00);
         RAM ram1 = new RAM("ValueRam","Kingston",635.00,"8 GB","DDR3",1);
         RAM ram2 = new RAM("Vengance LPX", "Corsair", 1260.00, "16 GB","DDR4",2);
         Storage stg1 = new Storage("KC2000","Kingston",882.00,"SSD",250,"GB");
@@ -64,6 +65,7 @@ public class App extends Application {
         componentCollection.add(mb3);
         componentCollection.add(psu1);
         componentCollection.add(psu2);
+        componentCollection.add(psu3);
         componentCollection.add(ram1);
         componentCollection.add(ram2);
         componentCollection.add(stg1);
@@ -71,28 +73,29 @@ public class App extends Application {
 
         //**//
 
+        App.stage = stage;
+        Initializer.initialize();
+        scene = new Scene(loadFXML("start"));
+        System.out.print(".");
+        stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
+        stage.setScene(scene);
+        stage.setTitle("Start");
+        stage.show();
+        System.out.print(".");
+        System.out.print("\n\n---------------\n\n");
 
+        /* Old version of start(), for user-GUI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
         Parent root = loader.load();
 
         UserController userController = loader.getController();
-
-        //this.stage = stage;
-        //Initializer.initialize();
-        scene = new Scene(root);
-        //System.out.print(".");
-        //stage.getIcons().add(new Image("https://icon2.cleanpng.com/20180501/wzq/kisspng-twitch-emote-pogchamp-trihex-video-game-5ae91c86178d89.3374632415252266300965.jpg"));
-        stage.setScene(scene);
-        //stage.setTitle("Start");
-
-
-
-        stage.show();
         userController.populateComboBoxes();
 
-        System.out.print(".");
-        System.out.print("\n\n---------------\n\n");
 
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+         */
 
     }
 
@@ -125,15 +128,33 @@ public class App extends Application {
         stage2.close();
     }
     public static void setRoot(String fxml, double width, double height, String title) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-        stage.setHeight(height);
-        stage.setWidth(width);
-        stage.setTitle(title);
+        //if user, comboBoxes must be populated!
+        if (fxml.equals("user")){
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("user.fxml"));
+            Parent userRoot = loader.load();
+
+            UserController userController = loader.getController();
+            userController.populateComboBoxes();
+
+            scene.setRoot(userRoot);
+            stage.setHeight(height);
+            stage.setWidth(width);
+            stage.setTitle(title);
+
+        }
+        else {
+            scene.setRoot(loadFXML(fxml));
+            stage.setHeight(height);
+            stage.setWidth(width);
+            stage.setTitle(title);
+        }
     }
 
+    /* Never used?
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
+     */
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

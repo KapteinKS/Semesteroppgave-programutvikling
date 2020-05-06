@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class Cabinet extends Component implements Serializable {
-    //This should have a SizeType String (M-ATX) Perhaps called FormFactor, which corresponds to MB
     private SimpleStringProperty mbFormFactor;
     private SimpleIntegerProperty height;
     private SimpleIntegerProperty width;
