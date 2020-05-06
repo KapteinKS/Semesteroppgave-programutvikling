@@ -1,22 +1,46 @@
 package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
-
 import java.io.Serializable;
 
 public class PowerSupply extends Component implements Serializable {
+    private SimpleIntegerProperty inVoltage;
+    private SimpleIntegerProperty outVoltage;
 
-    public PowerSupply(String name, String manufacturer, double wattsRequired, double price) {
-        super("PowerSupply",name, manufacturer, wattsRequired, price);
+    public PowerSupply(String name, String manufacturer, double wattsRequired, double price, int inVoltage, int outVoltage) {
+        super("PowerSupply", name, manufacturer, wattsRequired, price);
+        this.inVoltage = new SimpleIntegerProperty(inVoltage);
+        this.outVoltage = new SimpleIntegerProperty(outVoltage);
     }
 
-    public String getInfo(){
-        return "Energiforbruk: " + getWattsRequired() + "W";
+    public int getInVoltage() {
+        return inVoltage.get();
     }
 
-    @Override
-    public String toString(){
-        return "PowerSupply" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                ;
+    public SimpleIntegerProperty inVoltageProperty() {
+        return inVoltage;
     }
+
+    public void setInVoltage(int inVoltage) {
+        this.inVoltage.set(inVoltage);
+    }
+
+    public int getOutVoltage() {
+        return outVoltage.get();
+    }
+
+    public SimpleIntegerProperty outVoltageProperty() {
+        return outVoltage;
+    }
+
+    public void setOutVoltage(int outVoltage) {
+        this.outVoltage.set(outVoltage);
+    }
+
+
+    public String getInfo() {
+        return "Energiforbruk: " + getWattsRequired() + "W \nSpenning inn: " + getInVoltage() +
+                "V \nSpenning ut: " + getOutVoltage() + "V";
+    }
+
 }

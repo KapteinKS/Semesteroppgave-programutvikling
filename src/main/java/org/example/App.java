@@ -1,6 +1,7 @@
 package org.example;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -42,9 +43,9 @@ public class App extends Application {
         Motherboard mb1 = new Motherboard("GigaZap 2000k","ASUS",500.00,1299.99,"ATX","LGA-1151","DDR3");
         Motherboard mb2 = new Motherboard("MiniGigaZap 1500k", "ASUS", 350.00, 1099.99,"M-ATX","LGA-1151","DDR3");
         Motherboard mb3 = new Motherboard("ZWXtreme 4242k","AMD",400.00,1100.00,"ATX","AM4","DDR4");
-        PowerSupply psu1 = new PowerSupply("Focus GX 750","Seasonic",750.00,1499.00);
-        PowerSupply psu2 = new PowerSupply("RM650x","Corsair",650.00,1399.00);
-        PowerSupply psu3 = new PowerSupply("ZXZ1500", "Asus", 1500.00, 1799.00);
+        PowerSupply psu1 = new PowerSupply("Focus GX 750","Seasonic",750.00,1499.00, 20, 20);
+        PowerSupply psu2 = new PowerSupply("RM650x","Corsair",650.00,1399.00, 20, 20);
+        PowerSupply psu3 = new PowerSupply("ZXZ1500", "Asus", 1500.00, 1799.00, 20, 20);
         RAM ram1 = new RAM("ValueRam","Kingston",635.00,"8 GB","DDR3",1);
         RAM ram2 = new RAM("Vengance LPX", "Corsair", 1260.00, "16 GB","DDR4",2);
         Storage stg1 = new Storage("KC2000","Kingston",882.00,"SSD",250,"GB");
@@ -120,6 +121,13 @@ public class App extends Application {
     public static ObservableList<Component> getList(){
         return componentCollection.getComponentList();
     }
+
+    // This is something funky, I just added it to remove errors, see Admin @ line 120
+    public static ComponentCollection getList2(){
+        return componentCollection;
+    }
+    //
+
     public static ComponentCollection getComponentCollection(){
         return componentCollection;
     }

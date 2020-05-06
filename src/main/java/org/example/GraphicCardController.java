@@ -34,6 +34,9 @@ public class GraphicCardController {
     private TextField inHertz;
 
     @FXML
+    private TextField inWatts;
+
+    @FXML
     private Button regButton;
 
     @FXML
@@ -47,12 +50,19 @@ public class GraphicCardController {
     @FXML
     void registerGraphicCard(ActionEvent event) throws IOException {
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
-            String name = inName.getText(), manufacturer = inManufac.getText(),
-                    ramType = inType.getText(), clockspeed = inHertz.getText();
+            String name = inName.getText(),
+                    manufacturer = inManufac.getText(),
+                    ramType = inType.getText(),
+                    clockspeed = inHertz.getText();
             try {
+
+                //This is missing exHan
+                double wattsRequired = Double.parseDouble(inWatts.getText());
+
+
                 double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
                 int ram = exHan.checkRAM(Integer.parseInt(inRAM.getText()));
-                GraphicCard graphicCard = new GraphicCard(name, manufacturer, price, ram, ramType, clockspeed);
+                GraphicCard graphicCard = new GraphicCard(name, manufacturer, wattsRequired, price, ram, ramType, clockspeed);
                 App.saveToCollection(graphicCard);
                 App.closeWindow();
             } catch(IllegalRAMException | IllegalPriceException e){

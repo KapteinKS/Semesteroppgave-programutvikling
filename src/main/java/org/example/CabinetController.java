@@ -34,6 +34,12 @@ public class CabinetController {
     @FXML
     private TextField inWeight;
 
+
+    //New
+    @FXML
+    private TextField inMbFormFactor;
+    //
+
     @FXML
     private Button regButton;
 
@@ -44,7 +50,9 @@ public class CabinetController {
     void registerCabinet(ActionEvent event) throws IOException {
 
         if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
-            String name = inName.getText(), manufacturer = inManufac.getText();
+            String name = inName.getText(),
+                    manufacturer = inManufac.getText(),
+                    mbFormFactor = inMbFormFactor.getText(); //New
 
             try {
                 double price = exHand.priceCheck(Double.parseDouble(inPrice.getText()));
@@ -52,7 +60,7 @@ public class CabinetController {
                 int width = exHand.checkWidth(Integer.parseInt(inWidth.getText()));
                 int depth = exHand.checkDepth(Integer.parseInt(inDepth.getText()));
                 int weight = exHand.checkWeight(Integer.parseInt(inWeight.getText()));
-                Cabinet cabinet = new Cabinet(name, manufacturer, price, height, width, depth, weight);
+                Cabinet cabinet = new Cabinet(name, manufacturer, price, mbFormFactor, height, width, depth, weight);
                 App.saveToCollection(cabinet);
                 App.closeWindow();
             } catch (IllegalWeightException | IllegalDimensionsException | IllegalPriceException e) {

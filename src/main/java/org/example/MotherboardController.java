@@ -16,6 +16,9 @@ public class MotherboardController {
     ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
+    private TextField inMbFormFactor;
+
+    @FXML
     private TextField inName;
 
     @FXML
@@ -47,11 +50,15 @@ public class MotherboardController {
     @FXML
     void registerMotherboard(ActionEvent event) throws IOException {
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
-            String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSockets.getText(), ramType = inRamType.getText();
+            String name = inName.getText(),
+                    manufacturer = inManufac.getText(),
+                    socket = inSockets.getText(),
+                    ramType = inRamType.getText(),
+                    mbFormFactor = inMbFormFactor.getText();
             try {
                 double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
                 double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
-                Motherboard motherboard = new Motherboard(name, manufacturer, price, socket, ramType, wattsRequired);
+                Motherboard motherboard = new Motherboard(name, manufacturer, wattsRequired, price, mbFormFactor, socket, ramType);
                 App.saveToCollection(motherboard);
                 App.closeWindow();
             } catch (IllegalPriceException | IllegalWattsException e){
