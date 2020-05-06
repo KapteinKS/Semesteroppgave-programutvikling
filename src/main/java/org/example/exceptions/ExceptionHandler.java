@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 import java.io.IOException;
 

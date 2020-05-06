@@ -1,4 +1,4 @@
-package org.example.Deeper;
+package org.example.logicAndClasses;
 
 public class Customer {
     private String navn;

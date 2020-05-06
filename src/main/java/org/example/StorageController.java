@@ -7,9 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import org.example.Exceptions.ExceptionHandler;
-import org.example.Exceptions.IllegalCapacityException;
-import org.example.Exceptions.IllegalPriceException;
+import org.example.exceptions.ExceptionHandler;
+import org.example.exceptions.IllegalCapacityException;
+import org.example.exceptions.IllegalPriceException;
 import org.example.components.Storage;
 
 import java.io.IOException;

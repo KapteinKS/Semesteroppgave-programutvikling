@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 public class InvalidCustomerException extends Exception {
     public InvalidCustomerException (String msg){

@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 public class IllegalDimensionsException extends Exception {
     public IllegalDimensionsException(String msg){

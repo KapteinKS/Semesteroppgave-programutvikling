@@ -1,7 +1,6 @@
-package org.example.Deeper;
+package org.example.logicAndClasses;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 
 public class CustomerCollection {

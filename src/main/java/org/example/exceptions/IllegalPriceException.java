@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 public class IllegalPriceException extends Exception {
     public IllegalPriceException(String msg){

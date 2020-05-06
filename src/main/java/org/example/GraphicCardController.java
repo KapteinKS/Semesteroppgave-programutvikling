@@ -4,9 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.Exceptions.ExceptionHandler;
-import org.example.Exceptions.IllegalPriceException;
-import org.example.Exceptions.IllegalRAMException;
+import org.example.exceptions.ExceptionHandler;
+import org.example.exceptions.IllegalPriceException;
+import org.example.exceptions.IllegalRAMException;
 import org.example.components.GraphicCard;
 
 import java.io.IOException;

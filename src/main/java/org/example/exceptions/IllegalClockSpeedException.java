@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 public class IllegalClockSpeedException extends Exception {
     public IllegalClockSpeedException(String msg){

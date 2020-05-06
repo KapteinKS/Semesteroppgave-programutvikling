@@ -4,10 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.Exceptions.ExceptionHandler;
-import org.example.Exceptions.IllegalPriceException;
-import org.example.Exceptions.IllegalVoltageException;
-import org.example.Exceptions.IllegalWattsException;
+import org.example.exceptions.ExceptionHandler;
+import org.example.exceptions.IllegalPriceException;
+import org.example.exceptions.IllegalVoltageException;
+import org.example.exceptions.IllegalWattsException;
 import org.example.components.PowerSupply;
 
 import java.io.IOException;

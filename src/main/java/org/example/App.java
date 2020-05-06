@@ -1,18 +1,16 @@
 package org.example;
 
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.example.Deeper.ComponentCollection;
-import org.example.Deeper.Initializer;
+import org.example.logicAndClasses.ComponentCollection;
+import org.example.logicAndClasses.Initializer;
 import org.example.components.*;
 
 import java.io.IOException;
-import java.util.Collection;
 
 /**
  * JavaFX App

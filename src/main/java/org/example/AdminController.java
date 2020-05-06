@@ -6,9 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.example.Deeper.ComponentCollection;
-import org.example.Exceptions.ExceptionHandler;
-import org.example.Exceptions.IllegalPriceException;
+import org.example.logicAndClasses.ComponentCollection;
+import org.example.exceptions.ExceptionHandler;
 import org.example.components.*;
 
 import java.io.IOException;

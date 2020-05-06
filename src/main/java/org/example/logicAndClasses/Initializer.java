@@ -1,6 +1,4 @@
-package org.example.Deeper;
-
-import javafx.collections.ObservableArray;
+package org.example.logicAndClasses;
 
 public class Initializer {
 

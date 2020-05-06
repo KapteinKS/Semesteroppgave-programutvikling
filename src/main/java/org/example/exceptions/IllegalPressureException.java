@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 public class IllegalPressureException extends Exception {
     public IllegalPressureException (String msg){

@@ -4,12 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.Exceptions.ExceptionHandler;
-import org.example.Exceptions.IllegalClockSpeedException;
-import org.example.Exceptions.IllegalPriceException;
-import org.example.Exceptions.IllegalThreadsException;
+import org.example.exceptions.ExceptionHandler;
+import org.example.exceptions.IllegalClockSpeedException;
+import org.example.exceptions.IllegalPriceException;
+import org.example.exceptions.IllegalThreadsException;
 import org.example.components.CPU;
-import org.example.components.Cabinet;
 
 import java.io.IOException;
 
