@@ -66,16 +66,15 @@ public class CpuController {
 
                 CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed, socket);
                 App.saveToCollection(cpu);
+
                 App.closeWindow();
+
             } catch (IllegalClockSpeedException | IllegalPriceException | IllegalThreadsException e) {
                 System.err.println(e.getMessage());
             } catch (NumberFormatException n) {
                 System.err.println("Tallfelt kan ikke være tomme");
 
             }
-
-            App.changeSecondaryWindow("componentCreator", 460, 360, "Component Creator");
-
         }
     }
 }

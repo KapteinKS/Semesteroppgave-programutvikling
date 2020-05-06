@@ -56,7 +56,9 @@ public class PowersupplyController {
                 int voltageOut = exHan.checkVoltageout(Integer.parseInt(inVoltageOut.getText()));
                 PowerSupply powerSupply = new PowerSupply(name, manufacturer, price, energy, voltageIn, voltageOut);
                 App.saveToCollection(powerSupply);
+
                 App.closeWindow();
+
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             } catch (IllegalPriceException | IllegalWattsException | IllegalVoltageException e){

@@ -8,6 +8,7 @@ import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalRAMException;
 import org.example.componentClasses.GraphicCard;
+import org.example.exceptions.IllegalWattsException;
 
 import java.io.IOException;
 
@@ -56,16 +57,15 @@ public class GraphicCardController {
                     clockspeed = inHertz.getText();
             try {
 
-                //This is missing exHan
-                double wattsRequired = Double.parseDouble(inWatts.getText());
-
-
+                double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
                 int ram = exHan.checkRAM(Integer.parseInt(inRAM.getText()));
                 GraphicCard graphicCard = new GraphicCard(name, manufacturer, wattsRequired, price, ram, ramType, clockspeed);
                 App.saveToCollection(graphicCard);
+
                 App.closeWindow();
-            } catch(IllegalRAMException | IllegalPriceException e){
+
+            } catch(IllegalRAMException | IllegalPriceException | IllegalWattsException e){
                 System.err.println(e.getMessage());
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");

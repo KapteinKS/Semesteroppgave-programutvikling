@@ -62,7 +62,9 @@ public class CabinetController {
                 int weight = exHand.checkWeight(Integer.parseInt(inWeight.getText()));
                 Cabinet cabinet = new Cabinet(name, manufacturer, price, mbFormFactor, height, width, depth, weight);
                 App.saveToCollection(cabinet);
+
                 App.closeWindow();
+
             } catch (IllegalWeightException | IllegalDimensionsException | IllegalPriceException e) {
                 System.err.println(e.getMessage());
             } catch (NumberFormatException n) {

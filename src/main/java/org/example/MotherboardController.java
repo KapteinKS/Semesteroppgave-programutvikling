@@ -60,7 +60,9 @@ public class MotherboardController {
                 double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 Motherboard motherboard = new Motherboard(name, manufacturer, wattsRequired, price, mbFormFactor, socket, ramType);
                 App.saveToCollection(motherboard);
+
                 App.closeWindow();
+                
             } catch (IllegalPriceException | IllegalWattsException e){
                 System.err.println(e.getMessage());
             } catch (NumberFormatException n){

@@ -84,7 +84,9 @@ public class StorageController implements Initializable {
                 int capacity = exHan.checkStorage(Integer.parseInt(inCapacity.getText()), capacityType);
                 Storage storage = new Storage(name, manufacturer, price, type, capacity, capacityType);
                 App.saveToCollection(storage);
+
                 App.closeWindow();
+
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             } catch (IllegalPriceException | IllegalCapacityException e) {
