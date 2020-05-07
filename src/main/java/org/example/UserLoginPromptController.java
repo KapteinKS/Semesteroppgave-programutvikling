@@ -35,8 +35,6 @@ public class UserLoginPromptController {
 		}
 
 		if (weGood){
-			txtEmail.setStyle("");
-			txtPassword.setStyle("");
 			App.setCurrentUserEmail(txtEmail.getText());
 			App.setRoot("user", 700, 640, "End User");
 		}

@@ -85,6 +85,8 @@ public class App extends Application {
 
         //ReadCustomerFromFile.open(customerRegistry, Paths.get("customers.txt"));
         customerRegistry.addCustomer(new Customer("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
+        customerRegistry.addCustomer(new Customer("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
+
         //WriteCustomerToFile.save(customerRegistry, Paths.get("customers.txt"));
 
         currentUserEmail = "admin@root.com";
