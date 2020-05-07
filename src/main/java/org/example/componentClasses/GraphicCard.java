@@ -6,9 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class GraphicCard extends Component implements Serializable {
-    private SimpleIntegerProperty ram;
-    private SimpleStringProperty ramType;
-    private SimpleStringProperty clockSpeed;
+    private transient SimpleIntegerProperty ram;
+    private transient SimpleStringProperty ramType;
+    private transient SimpleStringProperty clockSpeed;
 
     public GraphicCard(String name, String manufacturer, double wattsRequired, double price, int ram, String ramType, String clockSpeed) {
         super("GraphicCard",name, manufacturer, wattsRequired, price);

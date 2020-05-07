@@ -6,9 +6,9 @@ import javafx.beans.property.SimpleIntegerProperty;
         import java.io.Serializable;
 
 public class Storage extends Component implements Serializable {
-    private SimpleStringProperty Storagetype;
-    private SimpleIntegerProperty capacity;
-    private SimpleStringProperty capacityType;
+    private transient SimpleStringProperty Storagetype;
+    private transient SimpleIntegerProperty capacity;
+    private transient SimpleStringProperty capacityType;
 
     public Storage(String name, String manufacturer, double price, String Storagetype, int capacity, String capacityType) {
         super("Storage", name, manufacturer, 0, price);

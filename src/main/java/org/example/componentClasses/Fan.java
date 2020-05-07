@@ -6,9 +6,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import java.io.Serializable;
 
 public class Fan extends Component implements Serializable {
-    private SimpleIntegerProperty diameter;
-    private SimpleDoubleProperty airPressure;
-    private SimpleIntegerProperty maxNoiseVolume;
+    private transient SimpleIntegerProperty diameter;
+    private transient SimpleDoubleProperty airPressure;
+    private transient SimpleIntegerProperty maxNoiseVolume;
 
     public Fan(String name, String manufacturer, double price, int diameter, double airPressure, int maxNoiseVolume) {
         super("Fan", name, manufacturer, 0, price);

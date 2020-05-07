@@ -6,9 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class Mouse extends Component implements Serializable {
-    private SimpleIntegerProperty mouseDPI; //sier seg selv
-    private SimpleStringProperty mouseConnectionType; // ex. USB-A, USB-C, wireless...
-    private SimpleIntegerProperty mouseProgrammableButtons; //How many extra buttons apart from the regular left-, right and middleclick
+    private transient SimpleIntegerProperty mouseDPI; //sier seg selv
+    private transient SimpleStringProperty mouseConnectionType; // ex. USB-A, USB-C, wireless...
+    private transient SimpleIntegerProperty mouseProgrammableButtons; //How many extra buttons apart from the regular left-, right and middleclick
 
     public Mouse(String name, String manufacturer, double wattsRequired, double price, int mouseDPI, String mouseConnectionType, int mouseProgrammableButtons) {
         super("Mouse", name, manufacturer, wattsRequired, price);

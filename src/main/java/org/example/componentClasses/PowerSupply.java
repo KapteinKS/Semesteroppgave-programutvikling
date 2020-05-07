@@ -4,8 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import java.io.Serializable;
 
 public class PowerSupply extends Component implements Serializable {
-    private SimpleIntegerProperty inVoltage;
-    private SimpleIntegerProperty outVoltage;
+    private transient SimpleIntegerProperty inVoltage;
+    private transient SimpleIntegerProperty outVoltage;
 
     public PowerSupply(String name, String manufacturer, double wattsRequired, double price, int inVoltage, int outVoltage) {
         super("PowerSupply", name, manufacturer, wattsRequired, price);

@@ -7,10 +7,10 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class Monitor extends Component implements Serializable {
-    private SimpleDoubleProperty monitorSize; //in inches
-    private SimpleIntegerProperty monitorRefreshRate; //in Hz
-    private SimpleIntegerProperty monitorResponseTime; //in ms
-    private SimpleStringProperty monitorScreenType; // ex. LED, OLED, LCD
+    private transient SimpleDoubleProperty monitorSize; //in inches
+    private transient SimpleIntegerProperty monitorRefreshRate; //in Hz
+    private transient SimpleIntegerProperty monitorResponseTime; //in ms
+    private transient SimpleStringProperty monitorScreenType; // ex. LED, OLED, LCD
 
 
     public Monitor(String name, String manufacturer, double wattsRequired, double price, double monitorSize, int monitorRefreshRate, int monitorResponseTime, String monitorScreenType) {

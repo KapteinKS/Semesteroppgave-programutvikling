@@ -1,14 +1,13 @@
 package org.example.componentClasses;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
 public class Keyboard extends Component implements Serializable {
-    private SimpleStringProperty keyboardSwitches; //membrane/mechanical and which type of mechanical switches
-    private SimpleStringProperty keyboardLanguage; // ex. Nordic, US, UK
-    private SimpleStringProperty keyboardConnectionType;  // ex. USB-A, USB-C, wireless
+    private transient SimpleStringProperty keyboardSwitches; //membrane/mechanical and which type of mechanical switches
+    private transient SimpleStringProperty keyboardLanguage; // ex. Nordic, US, UK
+    private transient SimpleStringProperty keyboardConnectionType;  // ex. USB-A, USB-C, wireless
 
     public Keyboard(String name, String manufacturer, double wattsRequired, double price, String keyboardSwitches, String keyboardLanguage, String keyboardConnectionType) {
         super("Keyboard", name, manufacturer, wattsRequired, price);

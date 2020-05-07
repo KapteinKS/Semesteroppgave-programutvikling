@@ -5,9 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class RAM extends Component implements Serializable {
-    private SimpleStringProperty size;
-    private SimpleStringProperty memoryType;
-    private SimpleStringProperty amountOfRAMPieces;
+    private transient SimpleStringProperty size;
+    private transient SimpleStringProperty memoryType;
+    private transient SimpleStringProperty amountOfRAMPieces;
 
     public RAM(String name, String manufacturer, double price, String size, String memoryType, int amountOfRAMPieces) {
         super("RAM",name, manufacturer, 0, price);

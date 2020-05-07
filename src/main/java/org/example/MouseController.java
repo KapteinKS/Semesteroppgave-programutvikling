@@ -44,7 +44,7 @@ public class MouseController {
 
     @FXML
     void registerMouse(ActionEvent event) {
-        if (!inName.getText().isEmpty() && inManufac.getText().isEmpty()){
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()){
             String name = inName.getText(), manufacturer = inManufac.getText(), connectionType = inConnection.getText();
 
             try {

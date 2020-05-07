@@ -5,7 +5,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="265.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MouseController">
    <children>
       <Label layoutX="20.0" layoutY="20.0" text="Manufacturer" />
@@ -14,13 +13,13 @@
       <TextField fx:id="inName" layoutX="176.0" layoutY="46.0" />
       <Label layoutX="20.0" layoutY="80.0" text="Price" />
       <TextField fx:id="inPrice" layoutX="176.0" layoutY="76.0" />
-      <Label layoutX="20.0" layoutY="110.0" text="DPI" />
+      <Label layoutX="20.0" layoutY="110.0" text="Max DPI" />
       <TextField fx:id="inDPI" layoutX="176.0" layoutY="106.0" />
       <Label layoutX="20.0" layoutY="140.0" text="Connection Type" />
       <TextField fx:id="inConnection" layoutX="176.0" layoutY="136.0" />
       <Label layoutX="20.0" layoutY="170.0" text="Programmable Buttons" />
       <TextField fx:id="inProgrammable" layoutX="176.0" layoutY="166.0" />
-      <Button fx:id="regButton" layoutX="85.0" layoutY="210.0" mnemonicParsing="false" onAction="#registerMouse" text="Button" />
-      <Button fx:id="cancelButton" layoutX="200.0" layoutY="210.0" mnemonicParsing="false" onAction="#cancel" text="Button" />
+      <Button fx:id="regButton" layoutX="85.0" layoutY="210.0" mnemonicParsing="false" onAction="#registerMouse" text="Register" />
+      <Button fx:id="cancelButton" layoutX="200.0" layoutY="210.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
    </children>
 </AnchorPane>

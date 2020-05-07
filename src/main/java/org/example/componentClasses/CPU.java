@@ -18,9 +18,9 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class CPU extends Component implements Serializable {
-	private SimpleIntegerProperty threads;
-	private SimpleDoubleProperty clockSpeed;
-	private SimpleStringProperty socket;
+	private transient SimpleIntegerProperty threads;
+	private transient SimpleDoubleProperty clockSpeed;
+	private transient SimpleStringProperty socket;
 
 	public CPU(String name, String manufacturer, double wattsRequired, double price, int threads, double clockSpeed, String socket){
 		super("CPU",name,manufacturer,wattsRequired,price);

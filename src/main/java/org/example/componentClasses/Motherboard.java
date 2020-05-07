@@ -5,11 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class Motherboard extends Component implements Serializable {
-	private SimpleStringProperty mbFormFactor;
-	private SimpleStringProperty socket;
-	private SimpleStringProperty ramType;
-
-	public Motherboard() {}
+	private transient SimpleStringProperty mbFormFactor;
+	private transient SimpleStringProperty socket;
+	private transient SimpleStringProperty ramType;
 
 	public Motherboard(String name, String manufacturer, double wattsRequired, double price, String mbFormFactor, String socket, String ramType) {
 		super("Motherboard", name, manufacturer,wattsRequired, price);
