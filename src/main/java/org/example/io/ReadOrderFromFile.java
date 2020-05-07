@@ -20,7 +20,7 @@ public class ReadOrderFromFile extends Reader{
             ioe.printStackTrace();
         }
         if (orderString.equals("")){
-            throw new IOException("Fil er tom.")
+            throw new IOException("Fil er tom.");
         }else{
             return orderString;
         }
