@@ -3,6 +3,9 @@ package org.example.componentClasses;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Mouse extends Component implements Serializable {
@@ -50,5 +53,34 @@ public class Mouse extends Component implements Serializable {
     public String toString() {
         return "Mouse" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getMouseConnectionType() + "," + getMouseDPI() + "," + getMouseProgrammableButtons();
+    }
+
+    public void writeObject(ObjectOutputStream s) throws IOException {
+        s.writeUTF(getName());
+        s.writeUTF(getManufacturer());
+        s.writeDouble(getWattsRequired());
+        s.writeDouble(getPrice());
+        s.writeInt(mouseDPI.getValue());
+        s.writeUTF(mouseConnectionType.getValue());
+        s.writeInt(mouseProgrammableButtons.getValue());
+    }
+
+    public void readObject(ObjectInputStream s) throws IOException{
+        String name = s.readUTF();
+        String manufacturer = s.readUTF();
+        double wattsRequired = s.readDouble();
+        double price = s.readDouble();
+        int mouseDPI = s.readInt();
+        String mouseConnectionType = s.readUTF();
+        int mouseProgrammableButtons = s.readInt();
+
+        setType("Mouse");
+        setName(name);
+        setManufacturer(manufacturer);
+        setWattsRequired(wattsRequired);
+        setPrice(price);
+        this.mouseDPI = new SimpleIntegerProperty(mouseDPI);
+        this.mouseConnectionType = new SimpleStringProperty(mouseConnectionType);
+        this.mouseProgrammableButtons = new SimpleIntegerProperty(mouseProgrammableButtons);
     }
 }
