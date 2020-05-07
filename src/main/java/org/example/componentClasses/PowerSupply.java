@@ -73,8 +73,8 @@ public class PowerSupply extends Component implements Serializable {
         setManufacturer(manufacturer);
         setWattsRequired(wattsRequired);
         setPrice(price);
-        this.inVoltage = new SimpleIntegerProperty(getInVoltage());
-        this.outVoltage = new SimpleIntegerProperty(getOutVoltage());
+        this.inVoltage = new SimpleIntegerProperty(inVoltage);
+        this.outVoltage = new SimpleIntegerProperty(outVoltage);
     }
 
 }
