@@ -3,6 +3,7 @@ package org.example.logicAndClasses;
 import org.example.io.ReadComponentsFromFile;
 import org.example.io.ReadCustomerFromFile;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -29,8 +30,10 @@ public class Initializer {
 
 	}
 
-	public ComponentCollection readComponents(){
-		return null;	//must return a list
+	public static ComponentCollection readComponents() throws IOException, ClassNotFoundException {
+		ReadComponentsFromFile rff = new ReadComponentsFromFile();
+
+		return rff.ReadComponentsFromFile();	//must return a list
 	}
 	public CustomerCollection readCustomers(){
 		return null;	//must return a list

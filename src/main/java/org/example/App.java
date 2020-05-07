@@ -28,9 +28,11 @@ public class App extends Application {
     private static ComponentCollection componentCollection = new ComponentCollection();
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, ClassNotFoundException {
 
         //*  SOME COMPONENTS  *//
+
+        /*
         Cabinet cab1 = new Cabinet("BigBoyCab 3010","Corsair",900.00,"ATX",400,150,600,10.00);
         Cabinet cab2 = new Cabinet("Sleek 11","Asus",660.00,"M-ATX",300,150,300,4.25);
         GraphicCard gpu1 = new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6",1650);
@@ -71,7 +73,9 @@ public class App extends Application {
         componentCollection.add(stg1);
         componentCollection.add(stg2);
 
-        //**//
+         */
+
+        componentCollection = Initializer.readComponents();
 
         App.stage = stage;
         Initializer.initialize();

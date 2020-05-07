@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Cabinet extends Component implements Serializable {
@@ -75,5 +77,13 @@ public class Cabinet extends Component implements Serializable {
     public String toString(){
         return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getHeight() + "," + getWidth() + "," + getDepth() + "," + getWeight();
+    }
+
+    public void writeObject(ObjectOutputStream s) throws IOException{
+        s.writeUTF(mbFormFactor.getValue());
+        s.writeInt(height.getValue());
+        s.writeInt(width.getValue());
+        s.writeInt(depth.getValue());
+        s.writeDouble(weight.getValue());
     }
 }

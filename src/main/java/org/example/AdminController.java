@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.example.io.WriteComponentsToFile;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
 import org.example.componentClasses.*;
@@ -121,8 +122,9 @@ public class AdminController implements Initializable {
 	}
 
 	@FXML
-	void saveOrder(ActionEvent event) {
-
+	void saveOrder(ActionEvent event) throws IOException {
+		WriteComponentsToFile wtf = new WriteComponentsToFile();
+		wtf.save(collection.getArrayList());
 	}
 
 	@FXML
