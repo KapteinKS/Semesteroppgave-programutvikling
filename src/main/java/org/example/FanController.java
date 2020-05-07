@@ -61,6 +61,8 @@ public class FanController {
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 

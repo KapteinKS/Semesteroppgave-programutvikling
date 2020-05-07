@@ -49,7 +49,8 @@ public class MotherboardController {
 
     @FXML
     void registerMotherboard(ActionEvent event) throws IOException {
-        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inSockets.getText().isEmpty()
+            && !inMbFormFactor.getText().isEmpty() && !inRamType.getText().isEmpty()) {
             String name = inName.getText(),
                     manufacturer = inManufac.getText(),
                     socket = inSockets.getText(),
@@ -68,6 +69,8 @@ public class MotherboardController {
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 }

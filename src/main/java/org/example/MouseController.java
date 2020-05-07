@@ -44,7 +44,7 @@ public class MouseController {
 
     @FXML
     void registerMouse(ActionEvent event) {
-        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()){
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inConnection.getText().isEmpty()){
             String name = inName.getText(), manufacturer = inManufac.getText(), connectionType = inConnection.getText();
 
             try {
@@ -62,6 +62,8 @@ public class MouseController {
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 }

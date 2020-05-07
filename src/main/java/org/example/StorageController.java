@@ -55,9 +55,11 @@ public class StorageController implements Initializable {
         final ToggleGroup CapacityGroup = new ToggleGroup();
         radioTB.setToggleGroup(CapacityGroup);
         radioGB.setToggleGroup(CapacityGroup);
+        radioGB.setSelected(true);
         final ToggleGroup TypeGroup = new ToggleGroup();
         radioHDD.setToggleGroup(TypeGroup);
         radioSSD.setToggleGroup(TypeGroup);
+        radioHDD.setSelected(true);
     }
 
     @FXML
@@ -92,6 +94,8 @@ public class StorageController implements Initializable {
             } catch (IllegalPriceException | IllegalCapacityException e) {
                 System.err.println(e.getMessage());
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
 
     }

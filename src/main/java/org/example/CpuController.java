@@ -50,8 +50,8 @@ public class CpuController {
 
     @FXML
     void registerCPU(ActionEvent event) throws IOException {
-        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
-            String name = inName.getText(), manufacturer = inManufac.getText();
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inSocket.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSocket.getText();;
 
             try {
                 //New
@@ -59,10 +59,7 @@ public class CpuController {
 
                 double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
                 int threads = exHan.checkThreads(Integer.parseInt(inThreads.getText()));
-                double clockspeed = exHan.chechClockSpeed(Double.parseDouble(inClockSpeed.getText()));
-
-                //New
-                String socket = inSocket.getText();
+                double clockspeed = exHan.checkClockSpeed(Double.parseDouble(inClockSpeed.getText()));
 
                 CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed, socket);
                 App.saveToCollection(cpu);
@@ -73,8 +70,9 @@ public class CpuController {
                 System.err.println(e.getMessage());
             } catch (NumberFormatException n) {
                 System.err.println("Tallfelt kan ikke være tomme");
-
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 }

@@ -42,11 +42,11 @@ public class KeyboardController {
 
     @FXML
     void registerKeyboard(ActionEvent event) {
-        if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
+        if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inSwitches.getText().isEmpty()
+            && !inLanguage.getText().isEmpty() && !inConnection.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText(),
             switches = inSwitches.getText(), language = inLanguage.getText(),
             connectionType = inConnection.getText();
-
 
             try {
                 Double price = exHand.priceCheck(Double.parseDouble(inPrice.getText()));
@@ -61,6 +61,8 @@ public class KeyboardController {
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 

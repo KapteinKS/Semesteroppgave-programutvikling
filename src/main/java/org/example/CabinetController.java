@@ -49,9 +49,8 @@ public class CabinetController {
     @FXML
     void registerCabinet(ActionEvent event) throws IOException {
 
-        if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
-            String name = inName.getText(),
-                    manufacturer = inManufac.getText(),
+        if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inMbFormFactor.getText().isEmpty()) {
+            String name = inName.getText(), manufacturer = inManufac.getText(),
                     mbFormFactor = inMbFormFactor.getText(); //New
 
             try {
@@ -70,6 +69,8 @@ public class CabinetController {
             } catch (NumberFormatException n) {
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 

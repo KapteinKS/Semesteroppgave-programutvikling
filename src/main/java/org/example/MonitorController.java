@@ -44,7 +44,7 @@ public class MonitorController {
 
     @FXML
     void registerMonitor(ActionEvent event) {
-        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()){
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inType.getText().isEmpty()){
             String name = inName.getText(), manufacturer = inManufac.getText(), screenType = inType.getText();
 
             try{
@@ -63,6 +63,8 @@ public class MonitorController {
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");
             }
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 

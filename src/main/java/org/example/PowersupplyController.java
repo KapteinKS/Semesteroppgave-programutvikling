@@ -65,6 +65,8 @@ public class PowersupplyController {
                 System.err.println(e.getMessage());
             }
 
+        } else {
+            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 }

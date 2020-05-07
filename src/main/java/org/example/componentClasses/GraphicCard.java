@@ -8,13 +8,13 @@ import java.io.Serializable;
 public class GraphicCard extends Component implements Serializable {
     private transient SimpleIntegerProperty ram;
     private transient SimpleStringProperty ramType;
-    private transient SimpleStringProperty clockSpeed;
+    private transient SimpleIntegerProperty clockSpeed;
 
-    public GraphicCard(String name, String manufacturer, double wattsRequired, double price, int ram, String ramType, String clockSpeed) {
+    public GraphicCard(String name, String manufacturer, double wattsRequired, double price, int ram, String ramType, int clockSpeed) {
         super("GraphicCard",name, manufacturer, wattsRequired, price);
         this.ram = new SimpleIntegerProperty(ram);
         this.ramType = new SimpleStringProperty(ramType);
-        this.clockSpeed = new SimpleStringProperty(clockSpeed);
+        this.clockSpeed = new SimpleIntegerProperty(clockSpeed);
     }
 
     public int getRam() {
@@ -33,11 +33,11 @@ public class GraphicCard extends Component implements Serializable {
         this.ramType.set(ramType);
     }
 
-    public String getClockSpeed() {
+    public int getClockSpeed() {
         return clockSpeed.getValue();
     }
 
-    public void setClockSpeed(String clockSpeed) {
+    public void setClockSpeed(int clockSpeed) {
         this.clockSpeed.set(clockSpeed);
     }
 
