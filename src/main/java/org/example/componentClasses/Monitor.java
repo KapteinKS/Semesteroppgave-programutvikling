@@ -66,34 +66,8 @@ public class Monitor extends Component implements Serializable {
         return "Monitor" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getMonitorSize() + "," + getMonitorRefreshRate() + "," + getMonitorResponseTime() + "," + getMonitorScreenType();
     }
-    /*
-    public String getType() {
-        return "Monitor";
-    }
-
-    public String getName(){
-        return super.getName();
-    }
-
-    public double getPrice() {
-        return super.getPrice();
-    }
-
-    public double getWattsRequired() {
-        return super.getWattsRequired();
-    }
-
-    public String getManufacturer(){
-        return super.getManufacturer();
-    }
-
-     */
 
     public void writeObject(ObjectOutputStream s) throws IOException{
-        /*s.writeUTF(super.getName());
-        s.writeUTF(super.getManufacturer());
-        s.writeDouble(super.getWattsRequired());
-        s.writeDouble(super.getPrice());*/
         s.defaultWriteObject();
         s.writeUTF(getType());
         s.writeDouble(monitorSize.getValue());

@@ -28,7 +28,6 @@ public class Mouse extends Component implements Serializable {
         this.mouseDPI.set(mouseDPI);
     }
 
-
     public String getMouseConnectionType() {
         return mouseConnectionType.getValue();
     }
@@ -45,30 +44,9 @@ public class Mouse extends Component implements Serializable {
         this.mouseProgrammableButtons.set(mouseProgrammableButtons);
     }
 
-    public String getInfo(){
+    public String getInfo() {
         return "Grensesnitt: " + getMouseConnectionType() + "\nDPI: " + getMouseDPI() + "\nAntall programmerbare taster: " + getMouseProgrammableButtons();
-    }/*
-
-    public String getType() {
-        return "Mouse";
     }
-    public String getName(){
-        return super.getName();
-    }
-
-    public double getPrice() {
-        return super.getPrice();
-    }
-
-    public double getWattsRequired() {
-        return super.getWattsRequired();
-    }
-
-    public String getManufacturer(){
-        return super.getManufacturer();
-    }
-
- */
 
     @Override
     public String toString() {
@@ -77,10 +55,6 @@ public class Mouse extends Component implements Serializable {
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
-        /*s.writeUTF(super.getName());
-        s.writeUTF(super.getManufacturer());
-        s.writeDouble(super.getWattsRequired());
-        s.writeDouble(super.getPrice());*/
         s.defaultWriteObject();
         s.writeUTF(getType());
         s.writeInt(mouseDPI.getValue());

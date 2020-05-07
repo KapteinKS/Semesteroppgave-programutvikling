@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.componentClasses.Cabinet;
 import org.example.exceptions.*;
+import org.example.io.WriteComponentsToFile;
 
 import java.io.IOException;
 
@@ -61,6 +62,7 @@ public class CabinetController {
                 int weight = exHand.checkWeight(Integer.parseInt(inWeight.getText()));
                 Cabinet cabinet = new Cabinet(name, manufacturer, price, mbFormFactor, height, width, depth, weight);
                 App.saveToCollection(cabinet);
+                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

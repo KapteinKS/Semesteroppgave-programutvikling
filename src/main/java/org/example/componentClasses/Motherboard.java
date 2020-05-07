@@ -25,10 +25,6 @@ public class Motherboard extends Component implements Serializable {
 		return mbFormFactor.get();
 	}
 
-	public SimpleStringProperty mbFormFactorProperty() {
-		return mbFormFactor;
-	}
-
 	public void setMbFormFactor(String mbFormFactor) {
 		this.mbFormFactor.set(mbFormFactor);
 	}
@@ -58,34 +54,8 @@ public class Motherboard extends Component implements Serializable {
 	public String getInfo(){
 		return "Socket: " + getSocket() + "\nRamtype: " + getRamType() + "\nNødvendig energi: " + getWattsRequired() + "W";
 	}
-/*
-	public String getType() {
-		return "Motherboard";
-	}
-
-	public String getName(){
-		return super.getName();
-	}
-
-	public double getPrice() {
-		return super.getPrice();
-	}
-
-	public double getWattsRequired() {
-		return super.getWattsRequired();
-	}
-
-	public String getManufacturer(){
-		return super.getManufacturer();
-	}
-
- */
 
 	private void writeObject(ObjectOutputStream s) throws IOException {
-		/*s.writeUTF(super.getName());
-		s.writeUTF(super.getManufacturer());
-		s.writeDouble(super.getWattsRequired());
-		s.writeDouble(super.getPrice());*/
 		s.defaultWriteObject();
 		s.writeUTF(getType());
 		s.writeUTF(mbFormFactor.getValue());

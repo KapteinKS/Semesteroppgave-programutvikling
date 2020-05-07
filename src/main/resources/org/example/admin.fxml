@@ -44,6 +44,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#createKeyboard" text="Tastatur" />
                   <MenuItem mnemonicParsing="false" onAction="#createMouse" text="Mus" />
                   <MenuItem mnemonicParsing="false" onAction="#createMonitor" text="Skjerm" />
+                  <MenuItem mnemonicParsing="false" onAction="#createRAM" text="RAM" />
               </items>
             </Menu>
                 <Menu mnemonicParsing="false" text="Help">

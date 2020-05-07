@@ -22,20 +22,12 @@ public class PowerSupply extends Component implements Serializable {
         return inVoltage.get();
     }
 
-    public SimpleIntegerProperty inVoltageProperty() {
-        return inVoltage;
-    }
-
     public void setInVoltage(int inVoltage) {
         this.inVoltage.set(inVoltage);
     }
 
     public int getOutVoltage() {
         return outVoltage.get();
-    }
-
-    public SimpleIntegerProperty outVoltageProperty() {
-        return outVoltage;
     }
 
     public void setOutVoltage(int outVoltage) {
@@ -47,33 +39,8 @@ public class PowerSupply extends Component implements Serializable {
         return "Energiforbruk: " + getWattsRequired() + "W \nSpenning inn: " + getInVoltage() +
                 "V \nSpenning ut: " + getOutVoltage() + "V";
     }
-   /* public String getType() {
-        return "PowerSupply";
-    }
-
-    public String getName(){
-        return super.getName();
-    }
-
-    public double getPrice() {
-        return super.getPrice();
-    }
-
-    public double getWattsRequired() {
-        return super.getWattsRequired();
-    }
-
-    public String getManufacturer(){
-        return super.getManufacturer();
-    }
-
-    */
 
     private void writeObject(ObjectOutputStream s) throws IOException {
-        /*s.writeUTF(super.getName());
-        s.writeUTF(super.getManufacturer());
-        s.writeDouble(super.getWattsRequired());
-        s.writeDouble(super.getPrice());*/
         s.defaultWriteObject();
         s.writeUTF(getType());
         s.writeInt(inVoltage.getValue());

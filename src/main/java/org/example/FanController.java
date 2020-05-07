@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.exceptions.*;
 import org.example.componentClasses.Fan;
+import org.example.io.WriteComponentsToFile;
 
 import java.io.IOException;
 
@@ -53,6 +54,7 @@ public class FanController {
                 int maxNoiseVolume = exHan.checkNoise(Integer.parseInt(inNoiseVolume.getText()));
                 Fan fan = new Fan(name, manufacturer, price, diameter, airPressure, maxNoiseVolume);
                 App.saveToCollection(fan);
+                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

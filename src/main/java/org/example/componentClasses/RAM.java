@@ -1,5 +1,6 @@
 package org.example.componentClasses;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.IOException;
@@ -8,26 +9,22 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class RAM extends Component implements Serializable {
-    private transient SimpleStringProperty size;
+    private transient SimpleIntegerProperty size;
     private transient SimpleStringProperty memoryType;
-    private transient SimpleStringProperty amountOfRAMPieces;
+    private transient SimpleIntegerProperty amountOfRAMPieces;
 
-    public RAM(String name, String manufacturer, double price, String size, String memoryType, int amountOfRAMPieces) {
+    public RAM(String name, String manufacturer, double price, int size, String memoryType, int amountOfRAMPieces) {
         super("RAM",name, manufacturer, 0, price);
-        this.size = new SimpleStringProperty(size);
+        this.size = new SimpleIntegerProperty(size);
         this.memoryType = new SimpleStringProperty(memoryType);
-        this.amountOfRAMPieces = new SimpleStringProperty(""+amountOfRAMPieces);
+        this.amountOfRAMPieces = new SimpleIntegerProperty(amountOfRAMPieces);
     }
 
-    public String getSize() {
+    public int getSize() {
         return size.getValue();
     }
 
-    public SimpleStringProperty sizeProperty() {
-        return size;
-    }
-
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size.set(size);
     }
 
@@ -35,51 +32,21 @@ public class RAM extends Component implements Serializable {
         return memoryType.getValue();
     }
 
-    public String memoryTypeProperty() {
-        return memoryType.getValue();
-    }
-
     public void setMemoryType(String memoryType) {
         this.memoryType.set(memoryType);
     }
 
-    public String getAmountOfRAMPieces() {
+    public int getAmountOfRAMPieces() {
         return amountOfRAMPieces.get();
     }
 
-    public String amountOfRAMPiecesProperty() {
-        return amountOfRAMPieces.getValue();
-    }
-
-    public void setAmountOfRAMPieces(String amountOfRAMPieces) {
+    public void setAmountOfRAMPieces(int amountOfRAMPieces) {
         this.amountOfRAMPieces.set(amountOfRAMPieces);
     }
 
     public String getInfo(){
-        return "Minne: " + getSize() + "GB " + getMemoryType();
+        return "Minne: " + getSize() + " GB " + getMemoryType() +"\nBrikker: " + getAmountOfRAMPieces() + " x " + getSize()/getAmountOfRAMPieces() + " GB";
     }
-
-    /*public String getType() {
-        return "RAM";
-    }
-
-    public String getName(){
-        return super.getName();
-    }
-
-    public double getPrice() {
-        return super.getPrice();
-    }
-
-    public double getWattsRequired() {
-        return super.getWattsRequired();
-    }
-
-    public String getManufacturer(){
-        return super.getManufacturer();
-    }
-
-     */
 
     @Override
     public String toString(){
@@ -88,22 +55,18 @@ public class RAM extends Component implements Serializable {
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
-        /*s.writeUTF(super.getName());
-        s.writeUTF(super.getManufacturer());
-        s.writeDouble(super.getWattsRequired());
-        s.writeDouble(super.getPrice());*/
         s.defaultWriteObject();
         s.writeUTF(getType());
-        s.writeUTF(size.getValue());
+        s.writeInt(size.getValue());
         s.writeUTF(memoryType.getValue());
-        s.writeUTF(amountOfRAMPieces.getValue());
+        s.writeInt(amountOfRAMPieces.getValue());
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
         super.type = new SimpleStringProperty(s.readUTF());
-        this.size = new SimpleStringProperty(s.readUTF());
+        this.size = new SimpleIntegerProperty(s.readInt());
         this.memoryType = new SimpleStringProperty(s.readUTF());
-        this.amountOfRAMPieces = new SimpleStringProperty(s.readUTF());
+        this.amountOfRAMPieces = new SimpleIntegerProperty(s.readInt());
     }
 }

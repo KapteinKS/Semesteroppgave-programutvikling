@@ -4,15 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.componentClasses.Keyboard;
+import org.example.componentClasses.RAM;
 import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
+import org.example.exceptions.IllegalRAMException;
 import org.example.io.WriteComponentsToFile;
 
 import java.io.IOException;
 
-public class KeyboardController {
-    private ExceptionHandler exHand = new ExceptionHandler();
+public class RamController {
+    ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
     private TextField inManufac;
@@ -24,13 +25,13 @@ public class KeyboardController {
     private TextField inPrice;
 
     @FXML
-    private TextField inSwitches;
+    private TextField inSize;
 
     @FXML
-    private TextField inLanguage;
+    private TextField inType;
 
     @FXML
-    private TextField inConnection;
+    private TextField inAmount;
 
     @FXML
     private Button regButton;
@@ -39,28 +40,27 @@ public class KeyboardController {
     private Button cancelButton;
 
     @FXML
-    void cancel(ActionEvent event) {
+    void cancelRegistration(ActionEvent event) {
         App.closeWindow();
     }
 
     @FXML
-    void registerKeyboard(ActionEvent event) throws IOException {
-        if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inSwitches.getText().isEmpty()
-            && !inLanguage.getText().isEmpty() && !inConnection.getText().isEmpty()) {
-            String name = inName.getText(), manufacturer = inManufac.getText(),
-            switches = inSwitches.getText(), language = inLanguage.getText(),
-            connectionType = inConnection.getText();
+    void registerRAM(ActionEvent event) throws IOException {
+        if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inType.getText().isEmpty()){
+            String name = inName.getText(), manufacturer = inManufac.getText(), type = inType.getText();
 
             try {
-                Double price = exHand.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                int size = exHan.checkRAM(Integer.parseInt(inSize.getText()));
+                int amount = exHan.checkRAMPieces(Integer.parseInt(inAmount.getText()));
 
-                Keyboard keyboard = new Keyboard(name, manufacturer, 0, price, switches, language, connectionType);
+                RAM ram = new RAM(name, manufacturer, price, size, type, amount);
 
-                App.saveToCollection(keyboard);
+                App.saveToCollection(ram);
                 WriteComponentsToFile.save(App.getList2().getArrayList());
                 App.closeWindow();
 
-            } catch (IllegalPriceException e){
+            } catch (IllegalRAMException | IllegalPriceException e){
                 System.err.println(e.getMessage());
             } catch (NumberFormatException n){
                 System.err.println("Tallfelt kan ikke være tomme");

@@ -164,6 +164,13 @@ public class ExceptionHandler {
         return buttons;
     }
 
+    public int checkRAMPieces(int pieces) throws IllegalRAMException{
+        if(pieces <= 0){
+            throw new IllegalRAMException("Antall brikker må være større enn 0");
+        }
+        return pieces;
+    }
+
     public static class DoubleStringConverter extends javafx.util.converter.DoubleStringConverter {
         private boolean conversionSuccessful;
 

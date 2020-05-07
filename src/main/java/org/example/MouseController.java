@@ -9,6 +9,9 @@ import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalButtonsException;
 import org.example.exceptions.IllegalDPIException;
 import org.example.exceptions.IllegalPriceException;
+import org.example.io.WriteComponentsToFile;
+
+import java.io.IOException;
 
 public class MouseController {
     private ExceptionHandler exHand = new ExceptionHandler();
@@ -43,7 +46,7 @@ public class MouseController {
     }
 
     @FXML
-    void registerMouse(ActionEvent event) {
+    void registerMouse(ActionEvent event) throws IOException {
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inConnection.getText().isEmpty()){
             String name = inName.getText(), manufacturer = inManufac.getText(), connectionType = inConnection.getText();
 
@@ -55,6 +58,7 @@ public class MouseController {
                 Mouse mouse = new Mouse(name, manufacturer, 0, price, dpi, connectionType, programmableButtons);
 
                 App.saveToCollection(mouse);
+                WriteComponentsToFile.save(App.getList2().getArrayList());
                 App.closeWindow();
 
             } catch (IllegalPriceException | IllegalDPIException | IllegalButtonsException e){

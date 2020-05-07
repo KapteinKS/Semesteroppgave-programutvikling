@@ -8,6 +8,7 @@ import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalWattsException;
 import org.example.componentClasses.Motherboard;
+import org.example.io.WriteComponentsToFile;
 
 import java.io.IOException;
 
@@ -61,6 +62,7 @@ public class MotherboardController {
                 double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 Motherboard motherboard = new Motherboard(name, manufacturer, wattsRequired, price, mbFormFactor, socket, ramType);
                 App.saveToCollection(motherboard);
+                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
                 

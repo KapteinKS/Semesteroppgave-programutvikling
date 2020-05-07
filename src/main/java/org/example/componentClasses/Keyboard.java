@@ -75,10 +75,6 @@ public class Keyboard extends Component implements Serializable {
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
-        /*s.writeUTF(super.getName());
-        s.writeUTF(super.getManufacturer());
-        s.writeDouble(super.getWattsRequired());
-        s.writeDouble(super.getPrice());*/
         s.defaultWriteObject();
         s.writeUTF(getType());
         s.writeUTF(keyboardSwitches.getValue());

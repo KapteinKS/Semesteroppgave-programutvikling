@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.exceptions.*;
 import org.example.componentClasses.GraphicCard;
+import org.example.io.WriteComponentsToFile;
 
 import java.io.IOException;
 
@@ -59,6 +60,7 @@ public class GraphicCardController {
                 double clockspeed = exHan.checkClockSpeed(Double.parseDouble(inHertz.getText()));
                 GraphicCard graphicCard = new GraphicCard(name, manufacturer, wattsRequired, price, ram, ramType, clockspeed);
                 App.saveToCollection(graphicCard);
+                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

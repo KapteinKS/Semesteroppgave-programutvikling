@@ -1,8 +1,7 @@
 package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
-        import javafx.beans.property.SimpleStringProperty;
-
+import javafx.beans.property.SimpleStringProperty;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -24,20 +23,12 @@ public class Storage extends Component implements Serializable {
         return storageType.get();
     }
 
-    public SimpleStringProperty storagetypeProperty() {
-        return storageType;
-    }
-
     public void setStoragetype(String storagetype) {
         this.storageType.set(storagetype);
     }
 
     public int getCapacity() {
         return capacity.get();
-    }
-
-    public SimpleIntegerProperty capacityProperty() {
-        return capacity;
     }
 
     public void setCapacity(int capacity) {
@@ -48,10 +39,6 @@ public class Storage extends Component implements Serializable {
         return capacityType.get();
     }
 
-    public SimpleStringProperty capacityTypeProperty() {
-        return capacityType;
-    }
-
     public void setCapacityType(String capacityType) {
         this.capacityType.set(capacityType);
     }
@@ -59,33 +46,8 @@ public class Storage extends Component implements Serializable {
     public String getInfo(){
         return "Lagringstype: " + getStoragetype() + "\nKapasitet: " + getCapacity() + getCapacityType();
     }
-    /*public String getType() {
-        return "Storage";
-    }
-
-    public String getName(){
-        return super.getName();
-    }
-
-    public double getPrice() {
-        return super.getPrice();
-    }
-
-    public double getWattsRequired() {
-        return super.getWattsRequired();
-    }
-
-    public String getManufacturer(){
-        return super.getManufacturer();
-    }
-
-     */
 
     private void writeObject(ObjectOutputStream s) throws IOException {
-        /*s.writeUTF(super.getName());
-        s.writeUTF(super.getManufacturer());
-        s.writeDouble(super.getWattsRequired());
-        s.writeDouble(super.getPrice());*/
         s.defaultWriteObject();
         s.writeUTF(getType());
         s.writeUTF(storageType.getValue());

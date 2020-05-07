@@ -112,6 +112,11 @@ public class AdminController implements Initializable {
 	}
 
 	@FXML
+	void createRAM(ActionEvent event) throws IOException {
+		App.newWindow("ram", "Register RAM");
+	}
+
+	@FXML
 	void loadOrder(ActionEvent event) {
 
 	}

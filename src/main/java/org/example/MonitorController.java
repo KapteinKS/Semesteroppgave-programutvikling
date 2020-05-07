@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.componentClasses.Monitor;
 import org.example.exceptions.*;
+import org.example.io.WriteComponentsToFile;
+
+import java.io.IOException;
 
 public class MonitorController {
     private ExceptionHandler exHand = new ExceptionHandler();
@@ -43,7 +46,7 @@ public class MonitorController {
     }
 
     @FXML
-    void registerMonitor(ActionEvent event) {
+    void registerMonitor(ActionEvent event) throws IOException {
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inType.getText().isEmpty()){
             String name = inName.getText(), manufacturer = inManufac.getText(), screenType = inType.getText();
 
@@ -56,6 +59,7 @@ public class MonitorController {
                 Monitor monitor = new Monitor(name, manufacturer, 0, price,size, refreshRate, responseTime, screenType);
 
                 App.saveToCollection(monitor);
+                WriteComponentsToFile.save(App.getList2().getArrayList());
                 App.closeWindow();
 
             } catch (IllegalPriceException | IllegalScreenSizeException | IllegalRefreshRateException | IllegalResponseTimeException e){

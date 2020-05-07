@@ -47,8 +47,8 @@ public class App extends Application {
         componentCollection.add(new PowerSupply("Focus GX 750","Seasonic",750.00,1499.00, 20, 20));
         componentCollection.add(new PowerSupply("RM650x","Corsair",650.00,1399.00, 20, 20));
         componentCollection.add(new PowerSupply("ZXZ1500", "Asus", 1500.00, 1799.00, 20, 20));
-        componentCollection.add(new RAM("ValueRam","Kingston",635.00,"8 GB","DDR3",1));
-        componentCollection.add(new RAM("Vengance LPX", "Corsair", 1260.00, "16 GB","DDR4",2));
+        componentCollection.add(new RAM("ValueRam","Kingston",635.00,8,"DDR3",1));
+        componentCollection.add(new RAM("Vengance LPX", "Corsair", 1260.00, 16,"DDR4",2));
         componentCollection.add(new Storage("KC2000","Kingston",882.00,"SSD",250,"GB"));
         componentCollection.add(new Storage("Mobile Black", "WD",807.00,"HDD",1,"TB"));
 */

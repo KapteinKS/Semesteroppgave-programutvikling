@@ -9,6 +9,7 @@ import org.example.exceptions.IllegalClockSpeedException;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalThreadsException;
 import org.example.componentClasses.CPU;
+import org.example.io.WriteComponentsToFile;
 
 import java.io.IOException;
 
@@ -63,6 +64,7 @@ public class CpuController {
 
                 CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed, socket);
                 App.saveToCollection(cpu);
+                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 
