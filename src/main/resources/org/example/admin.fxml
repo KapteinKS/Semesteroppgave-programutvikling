@@ -41,6 +41,9 @@
                   <MenuItem mnemonicParsing="false" onAction="#createMotherboard" text="Hovedkort" />
                   <MenuItem mnemonicParsing="false" onAction="#createPowerSupply" text="Strømforsyning" />
                   <MenuItem mnemonicParsing="false" onAction="#createStorage" text="Lagring" />
+                  <MenuItem mnemonicParsing="false" onAction="#createKeyboard" text="Tastatur" />
+                  <MenuItem mnemonicParsing="false" onAction="#createMouse" text="Mus" />
+                  <MenuItem mnemonicParsing="false" onAction="#createMonitor" text="Skjerm" />
               </items>
             </Menu>
                 <Menu mnemonicParsing="false" text="Help">

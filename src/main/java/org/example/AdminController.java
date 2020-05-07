@@ -95,6 +95,20 @@ public class AdminController implements Initializable {
 		App.newWindow("storage", "Register Storage");
 	}
 
+	@FXML
+	void createKeyboard(ActionEvent event) throws IOException {
+		App.newWindow("keyboard", "Register Keyboard");
+	}
+
+	@FXML
+	void createMouse(ActionEvent event) throws IOException {
+		App.newWindow("mouse", "Register Mouse");
+	}
+
+	@FXML
+	void createMonitor(ActionEvent event) throws IOException {
+		App.newWindow("monitor", "Register Monitor");
+	}
 
 	@FXML
 	void loadOrder(ActionEvent event) {

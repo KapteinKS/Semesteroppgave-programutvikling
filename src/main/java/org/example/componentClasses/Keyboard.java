@@ -1,54 +1,57 @@
 package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
 public class Keyboard extends Component implements Serializable {
-    private SimpleIntegerProperty keyboardSwitches; //membrane/mechanical and which type of mechanical switches
-    private SimpleIntegerProperty keyboardLanguage; // ex. Nordic, US, UK
-    private SimpleIntegerProperty keyboardConnectionType;  // ex. USB-A, USB-C, wireless
+    private SimpleStringProperty keyboardSwitches; //membrane/mechanical and which type of mechanical switches
+    private SimpleStringProperty keyboardLanguage; // ex. Nordic, US, UK
+    private SimpleStringProperty keyboardConnectionType;  // ex. USB-A, USB-C, wireless
 
-    public Keyboard(String type, String name, String manufacturer, double wattsRequired, double price, SimpleIntegerProperty keyboardSwitches, SimpleIntegerProperty keyboardLanguage, SimpleIntegerProperty keyboardConnectionType) {
-        super(type, name, manufacturer, wattsRequired, price);
-        this.keyboardSwitches = keyboardSwitches;
-        this.keyboardLanguage = keyboardLanguage;
-        this.keyboardConnectionType = keyboardConnectionType;
+    public Keyboard(String name, String manufacturer, double wattsRequired, double price, String keyboardSwitches, String keyboardLanguage, String keyboardConnectionType) {
+        super("Keyboard", name, manufacturer, wattsRequired, price);
+        this.keyboardSwitches = new SimpleStringProperty(keyboardSwitches);
+        this.keyboardLanguage = new SimpleStringProperty(keyboardLanguage);
+        this.keyboardConnectionType = new SimpleStringProperty(keyboardConnectionType);
     }
 
-    public int getKeyboardSwitches() {
-        return keyboardSwitches.get();
+    public String getKeyboardSwitches() {
+        return keyboardSwitches.getValue();
     }
-
+    /*
     public SimpleIntegerProperty keyboardSwitchesProperty() {
         return keyboardSwitches;
     }
-
-    public void setKeyboardSwitches(int keyboardSwitches) {
+    */
+    public void setKeyboardSwitches(String keyboardSwitches) {
         this.keyboardSwitches.set(keyboardSwitches);
     }
 
-    public int getKeyboardLanguage() {
-        return keyboardLanguage.get();
+    public String getKeyboardLanguage() {
+        return keyboardLanguage.getValue();
     }
-
+    /*
     public SimpleIntegerProperty keyboardLanguageProperty() {
         return keyboardLanguage;
     }
+    */
 
-    public void setKeyboardLanguage(int keyboardLanguage) {
+    public void setKeyboardLanguage(String keyboardLanguage) {
         this.keyboardLanguage.set(keyboardLanguage);
     }
 
-    public int getKeyboardConnectionType() {
-        return keyboardConnectionType.get();
+    public String getKeyboardConnectionType() {
+        return keyboardConnectionType.getValue();
     }
-
+    /*
     public SimpleIntegerProperty keyboardConnectionTypeProperty() {
         return keyboardConnectionType;
     }
+    */
 
-    public void setKeyboardConnectionType(int keyboardConnectionType) {
+    public void setKeyboardConnectionType(String keyboardConnectionType) {
         this.keyboardConnectionType.set(keyboardConnectionType);
     }
 
