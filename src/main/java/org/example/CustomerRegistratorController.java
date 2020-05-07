@@ -5,10 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.example.logicAndClasses.Customer;
+import org.example.logicAndClasses.CustomerCollection;
 
 import java.io.IOException;
 
 public class CustomerRegistratorController {
+	CustomerCollection customerCollection = App.getCustomerRegistry();
 
 	@FXML
 	private TextField txtFirstName;
@@ -42,14 +45,85 @@ public class CustomerRegistratorController {
 
 	@FXML
 	void cancel(ActionEvent event) throws IOException {
-		App.setRoot("userLoginPrompt", 250, 290, "Login");
+
+
+		App.setRoot("userLoginPrompt", 290, 300, "Login");
 
 	}
 
 	@FXML
-	void registerNewCustomer(ActionEvent event) throws IOException {
+	void registerNewCustomer(ActionEvent event) throws IOException, InterruptedException {
 
-		App.setRoot("user", 700, 640, "End User");
+		txtFirstName.setStyle("");
+		txtLastName.setStyle("");
+		txtAddress.setStyle("");
+		txtPostCode.setStyle("");
+		txtPostArea.setStyle("");
+		txtPhoneNumber.setStyle("");
+		txtEmail.setStyle("");
+		txtPassword.setStyle("");
+		txtPasswordConfirm.setStyle("");
+
+		if(!(customerCollection.checkForCustomer(txtEmail.getText()))) {
+			boolean goodToGo = true;
+
+			String firstName = txtFirstName.getText(),
+					lastName = txtLastName.getText(),
+					address = txtAddress.getText(),
+					postCode = txtPostCode.getText(),
+					postArea = txtPostArea.getText(),
+					phoneNumber = txtPhoneNumber.getText(),
+					email = txtEmail.getText();
+
+			if (firstName.isEmpty() || !(firstName.matches("[A-ZÆØÅ][a-zæøå]*"))) {
+				txtFirstName.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}
+			if (lastName.isEmpty() || !(lastName.matches("[A-ZÆØÅ][a-zæøå]*"))) {
+				txtLastName.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}
+			if (address.isEmpty()) { //Address regex needed
+				txtAddress.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}
+			if (postCode.isEmpty() || !(postCode.matches("[0-9]{4}"))) {
+				txtPostCode.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}
+			if (postArea.isEmpty() || !(postArea.matches("[A-ZÆØÅ][a-zæøå]+"))) {
+				txtPostArea.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}	//phone Regex is bad
+			if (phoneNumber.isEmpty() || !(phoneNumber.matches("[+]?[0-9]?[0-9]?\\s*[0-9]\\s*[0-9]\\s*[0-9]\\s*[0-9]\\s*[0-9]\\s*[0-9]\\s*[0-9]\\s*[0-9]\\s*"))){
+				txtPhoneNumber.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}
+			if (email.isEmpty() || !(email.matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"))){
+				txtEmail.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}
+
+			String password = txtPassword.getText();
+
+			if (password.isEmpty() || !(password).equals(txtPasswordConfirm.getText())){
+				txtPassword.setStyle("-fx-text-box-border: #ff0000");
+				txtPasswordConfirm.setStyle("-fx-text-box-border: #ff0000");
+				goodToGo = false;
+			}
+
+			if (goodToGo){
+				App.saveToCustomerCollection(new Customer((String.format("%05d",App.getNewCustomerID())),
+						firstName, lastName, address, postCode, postArea, phoneNumber, email, password));
+				App.setCurrentUserEmail(email);
+				App.setRoot("user", 700, 640, "End User");
+			}
+
+		}
+		else {
+			txtEmail.setStyle("-fx-text-box-border: #ff00ff");
+			lblResult.setText("Denne eposten fins allerede i databasen vår!");
+		}
 	}
 
 }

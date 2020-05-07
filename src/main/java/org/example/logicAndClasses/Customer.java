@@ -2,21 +2,25 @@ package org.example.logicAndClasses;
 
 public class Customer {
     private String customerID;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String address;
     private String postalCode;
     private String postalArea;
     private String phoneNumber;
     private String email;
+    private String password;
 
-    public Customer(String customerID, String name, String address, String postalCode, String postalArea, String phoneNumber, String email) {
+    public Customer(String customerID, String firstName, String lastName, String address, String postalCode, String postalArea, String phoneNumber, String email, String password) {
         this.customerID = customerID;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.postalCode = postalCode;
         this.postalArea = postalArea;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.password = password;
     }
 
     public String getCustomerID() {
@@ -27,12 +31,20 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getAddress() {
@@ -66,6 +78,7 @@ public class Customer {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     public String getEmail() {
         return email;
     }
@@ -73,8 +86,17 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString(){
-        return String.format("%s,%s,%s,%s,%s,%s,%s", customerID,name,address,postalCode,postalArea,phoneNumber,email);
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s", customerID, firstName,address,postalCode,postalArea,phoneNumber,email,password);
     }
 }

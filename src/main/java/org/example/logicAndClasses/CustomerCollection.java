@@ -18,6 +18,32 @@ public class CustomerCollection {
 	public void removeAll(){
 		customers.clear();
 	}
+	public int getSize(){
+		return customers.size();
+	}
+
+	public boolean checkForCustomer(String email){
+		boolean check = false;
+		for (Customer c : customers){
+			if (c.getEmail().equals(email)){
+				check = true;
+				break;
+			}
+		}
+		return check;
+	}
+	public boolean checkPassword(String email, String password){
+		boolean check = false;
+		for (Customer c : customers){
+			if (c.getEmail().equals(email)){
+				if (c.getPassword().equals(password)) {
+					check = true;
+				}
+				break;
+			}
+		}
+		return check;
+	}
 
 	@Override
 	public String toString(){

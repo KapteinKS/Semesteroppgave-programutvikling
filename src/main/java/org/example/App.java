@@ -5,15 +5,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.componentClasses.*;
+import org.example.io.ReadCustomerFromFile;
+import org.example.io.WriteCustomerToFile;
 import org.example.logicAndClasses.ComponentCollection;
+import org.example.logicAndClasses.Customer;
+import org.example.logicAndClasses.CustomerCollection;
 import org.example.logicAndClasses.Initializer;
-import org.example.componentClasses.*;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * JavaFX App
@@ -25,7 +29,10 @@ public class App extends Application {
     private static Stage stage;
     private static Scene scene2;
     private static Stage stage2;
-    private static ComponentCollection componentCollection = new ComponentCollection();
+
+    private static ComponentCollection componentCollection = new ComponentCollection(); //These must be filled
+    private static CustomerCollection customerRegistry = new CustomerCollection(); //These must be filled
+    private static String currentUserEmail;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -70,6 +77,18 @@ public class App extends Application {
         componentCollection.add(ram2);
         componentCollection.add(stg1);
         componentCollection.add(stg2);
+
+        //**//
+
+        // We need to read data from files here.
+        // We must remember to do file-management in new task
+
+        //ReadCustomerFromFile.open(customerRegistry, Paths.get("customers.txt"));
+        customerRegistry.addCustomer(new Customer("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
+        //WriteCustomerToFile.save(customerRegistry, Paths.get("customers.txt"));
+
+        currentUserEmail = "admin@root.com";
+
 
         //**//
 
@@ -156,6 +175,23 @@ public class App extends Application {
             stage.setWidth(width);
             stage.setTitle(title);
         }
+    }
+
+    //CustomerCollection stuff
+    public static CustomerCollection getCustomerRegistry(){
+        return customerRegistry;
+    }
+
+    public static void saveToCustomerCollection(Customer customer){
+        customerRegistry.addCustomer(customer);
+    }
+
+    public static int getNewCustomerID(){
+        return customerRegistry.getSize();
+    }
+
+    public static void setCurrentUserEmail(String email){
+        currentUserEmail = email;
     }
 
     /* Never used?

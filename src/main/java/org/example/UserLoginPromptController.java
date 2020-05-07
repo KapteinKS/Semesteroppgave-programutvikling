@@ -4,10 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.example.logicAndClasses.CustomerCollection;
 
 import java.io.IOException;
 
 public class UserLoginPromptController {
+	CustomerCollection customerCollection = App.getCustomerRegistry();
 
 	@FXML
 	private TextField txtEmail;
@@ -17,8 +19,28 @@ public class UserLoginPromptController {
 
 	@FXML
 	void login(ActionEvent event) throws IOException {
-		//Check Stored List of Persons
-		App.setRoot("user", 700, 640, "End User");
+		boolean weGood = true;
+		//Check Stored List of Person
+		txtEmail.setStyle("");
+		txtPassword.setStyle("");
+
+		if (!(customerCollection.checkForCustomer(txtEmail.getText()))) {
+			txtEmail.setStyle("-fx-text-box-border: #ff0000");
+			weGood = false;
+		}
+
+		if (!(customerCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))){
+			txtPassword.setStyle("-fx-text-box-border: #ff0000");
+			weGood = false;
+		}
+
+		if (weGood){
+			txtEmail.setStyle("");
+			txtPassword.setStyle("");
+			App.setCurrentUserEmail(txtEmail.getText());
+			App.setRoot("user", 700, 640, "End User");
+		}
+
 
 	}
 

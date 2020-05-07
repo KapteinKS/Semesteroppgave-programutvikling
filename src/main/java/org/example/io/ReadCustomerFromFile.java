@@ -28,21 +28,23 @@ public class ReadCustomerFromFile extends Reader {
 
 	private static Customer parseCustomer(String line) throws InvalidCustomerException {
 		String[] split = line.split(",");
-		if (split.length != 7) {
+		if (split.length != 9) {
 			throw new InvalidCustomerException("ERROR! Values not separated by ',' !!");
 		}
 
 		//We could do some checks on some of these, but we should keep them as Strings, as we're not calculating ever.
 		String customerId = split[0];
-		String name = split[1];
-		String address = split[2];
-		String postalCode = split[3];
-		String postalArea = split[4];
-		String phoneNumber = split[5];
-		String email = split[6];
+		String firstName = split[1];
+		String lastName = split[2];
+		String address = split[3];
+		String postalCode = split[4];
+		String postalArea = split[5];
+		String phoneNumber = split[6];
+		String email = split[7];
+		String password = split[8];
 
 		try {
-			return new Customer(customerId, name, address, postalCode, postalArea, phoneNumber, email);
+			return new Customer(customerId, firstName, lastName, address, postalCode, postalArea, phoneNumber, email, password);
 		} catch (IllegalArgumentException e) {
 			throw new InvalidCustomerException(e.getMessage());
 		}
