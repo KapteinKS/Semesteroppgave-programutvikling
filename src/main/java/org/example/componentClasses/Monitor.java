@@ -4,6 +4,9 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Monitor extends Component implements Serializable {
@@ -62,5 +65,37 @@ public class Monitor extends Component implements Serializable {
     public String toString() {
         return "Monitor" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getMonitorSize() + "," + getMonitorRefreshRate() + "," + getMonitorResponseTime() + "," + getMonitorScreenType();
+    }
+
+    public void writeObject(ObjectOutputStream s) throws IOException{
+        s.writeUTF(getName());
+        s.writeUTF(getManufacturer());
+        s.writeDouble(getWattsRequired());
+        s.writeDouble(getPrice());
+        s.writeDouble(monitorSize.getValue());
+        s.writeInt(monitorRefreshRate.getValue());
+        s.writeInt(monitorResponseTime.getValue());
+        s.writeUTF(monitorScreenType.getValue());
+    }
+
+    public void readObject(ObjectInputStream s) throws IOException{
+        String name = s.readUTF();
+        String manufacturer = s.readUTF();
+        double wattsRequired = s.readDouble();
+        double price = s.readDouble();
+        double monitorSize = s.readDouble();
+        int monitorRefreshRate = s.readInt();
+        int monitorResponseTime = s.readInt();
+        String monitorScreenType = s.readUTF();
+
+        setType("Monitor");
+        setName(name);
+        setManufacturer(manufacturer);
+        setWattsRequired(wattsRequired);
+        setPrice(price);
+        this.monitorSize = new SimpleDoubleProperty(monitorSize);
+        this.monitorRefreshRate = new SimpleIntegerProperty(monitorRefreshRate);
+        this.monitorResponseTime = new SimpleIntegerProperty(monitorResponseTime);
+        this.monitorScreenType = new SimpleStringProperty(monitorScreenType);
     }
 }
