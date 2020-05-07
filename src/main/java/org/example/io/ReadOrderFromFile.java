@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class ReadOrderFromFile extends Reader{
-    public static void openOrder(String orderString, Path orderFilePath){
+    public static String openOrder(String orderString, Path orderFilePath) throws IOException{
         orderString = "";
         try (BufferedReader bufferedReader = Files.newBufferedReader(orderFilePath)){
             String line;
@@ -18,6 +18,11 @@ public class ReadOrderFromFile extends Reader{
             }
         }catch (IOException ioe){
             ioe.printStackTrace();
+        }
+        if (orderString.equals("")){
+            throw new IOException("Fil er tom.")
+        }else{
+            return orderString;
         }
     }
 
