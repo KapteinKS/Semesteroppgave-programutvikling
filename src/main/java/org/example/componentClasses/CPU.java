@@ -66,34 +66,23 @@ public class CPU extends Component {
 				+ "," + getThreads() + "," + getClockSpeed() + "," + getSocket();
 	}
 
-	public void writeObject(ObjectOutputStream s) throws IOException{
-		//super.writeObject(s);
-		s.writeUTF(getName());
-		s.writeUTF(getManufacturer());
-		s.writeDouble(getWattsRequired());
-		s.writeDouble(getPrice());
+	private void writeObject(ObjectOutputStream s) throws IOException{
+		/*s.writeUTF(super.getName());
+		s.writeUTF(super.getManufacturer());
+		s.writeDouble(super.getWattsRequired());
+		s.writeDouble(super.getPrice());*/
+		s.defaultWriteObject();
+		s.writeUTF(getType());
 		s.writeInt(threads.getValue());
 		s.writeDouble(clockSpeed.getValue());
 		s.writeUTF(socket.getValue());
 	}
 
-	public void readObject(ObjectInputStream s) throws IOException{
-		//super.readObject(s);
-		String name = s.readUTF();
-		String manufacturer = s.readUTF();
-		double wattsRequired = s.readDouble();
-		double price = s.readDouble();
-		int threads = s.readInt();
-		double clockSpeed = s.readDouble();
-		String socket = s.readUTF();
-
-		setType("CPU");
-		setName(name);
-		setManufacturer(manufacturer);
-		setWattsRequired(wattsRequired);
-		setPrice(price);
-		this.threads = new SimpleIntegerProperty(threads);
-		this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
-		this.socket = new SimpleStringProperty(socket);
+	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+		s.defaultReadObject();
+		super.type = new SimpleStringProperty(s.readUTF());
+		this.threads = new SimpleIntegerProperty(s.readInt());
+		this.clockSpeed = new SimpleDoubleProperty(s.readDouble());
+		this.socket = new SimpleStringProperty(s.readUTF());
 	}
 }

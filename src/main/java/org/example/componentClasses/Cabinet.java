@@ -74,18 +74,13 @@ public class Cabinet extends Component {
                 "cm \nVekt: " + getWeight() + "kg";
     }
 
-    @Override
-    public String toString(){
-        return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getHeight() + "," + getWidth() + "," + getDepth() + "," + getWeight();
-    }
-
-    public void writeObject(ObjectOutputStream s) throws IOException{
-        //super.writeObject(s);
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    private void writeObject(ObjectOutputStream s) throws IOException{
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeUTF(mbFormFactor.getValue());
         s.writeInt(height.getValue());
         s.writeInt(width.getValue());
@@ -93,27 +88,19 @@ public class Cabinet extends Component {
         s.writeDouble(weight.getValue());
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        //super.readObject(s);
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        String mbFormFactor = s.readUTF();
-        int height = s.readInt();
-        int width = s.readInt();
-        int depth = s.readInt();
-        double weight = s.readDouble();
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.mbFormFactor = new SimpleStringProperty(s.readUTF());
+        this.height = new SimpleIntegerProperty(s.readInt());
+        this.width = new SimpleIntegerProperty(s.readInt());
+        this.depth = new SimpleIntegerProperty(s.readInt());
+        this.weight = new SimpleDoubleProperty(s.readDouble());
+    }
 
-        setType("Cabinet");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
-        this.height = new SimpleIntegerProperty(height);
-        this.width = new SimpleIntegerProperty(width);
-        this.depth = new SimpleIntegerProperty(depth);
-        this.weight = new SimpleDoubleProperty(weight);
+    @Override
+    public String toString(){
+        return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getHeight() + "," + getWidth() + "," + getDepth() + "," + getWeight();
     }
 }

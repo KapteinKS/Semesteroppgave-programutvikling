@@ -55,35 +55,23 @@ public class GraphicCard extends Component implements Serializable {
                 + "," + getRam() + "," + getRamType() + "," + getClockSpeed();
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
-        //super.writeObject(s);
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeInt(ram.getValue());
         s.writeUTF(ramType.getValue());
         s.writeDouble(clockSpeed.getValue());
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        //super.readObject(s);
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        int ram = s.readInt();
-        String ramType = s.readUTF();
-        double clockSpeed = s.readDouble();
-
-        setType("GraphicCard");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.ram = new SimpleIntegerProperty(ram);
-        this.ramType = new SimpleStringProperty(ramType);
-        this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
-
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.ram = new SimpleIntegerProperty(s.readInt());
+        this.ramType = new SimpleStringProperty(s.readUTF());
+        this.clockSpeed = new SimpleDoubleProperty(s.readDouble());
     }
 }

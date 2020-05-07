@@ -48,6 +48,25 @@ public class Keyboard extends Component implements Serializable {
     public String getInfo(){
         return "Grensesnitt: " + getKeyboardConnectionType() + "\nSpråk: " + getKeyboardLanguage() + "\nType taster: " + getKeyboardSwitches();
     }
+    public String getType() {
+        return "Keyboard";
+    }
+
+    public String getName(){
+        return super.getName();
+    }
+
+    public double getPrice() {
+        return super.getPrice();
+    }
+
+    public double getWattsRequired() {
+        return super.getWattsRequired();
+    }
+
+    public String getManufacturer(){
+        return super.getManufacturer();
+    }
 
     @Override
     public String toString() {
@@ -55,35 +74,23 @@ public class Keyboard extends Component implements Serializable {
                 + "," + getKeyboardConnectionType() + "," + getKeyboardLanguage() + "," + getKeyboardSwitches();
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
-        //super.writeObject(s);
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeUTF(keyboardSwitches.getValue());
         s.writeUTF(keyboardLanguage.getValue());
         s.writeUTF(keyboardConnectionType.getValue());
-
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        //super.readObject(s);
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        String keyboardSwitches = s.readUTF();
-        String keyboardLanguage = s.readUTF();
-        String keyboardConnectionType = s.readUTF();
-
-        setType("Keyboard");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.keyboardSwitches = new SimpleStringProperty(keyboardSwitches);
-        this.keyboardLanguage = new SimpleStringProperty(keyboardLanguage);
-        this.keyboardConnectionType = new SimpleStringProperty(keyboardConnectionType);
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.keyboardSwitches = new SimpleStringProperty(s.readUTF());
+        this.keyboardLanguage = new SimpleStringProperty(s.readUTF());
+        this.keyboardConnectionType = new SimpleStringProperty(s.readUTF());
     }
 }

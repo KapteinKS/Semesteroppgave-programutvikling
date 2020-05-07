@@ -59,41 +59,51 @@ public class RAM extends Component implements Serializable {
         return "Minne: " + getSize() + "GB " + getMemoryType();
     }
 
+    /*public String getType() {
+        return "RAM";
+    }
+
+    public String getName(){
+        return super.getName();
+    }
+
+    public double getPrice() {
+        return super.getPrice();
+    }
+
+    public double getWattsRequired() {
+        return super.getWattsRequired();
+    }
+
+    public String getManufacturer(){
+        return super.getManufacturer();
+    }
+
+     */
+
     @Override
     public String toString(){
         return "RAM" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getSize() + "," + getMemoryType() + "," + getAmountOfRAMPieces();
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
-        //super.writeObject(s);
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeUTF(size.getValue());
         s.writeUTF(memoryType.getValue());
         s.writeUTF(amountOfRAMPieces.getValue());
-
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        //super.readObject(s);
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        String size = s.readUTF();
-        String memoryType = s.readUTF();
-        String amountOfRAMPieces = s.readUTF();
-
-        setType("Keyboard");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.size = new SimpleStringProperty(size);
-        this.memoryType = new SimpleStringProperty(memoryType);
-        this.amountOfRAMPieces = new SimpleStringProperty(amountOfRAMPieces);
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.size = new SimpleStringProperty(s.readUTF());
+        this.memoryType = new SimpleStringProperty(s.readUTF());
+        this.amountOfRAMPieces = new SimpleStringProperty(s.readUTF());
     }
 }

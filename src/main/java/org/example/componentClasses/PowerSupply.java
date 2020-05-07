@@ -47,34 +47,45 @@ public class PowerSupply extends Component implements Serializable {
         return "Energiforbruk: " + getWattsRequired() + "W \nSpenning inn: " + getInVoltage() +
                 "V \nSpenning ut: " + getOutVoltage() + "V";
     }
+   /* public String getType() {
+        return "PowerSupply";
+    }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
-        //super.writeObject(s);
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    public String getName(){
+        return super.getName();
+    }
+
+    public double getPrice() {
+        return super.getPrice();
+    }
+
+    public double getWattsRequired() {
+        return super.getWattsRequired();
+    }
+
+    public String getManufacturer(){
+        return super.getManufacturer();
+    }
+
+    */
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeInt(inVoltage.getValue());
         s.writeInt(outVoltage.getValue());
 
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        //super.readObject(s);
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        int inVoltage = s.readInt();
-        int outVoltage = s.readInt();
-
-        setType("Keyboard");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.inVoltage = new SimpleIntegerProperty(inVoltage);
-        this.outVoltage = new SimpleIntegerProperty(outVoltage);
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.inVoltage = new SimpleIntegerProperty(s.readInt());
+        this.outVoltage = new SimpleIntegerProperty(s.readInt());
     }
 
 }

@@ -8,8 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Component implements Serializable {
-	private transient SimpleStringProperty type;
+public abstract class Component implements Serializable {
+	public transient SimpleStringProperty type;
 	private transient SimpleStringProperty name;
 	private transient SimpleStringProperty manufacturer;
 	private transient SimpleDoubleProperty wattsRequired;
@@ -34,6 +34,7 @@ public class Component implements Serializable {
 		return type.get();
 	}
 
+
 	public String getName(){
 		return name.getValue();
 	}
@@ -50,13 +51,8 @@ public class Component implements Serializable {
 		this.price.set(price);
 	}
 
-
 	public double getWattsRequired() {
 		return wattsRequired.get();
-	}
-
-	public SimpleDoubleProperty wattsRequiredProperty() {
-		return wattsRequired;
 	}
 
 	public void setWattsRequired(double wattsRequired) {
@@ -79,24 +75,18 @@ public class Component implements Serializable {
 		return "";
 	}
 
-	public void writeObject(ObjectOutputStream s) throws IOException{
-		s.writeUTF(type.getValue());
+
+	private void writeObject(ObjectOutputStream s) throws IOException{
 		s.writeUTF(name.getValue());
 		s.writeUTF(manufacturer.getValue());
 		s.writeDouble(wattsRequired.getValue());
 		s.writeDouble(price.getValue());
 	}
 
-	public void readObject(ObjectInputStream s) throws IOException{
-		String type = s.readUTF();
-		String name = s.readUTF();
-		String manufacturer = s.readUTF();
-		double wattsRequired = s.readDouble();
-		double price = s.readDouble();
-		this.type = new SimpleStringProperty(type);
-		this.name = new SimpleStringProperty(name);
-		this.manufacturer = new SimpleStringProperty(manufacturer);
-		this.wattsRequired = new SimpleDoubleProperty(wattsRequired);
-		this.price = new SimpleDoubleProperty(price);
+	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+		this.name = new SimpleStringProperty(s.readUTF());
+		this.manufacturer = new SimpleStringProperty(s.readUTF());
+		this.wattsRequired = new SimpleDoubleProperty(s.readDouble());
+		this.price = new SimpleDoubleProperty(s.readDouble());
 	}
 }

@@ -26,49 +26,7 @@ public class ReadComponentsFromFile extends Reader {
             ComponentCollection inComponents = new ComponentCollection();
 
             for(Component c : components){
-                switch (c.getType()){
-                    case "Cabinet":
-                        Cabinet cabinet = (Cabinet) c;
-                        inComponents.add(cabinet);
-                        break;
-                    case "CPU":
-                        CPU cpu = (CPU) c;
-                        inComponents.add(cpu);
-                        break;
-                    case "Fan":
-                        Fan fan = (Fan) c;
-                        inComponents.add(fan);
-                        break;
-                    case "GraphicCard":
-                        GraphicCard graphicCard = (GraphicCard) c;
-                        inComponents.add(graphicCard);
-                        break;
-                    case "Keyboard":
-                        Keyboard keyboard = (Keyboard) c;
-                        inComponents.add(keyboard);
-                        break;
-                    case "Monitor":
-                        Monitor monitor = (Monitor) c;
-                        inComponents.add(monitor);
-                        break;
-                    case "Mouse":
-                        Mouse mouse = (Mouse) c;
-                        inComponents.add(mouse);
-                        break;
-                    case "PowerSupply":
-                        PowerSupply powerSupply = (PowerSupply) c;
-                        inComponents.add(powerSupply);
-                        break;
-                    case "RAM":
-                        RAM ram = (RAM) c;
-                        inComponents.add(ram);
-                        break;
-                    case "Storage":
-                        Storage storage = (Storage) c;
-                        inComponents.add(storage);
-                        break;
-                }
-                //inComponents.add(c);
+                inComponents.add(c);
             }
             return inComponents;
         }

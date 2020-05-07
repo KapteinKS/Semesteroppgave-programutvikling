@@ -59,36 +59,46 @@ public class Storage extends Component implements Serializable {
     public String getInfo(){
         return "Lagringstype: " + getStoragetype() + "\nKapasitet: " + getCapacity() + getCapacityType();
     }
+    /*public String getType() {
+        return "Storage";
+    }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
-        //super.writeObject(s);
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    public String getName(){
+        return super.getName();
+    }
+
+    public double getPrice() {
+        return super.getPrice();
+    }
+
+    public double getWattsRequired() {
+        return super.getWattsRequired();
+    }
+
+    public String getManufacturer(){
+        return super.getManufacturer();
+    }
+
+     */
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeUTF(storageType.getValue());
         s.writeInt(capacity.getValue());
         s.writeUTF(capacityType.getValue());
 
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        //super.readObject(s);
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        String storageType = s.readUTF();
-        int capacity = s.readInt();
-        String capacityType = s.readUTF();
-
-        setType("Keyboard");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.storageType = new SimpleStringProperty(storageType);
-        this.capacity = new SimpleIntegerProperty(capacity);
-        this.capacityType = new SimpleStringProperty(capacityType);
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.storageType = new SimpleStringProperty(s.readUTF());
+        this.capacity = new SimpleIntegerProperty(s.readInt());
+        this.capacityType = new SimpleStringProperty(s.readUTF());
     }
 }

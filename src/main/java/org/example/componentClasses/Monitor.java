@@ -66,36 +66,48 @@ public class Monitor extends Component implements Serializable {
         return "Monitor" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getMonitorSize() + "," + getMonitorRefreshRate() + "," + getMonitorResponseTime() + "," + getMonitorScreenType();
     }
+    /*
+    public String getType() {
+        return "Monitor";
+    }
+
+    public String getName(){
+        return super.getName();
+    }
+
+    public double getPrice() {
+        return super.getPrice();
+    }
+
+    public double getWattsRequired() {
+        return super.getWattsRequired();
+    }
+
+    public String getManufacturer(){
+        return super.getManufacturer();
+    }
+
+     */
 
     public void writeObject(ObjectOutputStream s) throws IOException{
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeDouble(monitorSize.getValue());
         s.writeInt(monitorRefreshRate.getValue());
         s.writeInt(monitorResponseTime.getValue());
         s.writeUTF(monitorScreenType.getValue());
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        double monitorSize = s.readDouble();
-        int monitorRefreshRate = s.readInt();
-        int monitorResponseTime = s.readInt();
-        String monitorScreenType = s.readUTF();
-
-        setType("Monitor");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.monitorSize = new SimpleDoubleProperty(monitorSize);
-        this.monitorRefreshRate = new SimpleIntegerProperty(monitorRefreshRate);
-        this.monitorResponseTime = new SimpleIntegerProperty(monitorResponseTime);
-        this.monitorScreenType = new SimpleStringProperty(monitorScreenType);
+    public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.monitorSize = new SimpleDoubleProperty(s.readDouble());
+        this.monitorRefreshRate = new SimpleIntegerProperty(s.readInt());
+        this.monitorResponseTime = new SimpleIntegerProperty(s.readInt());
+        this.monitorScreenType = new SimpleStringProperty(s.readUTF());
     }
 }

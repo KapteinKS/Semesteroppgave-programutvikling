@@ -47,7 +47,28 @@ public class Mouse extends Component implements Serializable {
 
     public String getInfo(){
         return "Grensesnitt: " + getMouseConnectionType() + "\nDPI: " + getMouseDPI() + "\nAntall programmerbare taster: " + getMouseProgrammableButtons();
+    }/*
+
+    public String getType() {
+        return "Mouse";
     }
+    public String getName(){
+        return super.getName();
+    }
+
+    public double getPrice() {
+        return super.getPrice();
+    }
+
+    public double getWattsRequired() {
+        return super.getWattsRequired();
+    }
+
+    public String getManufacturer(){
+        return super.getManufacturer();
+    }
+
+ */
 
     @Override
     public String toString() {
@@ -55,32 +76,23 @@ public class Mouse extends Component implements Serializable {
                 + "," + getMouseConnectionType() + "," + getMouseDPI() + "," + getMouseProgrammableButtons();
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeInt(mouseDPI.getValue());
         s.writeUTF(mouseConnectionType.getValue());
         s.writeInt(mouseProgrammableButtons.getValue());
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        int mouseDPI = s.readInt();
-        String mouseConnectionType = s.readUTF();
-        int mouseProgrammableButtons = s.readInt();
-
-        setType("Mouse");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.mouseDPI = new SimpleIntegerProperty(mouseDPI);
-        this.mouseConnectionType = new SimpleStringProperty(mouseConnectionType);
-        this.mouseProgrammableButtons = new SimpleIntegerProperty(mouseProgrammableButtons);
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.mouseDPI = new SimpleIntegerProperty(s.readInt());
+        this.mouseConnectionType = new SimpleStringProperty(s.readUTF());
+        this.mouseProgrammableButtons = new SimpleIntegerProperty(s.readInt());
     }
 }

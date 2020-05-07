@@ -56,34 +56,23 @@ public class Fan extends Component implements Serializable {
                 + "," + getDiameter() + "," + getAirPressure() + "," + getMaxNoiseVolume();
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
-        //super.writeObject(s);
-        s.writeUTF(getName());
-        s.writeUTF(getManufacturer());
-        s.writeDouble(getWattsRequired());
-        s.writeDouble(getPrice());
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        /*s.writeUTF(super.getName());
+        s.writeUTF(super.getManufacturer());
+        s.writeDouble(super.getWattsRequired());
+        s.writeDouble(super.getPrice());*/
+        s.defaultWriteObject();
+        s.writeUTF(getType());
         s.writeInt(diameter.getValue());
         s.writeDouble(airPressure.getValue());
         s.writeInt(maxNoiseVolume.getValue());
     }
 
-    public void readObject(ObjectInputStream s) throws IOException{
-        //super.readObject(s);
-        String name = s.readUTF();
-        String manufacturer = s.readUTF();
-        double wattsRequired = s.readDouble();
-        double price = s.readDouble();
-        int diameter = s.readInt();
-        double airPressure = s.readDouble();
-        int maxNoiseVolume = s.readInt();
-
-        setType("Fan");
-        setName(name);
-        setManufacturer(manufacturer);
-        setWattsRequired(wattsRequired);
-        setPrice(price);
-        this.diameter = new SimpleIntegerProperty(diameter);
-        this.airPressure = new SimpleDoubleProperty(airPressure);
-        this.maxNoiseVolume = new SimpleIntegerProperty(maxNoiseVolume);
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        super.type = new SimpleStringProperty(s.readUTF());
+        this.diameter = new SimpleIntegerProperty(s.readInt());
+        this.airPressure = new SimpleDoubleProperty(s.readDouble());
+        this.maxNoiseVolume = new SimpleIntegerProperty(s.readInt());
     }
 }

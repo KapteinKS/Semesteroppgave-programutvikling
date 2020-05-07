@@ -123,8 +123,7 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void saveOrder(ActionEvent event) throws IOException {
-		WriteComponentsToFile wtf = new WriteComponentsToFile();
-		wtf.save(collection.getArrayList());
+		WriteComponentsToFile.save(collection.getArrayList());
 	}
 
 	@FXML

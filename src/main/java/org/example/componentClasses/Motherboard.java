@@ -58,32 +58,46 @@ public class Motherboard extends Component implements Serializable {
 	public String getInfo(){
 		return "Socket: " + getSocket() + "\nRamtype: " + getRamType() + "\nNødvendig energi: " + getWattsRequired() + "W";
 	}
+/*
+	public String getType() {
+		return "Motherboard";
+	}
 
-	public void writeObject(ObjectOutputStream s) throws IOException {
-		s.writeUTF(getName());
-		s.writeUTF(getManufacturer());
-		s.writeDouble(getWattsRequired());
-		s.writeDouble(getPrice());
+	public String getName(){
+		return super.getName();
+	}
+
+	public double getPrice() {
+		return super.getPrice();
+	}
+
+	public double getWattsRequired() {
+		return super.getWattsRequired();
+	}
+
+	public String getManufacturer(){
+		return super.getManufacturer();
+	}
+
+ */
+
+	private void writeObject(ObjectOutputStream s) throws IOException {
+		/*s.writeUTF(super.getName());
+		s.writeUTF(super.getManufacturer());
+		s.writeDouble(super.getWattsRequired());
+		s.writeDouble(super.getPrice());*/
+		s.defaultWriteObject();
+		s.writeUTF(getType());
 		s.writeUTF(mbFormFactor.getValue());
 		s.writeUTF(socket.getValue());
 		s.writeUTF(ramType.getValue());
 	}
 
-	public void readObject(ObjectInputStream s) throws IOException{
-		String name = s.readUTF();
-		String manufacturer = s.readUTF();
-		double wattsRequired = s.readDouble();
-		double price = s.readDouble();
-		String mbFormFactor = s.readUTF();
-		String socket = s.readUTF();
-		String ramType = s.readUTF();
-		setType("Motherboard");
-		setName(name);
-		setManufacturer(manufacturer);
-		setWattsRequired(wattsRequired);
-		setPrice(price);
-		this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
-		this.socket = new SimpleStringProperty(socket);
-		this.ramType = new SimpleStringProperty(ramType);
+	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+		s.defaultReadObject();
+		super.type = new SimpleStringProperty(s.readUTF());
+		this.mbFormFactor = new SimpleStringProperty(s.readUTF());
+		this.socket = new SimpleStringProperty(s.readUTF());
+		this.ramType = new SimpleStringProperty(s.readUTF());
 	}
 }
