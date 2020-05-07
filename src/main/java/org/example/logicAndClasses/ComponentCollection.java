@@ -22,7 +22,7 @@ public class ComponentCollection {
 	// By this method, we can use the intermediary "display-string" to fetch a component. (COMBOBOX STUFF)
 	public <T extends Component> T getComponentByDisplayString(String componentDisplayString) {
 		//Here, we create a dummy GraphicCard, never actually returned;
-		T e = (T) new GraphicCard("ERROR","Error",00,00,0,"error",3.5);
+		T e = (T) new GraphicCard("ERROR","Error",00,00,0,"error",0);
 		for (Component c : componentList) {
 			if (componentDisplayString.equals(c.displayComponent())) {
 				e = (T) c;
