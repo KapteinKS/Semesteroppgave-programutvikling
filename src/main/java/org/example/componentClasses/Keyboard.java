@@ -19,11 +19,7 @@ public class Keyboard extends Component implements Serializable {
     public String getKeyboardSwitches() {
         return keyboardSwitches.getValue();
     }
-    /*
-    public SimpleIntegerProperty keyboardSwitchesProperty() {
-        return keyboardSwitches;
-    }
-    */
+
     public void setKeyboardSwitches(String keyboardSwitches) {
         this.keyboardSwitches.set(keyboardSwitches);
     }
@@ -31,11 +27,6 @@ public class Keyboard extends Component implements Serializable {
     public String getKeyboardLanguage() {
         return keyboardLanguage.getValue();
     }
-    /*
-    public SimpleIntegerProperty keyboardLanguageProperty() {
-        return keyboardLanguage;
-    }
-    */
 
     public void setKeyboardLanguage(String keyboardLanguage) {
         this.keyboardLanguage.set(keyboardLanguage);
@@ -44,11 +35,6 @@ public class Keyboard extends Component implements Serializable {
     public String getKeyboardConnectionType() {
         return keyboardConnectionType.getValue();
     }
-    /*
-    public SimpleIntegerProperty keyboardConnectionTypeProperty() {
-        return keyboardConnectionType;
-    }
-    */
 
     public void setKeyboardConnectionType(String keyboardConnectionType) {
         this.keyboardConnectionType.set(keyboardConnectionType);

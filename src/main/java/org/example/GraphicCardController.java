@@ -55,8 +55,8 @@ public class GraphicCardController {
 
                 double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
-                int ram = exHan.checkRAM(Integer.parseInt(inRAM.getText())),
-                        clockspeed = exHan.checkClockSpeed(Integer.parseInt(inHertz.getText()));
+                int ram = exHan.checkRAM(Integer.parseInt(inRAM.getText()));
+                double clockspeed = exHan.checkClockSpeed(Double.parseDouble(inHertz.getText()));
                 GraphicCard graphicCard = new GraphicCard(name, manufacturer, wattsRequired, price, ram, ramType, clockspeed);
                 App.saveToCollection(graphicCard);
 

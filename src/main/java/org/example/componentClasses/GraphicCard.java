@@ -1,5 +1,6 @@
 package org.example.componentClasses;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -8,13 +9,13 @@ import java.io.Serializable;
 public class GraphicCard extends Component implements Serializable {
     private transient SimpleIntegerProperty ram;
     private transient SimpleStringProperty ramType;
-    private transient SimpleIntegerProperty clockSpeed;
+    private transient SimpleDoubleProperty clockSpeed;
 
-    public GraphicCard(String name, String manufacturer, double wattsRequired, double price, int ram, String ramType, int clockSpeed) {
+    public GraphicCard(String name, String manufacturer, double wattsRequired, double price, int ram, String ramType, double clockSpeed) {
         super("GraphicCard",name, manufacturer, wattsRequired, price);
         this.ram = new SimpleIntegerProperty(ram);
         this.ramType = new SimpleStringProperty(ramType);
-        this.clockSpeed = new SimpleIntegerProperty(clockSpeed);
+        this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
     }
 
     public int getRam() {
@@ -33,11 +34,11 @@ public class GraphicCard extends Component implements Serializable {
         this.ramType.set(ramType);
     }
 
-    public int getClockSpeed() {
+    public double getClockSpeed() {
         return clockSpeed.getValue();
     }
 
-    public void setClockSpeed(int clockSpeed) {
+    public void setClockSpeed(double clockSpeed) {
         this.clockSpeed.set(clockSpeed);
     }
 
