@@ -15,7 +15,8 @@ public class Component implements Serializable {
 	private transient SimpleDoubleProperty wattsRequired;
 	private transient SimpleDoubleProperty price;
 
-	public Component(){}
+	public Component(){
+	}
 
 	public Component(String type, String name, String manufacturer, double wattsRequired, double price){
 		this.type = new SimpleStringProperty(type);
@@ -23,6 +24,10 @@ public class Component implements Serializable {
 		this.manufacturer = new SimpleStringProperty(manufacturer);
 		this.wattsRequired = new SimpleDoubleProperty(wattsRequired);
 		this.price = new SimpleDoubleProperty(price);
+	}
+
+	public void setType(String type) {
+		this.type.set(type);
 	}
 
 	public String getType() {
@@ -44,6 +49,7 @@ public class Component implements Serializable {
 	public void setPrice(double price){
 		this.price.set(price);
 	}
+
 
 	public double getWattsRequired() {
 		return wattsRequired.get();
@@ -87,5 +93,10 @@ public class Component implements Serializable {
 		String manufacturer = s.readUTF();
 		double wattsRequired = s.readDouble();
 		double price = s.readDouble();
+		this.type = new SimpleStringProperty(type);
+		this.name = new SimpleStringProperty(name);
+		this.manufacturer = new SimpleStringProperty(manufacturer);
+		this.wattsRequired = new SimpleDoubleProperty(wattsRequired);
+		this.price = new SimpleDoubleProperty(price);
 	}
 }

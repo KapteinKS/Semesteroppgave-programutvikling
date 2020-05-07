@@ -15,9 +15,12 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class CPU extends Component implements Serializable {
+public class CPU extends Component {
 	private transient SimpleIntegerProperty threads;
 	private transient SimpleDoubleProperty clockSpeed;
 	private transient SimpleStringProperty socket;
@@ -61,5 +64,36 @@ public class CPU extends Component implements Serializable {
 	public String toString(){
 		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
 				+ "," + getThreads() + "," + getClockSpeed() + "," + getSocket();
+	}
+
+	public void writeObject(ObjectOutputStream s) throws IOException{
+		//super.writeObject(s);
+		s.writeUTF(getName());
+		s.writeUTF(getManufacturer());
+		s.writeDouble(getWattsRequired());
+		s.writeDouble(getPrice());
+		s.writeInt(threads.getValue());
+		s.writeDouble(clockSpeed.getValue());
+		s.writeUTF(socket.getValue());
+	}
+
+	public void readObject(ObjectInputStream s) throws IOException{
+		//super.readObject(s);
+		String name = s.readUTF();
+		String manufacturer = s.readUTF();
+		double wattsRequired = s.readDouble();
+		double price = s.readDouble();
+		int threads = s.readInt();
+		double clockSpeed = s.readDouble();
+		String socket = s.readUTF();
+
+		setType("CPU");
+		setName(name);
+		setManufacturer(manufacturer);
+		setWattsRequired(wattsRequired);
+		setPrice(price);
+		this.threads = new SimpleIntegerProperty(threads);
+		this.clockSpeed = new SimpleDoubleProperty(clockSpeed);
+		this.socket = new SimpleStringProperty(socket);
 	}
 }

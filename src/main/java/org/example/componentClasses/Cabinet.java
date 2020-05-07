@@ -5,10 +5,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Cabinet extends Component implements Serializable {
+public class Cabinet extends Component {
     private transient SimpleStringProperty mbFormFactor;
     private transient SimpleIntegerProperty height;
     private transient SimpleIntegerProperty width;
@@ -80,10 +81,39 @@ public class Cabinet extends Component implements Serializable {
     }
 
     public void writeObject(ObjectOutputStream s) throws IOException{
+        //super.writeObject(s);
+        s.writeUTF(getName());
+        s.writeUTF(getManufacturer());
+        s.writeDouble(getWattsRequired());
+        s.writeDouble(getPrice());
         s.writeUTF(mbFormFactor.getValue());
         s.writeInt(height.getValue());
         s.writeInt(width.getValue());
         s.writeInt(depth.getValue());
         s.writeDouble(weight.getValue());
+    }
+
+    public void readObject(ObjectInputStream s) throws IOException{
+        //super.readObject(s);
+        String name = s.readUTF();
+        String manufacturer = s.readUTF();
+        double wattsRequired = s.readDouble();
+        double price = s.readDouble();
+        String mbFormFactor = s.readUTF();
+        int height = s.readInt();
+        int width = s.readInt();
+        int depth = s.readInt();
+        double weight = s.readDouble();
+
+        setType("Cabinet");
+        setName(name);
+        setManufacturer(manufacturer);
+        setWattsRequired(wattsRequired);
+        setPrice(price);
+        this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
+        this.height = new SimpleIntegerProperty(height);
+        this.width = new SimpleIntegerProperty(width);
+        this.depth = new SimpleIntegerProperty(depth);
+        this.weight = new SimpleDoubleProperty(weight);
     }
 }

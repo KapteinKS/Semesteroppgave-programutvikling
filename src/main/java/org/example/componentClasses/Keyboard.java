@@ -1,7 +1,12 @@
 package org.example.componentClasses;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Keyboard extends Component implements Serializable {
@@ -48,5 +53,37 @@ public class Keyboard extends Component implements Serializable {
     public String toString() {
         return "Keyboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
                 + "," + getKeyboardConnectionType() + "," + getKeyboardLanguage() + "," + getKeyboardSwitches();
+    }
+
+    public void writeObject(ObjectOutputStream s) throws IOException {
+        //super.writeObject(s);
+        s.writeUTF(getName());
+        s.writeUTF(getManufacturer());
+        s.writeDouble(getWattsRequired());
+        s.writeDouble(getPrice());
+        s.writeUTF(keyboardSwitches.getValue());
+        s.writeUTF(keyboardLanguage.getValue());
+        s.writeUTF(keyboardConnectionType.getValue());
+
+    }
+
+    public void readObject(ObjectInputStream s) throws IOException{
+        //super.readObject(s);
+        String name = s.readUTF();
+        String manufacturer = s.readUTF();
+        double wattsRequired = s.readDouble();
+        double price = s.readDouble();
+        String keyboardSwitches = s.readUTF();
+        String keyboardLanguage = s.readUTF();
+        String keyboardConnectionType = s.readUTF();
+
+        setType("Keyboard");
+        setName(name);
+        setManufacturer(manufacturer);
+        setWattsRequired(wattsRequired);
+        setPrice(price);
+        this.keyboardSwitches = new SimpleStringProperty(keyboardSwitches);
+        this.keyboardLanguage = new SimpleStringProperty(keyboardLanguage);
+        this.keyboardConnectionType = new SimpleStringProperty(keyboardConnectionType);
     }
 }
