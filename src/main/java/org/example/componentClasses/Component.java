@@ -3,6 +3,9 @@ package org.example.componentClasses;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Component implements Serializable {
@@ -68,5 +71,21 @@ public class Component implements Serializable {
 	}
 	public String getInfo(){
 		return "";
+	}
+
+	public void writeObject(ObjectOutputStream s) throws IOException{
+		s.writeUTF(type.getValue());
+		s.writeUTF(name.getValue());
+		s.writeUTF(manufacturer.getValue());
+		s.writeDouble(wattsRequired.getValue());
+		s.writeDouble(price.getValue());
+	}
+
+	public void readObject(ObjectInputStream s) throws IOException{
+		String type = s.readUTF();
+		String name = s.readUTF();
+		String manufacturer = s.readUTF();
+		double wattsRequired = s.readDouble();
+		double price = s.readDouble();
 	}
 }

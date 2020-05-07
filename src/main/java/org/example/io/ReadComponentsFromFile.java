@@ -1,5 +1,8 @@
 package org.example.io;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.example.componentClasses.Component;
 import org.example.logicAndClasses.ComponentCollection;
 
 import java.io.IOException;
@@ -8,15 +11,24 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ReadComponentsFromFile extends Reader {
     Path path = Paths.get("components.jobj");
 
-    public ReadComponentsFromFile() throws IOException, ClassNotFoundException {
+    public ComponentCollection ReadComponentsFromFile() throws IOException, ClassNotFoundException {
         try(InputStream in = Files.newInputStream(path);
             ObjectInputStream oin = new ObjectInputStream(in)){
-            ComponentCollection inComponents = (ComponentCollection) oin.readObject();
+            List<Component> components = (ArrayList<Component>) oin.readObject();
+
+            ComponentCollection inComponents = new ComponentCollection();
+
+            for(Component c : components){
+                inComponents.add(c);
+            }
+            return inComponents;
         }
         catch (IOException ioe){
             throw new IOException("Something wrong with reading from file!");

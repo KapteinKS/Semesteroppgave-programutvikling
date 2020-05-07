@@ -7,6 +7,7 @@ import org.example.componentClasses.Cabinet;
 import org.example.componentClasses.Component;
 import org.example.componentClasses.GraphicCard;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,9 @@ public class ComponentCollection {
 		return e;
 	}
 
+	public ObservableList<Component> getArrayList(){
+		return componentList;
+	}
 
 	public ObservableList<Component> getComponentList(){
 		return componentList;
