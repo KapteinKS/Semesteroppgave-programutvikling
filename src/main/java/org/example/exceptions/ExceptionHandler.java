@@ -54,15 +54,6 @@ public class ExceptionHandler {
         return clockSpeed;
     }
 
-    public int checkClockSpeed(int clockSpeed) throws IllegalClockSpeedException {
-        if(clockSpeed < 1){
-            throw new IllegalClockSpeedException("Her registrerer vi ikke trege CPU-er");
-        } else if (clockSpeed > 10){
-            throw new IllegalClockSpeedException("Ro ned nå, Speed Racer");
-        }
-        return clockSpeed;
-    }
-
     public int checkDiameter (int diameter) throws IllegalDimensionsException {
         if(diameter < 0){
             throw new IllegalDimensionsException("Diameter må være positiv");

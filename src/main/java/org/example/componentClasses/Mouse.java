@@ -21,12 +21,6 @@ public class Mouse extends Component implements Serializable {
         return mouseDPI.getValue();
     }
 
-    /*
-    public SimpleIntegerProperty mouseDPIProperty() {
-        return mouseDPI;
-    }
-    */
-
     public void setMouseDPI(int mouseDPI) {
         this.mouseDPI.set(mouseDPI);
     }
@@ -36,12 +30,6 @@ public class Mouse extends Component implements Serializable {
         return mouseConnectionType.getValue();
     }
 
-    /*
-    public SimpleIntegerProperty mouseConnectionTypeProperty() {
-        return mouseConnectionType;
-    }
-    */
-
     public void setMouseConnectionType(String mouseConnectionType) {
         this.mouseConnectionType.set(mouseConnectionType);
     }
@@ -49,12 +37,6 @@ public class Mouse extends Component implements Serializable {
     public int getMouseProgrammableButtons() {
         return mouseProgrammableButtons.getValue();
     }
-
-    /*
-    public SimpleIntegerProperty mouseProgrammableButtonsProperty() {
-        return mouseProgrammableButtons;
-    }
-    */
 
     public void setMouseProgrammableButtons(int mouseProgrammableButtons) {
         this.mouseProgrammableButtons.set(mouseProgrammableButtons);

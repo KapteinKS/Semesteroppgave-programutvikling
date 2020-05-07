@@ -25,12 +25,6 @@ public class Monitor extends Component implements Serializable {
         return monitorSize.getValue();
     }
 
-    /*
-    public SimpleIntegerProperty monitorSizeProperty() {
-        return monitorSize;
-    }
-    */
-
     public void setMonitorSize(int monitorSize) {
         this.monitorSize.set(monitorSize);
     }
@@ -38,11 +32,6 @@ public class Monitor extends Component implements Serializable {
     public int getMonitorRefreshRate() {
         return monitorRefreshRate.getValue();
     }
-    /*
-    public SimpleIntegerProperty monitorRefreshRateProperty() {
-        return monitorRefreshRate;
-    }
-    */
 
     public void setMonitorRefreshRate(int monitorRefreshRate) {
         this.monitorRefreshRate.set(monitorRefreshRate);
@@ -51,11 +40,6 @@ public class Monitor extends Component implements Serializable {
     public int getMonitorResponseTime() {
         return monitorResponseTime.getValue();
     }
-    /*
-    public SimpleIntegerProperty monitorResponseTimeProperty() {
-        return monitorResponseTime;
-    }
-    */
 
     public void setMonitorResponseTime(int monitorResponseTime) {
         this.monitorResponseTime.set(monitorResponseTime);
@@ -64,11 +48,6 @@ public class Monitor extends Component implements Serializable {
     public String getMonitorScreenType() {
         return monitorScreenType.getValue();
     }
-    /*
-    public SimpleIntegerProperty monitorScreenTypeProperty() {
-        return monitorScreenType;
-    }
-    */
 
     public void setMonitorScreenType(String monitorScreenType) {
         this.monitorScreenType.set(monitorScreenType);
