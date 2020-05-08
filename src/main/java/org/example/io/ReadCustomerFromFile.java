@@ -3,8 +3,9 @@ package org.example.io;
 
 // This handles .txt files.
 
-import org.example.logicAndClasses.Customer;
-import org.example.logicAndClasses.CustomerCollection;
+import org.example.logicAndClasses.EndUser;
+import org.example.logicAndClasses.User;
+import org.example.logicAndClasses.UserCollection;
 import org.example.exceptions.InvalidCustomerException;
 
 import java.io.BufferedReader;
@@ -14,19 +15,19 @@ import java.nio.file.Path;
 
 public class ReadCustomerFromFile extends Reader {
 
-	public static void open(CustomerCollection customerCollection, Path customerFilePath) throws IOException {
-		customerCollection.removeAll();
+	public static void open(UserCollection userCollection, Path customerFilePath) throws IOException {
+		userCollection.removeAll();
 		try (BufferedReader bufferedReader = Files.newBufferedReader(customerFilePath)) {
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
-				customerCollection.addCustomer(parseCustomer(line));
+				userCollection.addCustomer(parseCustomer(line));
 			}
 		} catch (InvalidCustomerException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static Customer parseCustomer(String line) throws InvalidCustomerException {
+	private static User parseCustomer(String line) throws InvalidCustomerException {
 		String[] split = line.split(",");
 		if (split.length != 9) {
 			throw new InvalidCustomerException("ERROR! Values not separated by ',' !!");
@@ -44,7 +45,7 @@ public class ReadCustomerFromFile extends Reader {
 		String password = split[8];
 
 		try {
-			return new Customer(customerId, firstName, lastName, address, postalCode, postalArea, phoneNumber, email, password);
+			return new EndUser(customerId, firstName, lastName, address, postalCode, postalArea, phoneNumber, email, password);
 		} catch (IllegalArgumentException e) {
 			throw new InvalidCustomerException(e.getMessage());
 		}
