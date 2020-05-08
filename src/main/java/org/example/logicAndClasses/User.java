@@ -1,6 +1,6 @@
 package org.example.logicAndClasses;
 
-public class Customer {
+public abstract class User {
     private String customerID;
     private String firstName;
     private String lastName;
@@ -11,7 +11,7 @@ public class Customer {
     private String email;
     private String password;
 
-    public Customer(String customerID, String firstName, String lastName, String address, String postalCode, String postalArea, String phoneNumber, String email, String password) {
+    public User(String customerID, String firstName, String lastName, String address, String postalCode, String postalArea, String phoneNumber, String email, String password) {
         this.customerID = customerID;
         this.firstName = firstName;
         this.lastName = lastName;

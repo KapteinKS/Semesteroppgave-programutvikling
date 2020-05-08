@@ -3,7 +3,8 @@ package org.example.io;
 
 // This handles .txt files.
 
-import org.example.logicAndClasses.Customer;
+import org.example.logicAndClasses.EndUser;
+import org.example.logicAndClasses.User;
 import org.example.logicAndClasses.CustomerCollection;
 import org.example.exceptions.InvalidCustomerException;
 
@@ -26,7 +27,7 @@ public class ReadCustomerFromFile extends Reader {
 		}
 	}
 
-	private static Customer parseCustomer(String line) throws InvalidCustomerException {
+	private static User parseCustomer(String line) throws InvalidCustomerException {
 		String[] split = line.split(",");
 		if (split.length != 9) {
 			throw new InvalidCustomerException("ERROR! Values not separated by ',' !!");
@@ -44,7 +45,7 @@ public class ReadCustomerFromFile extends Reader {
 		String password = split[8];
 
 		try {
-			return new Customer(customerId, firstName, lastName, address, postalCode, postalArea, phoneNumber, email, password);
+			return new EndUser(customerId, firstName, lastName, address, postalCode, postalArea, phoneNumber, email, password);
 		} catch (IllegalArgumentException e) {
 			throw new InvalidCustomerException(e.getMessage());
 		}

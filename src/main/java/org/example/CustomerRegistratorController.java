@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.example.logicAndClasses.Customer;
+import org.example.logicAndClasses.EndUser;
+import org.example.logicAndClasses.User;
 import org.example.logicAndClasses.CustomerCollection;
 
 import java.io.IOException;
@@ -113,7 +114,7 @@ public class CustomerRegistratorController {
 			}
 
 			if (goodToGo){
-				App.saveToCustomerCollection(new Customer((String.format("%05d",App.getNewCustomerID())),
+				App.saveToCustomerCollection(new EndUser((String.format("%05d",App.getNewCustomerID())),
 						firstName, lastName, address, postCode, postArea, phoneNumber, email, password));
 				App.setCurrentUserEmail(email);
 				App.setRoot("user", 700, 640, "End User");

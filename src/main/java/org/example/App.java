@@ -8,16 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.componentClasses.*;
-import org.example.io.ReadCustomerFromFile;
-import org.example.io.WriteCustomerToFile;
-import org.example.logicAndClasses.ComponentCollection;
-import org.example.logicAndClasses.Customer;
-import org.example.logicAndClasses.CustomerCollection;
-import org.example.logicAndClasses.Initializer;
+import org.example.logicAndClasses.*;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * JavaFX App
@@ -66,8 +59,8 @@ public class App extends Application {
         // We must remember to do file-management in new task
 
         //ReadCustomerFromFile.open(customerRegistry, Paths.get("customers.txt"));
-        customerRegistry.addCustomer(new Customer("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
-        customerRegistry.addCustomer(new Customer("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
+        customerRegistry.addCustomer(new AdminUser("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
+        customerRegistry.addCustomer(new EndUser("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
 
         //WriteCustomerToFile.save(customerRegistry, Paths.get("customers.txt"));
 
@@ -166,8 +159,8 @@ public class App extends Application {
         return customerRegistry;
     }
 
-    public static void saveToCustomerCollection(Customer customer){
-        customerRegistry.addCustomer(customer);
+    public static void saveToCustomerCollection(User user){
+        customerRegistry.addCustomer(user);
     }
 
     public static int getNewCustomerID(){
