@@ -117,14 +117,12 @@
                   <ComboBox fx:id="cbFan1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                   <Label text="Vifte" GridPane.rowIndex="11" />
                   <ComboBox fx:id="cbFan2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                  <Label text="Ekstra" GridPane.rowIndex="12" />
-                  <ComboBox fx:id="cbExtra1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                  <Label text="Ekstra" GridPane.rowIndex="13" />
-                  <ComboBox fx:id="cbExtra2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                  <Label text="Ekstra" GridPane.rowIndex="14" />
-                  <ComboBox fx:id="cbExtra3" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                  <Label text="Ekstra" GridPane.rowIndex="15" />
-                  <ComboBox fx:id="cbExtra4" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                  <Label text="Monitor" GridPane.rowIndex="12" />
+                  <ComboBox fx:id="cbMonitor" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <Label text="Tastatur" GridPane.rowIndex="13" />
+                  <ComboBox fx:id="cbTastatur" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                  <Label text="Mus" GridPane.rowIndex="14" />
+                  <ComboBox fx:id="cbMus" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                </children>
             </GridPane>
          </content>

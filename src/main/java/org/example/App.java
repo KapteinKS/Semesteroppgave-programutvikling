@@ -31,7 +31,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException, ClassNotFoundException {
 
         //*  SOME COMPONENTS  *//
-/*
+
         componentCollection.add(new Cabinet("BigBoyCab 3010","Corsair",900.00,"ATX",400,150,600,10.00));
         componentCollection.add(new Cabinet("Sleek 11","Asus",660.00,"M-ATX",300,150,300,4.25));
         componentCollection.add(new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6",1605));
@@ -51,9 +51,12 @@ public class App extends Application {
         componentCollection.add(new RAM("Vengance LPX", "Corsair", 1260.00, 16,"DDR4",2));
         componentCollection.add(new Storage("KC2000","Kingston",882.00,"SSD",250,"GB"));
         componentCollection.add(new Storage("Mobile Black", "WD",807.00,"HDD",1,"TB"));
-*/
+        componentCollection.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
+        componentCollection.add(new Monitor("27`` 4k LCD", "Acer", 0, 2400, 27, 144, 2, "LCD"));
+        componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
 
-        componentCollection = Initializer.readComponents();
+
+        //componentCollection = Initializer.readComponents();
 
         // We need to read data from files here.
         // We must remember to do file-management in new task

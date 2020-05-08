@@ -11,10 +11,7 @@ import org.example.logicAndClasses.ComponentCollection;
 import org.example.logicAndClasses.Order;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Optional;
 
 public class UserController {
@@ -62,16 +59,13 @@ public class UserController {
 	public ComboBox<String> cbFan2;
 
 	@FXML
-	public ComboBox<String> cbExtra1;
+	public ComboBox<String> cbMonitor;
 
 	@FXML
-	public ComboBox<String> cbExtra2;
+	public ComboBox<String> cbTastatur;
 
 	@FXML
-	public ComboBox<String> cbExtra3;
-
-	@FXML
-	public ComboBox<String> cbExtra4;
+	public ComboBox<String> cbMus;
 
 	@FXML
 	private TextArea txtPreview;
@@ -109,10 +103,9 @@ public class UserController {
 				psu = cbPSU.getSelectionModel().getSelectedItem(),
 				fan1 = cbFan1.getSelectionModel().getSelectedItem(),
 				fan2 = cbFan2.getSelectionModel().getSelectedItem(),
-				extra1 = cbExtra1.getSelectionModel().getSelectedItem(),
-				extra2 = cbExtra2.getSelectionModel().getSelectedItem(),
-				extra3 = cbExtra3.getSelectionModel().getSelectedItem(),
-				extra4 = cbExtra4.getSelectionModel().getSelectedItem();
+				monitor = cbMonitor.getSelectionModel().getSelectedItem(),
+				tastatur = cbTastatur.getSelectionModel().getSelectedItem(),
+				mus = cbMus.getSelectionModel().getSelectedItem();
 
 		//These try-blocks attempt to check compatibility between (some) components
 		try {
@@ -178,17 +171,14 @@ public class UserController {
 		}catch (Exception e) {}
 
 		//Extras don't count to voltage
-		if (!(extra1.equals("---"))){
-			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra1.getSelectionModel().getSelectedItem()));
+		if (!(monitor.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cbMonitor.getSelectionModel().getSelectedItem()));
 		}
-		if (!(extra2.equals("---"))){
-			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra2.getSelectionModel().getSelectedItem()));
+		if (!(tastatur.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cbTastatur.getSelectionModel().getSelectedItem()));
 		}
-		if (!(extra3.equals("---"))){
-			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra3.getSelectionModel().getSelectedItem()));
-		}
-		if (!(extra4.equals("---"))){
-			listOfSelected.add(componentCollection.getComponentByDisplayString(cbExtra4.getSelectionModel().getSelectedItem()));
+		if (!(mus.equals("---"))){
+			listOfSelected.add(componentCollection.getComponentByDisplayString(cbMus.getSelectionModel().getSelectedItem()));
 		}
 
 		totalPrice = Checker.summarizePrice(listOfSelected);
@@ -285,10 +275,9 @@ public class UserController {
 		cbPSU.getSelectionModel().selectLast();
 		cbFan1.getSelectionModel().selectLast();
 		cbFan2.getSelectionModel().selectLast();
-		cbExtra1.getSelectionModel().selectLast();
-		cbExtra2.getSelectionModel().selectLast();
-		cbExtra3.getSelectionModel().selectLast();
-		cbExtra4.getSelectionModel().selectLast();
+		cbMonitor.getSelectionModel().selectLast();
+		cbTastatur.getSelectionModel().selectLast();
+		cbMus.getSelectionModel().selectLast();
 	}
 
 	@FXML
@@ -317,10 +306,9 @@ public class UserController {
 		populateSingleComboBox(cbPSU, "PowerSupply", componentCollection);
 		populateSingleComboBox(cbFan1, "Fan", componentCollection);
 		populateSingleComboBox(cbFan2, "Fan", componentCollection);
-		populateSingleComboBox(cbExtra1, "None", componentCollection);
-		populateSingleComboBox(cbExtra2, "None", componentCollection);
-		populateSingleComboBox(cbExtra3, "None", componentCollection);
-		populateSingleComboBox(cbExtra4, "None", componentCollection);
+		populateSingleComboBox(cbMonitor, "Monitor", componentCollection);
+		populateSingleComboBox(cbTastatur, "Keyboard", componentCollection);
+		populateSingleComboBox(cbMus, "Mouse", componentCollection);
 
 	}
 
