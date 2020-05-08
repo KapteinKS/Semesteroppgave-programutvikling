@@ -91,13 +91,13 @@ public class StorageController implements Initializable {
 
                 App.closeWindow();
 
-            } catch (NumberFormatException n){
-                System.err.println("Tallfelt kan ikke være tomme");
             } catch (IllegalPriceException | IllegalCapacityException e) {
-                System.err.println(e.getMessage());
+                DialogueBoxes.alert("Feil", e.getMessage());
+            } catch (NumberFormatException n) {
+                DialogueBoxes.alert("Feil", "Tallfelt kan ikke være tomme");
             }
         } else {
-            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
+            DialogueBoxes.alert("Feil", "Ett eller flere påkrevde tekstfelt er tomme");
         }
 
     }

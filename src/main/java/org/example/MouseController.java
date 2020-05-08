@@ -62,12 +62,12 @@ public class MouseController {
                 App.closeWindow();
 
             } catch (IllegalPriceException | IllegalDPIException | IllegalButtonsException e){
-                System.err.println(e.getMessage());
-            } catch (NumberFormatException n){
-                System.err.println("Tallfelt kan ikke være tomme");
+                DialogueBoxes.alert("Feil", e.getMessage());
+            } catch (NumberFormatException n) {
+                DialogueBoxes.alert("Feil", "Tallfelt kan ikke være tomme");
             }
         } else {
-            System.err.println("Ett eller flere påkrevde tekstfelt er tomme");
+            DialogueBoxes.alert("Feil", "Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
 }

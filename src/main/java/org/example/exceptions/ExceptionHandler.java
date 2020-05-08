@@ -31,7 +31,7 @@ public class ExceptionHandler {
         return depth;
     }
 
-    public int checkWeight(int weight) throws IllegalWeightException{
+    public double checkWeight(double weight) throws IllegalWeightException{
         if (weight < 0){
             throw new IllegalWeightException("Vekt må være positiv");
         }

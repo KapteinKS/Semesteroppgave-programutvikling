@@ -133,14 +133,10 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void showAbout(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle("About");
-		alert.setHeaderText("This GUI allows you to see all created components\nand create new ones");
-		alert.setContentText("Press 'Registrer komponent' and choose a type of component to start the creation tool." +
+		DialogueBoxes.about("This GUI allows you to see all created components\nand create new ones",
+				"Press \"Registrer komponent\" and choose a type of component to start the creation tool.\n" +
 				"Some attributes of each component are also editable, such as name, price and manufacturer.\n" +
-				"You can also switch to the End User GUI by clicking 'Help' -> 'User View'.");
-		alert.setResizable(false);
-		alert.showAndWait();
+				"You can also switch to the End User GUI by clicking \"Help\" -> \"User View\".");
 	}
 
 	@FXML
@@ -181,18 +177,23 @@ public class AdminController implements Initializable {
 		}
 	}
 
-	public void editName(TableColumn.CellEditEvent<Component, String> event){
+	public void editName(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setName(event.getNewValue());
+		WriteComponentsToFile.save(App.getList2().getArrayList());
+
 	}
 
-	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event){
+	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setManufacturer(event.getNewValue());
+		WriteComponentsToFile.save(App.getList2().getArrayList());
+
 	}
 
-	public void editPrice(TableColumn.CellEditEvent<Component, Double> event){
+	public void editPrice(TableColumn.CellEditEvent<Component, Double> event) throws IOException {
 		try {
 			if (doubleStringConverter.wasSuccessful())
 				event.getRowValue().setPrice(event.getNewValue());
+				WriteComponentsToFile.save(App.getList2().getArrayList());
 		} catch (NumberFormatException e){
 			System.out.println("Du må skrive inn et positivt tall!");
 		} catch (IllegalArgumentException e){

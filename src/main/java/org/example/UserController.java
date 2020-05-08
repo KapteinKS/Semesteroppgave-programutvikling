@@ -298,14 +298,10 @@ public class UserController {
 
 	@FXML
 	void showAbout(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle("About");
-		alert.setHeaderText("This GUI allows customers to configure a custom PC, and place orders");
-		alert.setContentText("Choose components from the choiceboxes and choose 'Analyser Build' to see" +
-				"compatibility and price of the computer.\n" +
-				"You can also switch to the End User GUI by clicking 'Help' -> 'Admin'.");
-		alert.setResizable(false);
-		alert.showAndWait();
+		DialogueBoxes.about("This GUI allows customers to configure a custom PC, and place orders",
+				"Choose components from the drop downs and choose \"Analyser Build\" to see" +
+						"compatibility and price of the computer.\n" +
+						"You can also switch to the End User GUI by clicking \"Help\" -> \"Admin\".");
 	}
 	public void populateComboBoxes(){
 
