@@ -72,7 +72,6 @@ public class Cabinet extends Component {
 
     private void writeObject(ObjectOutputStream s) throws IOException{
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeUTF(mbFormFactor.getValue());
         s.writeInt(height.getValue());
         s.writeInt(width.getValue());
@@ -82,7 +81,6 @@ public class Cabinet extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.mbFormFactor = new SimpleStringProperty(s.readUTF());
         this.height = new SimpleIntegerProperty(s.readInt());
         this.width = new SimpleIntegerProperty(s.readInt());

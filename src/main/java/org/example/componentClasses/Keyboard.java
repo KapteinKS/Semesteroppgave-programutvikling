@@ -76,7 +76,6 @@ public class Keyboard extends Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeUTF(keyboardSwitches.getValue());
         s.writeUTF(keyboardLanguage.getValue());
         s.writeUTF(keyboardConnectionType.getValue());
@@ -84,7 +83,6 @@ public class Keyboard extends Component implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.keyboardSwitches = new SimpleStringProperty(s.readUTF());
         this.keyboardLanguage = new SimpleStringProperty(s.readUTF());
         this.keyboardConnectionType = new SimpleStringProperty(s.readUTF());

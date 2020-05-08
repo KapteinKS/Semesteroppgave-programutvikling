@@ -56,7 +56,6 @@ public class RAM extends Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeInt(size.getValue());
         s.writeUTF(memoryType.getValue());
         s.writeInt(amountOfRAMPieces.getValue());
@@ -64,7 +63,6 @@ public class RAM extends Component implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.size = new SimpleIntegerProperty(s.readInt());
         this.memoryType = new SimpleStringProperty(s.readUTF());
         this.amountOfRAMPieces = new SimpleIntegerProperty(s.readInt());

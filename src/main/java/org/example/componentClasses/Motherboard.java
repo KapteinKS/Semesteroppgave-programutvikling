@@ -57,7 +57,6 @@ public class Motherboard extends Component implements Serializable {
 
 	private void writeObject(ObjectOutputStream s) throws IOException {
 		s.defaultWriteObject();
-		s.writeUTF(getType());
 		s.writeUTF(mbFormFactor.getValue());
 		s.writeUTF(socket.getValue());
 		s.writeUTF(ramType.getValue());
@@ -65,7 +64,6 @@ public class Motherboard extends Component implements Serializable {
 
 	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
 		s.defaultReadObject();
-		super.type = new SimpleStringProperty(s.readUTF());
 		this.mbFormFactor = new SimpleStringProperty(s.readUTF());
 		this.socket = new SimpleStringProperty(s.readUTF());
 		this.ramType = new SimpleStringProperty(s.readUTF());

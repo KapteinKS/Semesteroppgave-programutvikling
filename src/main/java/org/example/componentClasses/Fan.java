@@ -58,7 +58,6 @@ public class Fan extends Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeInt(diameter.getValue());
         s.writeDouble(airPressure.getValue());
         s.writeInt(maxNoiseVolume.getValue());
@@ -66,7 +65,6 @@ public class Fan extends Component implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.diameter = new SimpleIntegerProperty(s.readInt());
         this.airPressure = new SimpleDoubleProperty(s.readDouble());
         this.maxNoiseVolume = new SimpleIntegerProperty(s.readInt());

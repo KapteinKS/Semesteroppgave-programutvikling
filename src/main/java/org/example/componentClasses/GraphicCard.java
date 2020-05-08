@@ -57,7 +57,6 @@ public class GraphicCard extends Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeInt(ram.getValue());
         s.writeUTF(ramType.getValue());
         s.writeDouble(clockSpeed.getValue());
@@ -65,7 +64,6 @@ public class GraphicCard extends Component implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.ram = new SimpleIntegerProperty(s.readInt());
         this.ramType = new SimpleStringProperty(s.readUTF());
         this.clockSpeed = new SimpleDoubleProperty(s.readDouble());

@@ -56,7 +56,6 @@ public class Mouse extends Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeInt(mouseDPI.getValue());
         s.writeUTF(mouseConnectionType.getValue());
         s.writeInt(mouseProgrammableButtons.getValue());
@@ -64,7 +63,6 @@ public class Mouse extends Component implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.mouseDPI = new SimpleIntegerProperty(s.readInt());
         this.mouseConnectionType = new SimpleStringProperty(s.readUTF());
         this.mouseProgrammableButtons = new SimpleIntegerProperty(s.readInt());

@@ -42,7 +42,6 @@ public class PowerSupply extends Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeInt(inVoltage.getValue());
         s.writeInt(outVoltage.getValue());
 
@@ -50,7 +49,6 @@ public class PowerSupply extends Component implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.inVoltage = new SimpleIntegerProperty(s.readInt());
         this.outVoltage = new SimpleIntegerProperty(s.readInt());
     }

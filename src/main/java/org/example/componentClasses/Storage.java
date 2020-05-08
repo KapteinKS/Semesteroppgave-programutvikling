@@ -49,7 +49,6 @@ public class Storage extends Component implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        s.writeUTF(getType());
         s.writeUTF(storageType.getValue());
         s.writeInt(capacity.getValue());
         s.writeUTF(capacityType.getValue());
@@ -58,7 +57,6 @@ public class Storage extends Component implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        super.type = new SimpleStringProperty(s.readUTF());
         this.storageType = new SimpleStringProperty(s.readUTF());
         this.capacity = new SimpleIntegerProperty(s.readInt());
         this.capacityType = new SimpleStringProperty(s.readUTF());

@@ -68,7 +68,6 @@ public class CPU extends Component {
 
 	private void writeObject(ObjectOutputStream s) throws IOException{
 		s.defaultWriteObject();
-		s.writeUTF(getType());
 		s.writeInt(threads.getValue());
 		s.writeDouble(clockSpeed.getValue());
 		s.writeUTF(socket.getValue());
@@ -76,7 +75,6 @@ public class CPU extends Component {
 
 	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
 		s.defaultReadObject();
-		super.type = new SimpleStringProperty(s.readUTF());
 		this.threads = new SimpleIntegerProperty(s.readInt());
 		this.clockSpeed = new SimpleDoubleProperty(s.readDouble());
 		this.socket = new SimpleStringProperty(s.readUTF());

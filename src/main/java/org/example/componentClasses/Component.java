@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public abstract class Component implements Serializable {
-	public transient SimpleStringProperty type;
+	private transient SimpleStringProperty type;
 	private transient SimpleStringProperty name;
 	private transient SimpleStringProperty manufacturer;
 	private transient SimpleDoubleProperty wattsRequired;
@@ -77,6 +77,7 @@ public abstract class Component implements Serializable {
 
 
 	private void writeObject(ObjectOutputStream s) throws IOException{
+		s.writeUTF(type.getValue());
 		s.writeUTF(name.getValue());
 		s.writeUTF(manufacturer.getValue());
 		s.writeDouble(wattsRequired.getValue());
@@ -84,6 +85,7 @@ public abstract class Component implements Serializable {
 	}
 
 	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+		this.type = new SimpleStringProperty(s.readUTF());
 		this.name = new SimpleStringProperty(s.readUTF());
 		this.manufacturer = new SimpleStringProperty(s.readUTF());
 		this.wattsRequired = new SimpleDoubleProperty(s.readDouble());
