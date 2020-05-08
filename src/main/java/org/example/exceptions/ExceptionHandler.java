@@ -10,21 +10,21 @@ public class ExceptionHandler {
         return price;
     }
 
-    public int checkHeight(int height) throws IllegalDimensionsException{
+    public double checkHeight(double height) throws IllegalDimensionsException{
         if (height < 0){
             throw new IllegalDimensionsException("Høyde må være positiv");
         }
         return height;
     }
 
-    public int checkWidth(int width) throws IllegalDimensionsException{
+    public double checkWidth(double width) throws IllegalDimensionsException{
         if (width < 0){
             throw new IllegalDimensionsException("Bredde må være positiv");
         }
         return width;
     }
 
-    public int checkDepth(int depth) throws IllegalDimensionsException{
+    public double checkDepth(double depth) throws IllegalDimensionsException{
         if (depth < 0){
             throw new IllegalDimensionsException("Dybde må være positiv");
         }

@@ -11,17 +11,17 @@ import java.io.Serializable;
 
 public class Cabinet extends Component {
     private transient SimpleStringProperty mbFormFactor;
-    private transient SimpleIntegerProperty height;
-    private transient SimpleIntegerProperty width;
-    private transient SimpleIntegerProperty depth;
+    private transient SimpleDoubleProperty height;
+    private transient SimpleDoubleProperty width;
+    private transient SimpleDoubleProperty depth;
     private transient SimpleDoubleProperty weight;
 
-    public Cabinet(String name, String manufacturer, double price, String mbFormFactor, int height, int width, int depth, double weight) {
+    public Cabinet(String name, String manufacturer, double price, String mbFormFactor, double height, double width, double depth, double weight) {
         super("Cabinet", name, manufacturer, 0, price);
         this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
-        this.height = new SimpleIntegerProperty(height);
-        this.width = new SimpleIntegerProperty(width);
-        this.depth = new SimpleIntegerProperty(depth);
+        this.height = new SimpleDoubleProperty(height);
+        this.width = new SimpleDoubleProperty(width);
+        this.depth = new SimpleDoubleProperty(depth);
         this.weight = new SimpleDoubleProperty(weight);
     }
 
@@ -33,27 +33,27 @@ public class Cabinet extends Component {
         this.mbFormFactor.set(mbFormFactor);
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height.getValue();
     }
 
-    public void setHeight(int height) {
+    public void setHeight(double height) {
         this.height.set(height);
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width.getValue();
     }
 
-    public void setWidth(int width) {
+    public void setWidth(double width) {
         this.width.set(width);
     }
 
-    public int getDepth() {
+    public double getDepth() {
         return depth.getValue();
     }
 
-    public void setDepth(int depth) {
+    public void setDepth(double depth) {
         this.depth.set(depth);
     }
 
@@ -73,18 +73,18 @@ public class Cabinet extends Component {
     private void writeObject(ObjectOutputStream s) throws IOException{
         s.defaultWriteObject();
         s.writeUTF(mbFormFactor.getValue());
-        s.writeInt(height.getValue());
-        s.writeInt(width.getValue());
-        s.writeInt(depth.getValue());
+        s.writeDouble(height.getValue());
+        s.writeDouble(width.getValue());
+        s.writeDouble(depth.getValue());
         s.writeDouble(weight.getValue());
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
         this.mbFormFactor = new SimpleStringProperty(s.readUTF());
-        this.height = new SimpleIntegerProperty(s.readInt());
-        this.width = new SimpleIntegerProperty(s.readInt());
-        this.depth = new SimpleIntegerProperty(s.readInt());
+        this.height = new SimpleDoubleProperty(s.readDouble());
+        this.width = new SimpleDoubleProperty(s.readDouble());
+        this.depth = new SimpleDoubleProperty(s.readDouble());
         this.weight = new SimpleDoubleProperty(s.readDouble());
     }
 
