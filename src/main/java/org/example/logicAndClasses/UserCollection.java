@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.util.List;
 
-public class CustomerCollection {
+public class UserCollection {
 
 	private ObservableList<User> users = FXCollections.observableArrayList();
 
@@ -22,7 +22,7 @@ public class CustomerCollection {
 		return users.size();
 	}
 
-	public boolean checkForCustomer(String email){
+	public boolean checkForUser(String email){
 		boolean check = false;
 		for (User c : users){
 			if (c.getEmail().equals(email)){

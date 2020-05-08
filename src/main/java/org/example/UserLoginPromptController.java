@@ -5,14 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.example.logicAndClasses.AdminUser;
-import org.example.logicAndClasses.CustomerCollection;
+import org.example.logicAndClasses.UserCollection;
 import org.example.logicAndClasses.EndUser;
 import org.example.logicAndClasses.User;
 
 import java.io.IOException;
 
 public class UserLoginPromptController {
-	CustomerCollection customerCollection = App.getCustomerRegistry();
+	UserCollection userCollection = App.getCustomerRegistry();
 
 	@FXML
 	private TextField txtEmail;
@@ -22,33 +22,25 @@ public class UserLoginPromptController {
 
 	@FXML
 	void login(ActionEvent event) throws IOException {
-		boolean weGood = false;
+
 		//Check Stored List of Person
 		txtEmail.setStyle("");
 		txtPassword.setStyle("");
-		User user = null;
+		User user;
 
-		if ((customerCollection.checkForCustomer(txtEmail.getText())) && (customerCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))) {
-			weGood = true;
-			user = customerCollection.getUser(txtEmail.getText());
+		if ((userCollection.checkForUser(txtEmail.getText())) && (userCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))) {
+			user = userCollection.getUser(txtEmail.getText());
+			if (user instanceof EndUser){
+				App.setCurrentUserEmail(txtEmail.getText());
+				App.setRoot("user", 700, 640, "End User");
+			} else if (user instanceof AdminUser){
+				App.setCurrentUserEmail(txtEmail.getText());
+				App.setRoot("admin", 625, 525, "Admin");
+			}
 		} else {
 			txtEmail.setStyle("-fx-text-box-border: #ff0000");
 			txtPassword.setStyle("-fx-text-box-border: #ff0000");
 		}
-/*
-		if (!(customerCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))){
-			weGood = false;
-		}
-*/
-		if (weGood && user instanceof EndUser){
-			App.setCurrentUserEmail(txtEmail.getText());
-			App.setRoot("user", 700, 640, "End User");
-		} else if (weGood && user instanceof AdminUser){
-			App.setCurrentUserEmail(txtEmail.getText());
-			App.setRoot("admin", 625, 525, "Admin");
-		}
-
-
 	}
 
 	@FXML

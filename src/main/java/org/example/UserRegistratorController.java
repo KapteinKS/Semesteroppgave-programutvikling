@@ -6,13 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.example.logicAndClasses.EndUser;
-import org.example.logicAndClasses.User;
-import org.example.logicAndClasses.CustomerCollection;
+import org.example.logicAndClasses.UserCollection;
 
 import java.io.IOException;
 
-public class CustomerRegistratorController {
-	CustomerCollection customerCollection = App.getCustomerRegistry();
+public class UserRegistratorController {
+	UserCollection userCollection = App.getCustomerRegistry();
 
 	@FXML
 	private TextField txtFirstName;
@@ -65,7 +64,7 @@ public class CustomerRegistratorController {
 		txtPassword.setStyle("");
 		txtPasswordConfirm.setStyle("");
 
-		if(!(customerCollection.checkForCustomer(txtEmail.getText()))) {
+		if(!(userCollection.checkForUser(txtEmail.getText()))) {
 			boolean goodToGo = true;
 
 			String firstName = txtFirstName.getText(),

@@ -5,7 +5,7 @@ package org.example.io;
 
 import org.example.logicAndClasses.EndUser;
 import org.example.logicAndClasses.User;
-import org.example.logicAndClasses.CustomerCollection;
+import org.example.logicAndClasses.UserCollection;
 import org.example.exceptions.InvalidCustomerException;
 
 import java.io.BufferedReader;
@@ -15,12 +15,12 @@ import java.nio.file.Path;
 
 public class ReadCustomerFromFile extends Reader {
 
-	public static void open(CustomerCollection customerCollection, Path customerFilePath) throws IOException {
-		customerCollection.removeAll();
+	public static void open(UserCollection userCollection, Path customerFilePath) throws IOException {
+		userCollection.removeAll();
 		try (BufferedReader bufferedReader = Files.newBufferedReader(customerFilePath)) {
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
-				customerCollection.addCustomer(parseCustomer(line));
+				userCollection.addCustomer(parseCustomer(line));
 			}
 		} catch (InvalidCustomerException e) {
 			e.printStackTrace();

@@ -24,7 +24,7 @@ public class App extends Application {
     private static Stage stage2;
 
     private static ComponentCollection componentCollection = new ComponentCollection(); //These must be filled
-    private static CustomerCollection customerRegistry = new CustomerCollection(); //These must be filled
+    private static UserCollection customerRegistry = new UserCollection(); //These must be filled
     private static String currentUserEmail;
 
     @Override
@@ -71,11 +71,11 @@ public class App extends Application {
 
         App.stage = stage;
         Initializer.initialize();
-        scene = new Scene(loadFXML("start"));
+        scene = new Scene(loadFXML("userLoginPrompt"));
         System.out.print(".");
         stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
         stage.setScene(scene);
-        stage.setTitle("Start");
+        stage.setTitle("Login");
         stage.show();
         System.out.print(".");
         System.out.print("\n\n---------------\n\n");
@@ -155,7 +155,7 @@ public class App extends Application {
     }
 
     //CustomerCollection stuff
-    public static CustomerCollection getCustomerRegistry(){
+    public static UserCollection getCustomerRegistry(){
         return customerRegistry;
     }
 
