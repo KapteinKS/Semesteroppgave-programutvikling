@@ -5,26 +5,26 @@ import javafx.collections.ObservableList;
 
 import java.util.List;
 
-public class CustomerCollection {
+public class UserCollection {
 
-	private ObservableList<Customer> customers = FXCollections.observableArrayList();
+	private ObservableList<User> users = FXCollections.observableArrayList();
 
-	public List<Customer> getCustomers(){
-		return customers;
+	public List<User> getUsers(){
+		return users;
 	}
-	public void addCustomer(Customer c){
-		customers.add(c);
+	public void addCustomer(User c){
+		users.add(c);
 	}
 	public void removeAll(){
-		customers.clear();
+		users.clear();
 	}
 	public int getSize(){
-		return customers.size();
+		return users.size();
 	}
 
-	public boolean checkForCustomer(String email){
+	public boolean checkForUser(String email){
 		boolean check = false;
-		for (Customer c : customers){
+		for (User c : users){
 			if (c.getEmail().equals(email)){
 				check = true;
 				break;
@@ -34,7 +34,7 @@ public class CustomerCollection {
 	}
 	public boolean checkPassword(String email, String password){
 		boolean check = false;
-		for (Customer c : customers){
+		for (User c : users){
 			if (c.getEmail().equals(email)){
 				if (c.getPassword().equals(password)) {
 					check = true;
@@ -44,11 +44,19 @@ public class CustomerCollection {
 		}
 		return check;
 	}
+	public User getUser(String email){
+		for (User c : users){
+			if (c.getEmail().equals(email)){
+				return c;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public String toString(){
 		String out = "";
-		for (Customer c : customers){
+		for (User c : users){
 			out += c.toString();
 		}
 		return out;

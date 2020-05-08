@@ -1,7 +1,7 @@
 package org.example.logicAndClasses;
 
-public class Customer {
-    private String customerID;
+public abstract class User {
+    private String userID;
     private String firstName;
     private String lastName;
     private String address;
@@ -11,8 +11,8 @@ public class Customer {
     private String email;
     private String password;
 
-    public Customer(String customerID, String firstName, String lastName, String address, String postalCode, String postalArea, String phoneNumber, String email, String password) {
-        this.customerID = customerID;
+    public User(String userID, String firstName, String lastName, String address, String postalCode, String postalArea, String phoneNumber, String email, String password) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -23,12 +23,12 @@ public class Customer {
         this.password = password;
     }
 
-    public String getCustomerID() {
-        return customerID;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getFirstName() {
@@ -97,6 +97,6 @@ public class Customer {
 
     @Override
     public String toString(){
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s", customerID, firstName,address,postalCode,postalArea,phoneNumber,email,password);
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s", userID, firstName,address,postalCode,postalArea,phoneNumber,email,password);
     }
 }

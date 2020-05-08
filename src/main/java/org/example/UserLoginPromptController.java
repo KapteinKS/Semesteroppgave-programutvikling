@@ -4,12 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.example.logicAndClasses.CustomerCollection;
+import org.example.logicAndClasses.AdminUser;
+import org.example.logicAndClasses.UserCollection;
+import org.example.logicAndClasses.EndUser;
+import org.example.logicAndClasses.User;
 
 import java.io.IOException;
 
 public class UserLoginPromptController {
-	CustomerCollection customerCollection = App.getCustomerRegistry();
+	UserCollection userCollection = App.getCustomerRegistry();
 
 	@FXML
 	private TextField txtEmail;
@@ -19,27 +22,25 @@ public class UserLoginPromptController {
 
 	@FXML
 	void login(ActionEvent event) throws IOException {
-		boolean weGood = true;
+
 		//Check Stored List of Person
 		txtEmail.setStyle("");
 		txtPassword.setStyle("");
+		User user;
 
-		if (!(customerCollection.checkForCustomer(txtEmail.getText()))) {
+		if ((userCollection.checkForUser(txtEmail.getText())) && (userCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))) {
+			user = userCollection.getUser(txtEmail.getText());
+			if (user instanceof EndUser){
+				App.setCurrentUserEmail(txtEmail.getText());
+				App.setRoot("user", 700, 640, "End User");
+			} else if (user instanceof AdminUser){
+				App.setCurrentUserEmail(txtEmail.getText());
+				App.setRoot("admin", 625, 525, "Admin");
+			}
+		} else {
 			txtEmail.setStyle("-fx-text-box-border: #ff0000");
-			weGood = false;
-		}
-
-		if (!(customerCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))){
 			txtPassword.setStyle("-fx-text-box-border: #ff0000");
-			weGood = false;
 		}
-
-		if (weGood){
-			App.setCurrentUserEmail(txtEmail.getText());
-			App.setRoot("user", 700, 640, "End User");
-		}
-
-
 	}
 
 	@FXML

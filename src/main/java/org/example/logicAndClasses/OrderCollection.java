@@ -23,7 +23,7 @@ public class OrderCollection {
 		String out = "Ordrene til kunde " + customerID + "\n";
 		for (Order o : orders){
 			String theOrders = "";
-			if (o.getCustomerID().equals(customerID)){
+			if (o.getUserID().equals(customerID)){
 				theOrders += o.printOrder() + "\n";
 			}
 			if (theOrders.equals("")){
