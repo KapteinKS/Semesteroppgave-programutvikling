@@ -18,7 +18,7 @@ import java.util.List;
 public class ReadComponentsFromFile extends Reader {
     Path path = Paths.get("components.jobj");
 
-    public ComponentCollection ReadComponentsFromFile() throws IOException, ClassNotFoundException {
+    public ComponentCollection open() throws IOException, ClassNotFoundException {
         try(InputStream in = Files.newInputStream(path);
             ObjectInputStream oin = new ObjectInputStream(in)){
             List<Component> components = (ArrayList<Component>) oin.readObject();

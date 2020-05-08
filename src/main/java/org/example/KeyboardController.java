@@ -57,7 +57,6 @@ public class KeyboardController {
                 Keyboard keyboard = new Keyboard(name, manufacturer, 0, price, switches, language, connectionType);
 
                 App.saveToCollection(keyboard);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
                 App.closeWindow();
 
             } catch (IllegalPriceException e){

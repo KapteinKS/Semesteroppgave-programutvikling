@@ -62,7 +62,6 @@ public class CabinetController {
                 double weight = exHand.checkWeight(Double.parseDouble(inWeight.getText()));
                 Cabinet cabinet = new Cabinet(name, manufacturer, price, mbFormFactor, height, width, depth, weight);
                 App.saveToCollection(cabinet);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

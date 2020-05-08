@@ -12,7 +12,7 @@ public class UserCollection {
 	public List<User> getUsers(){
 		return users;
 	}
-	public void addCustomer(User c){
+	public void addUser(User c){
 		users.add(c);
 	}
 	public void removeAll(){

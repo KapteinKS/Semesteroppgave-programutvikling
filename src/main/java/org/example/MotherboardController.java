@@ -62,7 +62,6 @@ public class MotherboardController {
                 double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 Motherboard motherboard = new Motherboard(name, manufacturer, wattsRequired, price, mbFormFactor, socket, ramType);
                 App.saveToCollection(motherboard);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
                 

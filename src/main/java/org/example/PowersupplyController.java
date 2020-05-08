@@ -57,7 +57,6 @@ public class PowersupplyController {
                 int voltageOut = exHan.checkVoltageout(Integer.parseInt(inVoltageOut.getText()));
                 PowerSupply powerSupply = new PowerSupply(name, manufacturer, price, energy, voltageIn, voltageOut);
                 App.saveToCollection(powerSupply);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

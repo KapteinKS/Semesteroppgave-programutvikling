@@ -10,8 +10,8 @@ import org.example.logicAndClasses.UserCollection;
 
 import java.io.IOException;
 
-public class UserRegistratorController {
-	UserCollection userCollection = App.getCustomerRegistry();
+public class UserRegistrationController {
+	UserCollection userCollection = App.getUserCollection();
 
 	@FXML
 	private TextField txtFirstName;
@@ -113,7 +113,7 @@ public class UserRegistratorController {
 			}
 
 			if (goodToGo){
-				App.saveToCustomerCollection(new EndUser((String.format("%05d",App.getNewCustomerID())),
+				App.saveToUserCollection(new EndUser((String.format("%05d",App.getNewCustomerID())),
 						firstName, lastName, address, postCode, postArea, phoneNumber, email, password));
 				App.setCurrentUserEmail(email);
 				App.setRoot("user", 700, 640, "End User");
