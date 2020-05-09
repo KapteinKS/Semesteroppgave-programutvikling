@@ -11,8 +11,8 @@ public class Initializer {
 
 	public static void initialize() throws IOException, ClassNotFoundException {
 		System.out.print("\ninitializing.");
-		App.setUserCollection(readCustomers());
-		//App.setComponentCollection(readComponents());
+		App.setUserCollection(readUsers());
+		App.setComponentCollection(readComponents());
 		App.setOrderCollection(readOrders());
 
 
@@ -24,7 +24,7 @@ public class Initializer {
 
 		return rff.open();	//must return a list
 	}
-	public static UserCollection readCustomers() throws IOException, ClassNotFoundException {
+	public static UserCollection readUsers() throws IOException, ClassNotFoundException {
 		return ReadUserFromFile.open();
 	}
 

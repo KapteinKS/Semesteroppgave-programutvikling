@@ -209,6 +209,10 @@ public class AdminController implements Initializable {
 		if(event.getRowValue().setInfo(event.getNewValue())){
 			WriteComponentsToFile.save(App.getList2().getArrayList());
 		}
+		tvManufacturer.setPrefWidth(126);
+		tvName.setPrefWidth(104);
+		tvPrice.setPrefWidth(71);
+		tvInfo.setPrefWidth(190.0);
 	}
 
 	@FXML

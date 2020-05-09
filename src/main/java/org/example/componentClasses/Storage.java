@@ -13,9 +13,9 @@ public class Storage extends Component implements Serializable {
     private transient SimpleDoubleProperty capacity;
     private transient SimpleStringProperty capacityType;
 
-    public Storage(String name, String manufacturer, double price, String Storagetype, double capacity, String capacityType) {
+    public Storage(String name, String manufacturer, double price, String storageType, double capacity, String capacityType) {
         super("Storage", name, manufacturer, 0, price);
-        this.storageType = new SimpleStringProperty(Storagetype);
+        this.storageType = new SimpleStringProperty(storageType);
         this.capacity = new SimpleDoubleProperty(capacity);
         this.capacityType = new SimpleStringProperty(capacityType);
     }
@@ -76,7 +76,7 @@ public class Storage extends Component implements Serializable {
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
         this.storageType = new SimpleStringProperty(s.readUTF());
-        this.capacity = new SimpleDoubleProperty(s.readInt());
+        this.capacity = new SimpleDoubleProperty(s.readDouble());
         this.capacityType = new SimpleStringProperty(s.readUTF());
     }
 }

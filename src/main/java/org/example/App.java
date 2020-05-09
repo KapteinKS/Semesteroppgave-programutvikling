@@ -47,7 +47,7 @@ public class App extends Application {
 
 
         //*  SOME COMPONENTS  *//
-        /*
+/*
         componentCollection.add(new Cabinet("BigBoyCab 3010","Corsair",900.00,"ATX",400,150,600,10.00));
         componentCollection.add(new Cabinet("Sleek 11","Asus",660.00,"M-ATX",300,150,300,4.25));
         componentCollection.add(new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6",1605));
