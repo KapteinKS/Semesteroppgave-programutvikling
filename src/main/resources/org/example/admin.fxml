@@ -71,7 +71,7 @@
       </ChoiceBox>
       <Button fx:id="filterBtn" layoutX="503.0" layoutY="48.0" mnemonicParsing="false" onAction="#filter" text="Filtrer" />
 
-      <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="585.0">
+      <TableView fx:id="tableView" editable="true" layoutY="86.0" prefHeight="399.0" prefWidth="592.0">
         <columns>
             <TableColumn fx:id="tvType" editable="false" prefWidth="84.0" text="Type">
                <cellValueFactory>
@@ -106,10 +106,13 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn fx:id="tvInfo" editable="false" prefWidth="216.0" text="Info">
+            <TableColumn fx:id="tvInfo" editable="true" onEditCancel="#unwidenColumn" onEditCommit="#editInfo" onEditStart="#widenColumn" prefWidth="190.0" text="Info">
                <cellValueFactory>
                   <PropertyValueFactory property="info" />
                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
             </TableColumn>
 
         </columns>

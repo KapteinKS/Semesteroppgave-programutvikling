@@ -66,8 +66,28 @@ public class Cabinet extends Component {
     }
 
     public String getInfo(){
-        return "Høyde: " + getHeight() + "cm \nBredde: " + getWidth() + "cm \nDybde: " + getDepth() +
-                "cm \nVekt: " + getWeight() + "kg";
+        return "Høyde: " + getHeight() + " cm \nBredde: " + getWidth() + " cm \nDybde: " + getDepth() +
+                " cm \nVekt: " + getWeight() + " kg";
+    }
+
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,10}: ");
+
+
+        for(int i = 1; i < split.length; i++){
+            if(split[i].indexOf(" ") > 0) {
+                split[i] = split[i].substring(0, split[i].indexOf(" "));
+            }        }
+        try {
+            setHeight(Double.parseDouble(split[1]));
+            setWidth(Double.parseDouble(split[2]));
+            setDepth(Double.parseDouble(split[3]));
+            setWeight(Double.parseDouble(split[4]));
+
+        } catch (NumberFormatException n){
+            return false;
+        }
+        return true;
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException{

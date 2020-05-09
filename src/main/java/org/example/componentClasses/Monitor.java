@@ -28,7 +28,7 @@ public class Monitor extends Component implements Serializable {
         return monitorSize.getValue();
     }
 
-    public void setMonitorSize(int monitorSize) {
+    public void setMonitorSize(double monitorSize) {
         this.monitorSize.set(monitorSize);
     }
 
@@ -57,8 +57,29 @@ public class Monitor extends Component implements Serializable {
     }
 
     public String getInfo(){
-        return "Size: " + getMonitorSize() + " Inches \nRefresh Rate: " + getMonitorRefreshRate() + " Hz\nResponstid: "
-                + getMonitorResponseTime() + "ms\nSkjermtype: " + getMonitorScreenType();
+        return "Size: " + getMonitorSize() + " \" \nRefresh Rate: " + getMonitorRefreshRate() + " Hz\nResponstid: "
+                + getMonitorResponseTime() + " ms\nSkjermtype: " + getMonitorScreenType();
+    }
+
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅ][a-zæøå `\"]{1,20}: ");
+
+        for (int i = 1; i < split.length; i++){
+            if(split[i].indexOf(" ") > 0) {
+                split[i] = split[i].substring(0, split[i].indexOf(" "));
+            }
+        }
+        try {
+            setMonitorSize(Double.parseDouble(split[1]));
+            setMonitorRefreshRate(Integer.parseInt(split[2]));
+            setMonitorResponseTime(Integer.parseInt(split[3]));
+            setMonitorScreenType(split[4]);
+        } catch (NumberFormatException n){
+            return false;
+        }
+
+        return true;
+
     }
 
     @Override

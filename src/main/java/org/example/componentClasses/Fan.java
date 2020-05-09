@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Spliterator;
 
 public class Fan extends Component implements Serializable {
     private transient SimpleIntegerProperty diameter;
@@ -46,8 +47,25 @@ public class Fan extends Component implements Serializable {
     }
 
     public String getInfo(){
-        return "Diameter: " + getDiameter() + "cm \nLufttrykk: " + getAirPressure() +
-                "mm \nHøyeste støyvolum" + getMaxNoiseVolume() + "dBA";
+        return "Diameter: " + getDiameter() + " mm \nLufttrykk: " + getAirPressure() +
+                " mm \nHøyeste støyvolum: " + getMaxNoiseVolume() + " dBA";
+    }
+
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,20}: ");
+
+        for (int i = 1; i < split.length; i++){
+            if(split[i].indexOf(" ") > 0) {
+                split[i] = split[i].substring(0, split[i].indexOf(" "));
+            }        }
+        try {
+            setDiameter(Integer.parseInt(split[1]));
+            setAirPressure(Double.parseDouble(split[2]));
+            setMaxNoiseVolume(Integer.parseInt(split[3]));
+        } catch (NumberFormatException n){
+            return false;
+        }
+        return true;
     }
 
     @Override

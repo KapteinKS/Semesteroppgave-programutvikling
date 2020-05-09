@@ -76,7 +76,8 @@ public class App extends Application {
         //**//
 
         App.stage = stage;
-        scene = new Scene(loadFXML("userLoginPrompt"));
+        //scene = new Scene(loadFXML("userLoginPrompt"));
+        scene = new Scene(loadFXML("admin"));
         System.out.print(".");
         stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
         stage.setScene(scene);
