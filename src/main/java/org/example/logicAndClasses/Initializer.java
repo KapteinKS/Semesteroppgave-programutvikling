@@ -12,8 +12,9 @@ public class Initializer {
 	public static void initialize() throws IOException, ClassNotFoundException {
 		System.out.print("\ninitializing.");
 		App.setUserCollection(readCustomers());
-		App.setComponentCollection(readComponents());
+		//App.setComponentCollection(readComponents());
 		App.setOrderCollection(readOrders());
+
 
 
 	}
@@ -29,7 +30,7 @@ public class Initializer {
 
 	public static OrderCollection readOrders() throws IOException {
 
-		return (OrderCollection) ReadOrderFromFile.openOrder(); //casting, maybe change in ReadOrderFromFile.java
+		return ReadOrderFromFile.openOrder(); //casting, maybe change in ReadOrderFromFile.java
 	}
 
 }

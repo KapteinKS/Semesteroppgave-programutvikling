@@ -9,10 +9,13 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.componentClasses.*;
 import org.example.io.WriteComponentsToFile;
+import org.example.io.WriteOrderToFile;
 import org.example.io.WriteUserToFile;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Calendar;
 
 /**
  * JavaFX App
@@ -40,6 +43,8 @@ public class App extends Application {
 
 
         Initializer.initialize();
+
+
 
         //*  SOME COMPONENTS  *//
         /*
@@ -72,11 +77,11 @@ public class App extends Application {
         // We need to read data from files here.
         // We must remember to do file-management in new task
 
-        //ReadCustomerFromFile.open(customerRegistry, Paths.get("customers.txt"));
+        //ReadCustomerFromFile.open(customerRegistry, Paths.get("orders.csv"));
         //userCollection.addUser(new AdminUser("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
         //userCollection.addUser(new EndUser("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
 
-        //WriteCustomerToFile.save(customerRegistry, Paths.get("customers.txt"));
+        //WriteCustomerToFile.save(customerRegistry, Paths.get("customers.csv"));
 
         currentUserEmail = "admin@root.com";
 
@@ -92,6 +97,26 @@ public class App extends Application {
         System.out.print(".");
         stage.show();
         System.out.print("\n\n---------------\n\n");
+
+        System.out.println(orderCollection.toString());
+
+
+        /*  Stuff to test 'WriteOrderToFile.save' : it works
+        ComponentCollection aa = new ComponentCollection();
+
+        aa.add(new Storage("Mobile Black", "WD",807.00,"HDD",1,"TB"));
+        aa.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
+
+
+        orderCollection.addOrder(new Order("000001","000001",""+ Calendar.getInstance().getTime(),aa.getComponentList(),1907.0));
+        WriteOrderToFile.save(orderCollection, Paths.get("orders.csv"));
+
+         */
+
+
+
+
+
 
         /* Old version of start(), for user-GUI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));

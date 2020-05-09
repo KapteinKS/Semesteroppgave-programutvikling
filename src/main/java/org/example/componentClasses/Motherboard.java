@@ -48,7 +48,7 @@ public class Motherboard extends Component implements Serializable {
 	@Override
 	public String toString(){
 		return "Motherboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-				+ "," + getSocket() + "," + getRamType() + "," + getWattsRequired();
+				+ "," + getMbFormFactor() + "," + getSocket() + "," + getRamType();
 	}
 
 	public String getInfo(){

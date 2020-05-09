@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ReadOrderFromFile extends Reader{
     public static OrderCollection openOrder() throws IOException{
-        Path orderFilePath = Paths.get("orders.txt");
+        Path orderFilePath = Paths.get("orders.csv");
         //ArrayList<Order> listOfOrders= new ArrayList<>();
         OrderCollection listOfOrders = new OrderCollection();
         try (BufferedReader bufferedReader = Files.newBufferedReader(orderFilePath)){
@@ -172,7 +172,7 @@ public class ReadOrderFromFile extends Reader{
                                 componentSplit[2], //Manf
                                 Double.parseDouble(componentSplit[4]), //price
                                 componentSplit[5], //storageType
-                                Integer.parseInt(componentSplit[6]), //capacity
+                                Double.parseDouble(componentSplit[6]), //capacity
                                 componentSplit[6] //capacityType
                         ));
                         break;
@@ -197,7 +197,7 @@ public class ReadOrderFromFile extends Reader{
             throw new IllegalArgumentException(iae.getMessage());
         }
 
-        System.out.println(userID + ", " + orderID + ", " + componentsOrdered.toString() + ", " + priceString);
+        //System.out.println(userID + ", " + orderID + ", " + componentsOrdered.toString() + ", " + priceString);
         return new Order(userID,orderID,date,componentsOrdered,Double.parseDouble(priceString));
     }
 }

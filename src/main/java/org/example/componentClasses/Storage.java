@@ -47,6 +47,12 @@ public class Storage extends Component implements Serializable {
     public String getInfo(){
         return "Minnetype: " + getStoragetype() + " \nKapasitet: " + getCapacity() + " " + getCapacityType();
     }
+    @Override
+    public String toString(){
+        return "Storage" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getStoragetype() + "," + getCapacity() + "," + getCapacityType();
+    }
+
 
     public boolean setInfo(String info){
         String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
