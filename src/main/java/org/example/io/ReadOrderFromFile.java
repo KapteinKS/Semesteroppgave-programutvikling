@@ -17,13 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadOrderFromFile extends Reader{
-    public static List<Order> openOrder() throws IOException{
+    public static OrderCollection openOrder() throws IOException{
         Path orderFilePath = Paths.get("orders.txt");
-        ArrayList<Order> listOfOrders= new ArrayList<>();
+        //ArrayList<Order> listOfOrders= new ArrayList<>();
+        OrderCollection listOfOrders = new OrderCollection();
         try (BufferedReader bufferedReader = Files.newBufferedReader(orderFilePath)){
             String line;
             while ((line = bufferedReader.readLine()) != null){
-                listOfOrders.add(parseOrder(line));
+                listOfOrders.addOrder(parseOrder(line));
             }
         }catch (IOException ioe){
             ioe.printStackTrace();
@@ -176,6 +177,8 @@ public class ReadOrderFromFile extends Reader{
                         ));
                         break;
                     default:
+                        break;
+                        /*
                         componentsOrdered.add(new Fan(
                                 "Error reading order from File", //name
                                 "ERROR!", //manf
@@ -184,6 +187,9 @@ public class ReadOrderFromFile extends Reader{
                                 0.0, //airpressure
                                 0 //maxNoise
                         ));
+
+                         */
+
                 }
 
             }

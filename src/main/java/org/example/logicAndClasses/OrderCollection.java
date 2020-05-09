@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.util.List;
 
-public class OrderCollection {
+public class OrderCollection{
 
 	private ObservableList<Order> orders = FXCollections.observableArrayList();
 
@@ -17,6 +17,9 @@ public class OrderCollection {
 	}
 	public void removeAll(){
 		orders.clear();
+	}
+	public int size(){
+		return orders.size();
 	}
 
 	public String printOrders(String customerID){
