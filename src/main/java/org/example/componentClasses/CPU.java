@@ -57,7 +57,22 @@ public class CPU extends Component {
 	}
 
 	public String getInfo(){
-		return "Tråder: " + getThreads() + "\nKlokkehastighet: " + getClockSpeed();
+		return "Tråder: " + getThreads() + "\nKlokkehastighet: " + getClockSpeed() + "\nSocket: " + getSocket();
+	}
+
+	public boolean setInfo(String info){
+		String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,20}: ");
+
+		try {
+			setThreads(Integer.parseInt(split[1]));
+			setClockSpeed(Double.parseDouble(split[2]));
+			setSocket(split[3]);
+		} catch (NumberFormatException n){
+			return false;
+		}
+
+		return true;
+
 	}
 
 	@Override

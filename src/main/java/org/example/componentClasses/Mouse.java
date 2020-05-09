@@ -45,7 +45,25 @@ public class Mouse extends Component implements Serializable {
     }
 
     public String getInfo() {
-        return "Grensesnitt: " + getMouseConnectionType() + "\nDPI: " + getMouseDPI() + "\nAntall programmerbare taster: " + getMouseProgrammableButtons();
+        return "Grensesnitt: " + getMouseConnectionType() + " \nDPI: " + getMouseDPI() + " \nAntall programmerbare taster: " + getMouseProgrammableButtons();
+    }
+
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
+        for (int i = 1; i < split.length; i++){
+            if(split[i].indexOf(" ") > 0) {
+                split[i] = split[i].substring(0, split[i].indexOf(" "));
+            }
+        }
+        try {
+            setMouseConnectionType(split[1]);
+            setMouseDPI(Integer.parseInt(split[2]));
+            setMouseProgrammableButtons(Integer.parseInt(split[3]));
+        } catch (NumberFormatException n){
+            return false;
+        }
+        return true;
+
     }
 
     @Override

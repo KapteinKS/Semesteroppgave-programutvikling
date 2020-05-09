@@ -46,7 +46,25 @@ public class GraphicCard extends Component implements Serializable {
     }
 
     public String getInfo(){
-        return "RAM: " + getRam() + "GB \nRamtype: " + getRamType() + "\nKlokkehastighet: " + getClockSpeed() + "MHz";
+        return "RAM: " + getRam() + " GB \nRamtype: " + getRamType() + " \nKlokkehastighet: " + getClockSpeed() + " MHz";
+    }
+
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
+        for (int i = 1; i < split.length; i++){
+            if(split[i].indexOf(" ") > 0) {
+                split[i] = split[i].substring(0, split[i].indexOf(" "));
+            }
+        }
+        try {
+            setRam(Integer.parseInt(split[1]));
+            setRamType(split[2]);
+            setClockSpeed(Double.parseDouble(split[3]));
+        } catch (NumberFormatException n){
+            return false;
+        }
+        return true;
+
     }
 
     @Override

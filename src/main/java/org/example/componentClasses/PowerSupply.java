@@ -36,15 +36,32 @@ public class PowerSupply extends Component implements Serializable {
 
 
     public String getInfo() {
-        return "Energiforbruk: " + getWattsRequired() + "W \nSpenning inn: " + getInVoltage() +
-                "V \nSpenning ut: " + getOutVoltage() + "V";
+        return "Energiforbruk: " + getWattsRequired() + " W \nSpenning inn: " + getInVoltage() +
+                " V \nSpenning ut: " + getOutVoltage() + " V";
+    }
+
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
+        for (int i = 1; i < split.length; i++){
+            if(split[i].indexOf(" ") > 0) {
+                split[i] = split[i].substring(0, split[i].indexOf(" "));
+            }
+        }
+        try {
+            setWattsRequired(Double.parseDouble(split[1]));
+            setInVoltage(Integer.parseInt(split[2]));
+            setOutVoltage(Integer.parseInt(split[3]));
+        } catch (NumberFormatException n){
+            return false;
+        }
+        return true;
+
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
         s.writeInt(inVoltage.getValue());
         s.writeInt(outVoltage.getValue());
-
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {

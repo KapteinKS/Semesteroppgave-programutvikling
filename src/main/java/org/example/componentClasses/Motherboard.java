@@ -52,7 +52,25 @@ public class Motherboard extends Component implements Serializable {
 	}
 
 	public String getInfo(){
-		return "Socket: " + getSocket() + "\nRamtype: " + getRamType() + "\nNødvendig energi: " + getWattsRequired() + "W";
+		return "Socket: " + getSocket() + "\nRamtype: " + getRamType() + "\nNødvendig energi: " + getWattsRequired() + " W";
+	}
+
+	public boolean setInfo(String info){
+		String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
+		for (int i = 1; i < split.length; i++){
+			if(split[i].indexOf(" ") > 0) {
+				split[i] = split[i].substring(0, split[i].indexOf(" "));
+			}
+		}
+		try {
+			setSocket(split[1]);
+			setRamType(split[2]);
+			setWattsRequired(Double.parseDouble(split[3]));
+		} catch (NumberFormatException n){
+			return false;
+		}
+		return true;
+
 	}
 
 	private void writeObject(ObjectOutputStream s) throws IOException {

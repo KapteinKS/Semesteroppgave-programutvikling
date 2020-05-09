@@ -177,18 +177,21 @@ public class AdminController implements Initializable {
 		}
 	}
 
+	@FXML
 	public void editName(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setName(event.getNewValue());
 		WriteComponentsToFile.save(App.getList2().getArrayList());
 
 	}
 
+	@FXML
 	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setManufacturer(event.getNewValue());
 		WriteComponentsToFile.save(App.getList2().getArrayList());
 
 	}
 
+	@FXML
 	public void editPrice(TableColumn.CellEditEvent<Component, Double> event) throws IOException {
 		try {
 			if (doubleStringConverter.wasSuccessful())
@@ -199,5 +202,28 @@ public class AdminController implements Initializable {
 		} catch (IllegalArgumentException e){
 			System.out.println("Ugyldig input: " + e.getMessage());
 		}
+	}
+
+	@FXML
+	void editInfo(TableColumn.CellEditEvent<Component, String> event) throws IOException{
+		if(event.getRowValue().setInfo(event.getNewValue())){
+			WriteComponentsToFile.save(App.getList2().getArrayList());
+		}
+	}
+
+	@FXML
+	void widenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
+		tvInfo.setPrefWidth(500.0);
+		tvPrice.setPrefWidth(0);
+		tvManufacturer.setPrefWidth(0);
+		tvName.setPrefWidth(0);
+	}
+
+	@FXML
+	void unwidenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
+		tvManufacturer.setPrefWidth(126);
+		tvName.setPrefWidth(104);
+		tvPrice.setPrefWidth(71);
+		tvInfo.setPrefWidth(190.0);
 	}
 }

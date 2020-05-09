@@ -75,6 +75,8 @@ public abstract class Component implements Serializable {
 		return "";
 	}
 
+	public boolean setInfo(String info){ return false;}
+
 
 	private void writeObject(ObjectOutputStream s) throws IOException{
 		s.writeUTF(type.getValue());

@@ -52,20 +52,16 @@ public class Keyboard extends Component implements Serializable {
         return "Keyboard";
     }
 
-    public String getName(){
-        return super.getName();
-    }
-
-    public double getPrice() {
-        return super.getPrice();
-    }
-
-    public double getWattsRequired() {
-        return super.getWattsRequired();
-    }
-
-    public String getManufacturer(){
-        return super.getManufacturer();
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅ][a-zæøå ]{1,20}: ");
+        try {
+            setKeyboardConnectionType(split[1]);
+            setKeyboardLanguage(split[2]);
+            setKeyboardSwitches(split[3]);
+        } catch (NumberFormatException n){
+            return false;
+        }
+        return true;
     }
 
     @Override

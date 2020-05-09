@@ -13,11 +13,11 @@
       <TextField fx:id="inName" layoutX="176.0" layoutY="46.0" />
       <Label layoutX="20.0" layoutY="80.0" text="Price" />
       <TextField fx:id="inPrice" layoutX="176.0" layoutY="76.0" />
-      <Label layoutX="20.0" layoutY="110.0" text="Fan Diameter" />
+      <Label layoutX="20.0" layoutY="110.0" text="Fan Diameter (mm)" />
       <TextField fx:id="inDiameter" layoutX="176.0" layoutY="106.0" />
       <Label layoutX="20.0" layoutY="140.0" text="Air Pressure" />
       <TextField fx:id="inPressure" layoutX="176.0" layoutY="136.0" />
-      <Label layoutX="20.0" layoutY="170.0" text="Max Noise Volume" />
+      <Label layoutX="20.0" layoutY="170.0" text="Max Noise Volume (dBA)" />
       <TextField fx:id="inNoiseVolume" layoutX="176.0" layoutY="166.0" />
       <Button fx:id="regButton" layoutX="85.0" layoutY="210.0" mnemonicParsing="false" onAction="#registerFan" text="Register" />
       <Button fx:id="cancelButton" layoutX="200.0" layoutY="210.0" mnemonicParsing="false" onAction="#cancelRegistration" text="Cancel" />

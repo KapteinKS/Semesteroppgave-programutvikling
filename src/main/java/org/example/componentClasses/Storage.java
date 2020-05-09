@@ -1,5 +1,6 @@
 package org.example.componentClasses;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import java.io.IOException;
@@ -9,13 +10,13 @@ import java.io.Serializable;
 
 public class Storage extends Component implements Serializable {
     private transient SimpleStringProperty storageType;
-    private transient SimpleIntegerProperty capacity;
+    private transient SimpleDoubleProperty capacity;
     private transient SimpleStringProperty capacityType;
 
-    public Storage(String name, String manufacturer, double price, String Storagetype, int capacity, String capacityType) {
+    public Storage(String name, String manufacturer, double price, String Storagetype, double capacity, String capacityType) {
         super("Storage", name, manufacturer, 0, price);
         this.storageType = new SimpleStringProperty(Storagetype);
-        this.capacity = new SimpleIntegerProperty(capacity);
+        this.capacity = new SimpleDoubleProperty(capacity);
         this.capacityType = new SimpleStringProperty(capacityType);
     }
 
@@ -27,11 +28,11 @@ public class Storage extends Component implements Serializable {
         this.storageType.set(storagetype);
     }
 
-    public int getCapacity() {
+    public double getCapacity() {
         return capacity.get();
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(double capacity) {
         this.capacity.set(capacity);
     }
 
@@ -44,21 +45,32 @@ public class Storage extends Component implements Serializable {
     }
 
     public String getInfo(){
-        return "Lagringstype: " + getStoragetype() + "\nKapasitet: " + getCapacity() + getCapacityType();
+        return "Minnetype: " + getStoragetype() + " \nKapasitet: " + getCapacity() + " " + getCapacityType();
+    }
+
+    public boolean setInfo(String info){
+        String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
+        try {
+            setStoragetype(split[1]);
+            setCapacity(Double.parseDouble(split[2].substring(0, split[2].indexOf(" "))));
+            setCapacityType(split[2].substring(split[2].indexOf(" ")));
+        } catch (NumberFormatException n){
+            return false;
+        }
+        return true;
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
         s.writeUTF(storageType.getValue());
-        s.writeInt(capacity.getValue());
+        s.writeDouble(capacity.getValue());
         s.writeUTF(capacityType.getValue());
-
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
         this.storageType = new SimpleStringProperty(s.readUTF());
-        this.capacity = new SimpleIntegerProperty(s.readInt());
+        this.capacity = new SimpleDoubleProperty(s.readInt());
         this.capacityType = new SimpleStringProperty(s.readUTF());
     }
 }
