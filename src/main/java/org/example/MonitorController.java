@@ -59,7 +59,6 @@ public class MonitorController {
                 Monitor monitor = new Monitor(name, manufacturer, 0, price,size, refreshRate, responseTime, screenType);
 
                 App.saveToCollection(monitor);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
                 App.closeWindow();
 
             } catch (IllegalPriceException | IllegalScreenSizeException | IllegalRefreshRateException | IllegalResponseTimeException e){

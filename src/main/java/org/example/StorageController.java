@@ -87,7 +87,6 @@ public class StorageController implements Initializable {
                 int capacity = exHan.checkStorage(Integer.parseInt(inCapacity.getText()), capacityType);
                 Storage storage = new Storage(name, manufacturer, price, type, capacity, capacityType);
                 App.saveToCollection(storage);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

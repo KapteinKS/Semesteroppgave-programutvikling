@@ -64,7 +64,6 @@ public class CpuController {
 
                 CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed, socket);
                 App.saveToCollection(cpu);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

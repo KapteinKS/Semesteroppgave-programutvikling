@@ -60,7 +60,6 @@ public class GraphicCardController {
                 double clockspeed = exHan.checkClockSpeed(Double.parseDouble(inHertz.getText()));
                 GraphicCard graphicCard = new GraphicCard(name, manufacturer, wattsRequired, price, ram, ramType, clockspeed);
                 App.saveToCollection(graphicCard);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

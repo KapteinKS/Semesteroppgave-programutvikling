@@ -57,7 +57,6 @@ public class RamController {
                 RAM ram = new RAM(name, manufacturer, price, size, type, amount);
 
                 App.saveToCollection(ram);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
                 App.closeWindow();
 
             } catch (IllegalRAMException | IllegalPriceException e){

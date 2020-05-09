@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.componentClasses.*;
+import org.example.io.WriteComponentsToFile;
+import org.example.io.WriteUserToFile;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
@@ -24,14 +26,15 @@ public class App extends Application {
     private static Stage stage2;
 
     private static ComponentCollection componentCollection = new ComponentCollection(); //These must be filled
-    private static UserCollection customerRegistry = new UserCollection(); //These must be filled
+    private static UserCollection userCollection = new UserCollection(); //These must be filled
     private static String currentUserEmail;
 
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
+        Initializer.initialize();
 
         //*  SOME COMPONENTS  *//
-
+/*
         componentCollection.add(new Cabinet("BigBoyCab 3010","Corsair",900.00,"ATX",400,150,600,10.00));
         componentCollection.add(new Cabinet("Sleek 11","Asus",660.00,"M-ATX",300,150,300,4.25));
         componentCollection.add(new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6",1605));
@@ -54,7 +57,7 @@ public class App extends Application {
         componentCollection.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
         componentCollection.add(new Monitor("27`` 4k LCD", "Acer", 0, 2400, 27, 144, 2, "LCD"));
         componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
-
+*/
 
         //componentCollection = Initializer.readComponents();
 
@@ -62,8 +65,8 @@ public class App extends Application {
         // We must remember to do file-management in new task
 
         //ReadCustomerFromFile.open(customerRegistry, Paths.get("customers.txt"));
-        customerRegistry.addCustomer(new AdminUser("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
-        customerRegistry.addCustomer(new EndUser("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
+        //userCollection.addUser(new AdminUser("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
+        //userCollection.addUser(new EndUser("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
 
         //WriteCustomerToFile.save(customerRegistry, Paths.get("customers.txt"));
 
@@ -73,7 +76,6 @@ public class App extends Application {
         //**//
 
         App.stage = stage;
-        Initializer.initialize();
         scene = new Scene(loadFXML("userLoginPrompt"));
         System.out.print(".");
         stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
@@ -114,8 +116,9 @@ public class App extends Application {
         stage2.setTitle(title);
     }
 
-    public static void saveToCollection(Component component){
+    public static void saveToCollection(Component component) throws IOException {
         componentCollection.add(component);
+        WriteComponentsToFile.save(componentCollection.getArrayList());
     }
     public static ObservableList<Component> getList(){
         return componentCollection.getComponentList();
@@ -158,28 +161,30 @@ public class App extends Application {
     }
 
     //CustomerCollection stuff
-    public static UserCollection getCustomerRegistry(){
-        return customerRegistry;
+    public static UserCollection getUserCollection(){
+        return userCollection;
     }
 
-    public static void saveToCustomerCollection(User user){
-        customerRegistry.addCustomer(user);
+    public static void saveToUserCollection(User user) throws IOException {
+        userCollection.addUser(user);
+        WriteUserToFile.save(userCollection.getUsers());
     }
 
     public static int getNewCustomerID(){
-        return customerRegistry.getSize();
+        return userCollection.getSize();
     }
 
     public static void setCurrentUserEmail(String email){
         currentUserEmail = email;
     }
 
-    /* Never used?
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void setUserCollection(UserCollection u){
+        userCollection = u;
     }
-     */
 
+    public static void setComponentCollection(ComponentCollection cc){
+        componentCollection = cc;
+    }
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

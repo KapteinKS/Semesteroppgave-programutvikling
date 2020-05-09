@@ -54,7 +54,6 @@ public class FanController {
                 int maxNoiseVolume = exHan.checkNoise(Integer.parseInt(inNoiseVolume.getText()));
                 Fan fan = new Fan(name, manufacturer, price, diameter, airPressure, maxNoiseVolume);
                 App.saveToCollection(fan);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
 
                 App.closeWindow();
 

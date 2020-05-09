@@ -12,7 +12,7 @@ import org.example.logicAndClasses.User;
 import java.io.IOException;
 
 public class UserLoginPromptController {
-	UserCollection userCollection = App.getCustomerRegistry();
+	UserCollection userCollection = App.getUserCollection();
 
 	@FXML
 	private TextField txtEmail;
@@ -45,7 +45,7 @@ public class UserLoginPromptController {
 
 	@FXML
 	void registerNewCustomer(ActionEvent event) throws IOException {
-		App.setRoot("customerRegistrator", 313, 468, "End User");
+		App.setRoot("userRegistration", 313, 468, "End User");
 	}
 
 }

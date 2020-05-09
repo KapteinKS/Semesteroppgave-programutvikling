@@ -58,7 +58,6 @@ public class MouseController {
                 Mouse mouse = new Mouse(name, manufacturer, 0, price, dpi, connectionType, programmableButtons);
 
                 App.saveToCollection(mouse);
-                WriteComponentsToFile.save(App.getList2().getArrayList());
                 App.closeWindow();
 
             } catch (IllegalPriceException | IllegalDPIException | IllegalButtonsException e){

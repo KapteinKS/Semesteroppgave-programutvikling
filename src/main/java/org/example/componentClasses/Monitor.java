@@ -67,7 +67,7 @@ public class Monitor extends Component implements Serializable {
                 + "," + getMonitorSize() + "," + getMonitorRefreshRate() + "," + getMonitorResponseTime() + "," + getMonitorScreenType();
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException{
+    private void writeObject(ObjectOutputStream s) throws IOException{
         s.defaultWriteObject();
         s.writeDouble(monitorSize.getValue());
         s.writeInt(monitorRefreshRate.getValue());
@@ -75,7 +75,7 @@ public class Monitor extends Component implements Serializable {
         s.writeUTF(monitorScreenType.getValue());
     }
 
-    public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
         this.monitorSize = new SimpleDoubleProperty(s.readDouble());
         this.monitorRefreshRate = new SimpleIntegerProperty(s.readInt());
