@@ -2,6 +2,7 @@ package org.example.logicAndClasses;
 
 import org.example.App;
 import org.example.io.ReadComponentsFromFile;
+import org.example.io.ReadOrderFromFile;
 import org.example.io.ReadUserFromFile;
 
 import java.io.IOException;
@@ -9,11 +10,10 @@ import java.io.IOException;
 public class Initializer {
 
 	public static void initialize() throws IOException, ClassNotFoundException {
+		System.out.print("\ninitializing.");
 		App.setUserCollection(readCustomers());
 		App.setComponentCollection(readComponents());
-
-
-		System.out.print("\ninitializing.");
+		App.setOrderCollection(readOrders());
 
 
 	}
@@ -27,8 +27,9 @@ public class Initializer {
 		return ReadUserFromFile.open();
 	}
 
-	public OrderCollection readOrders(){
-		return null;	//must return a list
+	public static OrderCollection readOrders() throws IOException {
+
+		return (OrderCollection) ReadOrderFromFile.openOrder(); //casting, maybe change in ReadOrderFromFile.java
 	}
 
 }

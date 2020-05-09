@@ -8,11 +8,11 @@ import java.util.Date;
 public class Order {
 	private String userID;
 	private String orderID;
-	private Date date;
+	private String date;
 	ObservableList<Component> componentsOrdered;
 	private double price;
 
-	public Order(String userID, String orderID, Date date, ObservableList<Component>componentsOrdered, double price){
+	public Order(String userID, String orderID, String date, ObservableList<Component>componentsOrdered, double price){
 		this.userID = userID;
 		this.orderID = orderID;
 		this.date = date;
@@ -36,11 +36,11 @@ public class Order {
 		this.orderID = orderID;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -74,11 +74,11 @@ public class Order {
 
 	@Override
 	public String toString(){
-		String out = "" + userID + "," + orderID + "," + date + ",";
+		String out = "" + userID + ";" + orderID + ";" + date + ";";
 		for (Component cmpnnt : componentsOrdered){
-			out += cmpnnt + ",";
+			out += cmpnnt.toString() + ";";
 		}
-		out += price + ",";
+		out += price + ";";
 		return out;
 	}
 }

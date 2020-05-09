@@ -91,6 +91,6 @@ public class Cabinet extends Component {
     @Override
     public String toString(){
         return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getHeight() + "," + getWidth() + "," + getDepth() + "," + getWeight();
+                + "," + getMbFormFactor() + "," + getHeight() + "," + getWidth() + "," + getDepth() + "," + getWeight();
     }
 }

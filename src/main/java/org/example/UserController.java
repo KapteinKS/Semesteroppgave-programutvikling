@@ -246,7 +246,7 @@ public class UserController {
 			if (click == ButtonType.OK) {
 				//SAVE ORDER METHOD; ORDER PLACE LOGIC
 
-				Order order = new Order("0124124", "001", Calendar.getInstance().getTime(),
+				Order order = new Order("0124124", "001", "" + Calendar.getInstance().getTime(),
 						currentSelectedList, totalPrice);
 
 				//

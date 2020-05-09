@@ -27,14 +27,22 @@ public class App extends Application {
 
     private static ComponentCollection componentCollection = new ComponentCollection(); //These must be filled
     private static UserCollection userCollection = new UserCollection(); //These must be filled
+    private static OrderCollection orderCollection = new OrderCollection();
     private static String currentUserEmail;
 
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
+
+        //Motherboard abc = new Motherboard("MiniGigaZap 1500k", "ASUS", 350.00, 1099.99,"M-ATX","LGA-1151","DDR3");
+        //System.out.println(abc.toString());
+        //CPU def = new CPU("Core i5","Intel",100,3299.00, 8, 3.20, "LGA-1151");
+        //System.out.println(def.toString());
+
+
         Initializer.initialize();
 
         //*  SOME COMPONENTS  *//
-/*
+        /*
         componentCollection.add(new Cabinet("BigBoyCab 3010","Corsair",900.00,"ATX",400,150,600,10.00));
         componentCollection.add(new Cabinet("Sleek 11","Asus",660.00,"M-ATX",300,150,300,4.25));
         componentCollection.add(new GraphicCard ("Geforce RTX 2060","ASUS",100,5499.00,8,"DDR6",1605));
@@ -81,8 +89,8 @@ public class App extends Application {
         stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
         stage.setScene(scene);
         stage.setTitle("Login");
-        stage.show();
         System.out.print(".");
+        stage.show();
         System.out.print("\n\n---------------\n\n");
 
         /* Old version of start(), for user-GUI
@@ -170,7 +178,7 @@ public class App extends Application {
         WriteUserToFile.save(userCollection.getUsers());
     }
 
-    public static int getNewCustomerID(){
+    public static int getNewUserID(){
         return userCollection.getSize();
     }
 
@@ -178,13 +186,18 @@ public class App extends Application {
         currentUserEmail = email;
     }
 
-    public static void setUserCollection(UserCollection u){
-        userCollection = u;
+    public static void setUserCollection(UserCollection uc){
+        userCollection = uc;
     }
 
     public static void setComponentCollection(ComponentCollection cc){
         componentCollection = cc;
     }
+
+    public static void setOrderCollection(OrderCollection oc){
+        orderCollection = oc;
+    }
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

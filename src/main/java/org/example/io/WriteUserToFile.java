@@ -12,8 +12,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-//Saves CUSTOMERS (.txt)
-
 public class WriteUserToFile extends Writer {
 
     public static void save(List<User> users) throws IOException {
