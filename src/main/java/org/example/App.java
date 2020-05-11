@@ -165,6 +165,10 @@ public class App extends Application {
         componentCollection = cc;
     }
 
+    public static ComponentCollection getComponentCollection(){
+        return componentCollection;
+    }
+
     public static void setOrderCollection(OrderCollection oc){
         orderCollection = oc;
     }
