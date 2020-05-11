@@ -56,11 +56,12 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setTitle("Login");
         System.out.print("\n\n---------------\n\n");
+        //DialogueBoxes.about("Hei", "For forhåndlagde innloggingalternativer og adminbruker sjekk README.md");
 
         //TESTS
-        //System.out.println(orderCollection.toString());
-        //System.out.println(userCollection.toString());
-        //System.out.println(orderCollection.printOrders("00001"));
+        System.out.println(orderCollection.toString());
+        System.out.println(userCollection.toString());
+        System.out.println(orderCollection.printOrders("00001"));
 
 
     }

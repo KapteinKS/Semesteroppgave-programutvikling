@@ -106,7 +106,8 @@ public abstract class User implements Serializable {
 
     @Override
     public String toString(){
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s", userID, firstName,address,postalCode,postalArea,phoneNumber,email,password);
+        return "UserID:" + getUserID() + "\nName:" + getFirstName() + " " + getLastName() +"\nAdress: " + getAddress() + ", " + getPostalCode() + " " +getPostalArea()
+                + "\nPhone: " + getPhoneNumber() + "\nEmail: " + getEmail() + "\nPassword: " + getPassword() + "\n-----------------------\n";
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException{
