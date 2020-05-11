@@ -22,24 +22,18 @@ import java.util.Calendar;
  */
 public class App extends Application {
 
-
     private static Scene scene;
     private static Stage stage;
     private static Scene scene2;
     private static Stage stage2;
 
-    private static ComponentCollection componentCollection = new ComponentCollection(); //These must be filled
-    private static UserCollection userCollection = new UserCollection(); //These must be filled
+    private static ComponentCollection componentCollection = new ComponentCollection();
+    private static UserCollection userCollection = new UserCollection();
     private static OrderCollection orderCollection = new OrderCollection();
     private static String currentUserEmail;
 
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
-
-        //Motherboard abc = new Motherboard("MiniGigaZap 1500k", "ASUS", 350.00, 1099.99,"M-ATX","LGA-1151","DDR3");
-        //System.out.println(abc.toString());
-        //CPU def = new CPU("Core i5","Intel",100,3299.00, 8, 3.20, "LGA-1151");
-        //System.out.println(def.toString());
 
 
         Initializer.initialize();
@@ -70,21 +64,14 @@ public class App extends Application {
         componentCollection.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
         componentCollection.add(new Monitor("27`` 4k LCD", "Acer", 0, 2400, 27, 144, 2, "LCD"));
         componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
-*/
 
-        //componentCollection = Initializer.readComponents();
-
-        // We need to read data from files here.
-        // We must remember to do file-management in new task
-
-        //ReadCustomerFromFile.open(customerRegistry, Paths.get("orders.csv"));
-        //userCollection.addUser(new AdminUser("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
-        //userCollection.addUser(new EndUser("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
-
-        //WriteCustomerToFile.save(customerRegistry, Paths.get("customers.csv"));
+        ReadUserFromFile.open(customerRegistry, Paths.get("orders.csv"));
+        userCollection.addUser(new AdminUser("00000","Admin","Admin","Root 42","0000", "Root","00000000","admin@root.com","hex92"));
+        userCollection.addUser(new EndUser("00001","Ola","Nordmann","Adresseveien 1","0001", "Oslo","51515151","ola.nordmann@gmail.no","Norge123"));
+        WriteUserToFile.save(customerRegistry, Paths.get("customers.csv"));
 
         currentUserEmail = "admin@root.com";
-
+*/
 
         //**//
 
@@ -98,38 +85,8 @@ public class App extends Application {
         stage.show();
         System.out.print("\n\n---------------\n\n");
 
-        System.out.println(orderCollection.toString());
+        //System.out.println(orderCollection.toString());
 
-
-        /*  Stuff to test 'WriteOrderToFile.save' : it works
-        ComponentCollection aa = new ComponentCollection();
-
-        aa.add(new Storage("Mobile Black", "WD",807.00,"HDD",1,"TB"));
-        aa.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
-
-
-        orderCollection.addOrder(new Order("000001","000001",""+ Calendar.getInstance().getTime(),aa.getComponentList(),1907.0));
-        WriteOrderToFile.save(orderCollection, Paths.get("orders.csv"));
-
-         */
-
-
-
-
-
-
-        /* Old version of start(), for user-GUI
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
-        Parent root = loader.load();
-
-        UserController userController = loader.getController();
-        userController.populateComboBoxes();
-
-
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-         */
 
     }
 
@@ -142,13 +99,6 @@ public class App extends Application {
         stage2.show();
     }
 
-    public static void changeSecondaryWindow(String fxml, double width, double height, String title) throws IOException{
-        scene2.setRoot(loadFXML(fxml));
-        stage2.setHeight(height);
-        stage2.setWidth(width);
-        stage2.setTitle(title);
-    }
-
     public static void saveToCollection(Component component) throws IOException {
         componentCollection.add(component);
         WriteComponentsToFile.save(componentCollection.getArrayList());
@@ -157,11 +107,10 @@ public class App extends Application {
         return componentCollection.getComponentList();
     }
 
-    // This is something funky, I just added it to remove errors, see Admin @ line 120
     public static ComponentCollection getList2(){
         return componentCollection;
     }
-    //
+
 
     public static ComponentCollection getComponentCollection(){
         return componentCollection;
@@ -170,6 +119,7 @@ public class App extends Application {
     public static void closeWindow(){
         stage2.close();
     }
+
     public static void setRoot(String fxml, double width, double height, String title) throws IOException {
         //if user, comboBoxes must be populated!
         if (fxml.equals("user")){
@@ -221,6 +171,10 @@ public class App extends Application {
 
     public static void setOrderCollection(OrderCollection oc){
         orderCollection = oc;
+    }
+
+    public static void removeComponent(Component c){
+        componentCollection.remove(c);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
