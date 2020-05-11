@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class App extends Application {
     private static Scene scene;
     private static Stage stage;
-    private static Scene scene2;
+    private static Scene scene2 = null;
     private static Stage stage2;
 
     private static ComponentCollection componentCollection = new ComponentCollection();
@@ -32,17 +32,15 @@ public class App extends Application {
     private static OrderCollection orderCollection = new OrderCollection();
     private static String currentUserEmail;
     private ThreadHandler task;
+    private static User currentUser;
 
     @Override
-    public void start(Stage stage) throws IOException, ClassNotFoundException, InterruptedException {
+    public void start(Stage stage) throws IOException, InterruptedException {
         this.task = new ThreadHandler();
         Thread th = new Thread(this.task);
         th.start();
         this.task.setOnSucceeded(this::threadSucceeded);
         this.task.setOnFailed(this::threadFailed);
-        //Initializer.initialize();
-
-
 
         //*  SOME COMPONENTS  *//
 /*
@@ -130,7 +128,9 @@ public class App extends Application {
     }
 
     public static void closeWindow(){
-        stage2.close();
+        if(stage2 != null) {
+            stage2.close();
+        }
     }
 
     public static void setRoot(String fxml, double width, double height, String title) throws IOException {
@@ -188,6 +188,14 @@ public class App extends Application {
 
     public static void removeComponent(Component c){
         componentCollection.remove(c);
+    }
+
+    public static User getCurrentUser(){
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User user){
+        currentUser = user;
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

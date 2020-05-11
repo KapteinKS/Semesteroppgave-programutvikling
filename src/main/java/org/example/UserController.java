@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.componentClasses.*;
+import org.example.logicAndClasses.AdminUser;
 import org.example.logicAndClasses.Checker;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.logicAndClasses.Order;
@@ -79,8 +80,13 @@ public class UserController {
 	@FXML
 	void loginAdmin(ActionEvent event) throws IOException {
 
-		App.setRoot("admin", 625, 525, "Admin");
-
+		if(!(App.getCurrentUser() instanceof AdminUser)){
+			DialogueBoxes.information("Access denied", "Admin access required", "You are trying to access a restricted feature. " +
+					"Please provide admin login credentials");
+			App.newWindow("userLoginPrompt", "Login");
+		} else {
+			App.setRoot("admin", 625, 525, "Admin");
+		}
 	}
 	@FXML
 	ObservableList<Component> analyzeOrder(ActionEvent event){
