@@ -41,7 +41,10 @@ public class ReadOrderFromFile extends Reader{
         String orderID = split[1];
         String date = split[2];
         String priceString = split[split.length-1]; //the last value?
-        ObservableList<Component> componentsOrdered = FXCollections.observableArrayList();
+        ArrayList<String> componentsOrdered = new ArrayList<>();
+        for (int i = 3; i < split.length; i++){
+            componentsOrdered.add(split[i]);
+        }
 
 
         /*
@@ -51,6 +54,7 @@ public class ReadOrderFromFile extends Reader{
                 + "\n" + "Komponenter bestilt:" + "\n";
         */
 
+        /*
         try{
             for(int i = 3; i < split.length; i++){
 
@@ -189,13 +193,14 @@ public class ReadOrderFromFile extends Reader{
                         ));
 
                          */
-
+/*
                 }
 
             }
         }catch(IllegalArgumentException iae){
             throw new IllegalArgumentException(iae.getMessage());
         }
+        */
 
         //System.out.println(userID + ", " + orderID + ", " + componentsOrdered.toString() + ", " + priceString);
         return new Order(userID,orderID,date,componentsOrdered,Double.parseDouble(priceString));

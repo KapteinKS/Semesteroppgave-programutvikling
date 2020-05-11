@@ -12,12 +12,16 @@ import org.example.logicAndClasses.ComponentCollection;
 import org.example.logicAndClasses.Order;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Optional;
 
 public class UserController {
 
 	private static ComponentCollection componentCollection = App.getComponentCollection();
+	private static OrderCollection orderCollection = App.getOrderCollection();
+	private static UserCollection userCollection = App.getUserCollection();
+	private static User currentUser = App.getCurrentUser();
 	private ObservableList<Component> currentSelectedList;
 	private double totalPrice;
 	private boolean buildIsCompatible;
@@ -241,10 +245,23 @@ public class UserController {
 			if (DialogueBoxes.confirm(promptTitle, promptHeader, promptText)){
 				//SAVE ORDER METHOD; ORDER PLACE LOGIC
 
-				Order order = new Order("0124124", "001", "" + Calendar.getInstance().getTime(),
-						currentSelectedList, totalPrice);
+				String userID = currentUser.getUserID();
+				String orderID = String.format("%06d", orderCollection.size()); //Formating the int.
 
-				DialogueBoxes.information("Success!", "Order has been placed!", "Thank you for your purchase!");
+				ArrayList<String> myList= new ArrayList<>();
+				for(Component component : currentSelectedList){
+					myList.add(component.displayComponent());
+				}
+
+				Order order = new Order(userID, orderID, "" + Calendar.getInstance().getTime(),
+						myList, totalPrice);
+
+				orderCollection.addOrder(order);
+
+
+				DialogueBoxes.information("Success!",
+						"Order has been placed!\nThank you for your purchase!\nOrder info below:",
+						"" + order.printOrder());
 				resetSelection(event);
 			}
 			txtPreview.setText("");

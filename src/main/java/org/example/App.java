@@ -22,6 +22,7 @@ import java.util.Calendar;
  * JavaFX App
  */
 public class App extends Application {
+
     private static Scene scene;
     private static Stage stage;
     private static Scene scene2 = null;
@@ -31,6 +32,7 @@ public class App extends Application {
     private static UserCollection userCollection = new UserCollection();
     private static OrderCollection orderCollection = new OrderCollection();
     private static String currentUserEmail;
+    private static User currentUser;
     private ThreadHandler task;
     private static User currentUser;
 
@@ -171,6 +173,13 @@ public class App extends Application {
         return userCollection.getSize();
     }
 
+    public static void setCurrentUser(User user){
+        currentUser = user;
+    }
+    public static User getCurrentUser(){
+        return currentUser;
+    }
+
     public static void setCurrentUserEmail(String email){
         currentUserEmail = email;
     }
@@ -186,6 +195,11 @@ public class App extends Application {
     public static void setOrderCollection(OrderCollection oc){
         orderCollection = oc;
     }
+
+    public static OrderCollection getOrderCollection(){
+        return orderCollection;
+    }
+
 
     public static void removeComponent(Component c){
         componentCollection.remove(c);
