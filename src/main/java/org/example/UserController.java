@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.componentClasses.*;
-import org.example.logicAndClasses.AdminUser;
-import org.example.logicAndClasses.Checker;
-import org.example.logicAndClasses.ComponentCollection;
-import org.example.logicAndClasses.Order;
+import org.example.logicAndClasses.*;
 
 import java.io.IOException;
 import java.util.ArrayList;

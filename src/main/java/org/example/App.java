@@ -34,7 +34,6 @@ public class App extends Application {
     private static String currentUserEmail;
     private static User currentUser;
     private ThreadHandler task;
-    private static User currentUser;
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
@@ -203,14 +202,6 @@ public class App extends Application {
 
     public static void removeComponent(Component c){
         componentCollection.remove(c);
-    }
-
-    public static User getCurrentUser(){
-        return currentUser;
-    }
-
-    public static void setCurrentUser(User user){
-        currentUser = user;
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
