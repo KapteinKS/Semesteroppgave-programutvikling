@@ -17,7 +17,7 @@ import java.util.Optional;
 
 public class UserController {
 
-	private static ComponentCollection componentCollection = App.getComponentCollection();
+	private static ComponentCollection componentCollection = App.getList2();
 	private ObservableList<Component> currentSelectedList;
 	private double totalPrice;
 	private boolean buildIsCompatible;
