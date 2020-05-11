@@ -15,8 +15,6 @@ public class Initializer {
 		App.setComponentCollection(readComponents());
 		App.setOrderCollection(readOrders());
 
-
-
 	}
 
 	public static ComponentCollection readComponents() throws IOException, ClassNotFoundException {
@@ -29,7 +27,6 @@ public class Initializer {
 	}
 
 	public static OrderCollection readOrders() throws IOException {
-
 		return ReadOrderFromFile.openOrder(); //casting, maybe change in ReadOrderFromFile.java
 	}
 

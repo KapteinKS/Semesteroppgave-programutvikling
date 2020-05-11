@@ -30,7 +30,7 @@ public class App extends Application {
     private static ComponentCollection componentCollection = new ComponentCollection();
     private static UserCollection userCollection = new UserCollection();
     private static OrderCollection orderCollection = new OrderCollection();
-    private static String currentUserEmail;
+    private static User currentUser;
 
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
@@ -38,6 +38,11 @@ public class App extends Application {
 
         Initializer.initialize();
 
+        System.out.println(
+        userCollection.toString()
+                + "\n---\n" +
+                orderCollection.toString()
+        );
 
 
         //*  SOME COMPONENTS  *//
@@ -157,8 +162,11 @@ public class App extends Application {
         return userCollection.getSize();
     }
 
-    public static void setCurrentUserEmail(String email){
-        currentUserEmail = email;
+    public static void setCurrentUser(User user){
+        currentUser = user;
+    }
+    public static User getCurrentUser(){
+        return currentUser;
     }
 
     public static void setUserCollection(UserCollection uc){
@@ -172,6 +180,11 @@ public class App extends Application {
     public static void setOrderCollection(OrderCollection oc){
         orderCollection = oc;
     }
+
+    public static OrderCollection getOrderCollection(){
+        return orderCollection;
+    }
+
 
     public static void removeComponent(Component c){
         componentCollection.remove(c);

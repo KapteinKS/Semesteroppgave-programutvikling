@@ -31,10 +31,10 @@ public class UserLoginPromptController {
 		if ((userCollection.checkForUser(txtEmail.getText())) && (userCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))) {
 			user = userCollection.getUser(txtEmail.getText());
 			if (user instanceof EndUser){
-				App.setCurrentUserEmail(txtEmail.getText());
+				App.setCurrentUser(user);
 				App.setRoot("user", 700, 640, "End User");
 			} else if (user instanceof AdminUser){
-				App.setCurrentUserEmail(txtEmail.getText());
+				App.setCurrentUser(user);
 				App.setRoot("admin", 625, 525, "Admin");
 			}
 		} else {

@@ -113,9 +113,10 @@ public class UserRegistrationController {
 			}
 
 			if (goodToGo){
-				App.saveToUserCollection(new EndUser((String.format("%05d",App.getNewUserID())),
-						firstName, lastName, address, postCode, postArea, phoneNumber, email, password));
-				App.setCurrentUserEmail(email);
+				EndUser newUser = new EndUser((String.format("%05d",App.getNewUserID())),firstName, lastName, address,
+						postCode, postArea, phoneNumber, email, password);
+				App.saveToUserCollection(newUser);
+				App.setCurrentUser(newUser);
 				App.setRoot("user", 700, 640, "End User");
 			}
 
