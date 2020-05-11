@@ -128,8 +128,8 @@
          </content>
       </ScrollPane>
       <TextArea fx:id="txtPreview" editable="false" layoutX="358.0" layoutY="78.0" prefHeight="476.0" prefWidth="319.0" />
-      <Button layoutX="182.0" layoutY="480.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="118.0" text="Place Order" />
-      <Button layoutX="54.0" layoutY="480.0" mnemonicParsing="false" onAction="#analyzeOrder" prefHeight="27.0" prefWidth="118.0" text="Analyze Build" />
+      <Button fx:id="btnPlaceOrder" layoutX="182.0" layoutY="480.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="118.0" text="Place Order" />
+      <Button fx:id="btnAnalyzeOrder" layoutX="54.0" layoutY="480.0" mnemonicParsing="false" onAction="#analyzeOrder" prefHeight="27.0" prefWidth="118.0" text="Analyze Build" />
       <Line endX="33.0" endY="204.0" layoutX="299.0" layoutY="267.0" startX="-272.0" startY="204.0" />
       <Label layoutX="100.0" layoutY="48.0" text="CHOOSE COMPONENTS:" />
       <Label layoutX="492.0" layoutY="48.0" text="YOUR ORDER:" />

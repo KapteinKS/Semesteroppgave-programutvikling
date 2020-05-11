@@ -117,17 +117,19 @@ public class UserRegistrationController {
 			if (goodToGo){
 				EndUser newUser = new EndUser((String.format("%05d",App.getNewUserID())),firstName, lastName, address,
 						postCode, postArea, phoneNumber, email, password);
+				userCollection.addUser(newUser);
 
 				//New stuff, saving in new thread
-				task = new ThreadHandler(true,"saveUsers");
+				task = new ThreadHandler(true,"saveUsers",null,userCollection,null);
 				this.task.setOnSucceeded(this::threadSucceeded);
 				this.task.setOnFailed(this::threadFailed);
 				Thread td = new Thread(this.task);
 				td.start();
-				userCollection.addUser(newUser);
-				task.saveUsers(userCollection.getUsers());
+
+				//task.saveUsers(userCollection.getUsers());
 
 
+				App.setUserCollection(userCollection);
 				App.setCurrentUser(newUser);
 				App.setRoot("user", 700, 640, "End User");
 			}

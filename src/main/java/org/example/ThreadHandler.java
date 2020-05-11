@@ -15,37 +15,48 @@ import java.util.List;
 public class ThreadHandler extends Task<String> {
     private boolean condition;
     private String operation;
+    private ComponentCollection componentCollection;
+    private UserCollection userCollection;
+    private OrderCollection orderCollection;
 
-    public ThreadHandler(boolean condition, String operation){
+
+
+    public ThreadHandler(boolean condition, String operation, ComponentCollection componentCollection,
+                         UserCollection userCollection, OrderCollection orderCollection){
         this.condition = condition;
         this.operation = operation;
+        this.componentCollection = componentCollection;
+        this.userCollection = userCollection;
+        this.orderCollection = orderCollection;
     }
 
     protected String call() throws Exception {
         if(!condition) { //Loading operations
             try {
                 System.out.println("Thread starting\nLoading");
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 App.setUserCollection(openUsers());
                 App.setComponentCollection(openComponents());
-                App.setOrderCollection(openOrder());
+                //App.setOrderCollection(openOrder());
                 System.out.println("Thread finished");
             } catch (InterruptedException ie) {
             }
             return "";
         }
         else{ //Saving operations
+
             try{
                 System.out.println("Thread starting\nSaving");
                 Thread.sleep(1000);
                 if (operation.equals("saveUsers")){
+                    saveUsers(userCollection.getUsers());
+                }
+                else if (operation.equals("saveComponents")){
+                    saveComponents(componentCollection.getArrayList());
 
                 }
-                if (operation.equals("saveComponents")){
-
-                }
-                if (operation.equals("saveOrders")){
-
+                else if (operation.equals("saveOrders")){
+                    saveOrders(orderCollection);
                 }
                 //App.setUserCollection(openUsers());
                 //App.setComponentCollection(openComponents());
@@ -140,8 +151,8 @@ public class ThreadHandler extends Task<String> {
     }
 
     //  Method for saving orders
-    public static void saveOrders(OrderCollection orderCollection, Path path) throws IOException {
-        Files.write(path,orderCollection.toString().getBytes());
+    public static void saveOrders(OrderCollection orderCollection) throws IOException {
+        Files.write(Paths.get("orders.csv"),orderCollection.toString().getBytes());
     }
 
     //  Method for saving components

@@ -34,7 +34,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
-        this.task = new ThreadHandler(false, "");
+        this.task = new ThreadHandler(false, "",null,null,null);
         Thread th = new Thread(this.task);
         this.task.setOnSucceeded(this::threadSucceeded);
         this.task.setOnFailed(this::threadFailed);

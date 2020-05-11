@@ -1,6 +1,7 @@
 package org.example;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,10 +18,12 @@ import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
 	//errrrrr
-	private ComponentCollection collection = App.getList2();
+	private ComponentCollection componentCollection = App.getList2();
 	//
 	private ExceptionHandler.DoubleStringConverter doubleStringConverter
 			= new ExceptionHandler.DoubleStringConverter();
+	private ThreadHandler task;
+
 
 	@FXML
 	private MenuBar menuBar;
@@ -54,7 +57,7 @@ public class AdminController implements Initializable {
 
 
 	public void initialize(URL url, ResourceBundle resourceBundle){
-		collection.attachTableView(tableView);
+		componentCollection.attachTableView(tableView);
 		tvPrice.setCellFactory(TextFieldTableCell.forTableColumn(doubleStringConverter));
 	}
 
@@ -121,10 +124,16 @@ public class AdminController implements Initializable {
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
 		//reworked to be new thread.
+		task = new ThreadHandler(true,"saveComponents", componentCollection,null,null);
+		this.task.setOnSucceeded(this::threadSucceeded);
+		this.task.setOnFailed(this::threadFailed);
+		Thread td = new Thread(this.task);
+		td.start();
+		task.saveComponents(componentCollection.getArrayList());
 
 
 
-		WriteComponentsToFile.saveComponents(collection.getArrayList());
+
 	}
 
 
@@ -153,7 +162,7 @@ public class AdminController implements Initializable {
 
 			tableView.setItems(newList);
 		} else {
-			tableView.setItems(collection.getComponentList());
+			tableView.setItems(componentCollection.getComponentList());
 		}
 	}
 
@@ -216,5 +225,13 @@ public class AdminController implements Initializable {
 		tvName.setPrefWidth(104);
 		tvPrice.setPrefWidth(71);
 		tvInfo.setPrefWidth(190.0);
+	}
+
+
+	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
+		System.out.println("\nSaved.\n");
+	}
+	private void threadFailed(WorkerStateEvent workerStateEvent) {
+		System.out.println("\nERROR something went wrong!\nNOT saved.\n");
 	}
 }
