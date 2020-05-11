@@ -318,4 +318,9 @@ public class UserController {
 		outList.add("---");
 		return outList;
 	}
+
+	@FXML
+	void previousOrders(ActionEvent event) throws IOException{
+		App.setRoot("orders", 625, 525, "Previous Orders");
+	}
 }
