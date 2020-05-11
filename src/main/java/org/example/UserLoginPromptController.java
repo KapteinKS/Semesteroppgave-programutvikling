@@ -33,9 +33,13 @@ public class UserLoginPromptController {
 			if (user instanceof EndUser){
 				App.setCurrentUserEmail(txtEmail.getText());
 				App.setRoot("user", 700, 640, "End User");
+				App.closeWindow();
+				App.setCurrentUser(user);
 			} else if (user instanceof AdminUser){
 				App.setCurrentUserEmail(txtEmail.getText());
 				App.setRoot("admin", 625, 525, "Admin");
+				App.closeWindow();
+				App.setCurrentUser(user);
 			}
 		} else {
 			txtEmail.setStyle("-fx-text-box-border: #ff0000");
