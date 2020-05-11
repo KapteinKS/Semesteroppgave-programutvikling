@@ -207,11 +207,8 @@ public class UserController {
 			txtPreview.setText("");
 		}
 		if(size == 0){
-			Alert emptyOrder = new Alert(Alert.AlertType.INFORMATION);
-			emptyOrder.setTitle("Error!");
-			emptyOrder.setHeaderText("Empty order!");
-			emptyOrder.setContentText("You cannot place an empty order!\nBuy something, will ya?");
-			emptyOrder.showAndWait();
+			DialogueBoxes.information("Error!","Empty order!","You cannot place an empty order!\nBuy something, will ya?");
+
 		}
 		else{
 			boolean bufferBuildIsCompatible = false;
@@ -235,26 +232,13 @@ public class UserController {
 				promptText = "Do you still wish to place the order?";
 			}
 
-			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			alert.setTitle(promptTitle);
-			alert.setHeaderText(promptHeader);
-			alert.setContentText(promptText);
-			alert.setResizable(false);
-			Optional<ButtonType> confirm = alert.showAndWait();
-			ButtonType click = confirm.orElse(ButtonType.CANCEL);
-
-			if (click == ButtonType.OK) {
+			if (DialogueBoxes.confirm(promptTitle, promptHeader, promptText)){
 				//SAVE ORDER METHOD; ORDER PLACE LOGIC
 
 				Order order = new Order("0124124", "001", "" + Calendar.getInstance().getTime(),
 						currentSelectedList, totalPrice);
 
-				//
-				Alert orderPlacedAlert = new Alert(Alert.AlertType.INFORMATION);
-				orderPlacedAlert.setTitle("Success!");
-				orderPlacedAlert.setHeaderText("Order has been placed!");
-				orderPlacedAlert.setContentText("Thank you for your purchase!");
-				orderPlacedAlert.showAndWait();
+				DialogueBoxes.information("Success!", "Order has been placed!", "Thank you for your purchase!");
 				resetSelection(event);
 			}
 			txtPreview.setText("");

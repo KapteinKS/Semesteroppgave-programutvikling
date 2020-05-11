@@ -44,6 +44,10 @@ public class ComponentCollection {
 		tv.setItems(componentList);
 	}
 
+	public void remove(Component c){
+		componentList.remove(c);
+	}
+
 	public static ObservableList<Component> filter(String choiceBoxValue, String filterInput){
 		List<Component> filteredList;
 		switch (choiceBoxValue){
