@@ -22,6 +22,7 @@
                 <Menu mnemonicParsing="false" text="File">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#saveCollection" text="Manual save list" />
+                  <MenuItem mnemonicParsing="false" onAction="#resetList" text="Load default list" />
                     </items>
                 </Menu>
             <Menu mnemonicParsing="false" text="Registrer komponent">

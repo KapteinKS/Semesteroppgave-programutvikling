@@ -1,18 +1,20 @@
 #Semesteroppgave i DATA 1600 Programutvikling
 
 ##Laget av
-####Sander Tøien
+####Sander Tøien - s344045
 ####Henrik Bernhard Stangeland
 ####Mats Ove Vada - s340363
 
+##Default innloggingsalternativer
+
 Innlogging admin:
-##### admin@root.com
-##### hex92
+##### brukernavn: admin@root.com
+##### passort: hex92
 
 Innlogging vanlig bruker:
-#####ola.nordmann@gmail.no
-#####Norge123
+##### brukernavn: ola.nordmann@gmail.no
+##### passort: Norge123
 
-#####jenny.nordmann@gmail.no
-#####passord123
+##### brukernavn: jenny.nordmann@gmail.no
+##### passord: Passord123
 

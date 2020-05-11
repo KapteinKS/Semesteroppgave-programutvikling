@@ -48,6 +48,10 @@ public class ComponentCollection {
 		componentList.remove(c);
 	}
 
+	public void removeAll(){
+		componentList.clear();
+	}
+
 	public static ObservableList<Component> filter(String choiceBoxValue, String filterInput){
 		List<Component> filteredList;
 		switch (choiceBoxValue){

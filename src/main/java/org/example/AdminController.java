@@ -1,13 +1,11 @@
 package org.example;
 
 import javafx.collections.ObservableList;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.ContextMenuEvent;
 import org.example.io.WriteComponentsToFile;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
@@ -123,6 +121,11 @@ public class AdminController implements Initializable {
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
 		WriteComponentsToFile.save(collection.getArrayList());
+	}
+
+	@FXML
+	void resetList(ActionEvent event) throws IOException{
+		App.resetLists();
 	}
 
 	@FXML

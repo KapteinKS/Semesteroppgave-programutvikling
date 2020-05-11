@@ -22,12 +22,12 @@ public class ThreadHandler extends Task<String> {
     }
     protected String call() throws Exception {
        try {
-           System.out.println("Thread going to sleep");
+           System.out.println("Thread starting");
            Thread.sleep(3000);
-           System.out.println("Thread awake");
            App.setUserCollection(openUsers());
            App.setComponentCollection(openComponents());
            App.setOrderCollection(ReadOrderFromFile.openOrder());
+           System.out.println("Thread finished");
        } catch (InterruptedException ie){
 
        }
