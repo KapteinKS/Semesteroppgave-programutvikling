@@ -88,9 +88,9 @@ public class App extends Application {
         System.out.print("\n\n---------------\n\n");
 
         //TESTS
-        //System.out.println(orderCollection.toString());
-        //System.out.println(userCollection.toString());
-        //System.out.println(orderCollection.printOrders("00001"));
+        System.out.println(orderCollection.toString());
+        System.out.println(userCollection.toString());
+        System.out.println(orderCollection.printOrders("00001"));
 
 
     }
