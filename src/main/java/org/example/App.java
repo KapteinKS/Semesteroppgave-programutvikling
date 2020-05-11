@@ -34,7 +34,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
-        this.task = new ThreadHandler();
+        this.task = new ThreadHandler(false, "");
         Thread th = new Thread(this.task);
         this.task.setOnSucceeded(this::threadSucceeded);
         this.task.setOnFailed(this::threadFailed);
@@ -92,7 +92,7 @@ public class App extends Application {
 
     public static void saveToCollection(Component component) throws IOException {
         componentCollection.add(component);
-        WriteComponentsToFile.save(componentCollection.getArrayList());
+        WriteComponentsToFile.saveComponents(componentCollection.getArrayList());
     }
 
     public static ObservableList<Component> getList(){
@@ -137,9 +137,9 @@ public class App extends Application {
         return userCollection;
     }
 
-    public static void saveToUserCollection(User user) throws IOException {
+    public void saveToUserCollection(User user) throws IOException {
         userCollection.addUser(user);
-        WriteUserToFile.save(userCollection.getUsers());
+        task.saveUsers(userCollection.getUsers());
     }
 
     public static int getNewUserID(){
@@ -210,8 +210,12 @@ public class App extends Application {
         componentCollection.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
         componentCollection.add(new Monitor("27`` 4k LCD", "Acer", 0, 2400, 27, 144, 2, "LCD"));
         componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
-        WriteComponentsToFile.save(componentCollection.getArrayList());
-        WriteUserToFile.save(userCollection.getUsers());
+        WriteComponentsToFile.saveComponents(componentCollection.getArrayList());
+
+        //  PROBLEM!!  Here, we are not saving in a separate thread! We should fix this.
+        WriteUserToFile.saveUsers(userCollection.getUsers());
+
+        //WriteUserToFile.saveUsers(userCollection.getUsers());
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

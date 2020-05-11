@@ -120,9 +120,15 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
-		WriteComponentsToFile.save(collection.getArrayList());
+		//reworked to be new thread.
+
+
+
+		WriteComponentsToFile.saveComponents(collection.getArrayList());
 	}
 
+
+	//  PROBLEM!   this call is a problem, see app @ line 214
 	@FXML
 	void resetList(ActionEvent event) throws IOException{
 		App.resetLists();
@@ -156,20 +162,20 @@ public class AdminController implements Initializable {
 		Component c = tableView.getSelectionModel().getSelectedItem();
 		if(DialogueBoxes.confirm("Remove component?", "Caution, this action will permanently remove a component, continue?")){
 			App.removeComponent(c);
-			WriteComponentsToFile.save(App.getList2().getArrayList());
+			WriteComponentsToFile.saveComponents(App.getList2().getArrayList());
 		}
 	}
 
 	@FXML
 	public void editName(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setName(event.getNewValue());
-		WriteComponentsToFile.save(App.getList2().getArrayList());
+		WriteComponentsToFile.saveComponents(App.getList2().getArrayList());
 	}
 
 	@FXML
 	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setManufacturer(event.getNewValue());
-		WriteComponentsToFile.save(App.getList2().getArrayList());
+		WriteComponentsToFile.saveComponents(App.getList2().getArrayList());
 	}
 
 	@FXML
@@ -177,7 +183,7 @@ public class AdminController implements Initializable {
 		try {
 			if (doubleStringConverter.wasSuccessful())
 				event.getRowValue().setPrice(event.getNewValue());
-				WriteComponentsToFile.save(App.getList2().getArrayList());
+				WriteComponentsToFile.saveComponents(App.getList2().getArrayList());
 		} catch (NumberFormatException e){
 			System.out.println("Du må skrive inn et positivt tall!");
 		} catch (IllegalArgumentException e){
@@ -188,7 +194,7 @@ public class AdminController implements Initializable {
 	@FXML
 	void editInfo(TableColumn.CellEditEvent<Component, String> event) throws IOException{
 		if(event.getRowValue().setInfo(event.getNewValue())){
-			WriteComponentsToFile.save(App.getList2().getArrayList());
+			WriteComponentsToFile.saveComponents(App.getList2().getArrayList());
 		}
 		tvManufacturer.setPrefWidth(126);
 		tvName.setPrefWidth(104);

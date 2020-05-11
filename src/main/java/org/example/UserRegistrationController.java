@@ -1,5 +1,6 @@
 package org.example;
 
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class UserRegistrationController {
 	UserCollection userCollection = App.getUserCollection();
+	private ThreadHandler task;
 
 	@FXML
 	private TextField txtFirstName;
@@ -115,7 +117,17 @@ public class UserRegistrationController {
 			if (goodToGo){
 				EndUser newUser = new EndUser((String.format("%05d",App.getNewUserID())),firstName, lastName, address,
 						postCode, postArea, phoneNumber, email, password);
-				App.saveToUserCollection(newUser);
+
+				//New stuff, saving in new thread
+				task = new ThreadHandler(true,"saveUsers");
+				this.task.setOnSucceeded(this::threadSucceeded);
+				this.task.setOnFailed(this::threadFailed);
+				Thread td = new Thread(this.task);
+				td.start();
+				userCollection.addUser(newUser);
+				task.saveUsers(userCollection.getUsers());
+
+
 				App.setCurrentUser(newUser);
 				App.setRoot("user", 700, 640, "End User");
 			}
@@ -126,5 +138,14 @@ public class UserRegistrationController {
 			lblResult.setText("Denne eposten fins allerede i databasen vår!");
 		}
 	}
+
+	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
+		System.out.println("\nUser saved.\n");
+	}
+	private void threadFailed(WorkerStateEvent workerStateEvent) {
+		System.out.println("\nERROR something went wrong!\nUser NOT saved.\n");
+	}
+
+
 
 }
