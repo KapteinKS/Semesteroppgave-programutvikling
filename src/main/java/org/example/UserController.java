@@ -273,8 +273,8 @@ public class UserController {
 	void showAbout(ActionEvent event) {
 		DialogueBoxes.about("This GUI allows customers to configure a custom PC, and place orders",
 				"Choose components from the drop downs and choose \"Analyser Build\" to see" +
-						"compatibility and price of the computer.\n" +
-						"You can also switch to the End User GUI by clicking \"Help\" -> \"Admin\".");
+						" compatibility and price of the computer.\n" +
+						"You can also switch to the Admin GUI by clicking \"Help\" -> \"Admin\".");
 	}
 	public void populateComboBoxes(){
 
