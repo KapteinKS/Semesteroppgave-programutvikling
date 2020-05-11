@@ -1,6 +1,7 @@
 package org.example;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +24,8 @@ public class AdminController implements Initializable {
 	private ExceptionHandler.DoubleStringConverter doubleStringConverter
 			= new ExceptionHandler.DoubleStringConverter();
 
+	@FXML
+	private MenuBar menuBar;
 
 	@FXML
 	private TextField filterArea;
@@ -118,7 +121,7 @@ public class AdminController implements Initializable {
 	}
 
 	@FXML
-	void saveOrder(ActionEvent event) throws IOException {
+	void saveCollection(ActionEvent event) throws IOException {
 		WriteComponentsToFile.save(collection.getArrayList());
 	}
 

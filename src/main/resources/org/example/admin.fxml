@@ -17,11 +17,11 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AdminController">
     <children>
-        <MenuBar prefHeight="29.0" prefWidth="600.0">
+        <MenuBar fx:id="menuBar" prefHeight="29.0" prefWidth="600.0">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#saveOrder" text="Manual save list" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveCollection" text="Manual save list" />
                     </items>
                 </Menu>
             <Menu mnemonicParsing="false" text="Registrer komponent">

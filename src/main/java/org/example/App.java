@@ -2,6 +2,7 @@ package org.example;
 
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +22,6 @@ import java.util.Calendar;
  * JavaFX App
  */
 public class App extends Application {
-
     private static Scene scene;
     private static Stage stage;
     private static Scene scene2;
@@ -31,12 +31,16 @@ public class App extends Application {
     private static UserCollection userCollection = new UserCollection();
     private static OrderCollection orderCollection = new OrderCollection();
     private static String currentUserEmail;
+    private ThreadHandler task;
 
     @Override
-    public void start(Stage stage) throws IOException, ClassNotFoundException {
-
-
-        Initializer.initialize();
+    public void start(Stage stage) throws IOException, ClassNotFoundException, InterruptedException {
+        this.task = new ThreadHandler();
+        Thread th = new Thread(this.task);
+        th.start();
+        this.task.setOnSucceeded(this::threadSucceeded);
+        this.task.setOnFailed(this::threadFailed);
+        //Initializer.initialize();
 
 
 
@@ -75,19 +79,25 @@ public class App extends Application {
 
         //**//
 
+        th.join();
         App.stage = stage;
         scene = new Scene(loadFXML("userLoginPrompt"));
-        System.out.print(".");
         stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
         stage.setScene(scene);
         stage.setTitle("Login");
-        System.out.print(".");
-        stage.show();
         System.out.print("\n\n---------------\n\n");
 
         //System.out.println(orderCollection.toString());
 
 
+    }
+
+    private void threadSucceeded(WorkerStateEvent workerStateEvent) {
+        stage.show();
+    }
+
+    private void threadFailed(WorkerStateEvent workerStateEvent) {
+        DialogueBoxes.alert("Thread could not load", "Program not runnable");
     }
 
     public static void newWindow(String fxml, String title) throws IOException{
