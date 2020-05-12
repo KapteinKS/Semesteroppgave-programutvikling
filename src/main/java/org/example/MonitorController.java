@@ -35,32 +35,25 @@ public class MonitorController {
     private TextField inType;
 
     @FXML
-    private Button regButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
     void cancel(ActionEvent event) {
         App.closeWindow();
     }
 
     @FXML
     void registerMonitor(ActionEvent event) throws IOException {
+        //  Checking that input is not empty
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inType.getText().isEmpty()){
             String name = inName.getText(), manufacturer = inManufac.getText(), screenType = inType.getText();
-
+            //  Input validation
             try{
                 double price = exHand.checkPrice(Double.parseDouble(inPrice.getText())),
                         size = exHand.checkSize(Double.parseDouble(inSize.getText()));
                 int refreshRate = exHand.checkRefreshRate(Integer.parseInt(inRefresh.getText())),
                         responseTime = exHand.checkResponseTime(Integer.parseInt(inResponse.getText()));
-
+                //  Storing the new component, & exiting
                 Monitor monitor = new Monitor(name, manufacturer, 0, price,size, refreshRate, responseTime, screenType);
-
                 App.saveToCollection(monitor);
                 App.closeWindow();
-
             } catch (IllegalPriceException | IllegalScreenSizeException | IllegalRefreshRateException | IllegalResponseTimeException e){
                 DialogueBoxes.alert("Feil", e.getMessage());
             } catch (NumberFormatException n) {
@@ -70,5 +63,4 @@ public class MonitorController {
             DialogueBoxes.alert("Feil", "Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
-
 }

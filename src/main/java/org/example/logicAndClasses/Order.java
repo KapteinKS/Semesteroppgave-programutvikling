@@ -1,7 +1,5 @@
 package org.example.logicAndClasses;
 
-import javafx.collections.ObservableList;
-import org.example.componentClasses.Component;
 import java.util.ArrayList;
 
 public class Order {
@@ -45,12 +43,6 @@ public class Order {
 
 	public ArrayList<String> getComponentsOrdered() {
 		return componentsOrdered;
-	}
-
-	public void setComponentsOrdered(ObservableList<Component> componentsOrdered) {
-		for (Component cmpnt : componentsOrdered) {
-			this.componentsOrdered.add(cmpnt.displayComponent());
-		}
 	}
 
 	public void setComponentsOrdered(ArrayList<String> componentsOrdered){

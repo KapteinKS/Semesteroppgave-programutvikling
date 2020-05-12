@@ -11,7 +11,6 @@ import org.example.logicAndClasses.DialogueBoxes;
 import java.io.IOException;
 
 public class CabinetController {
-
     private ExceptionHandler exHand = new ExceptionHandler();
 
     @FXML
@@ -35,36 +34,31 @@ public class CabinetController {
     @FXML
     private TextField inWeight;
 
-
-    //New
     @FXML
     private TextField inMbFormFactor;
-    //
 
     @FXML
-    private Button regButton;
-
-    @FXML
-    private Button cancelButton;
+    void cancelRegistration(ActionEvent event)  {
+        App.closeWindow();
+    }
 
     @FXML
     void registerCabinet(ActionEvent event) throws IOException {
-
+        //  Checking that input is not empty
         if(!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inMbFormFactor.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText(),
                     mbFormFactor = inMbFormFactor.getText(); //New
-
+            //  Input validation
             try {
                 double price = exHand.checkPrice(Double.parseDouble(inPrice.getText()));
                 double height = exHand.checkHeight(Double.parseDouble(inHeight.getText()));
                 double width = exHand.checkWidth(Double.parseDouble(inWidth.getText()));
                 double depth = exHand.checkDepth(Double.parseDouble(inDepth.getText()));
                 double weight = exHand.checkWeight(Double.parseDouble(inWeight.getText()));
+                //  Storing the new component, & exiting
                 Cabinet cabinet = new Cabinet(name, manufacturer, price, mbFormFactor, height, width, depth, weight);
                 App.saveToCollection(cabinet);
-
                 App.closeWindow();
-
             } catch (IllegalWeightException | IllegalDimensionsException | IllegalPriceException e) {
                 DialogueBoxes.alert("Feil", e.getMessage());
             } catch (NumberFormatException n) {
@@ -73,10 +67,5 @@ public class CabinetController {
         } else {
             DialogueBoxes.alert("Feil", "Ett eller flere påkrevde tekstfelt er tomme");
         }
-    }
-
-    @FXML
-    void cancelRegistration(ActionEvent event)  {
-        App.closeWindow();
     }
 }

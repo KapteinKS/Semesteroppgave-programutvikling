@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.List;
-
+//  Collection class for users
 public class UserCollection {
 
 	private ObservableList<User> users = FXCollections.observableArrayList();

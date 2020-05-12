@@ -11,7 +11,6 @@ import org.example.logicAndClasses.DialogueBoxes;
 import java.io.IOException;
 
 public class FanController {
-
     ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
@@ -33,30 +32,25 @@ public class FanController {
     private TextField inNoiseVolume;
 
     @FXML
-    private Button regButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
         App.closeWindow();
     }
 
     @FXML
     void registerFan(ActionEvent event) throws IOException {
+        //  Checking that input is not empty
         if (!inName.getText().isEmpty() && !inManufacturer.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufacturer.getText();
+            //  Input validation
             try {
                 double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int diameter = exHan.checkDiameter(Integer.parseInt(inDiameter.getText()));
                 double airPressure = exHan.checkAirPressure(Double.parseDouble(inPressure.getText()));
                 int maxNoiseVolume = exHan.checkNoise(Integer.parseInt(inNoiseVolume.getText()));
+                //  Storing the new component, & exiting
                 Fan fan = new Fan(name, manufacturer, price, diameter, airPressure, maxNoiseVolume);
                 App.saveToCollection(fan);
-
                 App.closeWindow();
-
             } catch (IllegalPriceException | IllegalDimensionsException | IllegalPressureException | IllegalNoiseException e){
                 DialogueBoxes.alert("Feil", e.getMessage());
             } catch (NumberFormatException n) {
@@ -66,5 +60,4 @@ public class FanController {
             DialogueBoxes.alert("Feil", "Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
-
 }

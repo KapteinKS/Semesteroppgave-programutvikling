@@ -18,7 +18,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class StorageController implements Initializable {
-
     ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
@@ -38,12 +37,6 @@ public class StorageController implements Initializable {
 
     @FXML
     private RadioButton radioTB;
-
-    @FXML
-    private Button regButton;
-
-    @FXML
-    private Button cancelButton;
 
     @FXML
     private RadioButton radioHDD;
@@ -70,8 +63,10 @@ public class StorageController implements Initializable {
 
     @FXML
     void regStorage(ActionEvent event) throws IOException {
+        //  Checking that input is not empty
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText(), type = "", capacityType = "";
+            //  Getting data from radio-selection (type and capacityType)
             if (radioSSD.isSelected()) {
                 type = "SSD";
             } else if (radioHDD.isSelected()) {
@@ -82,14 +77,14 @@ public class StorageController implements Initializable {
             } else if (radioTB.isSelected()) {
                 capacityType = "TB";
             }
+            //  Input validation
             try {
                 double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int capacity = exHan.checkStorage(Integer.parseInt(inCapacity.getText()), capacityType);
+                //  Storing the new component, & exiting
                 Storage storage = new Storage(name, manufacturer, price, type, capacity, capacityType);
                 App.saveToCollection(storage);
-
                 App.closeWindow();
-
             } catch (IllegalPriceException | IllegalCapacityException e) {
                 DialogueBoxes.alert("Feil", e.getMessage());
             } catch (NumberFormatException n) {
@@ -98,6 +93,5 @@ public class StorageController implements Initializable {
         } else {
             DialogueBoxes.alert("Feil", "Ett eller flere påkrevde tekstfelt er tomme");
         }
-
     }
 }

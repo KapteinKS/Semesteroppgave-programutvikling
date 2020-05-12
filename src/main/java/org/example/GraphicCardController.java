@@ -11,7 +11,6 @@ import org.example.logicAndClasses.DialogueBoxes;
 import java.io.IOException;
 
 public class GraphicCardController {
-
     ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
@@ -36,33 +35,27 @@ public class GraphicCardController {
     private TextField inWatts;
 
     @FXML
-    private Button regButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
         App.closeWindow();
     }
 
     @FXML
     void registerGraphicCard(ActionEvent event) throws IOException {
+        //  Checking that input is not empty
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inType.getText().isEmpty()) {
             String name = inName.getText(),
                     manufacturer = inManufac.getText(),
                     ramType = inType.getText();
+            //  Input validation
             try {
-
                 double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int ram = exHan.checkRAM(Integer.parseInt(inRAM.getText()));
                 double clockspeed = exHan.checkClockSpeed(Double.parseDouble(inHertz.getText()));
+                //  Storing the new component, & exiting
                 GraphicCard graphicCard = new GraphicCard(name, manufacturer, wattsRequired, price, ram, ramType, clockspeed);
                 App.saveToCollection(graphicCard);
-
                 App.closeWindow();
-
             } catch(IllegalRAMException | IllegalPriceException | IllegalWattsException | IllegalClockSpeedException e){
                 DialogueBoxes.alert("Feil", e.getMessage());
             } catch (NumberFormatException n) {

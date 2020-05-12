@@ -12,26 +12,26 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
+//  Class that facilitates data-loading being done in it's own thread
 public class ThreadHandler extends Task<String> {
 	public ThreadHandler(){}
-
+	//  When called, all data is loaded into the program (done at startup)
 	protected String call() throws Exception {
 			try {
-				System.out.println("Thread starting\nLoading");
-				Thread.sleep(500);
-				App.setUserCollection(openUsers());
-				App.setComponentCollection(openComponents());
-				App.setOrderCollection(openOrder());
+				System.out.println("Thread starting");
+				Thread.sleep(3000);	//  Pause to show it working
+				App.setComponentCollection(openComponents());	//  Load in components
+				App.setUserCollection(openUsers());				//  Load in users
+				App.setOrderCollection(openOrder());			//  Load in orders
 				System.out.println("Thread finished");
 			} catch (InterruptedException ie) {
 			}
 			return "";
 	}
+
 	//  Method for loading components from .jobj file
 	public ComponentCollection openComponents() throws IOException, ClassNotFoundException {
-		Path path = Paths.get("components.jobj");
-		try(InputStream in = Files.newInputStream(path);
+		try(InputStream in = Files.newInputStream(Paths.get("components.jobj"));
 			ObjectInputStream oin = new ObjectInputStream(in)){
 			List<Component> components = (ArrayList<Component>) oin.readObject();
 
@@ -51,13 +51,10 @@ public class ThreadHandler extends Task<String> {
 	}
 	//  Method for loading users form .jobj file
 	public static UserCollection openUsers() throws IOException, ClassNotFoundException {
-		Path path = Paths.get("users.jobj");
-		try (InputStream in = Files.newInputStream(path);
+		try (InputStream in = Files.newInputStream(Paths.get("users.jobj"));
 			 ObjectInputStream oin = new ObjectInputStream(in)){
 			List<User> users = (ArrayList<User>) oin.readObject();
-
 			UserCollection userCollection = new UserCollection();
-
 			for(User u : users){
 				userCollection.addUser(u);
 			}
@@ -70,10 +67,8 @@ public class ThreadHandler extends Task<String> {
 	}
 	//  Method for loading orders from .csv file
 	public static OrderCollection openOrder() throws IOException{
-		Path orderFilePath = Paths.get("orders.csv");
-		//ArrayList<Order> listOfOrders= new ArrayList<>();
 		OrderCollection listOfOrders = new OrderCollection();
-		try (BufferedReader bufferedReader = Files.newBufferedReader(orderFilePath)){
+		try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get("orders.csv"))){
 			String line;
 			while ((line = bufferedReader.readLine()) != null){
 				listOfOrders.addOrder(parseOrder(line));
@@ -89,16 +84,12 @@ public class ThreadHandler extends Task<String> {
 	//  Submethod for openOrder()
 	private static Order parseOrder(String line) throws IOException{
 		String[] split = line.split(",");
-		String userID = split[0];
-		String orderID = split[1];
-		String date = split[2];
-		String priceString = split[split.length-1]; //the last value?
+		//  As an order can contain varying amount of components ordered, we use this ArrayList & for-loop.
 		ArrayList<String> componentsOrdered = new ArrayList<>();
-
 		for (int i = 3; i < split.length; i++){
 			componentsOrdered.add(split[i]);
 		}
-		return new Order(userID,orderID,date,componentsOrdered,Double.parseDouble(priceString));
+		return new Order(split[0],split[1],split[2],componentsOrdered,Double.parseDouble(split[split.length-1]));
 	}
 
 }

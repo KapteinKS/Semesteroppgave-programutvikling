@@ -5,8 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.example.io.ThreadHandler;
-import org.example.io.WriteUserToFile;
+import org.example.io.Writer;
 import org.example.logicAndClasses.EndUser;
 import org.example.logicAndClasses.UserCollection;
 
@@ -120,7 +119,7 @@ public class UserRegistrationController {
 
 				userCollection.addUser(newUser);
 
-				WriteUserToFile.save(userCollection.getUsers());
+				Writer.saveUsers(userCollection.getUsers());
 
 
 				App.setUserCollection(userCollection);

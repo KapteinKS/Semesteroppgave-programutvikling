@@ -81,7 +81,7 @@ public abstract class Component implements Serializable {
 	}
 
 	public boolean setInfo(String info) throws IOException { return false;}
-
+	//  Method for saving a component object to a .jobj file
 	private void writeObject(ObjectOutputStream s) throws IOException{
 		s.writeUTF(type.getValue());
 		s.writeUTF(name.getValue());
@@ -89,7 +89,7 @@ public abstract class Component implements Serializable {
 		s.writeDouble(wattsRequired.getValue());
 		s.writeDouble(price.getValue());
 	}
-
+	//  Method for loading a component object to a .jobj file
 	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
 		this.type = new SimpleStringProperty(s.readUTF());
 		this.name = new SimpleStringProperty(s.readUTF());

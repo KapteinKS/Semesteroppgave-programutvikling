@@ -7,10 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.example.exceptions.IllegalDimensionsException;
 import org.example.exceptions.IllegalPriceException;
-import org.example.exceptions.IllegalWeightException;
-import org.example.io.WriteComponentsToFile;
+import org.example.io.Writer;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
 import org.example.componentClasses.*;
@@ -127,13 +125,13 @@ public class AdminController implements Initializable {
 	@FXML
 	public void editName(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setName(event.getNewValue());
-		WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+		Writer.saveComponents(App.getComponentCollection().getArrayList());
 	}
 
 	@FXML
 	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event) throws IOException {
 		event.getRowValue().setManufacturer(event.getNewValue());
-		WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+		Writer.saveComponents(App.getComponentCollection().getArrayList());
 	}
 
 	@FXML
@@ -141,7 +139,7 @@ public class AdminController implements Initializable {
 		try {
 			if (doubleStringConverter.wasSuccessful()) {
 				event.getRowValue().setPrice(event.getNewValue());
-				WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+				Writer.saveComponents(App.getComponentCollection().getArrayList());
 			}
 		} catch (NumberFormatException | IllegalPriceException e){
 			DialogueBoxes.alert("Feil", "Du må skrive inn et positivt tall!");
@@ -155,7 +153,7 @@ public class AdminController implements Initializable {
 	void editInfo(TableColumn.CellEditEvent<Component, String> event) {
 		try {
 			if(event.getRowValue().setInfo(event.getNewValue())){
-				WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+				Writer.saveComponents(App.getComponentCollection().getArrayList());
 			}
 		} catch (IOException ioe){
 			DialogueBoxes.alert("Feil i redigering", ioe.getMessage());
@@ -184,7 +182,7 @@ public class AdminController implements Initializable {
 		if(DialogueBoxes.confirm("Fjerne komponent?",
 				"Advarsel, denne handlingen vil permanent fjerne en komponent, fortsette?")){
 			App.removeComponent(c);
-			WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+			Writer.saveComponents(App.getComponentCollection().getArrayList());
 		}
 	}
 
@@ -205,7 +203,7 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
-		WriteComponentsToFile.save(componentCollection.getArrayList());
+		Writer.saveComponents(componentCollection.getArrayList());
 	}
 
 	@FXML

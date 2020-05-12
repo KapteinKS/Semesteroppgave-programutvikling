@@ -1,7 +1,8 @@
 package org.example.exceptions;
 
 import java.io.IOException;
-
+// Class containing methods pertaining to input validation
+// Parameters for validation are chosen to be somewhat realistic
 public class ExceptionHandler {
     public double checkPrice(double price) throws IllegalPriceException {
         if(price < 0){

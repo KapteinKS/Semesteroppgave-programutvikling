@@ -1,4 +1,5 @@
 package org.example.io;
+/*
 
 import org.example.logicAndClasses.OrderCollection;
 
@@ -9,9 +10,10 @@ import java.nio.file.Paths;
 
 //Saves ORDERCollection (.txt)
 
-public class WriteOrderToFile extends Writer {
-
-	public static void save(OrderCollection orderCollection) throws IOException {
+public class WriteOrderToFile{
+	public static void saveOrders(OrderCollection orderCollection) throws IOException {
 		Files.write(Paths.get("orders.csv"),orderCollection.toString().getBytes());
 	}
 }
+
+ */

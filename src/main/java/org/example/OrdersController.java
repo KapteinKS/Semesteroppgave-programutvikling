@@ -27,6 +27,7 @@ public class OrdersController {
     @FXML
     void btnOpenOrder(ActionEvent event) {
         String currentUserID = App.getCurrentUser().getUserID();
+        //  Henter ordrene til brukeren vha. deres currentUserID
         out = orders.printOrders(currentUserID);
         if (out.equals("")) {
             DialogueBoxes.alert("Feil!", "Du har ingen tidligere ordre!");
@@ -38,9 +39,9 @@ public class OrdersController {
 
     @FXML
     void orderAbout(ActionEvent event) {
-        DialogueBoxes.about("This GUI will show you your previous orders",
-                "Press \"Open orders\" to open previous orders or press \"Back\" to go back to the ordering GUI");
+        DialogueBoxes.about("Dette GUIet viser tidligere ordre til den aktive kunden",
+                "Trykk \"Åpne ordre\" for å åpne tidligere ordre, eller trykk \"Tilbake\" " +
+                        "for å gå tilbake til bestillings GUIet");
     }
-
 }
 

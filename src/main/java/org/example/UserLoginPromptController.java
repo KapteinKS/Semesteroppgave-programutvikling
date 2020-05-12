@@ -22,13 +22,12 @@ public class UserLoginPromptController {
 
 	@FXML
 	void login(ActionEvent event) throws IOException {
-
-		//Check Stored List of Person
 		txtEmail.setStyle("");
 		txtPassword.setStyle("");
 		User user;
-
+		//  Check Stored List of Person
 		if ((userCollection.checkForUser(txtEmail.getText())) && (userCollection.checkPassword(txtEmail.getText(),txtPassword.getText()))) {
+			//  We check by email, we use this as an identifier of the user.
 			user = userCollection.getUser(txtEmail.getText());
 			if (user instanceof EndUser){
 				App.setCurrentUser(user);
@@ -42,6 +41,7 @@ public class UserLoginPromptController {
 				App.setCurrentUser(user);
 			}
 		} else {
+			//  If we can't find the user, we indicate an error by changing the input-border to be red
 			txtEmail.setStyle("-fx-text-box-border: #ff0000");
 			txtPassword.setStyle("-fx-text-box-border: #ff0000");
 		}
@@ -51,5 +51,4 @@ public class UserLoginPromptController {
 	void registerNewCustomer(ActionEvent event) throws IOException {
 		App.setRoot("userRegistration", 313, 468, "End User");
 	}
-
 }

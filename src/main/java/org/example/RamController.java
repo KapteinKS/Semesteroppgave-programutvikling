@@ -34,31 +34,24 @@ public class RamController {
     private TextField inAmount;
 
     @FXML
-    private Button regButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
     void cancelRegistration(ActionEvent event) {
         App.closeWindow();
     }
 
     @FXML
     void registerRAM(ActionEvent event) throws IOException {
+        //  Checking that input is not empty
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inType.getText().isEmpty()){
             String name = inName.getText(), manufacturer = inManufac.getText(), type = inType.getText();
-
+            //  Input validation
             try {
                 double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int size = exHan.checkRAM(Integer.parseInt(inSize.getText()));
                 int amount = exHan.checkRAMPieces(Integer.parseInt(inAmount.getText()));
-
+                //  Storing the new component, & exiting
                 RAM ram = new RAM(name, manufacturer, price, size, type, amount);
-
                 App.saveToCollection(ram);
                 App.closeWindow();
-
             } catch (IllegalRAMException | IllegalPriceException e){
                 DialogueBoxes.alert("Feil", e.getMessage());
             } catch (NumberFormatException n) {
@@ -68,5 +61,4 @@ public class RamController {
             DialogueBoxes.alert("Feil", "Ett eller flere påkrevde tekstfelt er tomme");
         }
     }
-
 }

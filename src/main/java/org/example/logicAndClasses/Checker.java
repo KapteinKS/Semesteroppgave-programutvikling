@@ -5,9 +5,9 @@ import org.example.componentClasses.*;
 
 import java.util.List;
 
-// Container-class for logic used when checking the compatibility of a PC-build.
+//  Container-class for logic used when checking the compatibility of a PC-build.
 public class Checker {
-
+	//  Methods to check if certain component-attributes are compatible with certain other component-attributes
 	public static String checkMotherboardAndCPU(Motherboard mb, CPU cpu){
 		String out = "";
 		if (!(mb.getSocket().equals(cpu.getSocket()))){
@@ -37,18 +37,18 @@ public class Checker {
 		}
 		return out;
 	}
-
+	//  Method that returns the total power-requirement of a list of components
 	public static double summarizeWatts(ObservableList<Component> components){
 		double sum = 0.0;
 		for(Component cmpnt: components){
-			//If the component is a PSU, we ignore it
+			//  If a component is a PSU, we ignore it
 			if(!(cmpnt.getType().equals("PowerSupply"))) {
 				sum += cmpnt.getWattsRequired();
 			}
 		}
 		return sum;
 	}
-
+	//  Method that returns the total price of a list of components
 	public static double summarizePrice(ObservableList<Component> components){
 		double sum = 0.0;
 		for (Component cmpnt : components){
@@ -56,38 +56,4 @@ public class Checker {
 		}
 		return sum;
 	}
-
-	/*
-
-		'isCompatible(a,b)' ought to be able to check several types of components, and
-		several types of compatibility.
-
-		CPU on Motherboard via socket
-		RAM on Motherboard via DDR-Protocol
-		Motherboard on Chassi via Size
-
-		All these neccessary attributes must be added to the components, to make the
-		testing possible.
-
-		'Checker.java' should also include a
-		'enoughPower' method, that summarizes all the individual components power-consumption,
-		and if it exceeds selected PSU, it will return FALSE.
-
-		*INSERT SUICIDE MEME HERE*
-
-
- 	*/
-
-
-    /*
-	public boolean isCompatible(Component a, Component b) throws ComponentCompatibilityException {
-        try{
-            if (a.getManufacturer.equals(b.getManufacturer)) {
-                return true;
-		}catch(ComponentCompatibilityException cce){
-		    throw new ComponentCompatibilityException("Komponenter ikke kompitable");
-		    return false;
-		}
-     */
-
 }

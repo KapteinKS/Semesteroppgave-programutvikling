@@ -2,14 +2,13 @@ package org.example;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.example.componentClasses.*;
 import org.example.io.ThreadHandler;
-import org.example.io.WriteOrderToFile;
+import org.example.io.Writer;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
@@ -262,7 +261,7 @@ public class UserController implements Initializable {
 						myList, totalPrice);
 
 				orderCollection.addOrder(order);
-				WriteOrderToFile.save(orderCollection);
+				Writer.saveOrders(orderCollection);
 
 				//  App update
 				App.setOrderCollection(orderCollection);

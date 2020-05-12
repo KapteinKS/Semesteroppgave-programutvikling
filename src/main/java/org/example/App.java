@@ -1,7 +1,6 @@
 package org.example;
 
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +9,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.componentClasses.*;
 import org.example.io.ThreadHandler;
-import org.example.io.WriteComponentsToFile;
-import org.example.io.WriteUserToFile;
+import org.example.io.Writer;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
@@ -126,7 +124,7 @@ public class App extends Application {
     }
     public static void saveToCollection(Component component) throws IOException {
         componentCollection.add(component);
-        WriteComponentsToFile.save(componentCollection.getArrayList());
+        Writer.saveComponents(componentCollection.getArrayList());
     }
     public static void removeComponent(Component c){
         componentCollection.remove(c);
@@ -140,7 +138,7 @@ public class App extends Application {
     }
     public static void saveToUserCollection(User user) throws IOException {
         userCollection.addUser(user);
-        WriteUserToFile.save(userCollection.getUsers());
+        Writer.saveUsers(userCollection.getUsers());
     }
     //  Accessing the current user (active user)
     public static void setCurrentUser(User user){
@@ -188,8 +186,8 @@ public class App extends Application {
         componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
         ArrayList<String> orderList = new ArrayList<>(); orderList.add("WD Mobile Black, 807.00 NOK"); orderList.add("Seasonic Focus GX 750, 1499.00 NOK");
         orderCollection.addOrder(new Order("00000","000000","Tue May 12 10:00:00 CEST 2020", orderList, 2306.00));
-        WriteComponentsToFile.save(componentCollection.getArrayList());
-        WriteUserToFile.save(userCollection.getUsers());
+        Writer.saveComponents(componentCollection.getArrayList());
+        Writer.saveUsers(userCollection.getUsers());
     }
 
     public static void main(String[] args) {

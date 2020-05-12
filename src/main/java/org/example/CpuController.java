@@ -4,17 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.example.exceptions.ExceptionHandler;
-import org.example.exceptions.IllegalClockSpeedException;
-import org.example.exceptions.IllegalPriceException;
-import org.example.exceptions.IllegalThreadsException;
+import org.example.exceptions.*;
 import org.example.componentClasses.CPU;
 import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 
 public class CpuController {
-
     ExceptionHandler exHan = new ExceptionHandler();
 
     @FXML
@@ -39,35 +35,27 @@ public class CpuController {
     private TextField inSocket;
 
     @FXML
-    private Button regButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
     void cancelRegistration(ActionEvent event) throws IOException {
         App.closeWindow();
     }
 
     @FXML
     void registerCPU(ActionEvent event) throws IOException {
+        //  Checking that input is not empty
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty() && !inSocket.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText(), socket = inSocket.getText();;
-
+            //  Input validation
             try {
-                //New
-                double wattsRequired = Double.parseDouble(inWatts.getText());
-
+                double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int threads = exHan.checkThreads(Integer.parseInt(inThreads.getText()));
                 double clockspeed = exHan.checkClockSpeed(Double.parseDouble(inClockSpeed.getText()));
-
+                //  Storing the new component, & exiting
                 CPU cpu = new CPU(name, manufacturer, wattsRequired, price, threads, clockspeed, socket);
                 App.saveToCollection(cpu);
-
                 App.closeWindow();
-
-            } catch (IllegalClockSpeedException | IllegalPriceException | IllegalThreadsException e) {
+            } catch (IllegalClockSpeedException | IllegalPriceException |
+                    IllegalThreadsException | IllegalWattsException e) {
                 DialogueBoxes.alert("Feil", e.getMessage());
             } catch (NumberFormatException n) {
                 DialogueBoxes.alert("Feil", "Tallfelt kan ikke være tomme");

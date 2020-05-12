@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-
+//  Superclass User, containing universal (and most of the) attributes & methods for users
 public abstract class User implements Serializable {
     private transient SimpleStringProperty userID;
     private transient SimpleStringProperty firstName;
@@ -109,7 +109,7 @@ public abstract class User implements Serializable {
         return "UserID:" + getUserID() + "\nName:" + getFirstName() + " " + getLastName() +"\nAdress: " + getAddress() + ", " + getPostalCode() + " " +getPostalArea()
                 + "\nPhone: " + getPhoneNumber() + "\nEmail: " + getEmail() + "\nPassword: " + getPassword() + "\n-----------------------\n";
     }
-
+    //  Method for saving as an object
     private void writeObject(ObjectOutputStream s) throws IOException{
         s.writeUTF(userID.getValue());
         s.writeUTF(firstName.getValue());
@@ -121,7 +121,7 @@ public abstract class User implements Serializable {
         s.writeUTF(email.getValue());
         s.writeUTF(password.getValue());
     }
-
+    //  Method for loading an object
     private void readObject(ObjectInputStream s) throws IOException{
         this.userID = new SimpleStringProperty(s.readUTF());
         this.firstName = new SimpleStringProperty(s.readUTF());

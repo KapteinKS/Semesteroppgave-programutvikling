@@ -10,18 +10,16 @@ import org.example.componentClasses.GraphicCard;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//  Collection class for components
 public class ComponentCollection {
-
 	private static ObservableList<Component> componentList = FXCollections.observableArrayList();
 
 	public void add(Component component){
 		componentList.add(component);
 	}
-
-	// By this method, we can use the intermediary "display-string" to fetch a component. (COMBOBOX STUFF)
+	//  Using this method, we can use a components 'display-string' to fetch a component.
 	public <T extends Component> T getComponentByDisplayString(String componentDisplayString) {
-		//Here, we create a dummy GraphicCard, never actually returned;
+		//  Create a dummy GraphicCard (never actually returned)
 		T e = (T) new GraphicCard("ERROR","Error",00,00,0,"error",0);
 		for (Component c : componentList) {
 			if (componentDisplayString.equals(c.displayComponent())) {
@@ -51,7 +49,7 @@ public class ComponentCollection {
 	public void removeAll(){
 		componentList.clear();
 	}
-
+	//  Filter methods
 	public static ObservableList<Component> filter(String choiceBoxValue, String filterInput){
 		List<Component> filteredList;
 		switch (choiceBoxValue){
@@ -79,9 +77,8 @@ public class ComponentCollection {
 			default:
 				return componentList;
 		}
-
 	}
-
+	//  Method to get a list of components of a certain given type
 	public ObservableList<Component> getComponentByType(String type){
 		try {
 			return componentList.stream().

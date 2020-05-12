@@ -4,7 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
-
+//  Container-class for all dialog-boxes / prompts
 public class DialogueBoxes {
     public static void about(String header, String content){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
