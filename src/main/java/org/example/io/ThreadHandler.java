@@ -19,6 +19,7 @@ import java.util.List;
 
 public class ThreadHandler extends Task<String> {
 <<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
     private boolean condition;
     private String operation;
     private ComponentCollection componentCollection;
@@ -79,6 +80,12 @@ public class ThreadHandler extends Task<String> {
 
         }
 =======
+=======
+    public ThreadHandler(){
+
+    }
+    protected String call() throws Exception {
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
        try {
            System.out.println("Thread starting");
            Thread.sleep(3000);
@@ -90,6 +97,9 @@ public class ThreadHandler extends Task<String> {
 
        }
        return "";
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
+=======
 >>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
     }
     public ComponentCollection openComponents() throws IOException, ClassNotFoundException {
@@ -130,6 +140,7 @@ public class ThreadHandler extends Task<String> {
             throw new ClassNotFoundException("File reader couldn't find a class");
         }
     }
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
 <<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
     //  Method for loading orders from .csv file
     public static OrderCollection openOrder() throws IOException{
@@ -186,6 +197,8 @@ public class ThreadHandler extends Task<String> {
         }
     }
     
+=======
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
 =======
 >>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
 }
