@@ -209,7 +209,7 @@ public class AdminController implements Initializable {
 	}
 
 	@FXML
-	void editInfo(TableColumn.CellEditEvent<Component, String> event) throws IOException{
+	void editInfo(TableColumn.CellEditEvent<Component, String> event) {
 		try {
 			if(event.getRowValue().setInfo(event.getNewValue())){
 				WriteComponentsToFile.save(App.getList2().getArrayList());
