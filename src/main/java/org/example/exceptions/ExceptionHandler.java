@@ -11,8 +11,8 @@ public class ExceptionHandler {
     }
 
     public double checkHeight(double height) throws IllegalDimensionsException{
-        if (height < 0){
-            throw new IllegalDimensionsException("Høyde må være positiv");
+        if (height < 20){
+            throw new IllegalDimensionsException("Kabinett for lavt");
         } else if (height > 150){
             throw new IllegalDimensionsException("Kabinett for høyt!");
         }
@@ -20,8 +20,8 @@ public class ExceptionHandler {
     }
 
     public double checkWidth(double width) throws IllegalDimensionsException{
-        if (width < 0){
-            throw new IllegalDimensionsException("Bredde må være positiv");
+        if (width < 5){
+            throw new IllegalDimensionsException("Kabinett for tynt");
         } else if (width > 40) {
             throw new IllegalDimensionsException("Kabinett for bredt!");
         }
@@ -29,8 +29,8 @@ public class ExceptionHandler {
     }
 
     public double checkDepth(double depth) throws IllegalDimensionsException{
-        if (depth < 0){
-            throw new IllegalDimensionsException("Dybde må være positiv");
+        if (depth < 20){
+            throw new IllegalDimensionsException("Kabinett for kort");
         } else if (depth > 125) {
             throw new IllegalDimensionsException("Kabinett for dypt!");
         }

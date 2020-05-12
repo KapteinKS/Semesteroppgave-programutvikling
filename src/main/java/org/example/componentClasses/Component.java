@@ -2,6 +2,7 @@ package org.example.componentClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalPriceException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -47,8 +48,12 @@ public abstract class Component implements Serializable {
 		return price.getValue();
 	}
 
-	public void setPrice(double price){
-		this.price.set(price);
+	public void setPrice(double price) throws IllegalPriceException {
+		if (price > 0) {
+			this.price.set(price);
+		} else {
+			throw new IllegalPriceException("Pris må være positiv");
+		}
 	}
 
 	public double getWattsRequired() {
@@ -75,7 +80,7 @@ public abstract class Component implements Serializable {
 		return "";
 	}
 
-	public boolean setInfo(String info){ return false;}
+	public boolean setInfo(String info) throws IOException { return false;}
 
 
 	private void writeObject(ObjectOutputStream s) throws IOException{

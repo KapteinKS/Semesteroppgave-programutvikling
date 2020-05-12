@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.example.exceptions.IllegalDimensionsException;
+import org.example.exceptions.IllegalPriceException;
+import org.example.exceptions.IllegalWeightException;
 import org.example.io.WriteComponentsToFile;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
@@ -193,25 +196,32 @@ public class AdminController implements Initializable {
 	@FXML
 	public void editPrice(TableColumn.CellEditEvent<Component, Double> event) throws IOException {
 		try {
-			if (doubleStringConverter.wasSuccessful())
+			if (doubleStringConverter.wasSuccessful()) {
 				event.getRowValue().setPrice(event.getNewValue());
 				WriteComponentsToFile.save(App.getList2().getArrayList());
-		} catch (NumberFormatException e){
-			System.out.println("Du må skrive inn et positivt tall!");
+			}
+		} catch (NumberFormatException | IllegalPriceException e){
+			DialogueBoxes.alert("Feil", "Du må skrive inn et positivt tall!");
 		} catch (IllegalArgumentException e){
-			System.out.println("Ugyldig input: " + e.getMessage());
+			DialogueBoxes.alert("Ugyldig input: ", e.getMessage());
 		}
+		tableView.refresh();
 	}
 
 	@FXML
 	void editInfo(TableColumn.CellEditEvent<Component, String> event) throws IOException{
-		if(event.getRowValue().setInfo(event.getNewValue())){
-			WriteComponentsToFile.save(App.getList2().getArrayList());
+		try {
+			if(event.getRowValue().setInfo(event.getNewValue())){
+				WriteComponentsToFile.save(App.getList2().getArrayList());
+			}
+		} catch (IOException ioe){
+			DialogueBoxes.alert("Feil i redigering", ioe.getMessage());
 		}
 		tvManufacturer.setPrefWidth(126);
 		tvName.setPrefWidth(104);
 		tvPrice.setPrefWidth(71);
 		tvInfo.setPrefWidth(190.0);
+		tableView.refresh();
 	}
 
 	@FXML

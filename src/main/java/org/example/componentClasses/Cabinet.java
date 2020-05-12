@@ -3,6 +3,8 @@ package org.example.componentClasses;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalDimensionsException;
+import org.example.exceptions.IllegalWeightException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -37,32 +39,48 @@ public class Cabinet extends Component {
         return height.getValue();
     }
 
-    public void setHeight(double height) {
-        this.height.set(height);
+    public void setHeight(double height) throws IllegalDimensionsException {
+        if (height >= 20 && height <= 150) {
+            this.height.set(height);
+        } else {
+            throw new IllegalDimensionsException("Kan ikke sette høyde");
+        }
     }
 
     public double getWidth() {
         return width.getValue();
     }
 
-    public void setWidth(double width) {
-        this.width.set(width);
+    public void setWidth(double width) throws IllegalDimensionsException {
+        if (width >= 5 && width <= 40) {
+            this.width.set(width);
+        } else {
+            throw new IllegalDimensionsException("Kan ikke sette bredde");
+        }
     }
 
     public double getDepth() {
         return depth.getValue();
     }
 
-    public void setDepth(double depth) {
-        this.depth.set(depth);
+    public void setDepth(double depth) throws IllegalDimensionsException {
+        if (depth >= 20 && depth <= 125) {
+            this.depth.set(depth);
+        } else {
+            throw new IllegalDimensionsException("Kan ikke sette dybde");
+        }
     }
 
     public double getWeight() {
         return weight.getValue();
     }
 
-    public void setWeight(double weight) {
-        this.weight.set(weight);
+    public void setWeight(double weight) throws IllegalWeightException {
+        if (weight > 0) {
+            this.weight.set(weight);
+        } else {
+            throw new IllegalWeightException("Kan ikke sette vekt");
+        }
     }
 
     public String getInfo(){
@@ -70,7 +88,7 @@ public class Cabinet extends Component {
                 " cm \nVekt: " + getWeight() + " kg";
     }
 
-    public boolean setInfo(String info){
+    public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,10}: ");
 
 
@@ -84,8 +102,8 @@ public class Cabinet extends Component {
             setDepth(Double.parseDouble(split[3]));
             setWeight(Double.parseDouble(split[4]));
 
-        } catch (NumberFormatException n){
-            return false;
+        } catch (NumberFormatException | IllegalDimensionsException | IllegalWeightException n){
+            throw new IOException(n.getMessage());
         }
         return true;
     }
