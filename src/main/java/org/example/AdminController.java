@@ -125,8 +125,7 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 		//reworked to be new thread.
 		task = new ThreadHandler(true,"saveComponents", componentCollection,null,null);
 		this.task.setOnSucceeded(this::threadSucceeded);
@@ -135,19 +134,12 @@ public class AdminController implements Initializable {
 		td.start();
 		task.saveComponents(componentCollection.getArrayList());
 
-
-
-
-=======
 		WriteComponentsToFile.save(collection.getArrayList());
->>>>>>> parent of 60cf4b8... Working on saving threads!
+
 	}
 
-=======
-		WriteComponentsToFile.save(collection.getArrayList());
-	}
 
->>>>>>> parent of 60cf4b8... Working on saving threads!
+
 	@FXML
 	void resetList(ActionEvent event) throws IOException{
 		App.resetLists();
