@@ -14,6 +14,8 @@ This should be done with a checker-method (SEE CHECKER.java)
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalClockSpeedException;
+import org.example.exceptions.IllegalThreadsException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -36,16 +38,24 @@ public class CPU extends Component {
 		return threads.getValue();
 	}
 
-	public void setThreads(int threads) {
-		this.threads.set(threads);
+	public void setThreads(int threads) throws IllegalThreadsException {
+		if(threads > 0) {
+			this.threads.set(threads);
+		} else {
+			throw new IllegalThreadsException("Kunne ikke sette tråder");
+		}
 	}
 
 	public double getClockSpeed() {
 		return clockSpeed.getValue();
 	}
 
-	public void setClockSpeed(double clockSpeed) {
-		this.clockSpeed.set(clockSpeed);
+	public void setClockSpeed(double clockSpeed) throws IllegalClockSpeedException {
+		if (clockSpeed >=1 && clockSpeed <= 10) {
+			this.clockSpeed.set(clockSpeed);
+		} else {
+			throw new IllegalClockSpeedException("Kunne ikke sette klokkehastighet");
+		}
 	}
 
 	public String getSocket() {
@@ -60,15 +70,15 @@ public class CPU extends Component {
 		return "Tråder: " + getThreads() + "\nKlokkehastighet: " + getClockSpeed() + "\nSocket: " + getSocket();
 	}
 
-	public boolean setInfo(String info){
+	public boolean setInfo(String info) throws IOException {
 		String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,20}: ");
 
 		try {
 			setThreads(Integer.parseInt(split[1]));
 			setClockSpeed(Double.parseDouble(split[2]));
 			setSocket(split[3]);
-		} catch (NumberFormatException n){
-			return false;
+		} catch (NumberFormatException | IllegalThreadsException | IllegalClockSpeedException n){
+			throw new IOException(n.getMessage());
 		}
 
 		return true;

@@ -3,6 +3,9 @@ package org.example.componentClasses;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalRefreshRateException;
+import org.example.exceptions.IllegalResponseTimeException;
+import org.example.exceptions.IllegalScreenSizeException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,24 +31,36 @@ public class Monitor extends Component implements Serializable {
         return monitorSize.getValue();
     }
 
-    public void setMonitorSize(double monitorSize) {
-        this.monitorSize.set(monitorSize);
+    public void setMonitorSize(double monitorSize) throws IllegalScreenSizeException {
+        if (monitorSize >= 13) {
+            this.monitorSize.set(monitorSize);
+        } else {
+            throw new IllegalScreenSizeException("Kunne ikke sette skjermstørrelse");
+        }
     }
 
     public int getMonitorRefreshRate() {
         return monitorRefreshRate.getValue();
     }
 
-    public void setMonitorRefreshRate(int monitorRefreshRate) {
-        this.monitorRefreshRate.set(monitorRefreshRate);
+    public void setMonitorRefreshRate(int monitorRefreshRate) throws IllegalRefreshRateException {
+        if (monitorRefreshRate >= 16) {
+            this.monitorRefreshRate.set(monitorRefreshRate);
+        } else {
+            throw new IllegalRefreshRateException("Kunne ikke sette responstid");
+        }
     }
 
     public int getMonitorResponseTime() {
         return monitorResponseTime.getValue();
     }
 
-    public void setMonitorResponseTime(int monitorResponseTime) {
-        this.monitorResponseTime.set(monitorResponseTime);
+    public void setMonitorResponseTime(int monitorResponseTime) throws IllegalResponseTimeException{
+        if (monitorResponseTime > 0 && monitorResponseTime <= 50) {
+            this.monitorResponseTime.set(monitorResponseTime);
+        } else {
+            throw new IllegalResponseTimeException("Kunne ikke sette responstid");
+        }
     }
 
     public String getMonitorScreenType() {
@@ -61,7 +76,7 @@ public class Monitor extends Component implements Serializable {
                 + getMonitorResponseTime() + " ms\nSkjermtype: " + getMonitorScreenType();
     }
 
-    public boolean setInfo(String info){
+    public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅ][a-zæøå `\"]{1,20}: ");
 
         for (int i = 1; i < split.length; i++){
@@ -74,8 +89,8 @@ public class Monitor extends Component implements Serializable {
             setMonitorRefreshRate(Integer.parseInt(split[2]));
             setMonitorResponseTime(Integer.parseInt(split[3]));
             setMonitorScreenType(split[4]);
-        } catch (NumberFormatException n){
-            return false;
+        } catch (NumberFormatException | IllegalScreenSizeException n){
+            throw new IOException(n.getMessage());
         }
 
         return true;
