@@ -116,8 +116,7 @@ public class UserRegistrationController {
 			if (goodToGo){
 				EndUser newUser = new EndUser((String.format("%05d",App.getNewUserID())),firstName, lastName, address,
 						postCode, postArea, phoneNumber, email, password);
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 				userCollection.addUser(newUser);
 
 				//New stuff, saving in new thread
@@ -131,12 +130,9 @@ public class UserRegistrationController {
 
 
 				App.setUserCollection(userCollection);
-=======
+
 				App.saveToUserCollection(newUser);
->>>>>>> parent of 60cf4b8... Working on saving threads!
-=======
-				App.saveToUserCollection(newUser);
->>>>>>> parent of 60cf4b8... Working on saving threads!
+
 				App.setCurrentUser(newUser);
 				App.setRoot("user", 700, 640, "End User");
 			}
