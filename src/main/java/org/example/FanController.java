@@ -48,7 +48,7 @@ public class FanController {
         if (!inName.getText().isEmpty() && !inManufacturer.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufacturer.getText();
             try {
-                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int diameter = exHan.checkDiameter(Integer.parseInt(inDiameter.getText()));
                 double airPressure = exHan.checkAirPressure(Double.parseDouble(inPressure.getText()));
                 int maxNoiseVolume = exHan.checkNoise(Integer.parseInt(inNoiseVolume.getText()));

@@ -83,7 +83,7 @@ public class StorageController implements Initializable {
                 capacityType = "TB";
             }
             try {
-                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int capacity = exHan.checkStorage(Integer.parseInt(inCapacity.getText()), capacityType);
                 Storage storage = new Storage(name, manufacturer, price, type, capacity, capacityType);
                 App.saveToCollection(storage);

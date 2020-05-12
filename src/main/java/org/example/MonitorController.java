@@ -51,7 +51,7 @@ public class MonitorController {
             String name = inName.getText(), manufacturer = inManufac.getText(), screenType = inType.getText();
 
             try{
-                double price = exHand.priceCheck(Double.parseDouble(inPrice.getText())),
+                double price = exHand.checkPrice(Double.parseDouble(inPrice.getText())),
                         size = exHand.checkSize(Double.parseDouble(inSize.getText()));
                 int refreshRate = exHand.checkRefreshRate(Integer.parseInt(inRefresh.getText())),
                         responseTime = exHand.checkResponseTime(Integer.parseInt(inResponse.getText()));

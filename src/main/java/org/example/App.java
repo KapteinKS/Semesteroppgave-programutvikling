@@ -41,7 +41,6 @@ public class App extends Application {
         this.task.setOnFailed(this::threadFailed);
         th.start();
 
-        //*  SOME COMPONENTS  *//
 /*
 
         ReadUserFromFile.open(customerRegistry, Paths.get("orders.csv"));

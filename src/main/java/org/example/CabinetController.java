@@ -55,7 +55,7 @@ public class CabinetController {
                     mbFormFactor = inMbFormFactor.getText(); //New
 
             try {
-                double price = exHand.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHand.checkPrice(Double.parseDouble(inPrice.getText()));
                 double height = exHand.checkHeight(Double.parseDouble(inHeight.getText()));
                 double width = exHand.checkWidth(Double.parseDouble(inWidth.getText()));
                 double depth = exHand.checkDepth(Double.parseDouble(inDepth.getText()));

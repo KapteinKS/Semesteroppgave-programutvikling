@@ -3,7 +3,7 @@ package org.example.exceptions;
 import java.io.IOException;
 
 public class ExceptionHandler {
-    public double priceCheck(double price) throws IllegalPriceException {
+    public double checkPrice(double price) throws IllegalPriceException {
         if(price < 0){
             throw new IllegalPriceException("Pris må være positiv");
         }
@@ -13,6 +13,8 @@ public class ExceptionHandler {
     public double checkHeight(double height) throws IllegalDimensionsException{
         if (height < 0){
             throw new IllegalDimensionsException("Høyde må være positiv");
+        } else if (height > 150){
+            throw new IllegalDimensionsException("Kabinett for høyt!");
         }
         return height;
     }
@@ -20,6 +22,8 @@ public class ExceptionHandler {
     public double checkWidth(double width) throws IllegalDimensionsException{
         if (width < 0){
             throw new IllegalDimensionsException("Bredde må være positiv");
+        } else if (width > 40) {
+            throw new IllegalDimensionsException("Kabinett for bredt!");
         }
         return width;
     }
@@ -27,8 +31,10 @@ public class ExceptionHandler {
     public double checkDepth(double depth) throws IllegalDimensionsException{
         if (depth < 0){
             throw new IllegalDimensionsException("Dybde må være positiv");
+        } else if (depth > 125) {
+            throw new IllegalDimensionsException("Kabinett for dypt!");
         }
-        return depth;
+    return depth;
     }
 
     public double checkWeight(double weight) throws IllegalWeightException{

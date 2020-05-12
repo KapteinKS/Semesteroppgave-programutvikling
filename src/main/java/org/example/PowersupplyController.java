@@ -51,7 +51,7 @@ public class PowersupplyController {
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText();
             try {
-                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int energy = exHan.checkWatts(Integer.parseInt(inEnergy.getText()));
                 int voltageIn = exHan.checkVoltageIn(Integer.parseInt(inVoltageIn.getText()));
                 int voltageOut = exHan.checkVoltageout(Integer.parseInt(inVoltageOut.getText()));

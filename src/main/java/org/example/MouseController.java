@@ -51,7 +51,7 @@ public class MouseController {
             String name = inName.getText(), manufacturer = inManufac.getText(), connectionType = inConnection.getText();
 
             try {
-                double price = exHand.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHand.checkPrice(Double.parseDouble(inPrice.getText()));
                 int dpi = exHand.checkDPI(Integer.parseInt(inDPI.getText())),
                     programmableButtons = exHand.checkButtons(Integer.parseInt(inProgrammable.getText()));
 
