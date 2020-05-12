@@ -3,6 +3,7 @@ package org.example;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 

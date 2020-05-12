@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.componentClasses.Cabinet;
 import org.example.exceptions.*;
-import org.example.io.WriteComponentsToFile;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 

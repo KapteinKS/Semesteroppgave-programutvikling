@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.example.io.ThreadHandler;
 import org.example.io.WriteComponentsToFile;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
 import org.example.componentClasses.*;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 import java.net.URL;
