@@ -2,6 +2,7 @@ package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalVoltageException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -22,16 +23,24 @@ public class PowerSupply extends Component implements Serializable {
         return inVoltage.get();
     }
 
-    public void setInVoltage(int inVoltage) {
-        this.inVoltage.set(inVoltage);
+    public void setInVoltage(int inVoltage) throws IllegalVoltageException{
+        if(inVoltage > 120 && inVoltage < 250) {
+            this.inVoltage.set(inVoltage);
+        }else{
+            throw new IllegalVoltageException("Ugyldig verdi!");
+        }
     }
 
     public int getOutVoltage() {
         return outVoltage.get();
     }
 
-    public void setOutVoltage(int outVoltage) {
-        this.outVoltage.set(outVoltage);
+    public void setOutVoltage(int outVoltage) throws IllegalVoltageException{
+        if(outVoltage > 10 && outVoltage < 15) {
+            this.outVoltage.set(outVoltage);
+        }else{
+            throw new IllegalVoltageException("Ugyldig verdi!");
+        }
     }
 
     @Override
@@ -58,7 +67,7 @@ public class PowerSupply extends Component implements Serializable {
             setWattsRequired(Double.parseDouble(split[1]));
             setInVoltage(Integer.parseInt(split[2]));
             setOutVoltage(Integer.parseInt(split[3]));
-        } catch (NumberFormatException n){
+        } catch (NumberFormatException | IllegalVoltageException n){
             return false;
         }
         return true;

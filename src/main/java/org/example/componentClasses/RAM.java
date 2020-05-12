@@ -2,6 +2,8 @@ package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalCapacityException;
+import org.example.exceptions.IllegalRAMException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,8 +26,12 @@ public class RAM extends Component implements Serializable {
         return size.getValue();
     }
 
-    public void setSize(int size) {
-        this.size.set(size);
+    public void setSize(int size) throws IllegalRAMException {
+        if(size > 1) {
+            this.size.set(size);
+        }else{
+            throw new IllegalRAMException("Ugyldig RAM minne!");
+        }
     }
 
     public String getMemoryType() {
@@ -40,8 +46,12 @@ public class RAM extends Component implements Serializable {
         return amountOfRAMPieces.get();
     }
 
-    public void setAmountOfRAMPieces(int amountOfRAMPieces) {
-        this.amountOfRAMPieces.set(amountOfRAMPieces);
+    public void setAmountOfRAMPieces(int amountOfRAMPieces) throws IllegalRAMException{
+        if (amountOfRAMPieces > 0) {
+            this.amountOfRAMPieces.set(amountOfRAMPieces);
+        }else{
+            throw new IllegalRAMException("Ugyldig antall RAM brikker!");
+        }
     }
 
     public String getInfo(){
@@ -59,7 +69,7 @@ public class RAM extends Component implements Serializable {
             setSize(Integer.parseInt(split[1]));
             setMemoryType(split[2]);
             setAmountOfRAMPieces(Integer.parseInt(split[3]));
-        } catch (NumberFormatException n){
+        } catch (NumberFormatException | IllegalRAMException n){
             return false;
         }
         return true;

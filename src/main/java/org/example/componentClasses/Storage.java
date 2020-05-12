@@ -3,6 +3,8 @@ package org.example.componentClasses;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalCapacityException;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -32,8 +34,12 @@ public class Storage extends Component implements Serializable {
         return capacity.get();
     }
 
-    public void setCapacity(double capacity) {
-        this.capacity.set(capacity);
+    public void setCapacity(double capacity) throws IllegalCapacityException {
+        if(capacity > 1 && capacity < 2048) {
+            this.capacity.set(capacity);
+        }else{
+            throw new IllegalCapacityException("Ugyldig lagrinsplass!");
+        }
     }
 
     public String getCapacityType() {
@@ -60,7 +66,7 @@ public class Storage extends Component implements Serializable {
             setStoragetype(split[1]);
             setCapacity(Double.parseDouble(split[2].substring(0, split[2].indexOf(" "))));
             setCapacityType(split[2].substring(split[2].indexOf(" ")));
-        } catch (NumberFormatException n){
+        } catch (NumberFormatException | IllegalCapacityException n){
             return false;
         }
         return true;

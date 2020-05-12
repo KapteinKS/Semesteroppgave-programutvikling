@@ -2,6 +2,8 @@ package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.example.exceptions.IllegalButtonsException;
+import org.example.exceptions.IllegalDPIException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,8 +26,13 @@ public class Mouse extends Component implements Serializable {
         return mouseDPI.getValue();
     }
 
-    public void setMouseDPI(int mouseDPI) {
-        this.mouseDPI.set(mouseDPI);
+    public void setMouseDPI(int mouseDPI) throws IllegalDPIException {
+        if(mouseDPI > 100) {
+            this.mouseDPI.set(mouseDPI);
+        }
+        else{
+            throw new IllegalDPIException("Ugyldig DPI!");
+        }
     }
 
     public String getMouseConnectionType() {
@@ -40,8 +47,12 @@ public class Mouse extends Component implements Serializable {
         return mouseProgrammableButtons.getValue();
     }
 
-    public void setMouseProgrammableButtons(int mouseProgrammableButtons) {
-        this.mouseProgrammableButtons.set(mouseProgrammableButtons);
+    public void setMouseProgrammableButtons(int mouseProgrammableButtons) throws IllegalButtonsException {
+        if(mouseProgrammableButtons<0 || mouseProgrammableButtons > 20) {
+            this.mouseProgrammableButtons.set(mouseProgrammableButtons);
+        }else{
+            throw new IllegalButtonsException("Ugyldig antall knapper!");
+        }
     }
 
     public String getInfo() {
