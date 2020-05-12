@@ -1,9 +1,5 @@
 #Semesteroppgave i DATA 1600 Programutvikling
 
-##Laget av
-####Sander Tøien - s344045
-####Henrik Bernhard Stangeland
-####Mats Ove Vada - s340363
 
 ##Default innloggingsalternativer
 
