@@ -1,6 +1,7 @@
-package org.example;
+package org.example.io;
 
 import javafx.concurrent.Task;
+import org.example.App;
 import org.example.componentClasses.Component;
 import org.example.io.ReadOrderFromFile;
 import org.example.logicAndClasses.ComponentCollection;

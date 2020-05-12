@@ -10,6 +10,7 @@ import org.example.io.WriteComponentsToFile;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
 import org.example.componentClasses.*;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 import java.net.URL;

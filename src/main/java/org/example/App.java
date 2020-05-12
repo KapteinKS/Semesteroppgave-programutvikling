@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.componentClasses.*;
+import org.example.io.ThreadHandler;
 import org.example.io.WriteComponentsToFile;
 import org.example.io.WriteUserToFile;
 import org.example.logicAndClasses.*;

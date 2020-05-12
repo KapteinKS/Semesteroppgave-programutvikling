@@ -9,7 +9,7 @@ import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalVoltageException;
 import org.example.exceptions.IllegalWattsException;
 import org.example.componentClasses.PowerSupply;
-import org.example.io.WriteComponentsToFile;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 
