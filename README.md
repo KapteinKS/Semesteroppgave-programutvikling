@@ -5,7 +5,7 @@
 
 Innlogging admin:
 ##### brukernavn: admin@root.com
-##### passort: hex92
+##### passort: admin
 
 Innlogging vanlig bruker:
 ##### brukernavn: ola.nordmann@gmail.no
