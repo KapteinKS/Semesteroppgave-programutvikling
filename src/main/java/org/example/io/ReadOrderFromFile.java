@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-/*
+
 public class ReadOrderFromFile extends Reader{
     public static OrderCollection openOrder() throws IOException{
         Path orderFilePath = Paths.get("orders.csv");
@@ -34,6 +34,7 @@ public class ReadOrderFromFile extends Reader{
         }
         return listOfOrders;
     }
+
     private static Order parseOrder(String line) throws IOException{
         String[] split = line.split(";");
         String userID = split[0];
@@ -201,10 +202,7 @@ public class ReadOrderFromFile extends Reader{
         }
         */
 
-/*
         //System.out.println(userID + ", " + orderID + ", " + componentsOrdered.toString() + ", " + priceString);
         return new Order(userID,orderID,date,componentsOrdered,Double.parseDouble(priceString));
     }
 }
-
- */

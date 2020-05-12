@@ -1,11 +1,16 @@
-package org.example;
+package org.example.io;
 
 import javafx.concurrent.Task;
+import org.example.App;
 import org.example.componentClasses.Component;
-//import org.example.io.ReadOrderFromFile;
-import org.example.logicAndClasses.*;
+import org.example.io.ReadOrderFromFile;
+import org.example.logicAndClasses.ComponentCollection;
+import org.example.logicAndClasses.User;
+import org.example.logicAndClasses.UserCollection;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadHandler extends Task<String> {
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
     private boolean condition;
     private String operation;
     private ComponentCollection componentCollection;
@@ -28,9 +35,13 @@ public class ThreadHandler extends Task<String> {
         this.componentCollection = componentCollection;
         this.userCollection = userCollection;
         this.orderCollection = orderCollection;
-    }
+=======
+    public ThreadHandler(){
 
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
+    }
     protected String call() throws Exception {
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
         if(!condition) { //Loading operations
             try {
                 System.out.println("Thread starting\nLoading");
@@ -68,8 +79,29 @@ public class ThreadHandler extends Task<String> {
             return "";
 
         }
+=======
+=======
+    public ThreadHandler(){
+
     }
-    //  Method for loading components from .jobj file
+    protected String call() throws Exception {
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
+       try {
+           System.out.println("Thread starting");
+           Thread.sleep(3000);
+           App.setUserCollection(openUsers());
+           App.setComponentCollection(openComponents());
+           App.setOrderCollection(ReadOrderFromFile.openOrder());
+           System.out.println("Thread finished");
+       } catch (InterruptedException ie){
+
+       }
+       return "";
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
+=======
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
+    }
     public ComponentCollection openComponents() throws IOException, ClassNotFoundException {
         Path path = Paths.get("components.jobj");
         try(InputStream in = Files.newInputStream(path);
@@ -90,7 +122,6 @@ public class ThreadHandler extends Task<String> {
             throw new ClassNotFoundException("File reader couldn't find class for object");
         }
     }
-    //  Method for loading users form .jobj file
     public static UserCollection openUsers() throws IOException, ClassNotFoundException {
         Path path = Paths.get("users.jobj");
         try (InputStream in = Files.newInputStream(path);
@@ -109,6 +140,8 @@ public class ThreadHandler extends Task<String> {
             throw new ClassNotFoundException("File reader couldn't find a class");
         }
     }
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
+<<<<<<< HEAD:src/main/java/org/example/io/ThreadHandler.java
     //  Method for loading orders from .csv file
     public static OrderCollection openOrder() throws IOException{
         Path orderFilePath = Paths.get("orders.csv");
@@ -164,4 +197,8 @@ public class ThreadHandler extends Task<String> {
         }
     }
     
+=======
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
+=======
+>>>>>>> parent of 60cf4b8... Working on saving threads!:src/main/java/org/example/ThreadHandler.java
 }

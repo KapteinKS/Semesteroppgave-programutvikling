@@ -9,7 +9,7 @@ import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalButtonsException;
 import org.example.exceptions.IllegalDPIException;
 import org.example.exceptions.IllegalPriceException;
-import org.example.io.WriteComponentsToFile;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 
