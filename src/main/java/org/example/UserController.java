@@ -86,8 +86,9 @@ public class UserController {
 	void loginAdmin(ActionEvent event) throws IOException {
 
 		if(!(App.getCurrentUser() instanceof AdminUser)){
-			DialogueBoxes.information("Access denied", "Admin access required", "You are trying to access a restricted feature. " +
-					"Please provide admin login credentials");
+			DialogueBoxes.information("Tilgang nektet", "Krever admin-tilgang",
+					"Du prøver å benytte deg av restrikterte funksjoner. " +
+					"Vennligst logg inn som Administrator");
 			App.newWindow("userLoginPrompt", "Login");
 		} else {
 			App.setRoot("admin", 625, 525, "Admin");
@@ -175,9 +176,9 @@ public class UserController {
 		try{
 			double wattsDelivered = componentCollection.getComponentByDisplayString(psu).getWattsRequired();
 			if(wattsUsed > wattsDelivered){
-				result += "Not enough power for selected components: "
-						+ "\nPSU-watts: " + wattsDelivered + "\nWatts used in total: " + wattsUsed
-						+ "\n--------------------\n";
+				result += "Ikke nok kraft for valgte komponenter: "
+						+ "\nKraftforsyningens kraft: " + wattsDelivered + " W\nKraft krevd: " + wattsUsed
+						+ " W\n--------------------\n";
 			}
 		}catch (Exception e) {}
 
@@ -197,11 +198,11 @@ public class UserController {
 		// We use the built 'result' String as a way to check if there are no incompatibilities,
 		// if it's empty, that means there were no incompatibilities.
 		if (result.equals("")){
-			result += "Build is compatible!" + "\n--------------------\n";
+			result += "Ordren er kompatibel!" + "\n--------------------\n";
 			buildIsCompatible = true;
 		}
 
-		result += "Watts used: " + wattsUsed + "\nTotal Price: " + String.format("%.2f", totalPrice) + " NOK";
+		result += "Watts brukt: " + wattsUsed + "\nTotal Pris: " + String.format("%.2f", totalPrice) + " NOK";
 
 		txtPreview.setText(result);
 		return listOfSelected;
@@ -218,7 +219,7 @@ public class UserController {
 			txtPreview.setText("");
 		}
 		if(size == 0){
-			DialogueBoxes.information("Error!","Empty order!","You cannot place an empty order!\nBuy something, will ya?");
+			DialogueBoxes.information("Feil!","Tom ordre!","Du kan ikke bestille ingenting!\nKjøp noe, da vel!");
 
 		}
 		else{
@@ -233,14 +234,14 @@ public class UserController {
 			}
 
 			if (bufferBuildIsCompatible) {
-				promptTitle = "Success!";
-				promptHeader = "Build is compatible!";
-				promptText = "Place order?";
+				promptTitle = "Suksess!";
+				promptHeader = "Utvalget er kompatibelt!";
+				promptText = "Plassere ordre?";
 			}
 			else{
-				promptTitle = "Warning!";
-				promptHeader = "WARNING!\nBuild has incompabilities, things might not add together!";
-				promptText = "Do you still wish to place the order?";
+				promptTitle = "Advarsel!";
+				promptHeader = "Advarsel!\nNoen deler er inkoblatible med hverandre, det kan være deler ikke passer sammen!";
+				promptText = "Ønsker du fremdeles å plassere ordre?";
 			}
 
 			if (DialogueBoxes.confirm(promptTitle, promptHeader, promptText)){
@@ -264,8 +265,8 @@ public class UserController {
 				App.setOrderCollection(orderCollection);
 
 
-				DialogueBoxes.information("Success!",
-						"Order has been placed!\nThank you for your purchase!\nOrder info below:",
+				DialogueBoxes.information("Suksess!",
+						"Ordre har blitt plassert!\nTakk for handelen!\nOrdreinfo under:",
 						"" + order.printOrder());
 				resetSelection(event);
 			}
@@ -294,10 +295,10 @@ public class UserController {
 
 	@FXML
 	void showAbout(ActionEvent event) {
-		DialogueBoxes.about("This GUI allows customers to configure a custom PC, and place orders",
-				"Choose components from the drop downs and choose \"Analyser Build\" to see" +
-						" compatibility and price of the computer.\n" +
-						"You can also switch to the Admin GUI by clicking \"Help\" -> \"Admin\".");
+		DialogueBoxes.about("Dette GUIet lar kunder sette sammen en datamaskin, og plassere en ordre",
+				"Velg komponenter fra Drop-down menyene, og trykk \"Analyser Ordre\" for å se" +
+						" kompabiliteten og prisen på maskinen din.\n" +
+						"Du kan også endre til Admin-kontroller ved å trykke \"Hjelp\" -> \"Admin\".");
 	}
 	public void populateComboBoxes(){
 
@@ -345,17 +346,6 @@ public class UserController {
 	@FXML
 	void previousOrders(ActionEvent event) throws IOException{
 		App.setRoot("orders", 625, 525, "Previous Orders");
-	}
-
-	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
-		btnAnalyzeOrder.setDisable(false);
-		btnPlaceOrder.setDisable(false);
-		System.out.println("\nUser saved.\n");
-	}
-	private void threadFailed(WorkerStateEvent workerStateEvent) {
-		btnAnalyzeOrder.setDisable(false);
-		btnPlaceOrder.setDisable(false);
-		System.out.println("\nERROR something went wrong!\nUser NOT saved.\n");
 	}
 
 }
