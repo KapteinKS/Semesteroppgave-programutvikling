@@ -25,8 +25,9 @@ public class OrdersController {
 
     @FXML
     void btnOpenOrder(ActionEvent event) {
+        String currentUserID = App.getCurrentUser().getUserID();
         for (OrderCollection order : orders) {
-            out += order.printOrders(App.getCurrentUser().getUserID());
+            out += order.printOrders(currentUserID);
         }
         if (out.equals("")) {
             DialogueBoxes.alert("Feil!", "Du har ingen tidligere ordre!");
