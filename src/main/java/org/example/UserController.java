@@ -81,10 +81,6 @@ public class UserController {
 	@FXML
 	private Button btnAnalyzeOrder;
 
-	@FXML
-	void loadOrder(ActionEvent event) {
-
-	}
 
 	@FXML
 	void loginAdmin(ActionEvent event) throws IOException {
@@ -294,11 +290,6 @@ public class UserController {
 		cbMonitor.getSelectionModel().selectLast();
 		cbTastatur.getSelectionModel().selectLast();
 		cbMus.getSelectionModel().selectLast();
-	}
-
-	@FXML
-	void saveOrder(ActionEvent event) {
-
 	}
 
 	@FXML
