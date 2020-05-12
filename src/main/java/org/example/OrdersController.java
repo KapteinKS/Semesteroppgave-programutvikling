@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import org.example.logicAndClasses.DialogueBoxes;
 import org.example.logicAndClasses.Order;
 import org.example.logicAndClasses.OrderCollection;
@@ -12,11 +13,11 @@ import org.example.logicAndClasses.OrderCollection;
 import java.io.IOException;
 
 public class OrdersController {
-    private OrderCollection orders = new OrderCollection();
+    private OrderCollection orders = App.getOrderCollection();
     String out = "";
 
     @FXML
-    private Label lblOrderList;
+    private TextArea lblOrderList;
 
     @FXML
     void btnBackOrder(ActionEvent event) throws IOException {
@@ -30,6 +31,7 @@ public class OrdersController {
         if (out.equals("")) {
             DialogueBoxes.alert("Feil!", "Du har ingen tidligere ordre!");
         } else {
+            lblOrderList.setText("Ordrene til kunde: "+currentUserID);
             lblOrderList.setText(out);
         }
     }

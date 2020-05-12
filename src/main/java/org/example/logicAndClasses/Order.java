@@ -88,7 +88,7 @@ public class Order {
 		for (String cmpnnt : componentsOrdered){
 			out += cmpnnt + "\n";
 		}
-		out += "Pris: " + price;
+		out += "Pris: " + price + "\n----------------------\n";
 		return out;
 	}
 

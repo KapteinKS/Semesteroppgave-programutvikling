@@ -22,16 +22,19 @@ public class OrderCollection{
 		return orders.size();
 	}
 
-	public String printOrders(String customerID){
+	public String printOrders(String customerID) {
 		String out = "Ordrene til kunde " + customerID + "\n";
-		for (Order o : orders){
-			String theOrders = "";
-			if (o.getUserID().equals(customerID)){
-				out += o.printOrder() + "\n";
+		String theOrders = "";
+
+		for (Order o : orders) {
+			if (o.getUserID().equals(customerID)) {
+				theOrders += o.printOrder() + "\n";
 			}
-			/*if (theOrders.equals("")){
-				out = "Kunde " + customerID + " har ingen tidligere ordre!";
-			}*/
+		}
+		if (theOrders.equals("")) {
+			out = "";
+		} else {
+			out += theOrders;
 		}
 		return out;
 	}

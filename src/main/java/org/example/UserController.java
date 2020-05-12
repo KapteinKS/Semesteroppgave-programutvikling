@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.example.componentClasses.*;
 import org.example.io.ThreadHandler;
@@ -12,10 +13,12 @@ import org.example.io.WriteOrderToFile;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.ResourceBundle;
 
-public class UserController {
+public class UserController implements Initializable {
 
 	private static ComponentCollection componentCollection = App.getComponentCollection();
 	private static OrderCollection orderCollection = App.getOrderCollection();
@@ -348,4 +351,8 @@ public class UserController {
 		App.setRoot("orders", 625, 525, "Previous Orders");
 	}
 
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		currentUser = App.getCurrentUser();
+	}
 }

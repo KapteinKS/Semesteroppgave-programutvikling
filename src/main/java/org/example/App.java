@@ -62,9 +62,9 @@ public class App extends Application {
         //DialogueBoxes.about("Hei", "For forhåndlagde innloggingalternativer og adminbruker sjekk README.md");
 
         //TESTS
-        System.out.println(orderCollection.toString());
-        System.out.println(userCollection.toString());
-        System.out.println(orderCollection.printOrders("00000"));
+        //System.out.println(orderCollection.toString());
+        //System.out.println(userCollection.toString());
+        //System.out.println(orderCollection.printOrders("00000"));
 
 
     }
