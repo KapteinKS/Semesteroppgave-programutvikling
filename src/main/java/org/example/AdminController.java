@@ -24,7 +24,6 @@ public class AdminController implements Initializable {
 	//
 	private ExceptionHandler.DoubleStringConverter doubleStringConverter
 			= new ExceptionHandler.DoubleStringConverter();
-	private ThreadHandler task;
 
 
 	@FXML
@@ -125,14 +124,6 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
-
-		//reworked to be new thread.
-		task = new ThreadHandler(true,"saveComponents", componentCollection,null,null);
-		this.task.setOnSucceeded(this::threadSucceeded);
-		this.task.setOnFailed(this::threadFailed);
-		Thread td = new Thread(this.task);
-		td.start();
-		task.saveComponents(componentCollection.getArrayList());
 
 		WriteComponentsToFile.save(componentCollection.getArrayList());
 

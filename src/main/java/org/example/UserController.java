@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.componentClasses.*;
 import org.example.io.ThreadHandler;
+import org.example.io.WriteOrderToFile;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
@@ -211,7 +212,7 @@ public class UserController {
 	}
 
 	@FXML
-	void placeOrder(ActionEvent event) {
+	void placeOrder(ActionEvent event) throws IOException {
 		currentSelectedList = analyzeOrder(event);
 		int size;
 		try{
@@ -264,13 +265,7 @@ public class UserController {
 
 				//  Threadstuff
 
-				task = new ThreadHandler(true,"saveOrders",null,null,orderCollection);
-				this.task.setOnSucceeded(this::threadSucceeded);
-				this.task.setOnFailed(this::threadFailed);
-				Thread td = new Thread(this.task);
-				td.start();
-				btnAnalyzeOrder.setDisable(true);
-				btnPlaceOrder.setDisable(true);
+				WriteOrderToFile.save(orderCollection);
 
 
 				//  App update
