@@ -1,7 +1,6 @@
 package org.example.componentClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.example.exceptions.IllegalCapacityException;
 
@@ -53,12 +52,6 @@ public class Storage extends Component implements Serializable {
     public String getInfo(){
         return "Minnetype: " + getStoragetype() + " \nKapasitet: " + getCapacity() + " " + getCapacityType();
     }
-    @Override
-    public String toString(){
-        return "Storage" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getStoragetype() + "," + getCapacity() + "," + getCapacityType();
-    }
-
 
     public boolean setInfo(String info){
         String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
@@ -84,5 +77,11 @@ public class Storage extends Component implements Serializable {
         this.storageType = new SimpleStringProperty(s.readUTF());
         this.capacity = new SimpleDoubleProperty(s.readDouble());
         this.capacityType = new SimpleStringProperty(s.readUTF());
+    }
+
+    @Override
+    public String toString(){
+        return "Storage" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getStoragetype() + "," + getCapacity() + "," + getCapacityType();
     }
 }

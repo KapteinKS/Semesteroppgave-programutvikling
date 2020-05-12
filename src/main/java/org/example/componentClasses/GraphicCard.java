@@ -74,13 +74,6 @@ public class GraphicCard extends Component implements Serializable {
             throw new IOException(n.getMessage());
         }
         return true;
-
-    }
-
-    @Override
-    public String toString(){
-        return "GraphicCard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getRam() + "," + getRamType() + "," + getClockSpeed();
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -95,5 +88,11 @@ public class GraphicCard extends Component implements Serializable {
         this.ram = new SimpleIntegerProperty(s.readInt());
         this.ramType = new SimpleStringProperty(s.readUTF());
         this.clockSpeed = new SimpleDoubleProperty(s.readDouble());
+    }
+
+    @Override
+    public String toString(){
+        return "GraphicCard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getRam() + "," + getRamType() + "," + getClockSpeed();
     }
 }

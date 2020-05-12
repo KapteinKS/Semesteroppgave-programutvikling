@@ -18,7 +18,6 @@ public class Monitor extends Component implements Serializable {
     private transient SimpleIntegerProperty monitorResponseTime; //in ms
     private transient SimpleStringProperty monitorScreenType; // ex. LED, OLED, LCD
 
-
     public Monitor(String name, String manufacturer, double wattsRequired, double price, double monitorSize, int monitorRefreshRate, int monitorResponseTime, String monitorScreenType) {
         super("Monitor", name, manufacturer, wattsRequired, price);
         this.monitorSize = new SimpleDoubleProperty(monitorSize);
@@ -78,7 +77,6 @@ public class Monitor extends Component implements Serializable {
 
     public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅ][a-zæøå `\"]{1,20}: ");
-
         for (int i = 1; i < split.length; i++){
             if(split[i].indexOf(" ") > 0) {
                 split[i] = split[i].substring(0, split[i].indexOf(" "));
@@ -92,15 +90,7 @@ public class Monitor extends Component implements Serializable {
         } catch (NumberFormatException | IllegalScreenSizeException n){
             throw new IOException(n.getMessage());
         }
-
         return true;
-
-    }
-
-    @Override
-    public String toString() {
-        return "Monitor" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getMonitorSize() + "," + getMonitorRefreshRate() + "," + getMonitorResponseTime() + "," + getMonitorScreenType();
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException{
@@ -117,5 +107,11 @@ public class Monitor extends Component implements Serializable {
         this.monitorRefreshRate = new SimpleIntegerProperty(s.readInt());
         this.monitorResponseTime = new SimpleIntegerProperty(s.readInt());
         this.monitorScreenType = new SimpleStringProperty(s.readUTF());
+    }
+
+    @Override
+    public String toString() {
+        return "Monitor" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getMonitorSize() + "," + getMonitorRefreshRate() + "," + getMonitorResponseTime() + "," + getMonitorScreenType();
     }
 }

@@ -2,7 +2,6 @@ package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.example.exceptions.IllegalCapacityException;
 import org.example.exceptions.IllegalRAMException;
 
 import java.io.IOException;
@@ -73,13 +72,6 @@ public class RAM extends Component implements Serializable {
             return false;
         }
         return true;
-
-    }
-
-    @Override
-    public String toString(){
-        return "RAM" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getSize() + "," + getMemoryType() + "," + getAmountOfRAMPieces();
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -94,5 +86,11 @@ public class RAM extends Component implements Serializable {
         this.size = new SimpleIntegerProperty(s.readInt());
         this.memoryType = new SimpleStringProperty(s.readUTF());
         this.amountOfRAMPieces = new SimpleIntegerProperty(s.readInt());
+    }
+
+    @Override
+    public String toString(){
+        return "RAM" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getSize() + "," + getMemoryType() + "," + getAmountOfRAMPieces();
     }
 }

@@ -1,7 +1,5 @@
 package org.example.componentClasses;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.IOException;
@@ -10,8 +8,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Keyboard extends Component implements Serializable {
-    private transient SimpleStringProperty keyboardSwitches; //membrane/mechanical and which type of mechanical switches
-    private transient SimpleStringProperty keyboardLanguage; // ex. Nordic, US, UK
+    private transient SimpleStringProperty keyboardSwitches;  //  membrane/mechanical and which type of mechanical switches
+    private transient SimpleStringProperty keyboardLanguage;  //  ex. Nordic, US, UK
     private transient SimpleStringProperty keyboardConnectionType;  // ex. USB-A, USB-C, wireless
 
     public Keyboard(String name, String manufacturer, double wattsRequired, double price, String keyboardSwitches, String keyboardLanguage, String keyboardConnectionType) {
@@ -48,6 +46,7 @@ public class Keyboard extends Component implements Serializable {
     public String getInfo(){
         return "Grensesnitt: " + getKeyboardConnectionType() + "\nSpråk: " + getKeyboardLanguage() + "\nType taster: " + getKeyboardSwitches();
     }
+
     public String getType() {
         return "Keyboard";
     }
@@ -64,12 +63,6 @@ public class Keyboard extends Component implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Keyboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getKeyboardConnectionType() + "," + getKeyboardLanguage() + "," + getKeyboardSwitches();
-    }
-
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
         s.writeUTF(keyboardSwitches.getValue());
@@ -82,5 +75,11 @@ public class Keyboard extends Component implements Serializable {
         this.keyboardSwitches = new SimpleStringProperty(s.readUTF());
         this.keyboardLanguage = new SimpleStringProperty(s.readUTF());
         this.keyboardConnectionType = new SimpleStringProperty(s.readUTF());
+    }
+
+    @Override
+    public String toString() {
+        return "Keyboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getKeyboardConnectionType() + "," + getKeyboardLanguage() + "," + getKeyboardSwitches();
     }
 }

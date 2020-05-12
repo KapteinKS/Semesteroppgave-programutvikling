@@ -19,6 +19,8 @@ public class Cabinet extends Component {
     private transient SimpleDoubleProperty weight;
 
     public Cabinet(String name, String manufacturer, double price, String mbFormFactor, double height, double width, double depth, double weight) {
+        //  The component-type is set directly in constructor, without taking in a parameter. Also, since a cabinet
+        //  does not require power, we set the wattsRequired to '0'. This is done for some of the component-types.
         super("Cabinet", name, manufacturer, 0, price);
         this.mbFormFactor = new SimpleStringProperty(mbFormFactor);
         this.height = new SimpleDoubleProperty(height);
@@ -82,16 +84,14 @@ public class Cabinet extends Component {
             throw new IllegalWeightException("Kan ikke sette vekt");
         }
     }
-
+    //  getInfo returns the non-universal attributes, formatted neatly
     public String getInfo(){
         return "Høyde: " + getHeight() + " cm \nBredde: " + getWidth() + " cm \nDybde: " + getDepth() +
                 " cm \nVekt: " + getWeight() + " kg";
     }
-
+    //  setInfo does some input validation
     public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,10}: ");
-
-
         for(int i = 1; i < split.length; i++){
             if(split[i].indexOf(" ") > 0) {
                 split[i] = split[i].substring(0, split[i].indexOf(" "));
@@ -101,7 +101,6 @@ public class Cabinet extends Component {
             setWidth(Double.parseDouble(split[2]));
             setDepth(Double.parseDouble(split[3]));
             setWeight(Double.parseDouble(split[4]));
-
         } catch (NumberFormatException | IllegalDimensionsException | IllegalWeightException n){
             throw new IOException(n.getMessage());
         }
@@ -125,7 +124,7 @@ public class Cabinet extends Component {
         this.depth = new SimpleDoubleProperty(s.readDouble());
         this.weight = new SimpleDoubleProperty(s.readDouble());
     }
-
+    //  toStrings() returns a .csv
     @Override
     public String toString(){
         return "Cabinet" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()

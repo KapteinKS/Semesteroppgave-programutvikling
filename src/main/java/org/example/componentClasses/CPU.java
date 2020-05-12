@@ -1,16 +1,5 @@
 package org.example.componentClasses;
 
-/*
-
-Component classes should have attributes, from which, compatibility can be gauged.
-Say the user chooses an AMD motherboard, and we have in our "store", an Intel i5 CPU
-the i5 should then be grayed out for the user, as it's incompatible.
-This should be done with a checker-method (SEE CHECKER.java)
-}
-
- */
-
-
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,7 +9,6 @@ import org.example.exceptions.IllegalThreadsException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 public class CPU extends Component {
 	private transient SimpleIntegerProperty threads;
@@ -72,7 +60,6 @@ public class CPU extends Component {
 
 	public boolean setInfo(String info) throws IOException {
 		String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,20}: ");
-
 		try {
 			setThreads(Integer.parseInt(split[1]));
 			setClockSpeed(Double.parseDouble(split[2]));
@@ -80,15 +67,7 @@ public class CPU extends Component {
 		} catch (NumberFormatException | IllegalThreadsException | IllegalClockSpeedException n){
 			throw new IOException(n.getMessage());
 		}
-
 		return true;
-
-	}
-
-	@Override
-	public String toString(){
-		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-				+ "," + getThreads() + "," + getClockSpeed() + "," + getSocket();
 	}
 
 	private void writeObject(ObjectOutputStream s) throws IOException{
@@ -103,5 +82,11 @@ public class CPU extends Component {
 		this.threads = new SimpleIntegerProperty(s.readInt());
 		this.clockSpeed = new SimpleDoubleProperty(s.readDouble());
 		this.socket = new SimpleStringProperty(s.readUTF());
+	}
+
+	@Override
+	public String toString(){
+		return "CPU" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+				+ "," + getThreads() + "," + getClockSpeed() + "," + getSocket();
 	}
 }

@@ -2,7 +2,6 @@ package org.example.componentClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import org.example.exceptions.IllegalDimensionsException;
 import org.example.exceptions.IllegalNoiseException;
 import org.example.exceptions.IllegalPressureException;
@@ -11,7 +10,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Spliterator;
 
 public class Fan extends Component implements Serializable {
     private transient SimpleIntegerProperty diameter;
@@ -83,12 +81,6 @@ public class Fan extends Component implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString(){
-        return "Fan" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getDiameter() + "," + getAirPressure() + "," + getMaxNoiseVolume();
-    }
-
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
         s.writeInt(diameter.getValue());
@@ -101,5 +93,11 @@ public class Fan extends Component implements Serializable {
         this.diameter = new SimpleIntegerProperty(s.readInt());
         this.airPressure = new SimpleDoubleProperty(s.readDouble());
         this.maxNoiseVolume = new SimpleIntegerProperty(s.readInt());
+    }
+
+    @Override
+    public String toString(){
+        return "Fan" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getDiameter() + "," + getAirPressure() + "," + getMaxNoiseVolume();
     }
 }

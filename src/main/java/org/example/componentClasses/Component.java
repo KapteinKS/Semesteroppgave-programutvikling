@@ -3,12 +3,12 @@ package org.example.componentClasses;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.example.exceptions.IllegalPriceException;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+// Super-class 'Component' containing universal parameters and methods
 public abstract class Component implements Serializable {
 	private transient SimpleStringProperty type;
 	private transient SimpleStringProperty name;
@@ -35,7 +35,6 @@ public abstract class Component implements Serializable {
 		return type.get();
 	}
 
-
 	public String getName(){
 		return name.getValue();
 	}
@@ -47,7 +46,7 @@ public abstract class Component implements Serializable {
 	public double getPrice() {
 		return price.getValue();
 	}
-
+	// setPrice has a check for positive number
 	public void setPrice(double price) throws IllegalPriceException {
 		if (price > 0) {
 			this.price.set(price);
@@ -72,16 +71,16 @@ public abstract class Component implements Serializable {
 		this.manufacturer.set(manufacturer);
 	}
 
-	//Method to 'print-display' the component (used, for instance, when populating comboBoxes in user GUI)
+	//  Method to display the most relevant component-information.
 	public String displayComponent(){
 		return this.getManufacturer() + " " + this.getName() + ", " + this.getPrice() + " NOK";
 	}
+
 	public String getInfo(){
 		return "";
 	}
 
 	public boolean setInfo(String info) throws IOException { return false;}
-
 
 	private void writeObject(ObjectOutputStream s) throws IOException{
 		s.writeUTF(type.getValue());

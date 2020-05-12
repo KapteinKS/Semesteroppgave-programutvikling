@@ -1,7 +1,5 @@
 package org.example.componentClasses;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.IOException;
@@ -45,12 +43,6 @@ public class Motherboard extends Component implements Serializable {
 		this.ramType.set(ramType);
 	}
 
-	@Override
-	public String toString(){
-		return "Motherboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-				+ "," + getMbFormFactor() + "," + getSocket() + "," + getRamType();
-	}
-
 	public String getInfo(){
 		return "Socket: " + getSocket() + "\nRamtype: " + getRamType() + "\nNødvendig energi: " + getWattsRequired() + " W";
 	}
@@ -85,5 +77,11 @@ public class Motherboard extends Component implements Serializable {
 		this.mbFormFactor = new SimpleStringProperty(s.readUTF());
 		this.socket = new SimpleStringProperty(s.readUTF());
 		this.ramType = new SimpleStringProperty(s.readUTF());
+	}
+
+	@Override
+	public String toString(){
+		return "Motherboard" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+				+ "," + getMbFormFactor() + "," + getSocket() + "," + getRamType();
 	}
 }

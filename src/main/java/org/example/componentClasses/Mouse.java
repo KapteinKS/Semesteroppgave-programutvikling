@@ -74,13 +74,6 @@ public class Mouse extends Component implements Serializable {
             return false;
         }
         return true;
-
-    }
-
-    @Override
-    public String toString() {
-        return "Mouse" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getMouseConnectionType() + "," + getMouseDPI() + "," + getMouseProgrammableButtons();
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -95,5 +88,11 @@ public class Mouse extends Component implements Serializable {
         this.mouseDPI = new SimpleIntegerProperty(s.readInt());
         this.mouseConnectionType = new SimpleStringProperty(s.readUTF());
         this.mouseProgrammableButtons = new SimpleIntegerProperty(s.readInt());
+    }
+
+    @Override
+    public String toString() {
+        return "Mouse" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getMouseConnectionType() + "," + getMouseDPI() + "," + getMouseProgrammableButtons();
     }
 }

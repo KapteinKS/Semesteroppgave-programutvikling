@@ -2,30 +2,15 @@ package org.example.logicAndClasses;
 
 import javafx.collections.ObservableList;
 import org.example.componentClasses.Component;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Order {
 	private String userID;
 	private String orderID;
 	private String date;
-	//ObservableList<Component> componentsOrdered;
 	private ArrayList<String> componentsOrdered;
 	private double price;
 
-	//Can we delete this? I think we maybe can..
-	public Order(String userID, String orderID, String date, ObservableList<Component>componentsOrdered, double price){
-		this.userID = userID;
-		this.orderID = orderID;
-		this.date = date;
-		for (Component cmpnt : componentsOrdered) {
-			assert this.componentsOrdered != null;
-			this.componentsOrdered.add(cmpnt.displayComponent());
-		}
-		this.price = price;
-	}
-	// Constructor for reading from file
 	public Order(String userID, String orderID, String date, ArrayList<String>componentsOrdered, double price){
 		this.userID = userID;
 		this.orderID = orderID;
@@ -79,8 +64,7 @@ public class Order {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-		//This prints the specific order
+	//  Method to display an order neatly
 	public String printOrder(){
 		String out = "OrderID: " + orderID
 				+ "\n" + "Dato: " + date
@@ -91,7 +75,7 @@ public class Order {
 		out += "Pris: " + price + "\n----------------------\n";
 		return out;
 	}
-
+	//  toString() formats as .csv
 	@Override
 	public String toString(){
 		String out = "" + userID + "," + orderID + "," + date + ",";

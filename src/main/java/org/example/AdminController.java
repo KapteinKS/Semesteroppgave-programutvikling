@@ -22,9 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
-	//errrrrr
-	private ComponentCollection componentCollection = App.getList2();
-	//
+	private ComponentCollection componentCollection = App.getComponentCollection();
 	private ExceptionHandler.DoubleStringConverter doubleStringConverter
 			= new ExceptionHandler.DoubleStringConverter();
 	private SecondaryWindowThread task;
@@ -59,12 +57,6 @@ public class AdminController implements Initializable {
 
 	@FXML
 	private TableColumn<TableView<Component>, String> tvInfo;
-
-
-	public void initialize(URL url, ResourceBundle resourceBundle){
-		componentCollection.attachTableView(tableView);
-		tvPrice.setCellFactory(TextFieldTableCell.forTableColumn(doubleStringConverter));
-	}
 
 	@FXML
 	void createCPU(ActionEvent event) throws IOException {
@@ -131,6 +123,80 @@ public class AdminController implements Initializable {
 		App.newWindow("ram", "Register RAM");
 		disableGUI();
 	}
+	//  Methods for editing component-data
+	@FXML
+	public void editName(TableColumn.CellEditEvent<Component, String> event) throws IOException {
+		event.getRowValue().setName(event.getNewValue());
+		WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+	}
+
+	@FXML
+	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event) throws IOException {
+		event.getRowValue().setManufacturer(event.getNewValue());
+		WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+	}
+
+	@FXML
+	public void editPrice(TableColumn.CellEditEvent<Component, Double> event) throws IOException {
+		try {
+			if (doubleStringConverter.wasSuccessful()) {
+				event.getRowValue().setPrice(event.getNewValue());
+				WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+			}
+		} catch (NumberFormatException | IllegalPriceException e){
+			DialogueBoxes.alert("Feil", "Du må skrive inn et positivt tall!");
+		} catch (IllegalArgumentException e){
+			DialogueBoxes.alert("Ugyldig input: ", e.getMessage());
+		}
+		tableView.refresh();
+	}
+	//  Method for editing 'info', meaning non-universal attributes (like CPU.clockSpeed, for instance)
+	@FXML
+	void editInfo(TableColumn.CellEditEvent<Component, String> event) {
+		try {
+			if(event.getRowValue().setInfo(event.getNewValue())){
+				WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+			}
+		} catch (IOException ioe){
+			DialogueBoxes.alert("Feil i redigering", ioe.getMessage());
+		}
+		unWidenColumns();
+		tableView.refresh();
+	}
+	//  Filtering the list of components
+	@FXML
+	void filter(ActionEvent event) {
+		String choiceBoxValue = (String) filterBox.getValue();
+		String filterInput = filterArea.getText();
+
+		if(!filterInput.isEmpty()){
+			ObservableList<Component> newList = ComponentCollection.filter(choiceBoxValue, filterInput);
+			tableView.setItems(newList);
+		} else {
+			tableView.setItems(componentCollection.getComponentList());
+		}
+	}
+	//  Deleting row (deleting a component)
+	@FXML
+	void deleteRow(ActionEvent event) throws IOException {
+		Component c = tableView.getSelectionModel().getSelectedItem();
+
+		if(DialogueBoxes.confirm("Fjerne komponent?",
+				"Advarsel, denne handlingen vil permanent fjerne en komponent, fortsette?")){
+			App.removeComponent(c);
+			WriteComponentsToFile.save(App.getComponentCollection().getArrayList());
+		}
+	}
+
+	@FXML
+	void widenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
+		widenColumns();
+	}
+
+	@FXML
+	void unwidenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
+		unWidenColumns();
+	}
 
 	@FXML
 	void changeToUser(ActionEvent event) throws IOException {
@@ -139,9 +205,7 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
-
 		WriteComponentsToFile.save(componentCollection.getArrayList());
-
 	}
 
 	@FXML
@@ -153,113 +217,26 @@ public class AdminController implements Initializable {
 	void showAbout(ActionEvent event) {
 		DialogueBoxes.about("This GUI allows you to see all created components\nand create new ones",
 				"Press \"Registrer komponent\" and choose a type of component to start the creation tool.\n" +
-				"Some attributes of each component are also editable, such as name, price and manufacturer.\n" +
-				"You can also switch to the End User GUI by clicking \"Help\" -> \"User View\".");
+						"Some attributes of each component are also editable, such as name, price and manufacturer.\n" +
+						"You can also switch to the End User GUI by clicking \"Help\" -> \"User View\".");
 	}
 
-
-	@FXML
-	void filter(ActionEvent event) {
-		String choiceBoxValue = (String) filterBox.getValue();
-		String filterInput = filterArea.getText();
-
-		if(!filterInput.isEmpty()){
-			ObservableList<Component> newList = ComponentCollection.filter(choiceBoxValue, filterInput);
-
-			tableView.setItems(newList);
-		} else {
-			tableView.setItems(componentCollection.getComponentList());
-		}
+	public void initialize(URL url, ResourceBundle resourceBundle){
+		componentCollection.attachTableView(tableView);
+		tvPrice.setCellFactory(TextFieldTableCell.forTableColumn(doubleStringConverter));
 	}
 
-	@FXML
-	void deleteRow(ActionEvent event) throws IOException {
-		Component c = tableView.getSelectionModel().getSelectedItem();
-		if(DialogueBoxes.confirm("Remove component?", "Caution, this action will permanently remove a component, continue?")){
-			App.removeComponent(c);
-			WriteComponentsToFile.save(App.getList2().getArrayList());
-		}
-	}
-
-	@FXML
-	public void editName(TableColumn.CellEditEvent<Component, String> event) throws IOException {
-		event.getRowValue().setName(event.getNewValue());
-		WriteComponentsToFile.save(App.getList2().getArrayList());
-	}
-
-	@FXML
-	public void editManufacturer(TableColumn.CellEditEvent<Component, String> event) throws IOException {
-		event.getRowValue().setManufacturer(event.getNewValue());
-		WriteComponentsToFile.save(App.getList2().getArrayList());
-	}
-
-	@FXML
-	public void editPrice(TableColumn.CellEditEvent<Component, Double> event) throws IOException {
-		try {
-			if (doubleStringConverter.wasSuccessful()) {
-				event.getRowValue().setPrice(event.getNewValue());
-				WriteComponentsToFile.save(App.getList2().getArrayList());
-			}
-		} catch (NumberFormatException | IllegalPriceException e){
-			DialogueBoxes.alert("Feil", "Du må skrive inn et positivt tall!");
-		} catch (IllegalArgumentException e){
-			DialogueBoxes.alert("Ugyldig input: ", e.getMessage());
-		}
-		tableView.refresh();
-	}
-
-	@FXML
-	void editInfo(TableColumn.CellEditEvent<Component, String> event) {
-		try {
-			if(event.getRowValue().setInfo(event.getNewValue())){
-				WriteComponentsToFile.save(App.getList2().getArrayList());
-			}
-		} catch (IOException ioe){
-			DialogueBoxes.alert("Feil i redigering", ioe.getMessage());
-		}
-		unWidenColumns();
-		tableView.refresh();
-	}
-
-	@FXML
-	void widenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
+	void widenColumns(){
 		tvInfo.setPrefWidth(500.0);
 		tvPrice.setPrefWidth(0);
 		tvManufacturer.setPrefWidth(0);
 		tvName.setPrefWidth(0);
 	}
-
-	@FXML
-	void unwidenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
-		unWidenColumns();
-	}
-
 	void unWidenColumns(){
 		tvManufacturer.setPrefWidth(126);
 		tvName.setPrefWidth(104);
 		tvPrice.setPrefWidth(71);
 		tvInfo.setPrefWidth(190.0);
-	}
-
-	void disableGUI(){
-		this.task = new SecondaryWindowThread();
-		this.task.setOnSucceeded(this::threadSucceeded);
-		this.task.setOnFailed(this::threadFailed);
-		menuBar.setDisable(true);
-		tableView.setDisable(true);
-		filterBtn.setDisable(true);
-		filterBox.setDisable(true);
-		filterArea.setDisable(true);
-		Thread th = new Thread(task);
-		th.start();
-	}
-
-	private void threadFailed(WorkerStateEvent workerStateEvent) {
-		enableGUI();
-	}
-
-	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
-		enableGUI();
 	}
 
 	void enableGUI(){
@@ -268,5 +245,26 @@ public class AdminController implements Initializable {
 		filterBtn.setDisable(false);
 		filterBox.setDisable(false);
 		filterArea.setDisable(false);
+	}
+	void disableGUI(){
+		this.task = new SecondaryWindowThread();
+		this.task.setOnSucceeded(this::threadSucceeded);
+		this.task.setOnFailed(this::threadFailed);
+
+		menuBar.setDisable(true);
+		tableView.setDisable(true);
+		filterBtn.setDisable(true);
+		filterBox.setDisable(true);
+		filterArea.setDisable(true);
+
+		Thread th = new Thread(task);
+		th.start();
+	}
+
+	private void threadFailed(WorkerStateEvent workerStateEvent) {
+		enableGUI();
+	}
+	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
+		enableGUI();
 	}
 }

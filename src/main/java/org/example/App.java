@@ -15,64 +15,48 @@ import org.example.io.WriteUserToFile;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
-
     private static Scene scene;
     private static Stage stage;
     private static Scene scene2 = null;
     private static Stage stage2;
-
+    //  We keep our data here, in App.java
     private static ComponentCollection componentCollection = new ComponentCollection();
     private static UserCollection userCollection = new UserCollection();
     private static OrderCollection orderCollection = new OrderCollection();
-    private static String currentUserEmail;
     private static User currentUser;
     private ThreadHandler task;
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
 
+        //  Starting new thread, and loading data from files
         this.task = new ThreadHandler();
-
         Thread th = new Thread(this.task);
         this.task.setOnSucceeded(this::threadSucceeded);
         this.task.setOnFailed(this::threadFailed);
         th.start();
-
-/*
-
-        ReadUserFromFile.open(customerRegistry, Paths.get("orders.csv"));
-
-        currentUserEmail = "admin@root.com";
-*/
-
-        //**//
-
         th.join();
+
+        //  Setting the application, loading Login GUI
         App.stage = stage;
         scene = new Scene(loadFXML("userLoginPrompt"));
         stage.getIcons().add(new Image("https://img.favpng.com/20/8/14/computer-cases-housings-cooler-master-power-supply-unit-atx-computex-taipei-png-favpng-2nqwuytRyJwBmVhkN7a2HyTsF.jpg"));
         stage.setScene(scene);
         stage.setTitle("Login");
-        System.out.print("\n\n---------------\n\n");
-        //DialogueBoxes.about("Hei", "For forhåndlagde innloggingalternativer og adminbruker sjekk README.md");
-
-        //TESTS
-        //System.out.println(orderCollection.toString());
-        //System.out.println(userCollection.toString());
-        //System.out.println(orderCollection.printOrders("00000"));
-
-
+        System.out.print("\n---------------\n");
     }
 
+    //  Display the started program
     private void threadSucceeded(WorkerStateEvent workerStateEvent) {
         stage.show();
     }
-
+    //  If loading data from files fails, we "reset" the lists, and then display the program
     private void threadFailed(WorkerStateEvent workerStateEvent) {
         try {
             resetLists();
@@ -92,31 +76,18 @@ public class App extends Application {
         stage2.show();
     }
 
-    public static void saveToCollection(Component component) throws IOException {
-        componentCollection.add(component);
-        WriteComponentsToFile.save(componentCollection.getArrayList());
-    }
-
-    public static ObservableList<Component> getList(){
-        return componentCollection.getComponentList();
-    }
-
-    public static ComponentCollection getList2(){
-        return componentCollection;
-    }
-
     public static void closeWindow(){
         if(stage2 != null) {
             stage2.close();
         }
     }
 
+    // Method for changing view, via setRoot
     public static void setRoot(String fxml, double width, double height, String title) throws IOException {
-        //if user, comboBoxes must be populated!
         if (fxml.equals("user")){
+            //  If we load into the user GUI, we need to populate the drop-down menus there
             FXMLLoader loader = new FXMLLoader(App.class.getResource("user.fxml"));
             Parent userRoot = loader.load();
-
             UserController userController = loader.getController();
             userController.populateComboBoxes();
 
@@ -124,7 +95,6 @@ public class App extends Application {
             stage.setHeight(height);
             stage.setWidth(width);
             stage.setTitle(title);
-
         }
         else {
             scene.setRoot(loadFXML(fxml));
@@ -134,57 +104,60 @@ public class App extends Application {
         }
     }
 
-    //CustomerCollection stuff
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+    public static boolean isWindowShowing(){
+        if(stage2.isShowing()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //  Methods for accessing / changing our data
+    //  Component-Collection methods
+    public static ComponentCollection getComponentCollection(){
+        return componentCollection;
+    }
+    public static void setComponentCollection(ComponentCollection cc){
+        componentCollection = cc;
+    }
+    public static void saveToCollection(Component component) throws IOException {
+        componentCollection.add(component);
+        WriteComponentsToFile.save(componentCollection.getArrayList());
+    }
+    public static void removeComponent(Component c){
+        componentCollection.remove(c);
+    }
+    //  User-Collection methods
     public static UserCollection getUserCollection(){
         return userCollection;
     }
-
+    public static void setUserCollection(UserCollection uc){
+        userCollection = uc;
+    }
     public static void saveToUserCollection(User user) throws IOException {
         userCollection.addUser(user);
         WriteUserToFile.save(userCollection.getUsers());
     }
-
-    public static int getNewUserID(){
-        return userCollection.getSize();
-    }
-
+    //  Accessing the current user (active user)
     public static void setCurrentUser(User user){
         currentUser = user;
     }
-
     public static User getCurrentUser(){
         return currentUser;
     }
-
-    public static void setCurrentUserEmail(String email){
-        currentUserEmail = email;
+    //  Order-Collection methods
+    public static OrderCollection getOrderCollection(){
+        return orderCollection;
     }
-
-    public static void setUserCollection(UserCollection uc){
-        userCollection = uc;
-    }
-
-    public static void setComponentCollection(ComponentCollection cc){
-        componentCollection = cc;
-    }
-
-    public static ComponentCollection getComponentCollection(){
-        return componentCollection;
-    }
-
     public static void setOrderCollection(OrderCollection oc){
         orderCollection = oc;
     }
 
-    public static OrderCollection getOrderCollection(){
-        return orderCollection;
-    }
-
-
-    public static void removeComponent(Component c){
-        componentCollection.remove(c);
-    }
-
+    //  This method is a fall-back, in case the program fails to read data from .jobj / .csv files
     public static void resetLists() throws IOException {
         componentCollection.removeAll();
         userCollection.removeAll();
@@ -213,21 +186,10 @@ public class App extends Application {
         componentCollection.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
         componentCollection.add(new Monitor("27`` 4k LCD", "Acer", 0, 2400, 27, 144, 2, "LCD"));
         componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
+        ArrayList<String> orderList = new ArrayList<>(); orderList.add("WD Mobile Black, 807.00 NOK"); orderList.add("Seasonic Focus GX 750, 1499.00 NOK");
+        orderCollection.addOrder(new Order("00000","000000","Tue May 12 10:00:00 CEST 2020", orderList, 2306.00));
         WriteComponentsToFile.save(componentCollection.getArrayList());
         WriteUserToFile.save(userCollection.getUsers());
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static boolean isWindowShowing(){
-        if(stage2.isShowing()){
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public static void main(String[] args) {

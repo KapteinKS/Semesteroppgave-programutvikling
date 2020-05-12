@@ -115,7 +115,7 @@ public class UserRegistrationController {
 			}
 
 			if (goodToGo){
-				EndUser newUser = new EndUser((String.format("%05d",App.getNewUserID())),firstName, lastName, address,
+				EndUser newUser = new EndUser((String.format("%05d",App.getUserCollection().getSize())),firstName, lastName, address,
 						postCode, postArea, phoneNumber, email, password);
 
 				userCollection.addUser(newUser);

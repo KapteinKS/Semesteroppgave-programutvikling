@@ -1,7 +1,6 @@
 package org.example.componentClasses;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import org.example.exceptions.IllegalVoltageException;
 
 import java.io.IOException;
@@ -43,14 +42,6 @@ public class PowerSupply extends Component implements Serializable {
         }
     }
 
-    @Override
-    public String toString(){
-        return "PowerSupply" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
-                + "," + getInVoltage() + "," + getOutVoltage();
-    }
-
-
-
     public String getInfo() {
         return "Energiforbruk: " + getWattsRequired() + " W \nSpenning inn: " + getInVoltage() +
                 " V \nSpenning ut: " + getOutVoltage() + " V";
@@ -71,7 +62,6 @@ public class PowerSupply extends Component implements Serializable {
             return false;
         }
         return true;
-
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -86,4 +76,9 @@ public class PowerSupply extends Component implements Serializable {
         this.outVoltage = new SimpleIntegerProperty(s.readInt());
     }
 
+    @Override
+    public String toString(){
+        return "PowerSupply" + "," + getName() + "," + getManufacturer() + "," + getWattsRequired() + "," + getPrice()
+                + "," + getInVoltage() + "," + getOutVoltage();
+    }
 }
