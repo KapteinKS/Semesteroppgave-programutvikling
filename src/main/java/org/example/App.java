@@ -222,6 +222,14 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    public static boolean isWindowShowing(){
+        if(stage2.isShowing()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         launch();
     }

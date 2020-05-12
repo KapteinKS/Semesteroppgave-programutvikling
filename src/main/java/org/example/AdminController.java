@@ -7,12 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.example.io.ThreadHandler;
 import org.example.io.WriteComponentsToFile;
 import org.example.logicAndClasses.ComponentCollection;
 import org.example.exceptions.ExceptionHandler;
 import org.example.componentClasses.*;
 import org.example.logicAndClasses.DialogueBoxes;
+import org.example.logicAndClasses.SecondaryWindowThread;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +24,7 @@ public class AdminController implements Initializable {
 	//
 	private ExceptionHandler.DoubleStringConverter doubleStringConverter
 			= new ExceptionHandler.DoubleStringConverter();
+	private SecondaryWindowThread task;
 
 
 	@FXML
@@ -65,56 +66,67 @@ public class AdminController implements Initializable {
 	@FXML
 	void createCPU(ActionEvent event) throws IOException {
 		App.newWindow("cpu", "Register CPU");
+		disableGUI();
 	}
 
 	@FXML
 	void createCabinet(ActionEvent event) throws IOException {
 		App.newWindow("cabinet", "Register Cabinet");
+		disableGUI();
 	}
 
 	@FXML
 	void createFan(ActionEvent event) throws IOException {
 		App.newWindow("fan", "Register Fan");
+		disableGUI();
 	}
 
 	@FXML
 	void createGraphicCard(ActionEvent event) throws IOException {
 		App.newWindow("graphiccard", "Register Graphic Card");
+		disableGUI();
 	}
 
 	@FXML
 	void createMotherboard(ActionEvent event) throws IOException {
 		App.newWindow("motherboard", "Register Motherboard");
+		disableGUI();
 	}
 
 	@FXML
 	void createPowerSupply(ActionEvent event) throws IOException {
 		App.newWindow("powersupply", "Register Power Supply");
+		disableGUI();
 	}
 
 	@FXML
 	void createStorage(ActionEvent event) throws IOException {
 		App.newWindow("storage", "Register Storage");
+		disableGUI();
 	}
 
 	@FXML
 	void createKeyboard(ActionEvent event) throws IOException {
 		App.newWindow("keyboard", "Register Keyboard");
+		disableGUI();
 	}
 
 	@FXML
 	void createMouse(ActionEvent event) throws IOException {
 		App.newWindow("mouse", "Register Mouse");
+		disableGUI();
 	}
 
 	@FXML
 	void createMonitor(ActionEvent event) throws IOException {
 		App.newWindow("monitor", "Register Monitor");
+		disableGUI();
 	}
 
 	@FXML
 	void createRAM(ActionEvent event) throws IOException {
 		App.newWindow("ram", "Register RAM");
+		disableGUI();
 	}
 
 	@FXML
@@ -128,8 +140,6 @@ public class AdminController implements Initializable {
 		WriteComponentsToFile.save(componentCollection.getArrayList());
 
 	}
-
-
 
 	@FXML
 	void resetList(ActionEvent event) throws IOException{
@@ -220,4 +230,32 @@ public class AdminController implements Initializable {
 		tvInfo.setPrefWidth(190.0);
 	}
 
+	void disableGUI(){
+		this.task = new SecondaryWindowThread();
+		this.task.setOnSucceeded(this::threadSucceeded);
+		this.task.setOnFailed(this::threadFailed);
+		menuBar.setDisable(true);
+		tableView.setDisable(true);
+		filterBtn.setDisable(true);
+		filterBox.setDisable(true);
+		filterArea.setDisable(true);
+		Thread th = new Thread(task);
+		th.start();
+	}
+
+	private void threadFailed(WorkerStateEvent workerStateEvent) {
+		enableGUI();
+	}
+
+	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
+		enableGUI();
+	}
+
+	void enableGUI(){
+		menuBar.setDisable(false);
+		tableView.setDisable(false);
+		filterBtn.setDisable(false);
+		filterBox.setDisable(false);
+		filterArea.setDisable(false);
+	}
 }
