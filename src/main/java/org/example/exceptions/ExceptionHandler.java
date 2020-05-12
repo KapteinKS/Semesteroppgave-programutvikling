@@ -61,16 +61,16 @@ public class ExceptionHandler {
     }
 
     public int checkDiameter (int diameter) throws IllegalDimensionsException {
-        if(diameter < 0){
-            throw new IllegalDimensionsException("Diameter må være positiv");
-        } else if (diameter > 20){
+        if(diameter < 5){
+            throw new IllegalDimensionsException("Viftediameter for lav!");
+        } else if (diameter > 40){
             throw new IllegalDimensionsException("Denne vifta kommer ikke til å passe i noe kabinett");
         }
         return diameter;
     }
 
     public double checkAirPressure (double pressure) throws IllegalPressureException {
-        if(pressure < 0 || pressure > 10){
+        if(pressure <= 0 || pressure > 10){
             throw new IllegalPressureException("Lufttrykk utenfor lovlige grenser");
         }
         return pressure;
@@ -84,7 +84,7 @@ public class ExceptionHandler {
     }
 
     public int checkRAM (int ram) throws IllegalRAMException{
-        if(ram < 0){
+        if(ram < 1){
             throw new IllegalRAMException("RAM utenfor lovlig område");
         }
         return ram;
@@ -134,8 +134,8 @@ public class ExceptionHandler {
     }
 
     public double checkSize(double size) throws IllegalScreenSizeException {
-        if(size <= 0){
-            throw new IllegalScreenSizeException("Skjermstørrelse må være positiv");
+        if(size < 13){
+            throw new IllegalScreenSizeException("Skjermstørrelse for lav");
         }
         return size;
     }
