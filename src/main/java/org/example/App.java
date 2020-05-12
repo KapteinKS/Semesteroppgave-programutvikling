@@ -35,7 +35,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
+<<<<<<< HEAD
         this.task = new ThreadHandler(false, "",null,null,null);
+=======
+        this.task = new ThreadHandler();
+>>>>>>> parent of 60cf4b8... Working on saving threads!
         Thread th = new Thread(this.task);
         this.task.setOnSucceeded(this::threadSucceeded);
         this.task.setOnFailed(this::threadFailed);
@@ -93,7 +97,7 @@ public class App extends Application {
 
     public static void saveToCollection(Component component) throws IOException {
         componentCollection.add(component);
-        WriteComponentsToFile.saveComponents(componentCollection.getArrayList());
+        WriteComponentsToFile.save(componentCollection.getArrayList());
     }
 
     public static ObservableList<Component> getList(){
@@ -138,9 +142,9 @@ public class App extends Application {
         return userCollection;
     }
 
-    public void saveToUserCollection(User user) throws IOException {
+    public static void saveToUserCollection(User user) throws IOException {
         userCollection.addUser(user);
-        task.saveUsers(userCollection.getUsers());
+        WriteUserToFile.save(userCollection.getUsers());
     }
 
     public static int getNewUserID(){
@@ -211,12 +215,8 @@ public class App extends Application {
         componentCollection.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
         componentCollection.add(new Monitor("27`` 4k LCD", "Acer", 0, 2400, 27, 144, 2, "LCD"));
         componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
-        WriteComponentsToFile.saveComponents(componentCollection.getArrayList());
-
-        //  PROBLEM!!  Here, we are not saving in a separate thread! We should fix this.
-        WriteUserToFile.saveUsers(userCollection.getUsers());
-
-        //WriteUserToFile.saveUsers(userCollection.getUsers());
+        WriteComponentsToFile.save(componentCollection.getArrayList());
+        WriteUserToFile.save(userCollection.getUsers());
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

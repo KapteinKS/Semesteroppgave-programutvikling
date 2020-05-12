@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WriteComponentsToFile extends Writer{
-    public static void saveComponents(List<Component> objects) throws IOException {
+    public static void save(List<Component> objects) throws IOException {
         Path path = Paths.get("components.jobj");
         try (OutputStream os = Files.newOutputStream(path);
              ObjectOutputStream out = new ObjectOutputStream(os)){

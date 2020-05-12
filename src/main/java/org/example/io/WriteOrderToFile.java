@@ -10,7 +10,7 @@ import java.nio.file.Path;
 
 public class WriteOrderToFile extends Writer {
 
-	public static void saveOrder(OrderCollection orderCollection, Path path) throws IOException {
+	public static void save(OrderCollection orderCollection, Path path) throws IOException {
 		Files.write(path,orderCollection.toString().getBytes());
 	}
 }
