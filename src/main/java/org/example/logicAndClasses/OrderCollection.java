@@ -27,14 +27,11 @@ public class OrderCollection{
 		for (Order o : orders){
 			String theOrders = "";
 			if (o.getUserID().equals(customerID)){
-				theOrders += o.printOrder() + "\n";
+				out += o.printOrder() + "\n";
 			}
-			if (theOrders.equals("")){
+			/*if (theOrders.equals("")){
 				out = "Kunde " + customerID + " har ingen tidligere ordre!";
-			}
-			else{
-				out += theOrders;
-			}
+			}*/
 		}
 		return out;
 	}

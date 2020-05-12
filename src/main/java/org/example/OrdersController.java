@@ -12,7 +12,7 @@ import org.example.logicAndClasses.OrderCollection;
 import java.io.IOException;
 
 public class OrdersController {
-    private ObservableList <OrderCollection> orders = FXCollections.observableArrayList();
+    private OrderCollection orders = new OrderCollection();
     String out = "";
 
     @FXML
@@ -26,9 +26,7 @@ public class OrdersController {
     @FXML
     void btnOpenOrder(ActionEvent event) {
         String currentUserID = App.getCurrentUser().getUserID();
-        for (OrderCollection order : orders) {
-            out += order.printOrders(currentUserID);
-        }
+        out = orders.printOrders(currentUserID);
         if (out.equals("")) {
             DialogueBoxes.alert("Feil!", "Du har ingen tidligere ordre!");
         } else {
