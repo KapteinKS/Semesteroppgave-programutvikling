@@ -9,7 +9,7 @@ import org.example.exceptions.IllegalClockSpeedException;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalThreadsException;
 import org.example.componentClasses.CPU;
-import org.example.io.WriteComponentsToFile;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 

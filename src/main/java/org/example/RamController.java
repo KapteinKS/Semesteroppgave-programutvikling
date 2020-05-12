@@ -8,7 +8,7 @@ import org.example.componentClasses.RAM;
 import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
 import org.example.exceptions.IllegalRAMException;
-import org.example.io.WriteComponentsToFile;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 

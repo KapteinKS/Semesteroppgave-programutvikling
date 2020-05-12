@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import org.example.componentClasses.Keyboard;
 import org.example.exceptions.ExceptionHandler;
 import org.example.exceptions.IllegalPriceException;
-import org.example.io.WriteComponentsToFile;
+import org.example.logicAndClasses.DialogueBoxes;
 
 import java.io.IOException;
 
