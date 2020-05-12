@@ -14,25 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadHandler extends Task<String> {
-	private boolean condition;
-	private String operation;
-	private ComponentCollection componentCollection;
-	private UserCollection userCollection;
-	private OrderCollection orderCollection;
-
-
-
-	public ThreadHandler(boolean condition, String operation, ComponentCollection componentCollection,
-						 UserCollection userCollection, OrderCollection orderCollection){
-		this.condition = condition;
-		this.operation = operation;
-		this.componentCollection = componentCollection;
-		this.userCollection = userCollection;
-		this.orderCollection = orderCollection;
-	}
+	public ThreadHandler(){}
 
 	protected String call() throws Exception {
-		if(!condition) { //Loading operations
 			try {
 				System.out.println("Thread starting\nLoading");
 				Thread.sleep(500);
@@ -43,32 +27,6 @@ public class ThreadHandler extends Task<String> {
 			} catch (InterruptedException ie) {
 			}
 			return "";
-		}
-		else{ //Saving operations
-
-			try{
-				System.out.println("Thread starting\nSaving");
-				Thread.sleep(1000);
-				if (operation.equals("saveUsers")){
-					saveUsers(userCollection.getUsers());
-				}
-				else if (operation.equals("saveComponents")){
-					saveComponents(componentCollection.getArrayList());
-
-				}
-				else if (operation.equals("saveOrders")){
-					saveOrders(orderCollection);
-				}
-				//App.setUserCollection(openUsers());
-				//App.setComponentCollection(openComponents());
-				//App.setOrderCollection(ReadOrderFromFile.openOrder());
-				System.out.println("Thread finished");
-			} catch (InterruptedException ie){
-
-			}
-			return "";
-
-		}
 	}
 	//  Method for loading components from .jobj file
 	public ComponentCollection openComponents() throws IOException, ClassNotFoundException {
@@ -140,29 +98,6 @@ public class ThreadHandler extends Task<String> {
 			componentsOrdered.add(split[i]);
 		}
 		return new Order(userID,orderID,date,componentsOrdered,Double.parseDouble(priceString));
-	}
-
-	//  Method for saving users
-	public static void saveUsers(List<User> users) throws IOException {
-		Path path = Paths.get("users.jobj");
-		try(OutputStream os = Files.newOutputStream(path);
-			ObjectOutputStream out = new ObjectOutputStream(os)){
-			out.writeObject(new ArrayList<>(users));
-		}
-	}
-
-	//  Method for saving orders
-	public static void saveOrders(OrderCollection orderCollection) throws IOException {
-		Files.write(Paths.get("orders.csv"),orderCollection.toString().getBytes());
-	}
-
-	//  Method for saving components
-	public static void saveComponents(List<Component> objects) throws IOException {
-		Path path = Paths.get("components.jobj");
-		try (OutputStream os = Files.newOutputStream(path);
-			 ObjectOutputStream out = new ObjectOutputStream(os)){
-			out.writeObject(new ArrayList<>(objects));
-		}
 	}
 
 }
