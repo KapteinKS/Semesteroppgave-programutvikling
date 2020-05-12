@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.example.io.ThreadHandler;
+import org.example.io.WriteUserToFile;
 import org.example.logicAndClasses.EndUser;
 import org.example.logicAndClasses.UserCollection;
 
@@ -119,14 +120,7 @@ public class UserRegistrationController {
 
 				userCollection.addUser(newUser);
 
-				//New stuff, saving in new thread
-				task = new ThreadHandler(true,"saveUsers",null,userCollection,null);
-				this.task.setOnSucceeded(this::threadSucceeded);
-				this.task.setOnFailed(this::threadFailed);
-				Thread td = new Thread(this.task);
-				td.start();
-
-				//task.saveUsers(userCollection.getUsers());
+				WriteUserToFile.save(userCollection.getUsers());
 
 
 				App.setUserCollection(userCollection);
