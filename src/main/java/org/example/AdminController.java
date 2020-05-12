@@ -217,10 +217,7 @@ public class AdminController implements Initializable {
 		} catch (IOException ioe){
 			DialogueBoxes.alert("Feil i redigering", ioe.getMessage());
 		}
-		tvManufacturer.setPrefWidth(126);
-		tvName.setPrefWidth(104);
-		tvPrice.setPrefWidth(71);
-		tvInfo.setPrefWidth(190.0);
+		unWidenColumns();
 		tableView.refresh();
 	}
 
@@ -234,6 +231,10 @@ public class AdminController implements Initializable {
 
 	@FXML
 	void unwidenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
+		unWidenColumns();
+	}
+
+	void unWidenColumns(){
 		tvManufacturer.setPrefWidth(126);
 		tvName.setPrefWidth(104);
 		tvPrice.setPrefWidth(71);
