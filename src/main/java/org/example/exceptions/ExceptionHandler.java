@@ -34,7 +34,7 @@ public class ExceptionHandler {
         } else if (depth > 125) {
             throw new IllegalDimensionsException("Kabinett for dypt!");
         }
-    return depth;
+        return depth;
     }
 
     public double checkWeight(double weight) throws IllegalWeightException{
