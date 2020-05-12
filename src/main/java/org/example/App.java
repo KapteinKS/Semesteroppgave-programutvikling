@@ -38,8 +38,6 @@ public class App extends Application {
 
         this.task = new ThreadHandler(false, "",null,null,null);
 
-        this.task = new ThreadHandler();
-
         Thread th = new Thread(this.task);
         this.task.setOnSucceeded(this::threadSucceeded);
         this.task.setOnFailed(this::threadFailed);

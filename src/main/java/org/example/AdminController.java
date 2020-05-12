@@ -134,7 +134,7 @@ public class AdminController implements Initializable {
 		td.start();
 		task.saveComponents(componentCollection.getArrayList());
 
-		WriteComponentsToFile.save(collection.getArrayList());
+		WriteComponentsToFile.save(componentCollection.getArrayList());
 
 	}
 
