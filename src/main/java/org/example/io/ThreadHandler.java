@@ -22,7 +22,7 @@ public class ThreadHandler extends Task<String> {
 				Thread.sleep(500);
 				App.setUserCollection(openUsers());
 				App.setComponentCollection(openComponents());
-				//App.setOrderCollection(openOrder());
+				App.setOrderCollection(openOrder());
 				System.out.println("Thread finished");
 			} catch (InterruptedException ie) {
 			}
@@ -88,12 +88,13 @@ public class ThreadHandler extends Task<String> {
 	}
 	//  Submethod for openOrder()
 	private static Order parseOrder(String line) throws IOException{
-		String[] split = line.split(";");
+		String[] split = line.split(",");
 		String userID = split[0];
 		String orderID = split[1];
 		String date = split[2];
 		String priceString = split[split.length-1]; //the last value?
 		ArrayList<String> componentsOrdered = new ArrayList<>();
+
 		for (int i = 3; i < split.length; i++){
 			componentsOrdered.add(split[i]);
 		}

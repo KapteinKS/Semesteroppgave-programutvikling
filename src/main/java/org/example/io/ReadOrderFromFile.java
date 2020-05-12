@@ -36,11 +36,11 @@ public class ReadOrderFromFile extends Reader{
     }
 
     private static Order parseOrder(String line) throws IOException{
-        String[] split = line.split(";");
+        String[] split = line.split(",");
         String userID = split[0];
         String orderID = split[1];
         String date = split[2];
-        String priceString = split[split.length-1]; //the last value?
+        String priceString = split[split.length-1];//the last value?
         ArrayList<String> componentsOrdered = new ArrayList<>();
         for (int i = 3; i < split.length; i++){
             componentsOrdered.add(split[i]);

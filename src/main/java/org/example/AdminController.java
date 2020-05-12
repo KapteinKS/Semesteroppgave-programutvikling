@@ -220,11 +220,4 @@ public class AdminController implements Initializable {
 		tvInfo.setPrefWidth(190.0);
 	}
 
-
-	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
-		System.out.println("\nSaved.\n");
-	}
-	private void threadFailed(WorkerStateEvent workerStateEvent) {
-		System.out.println("\nERROR something went wrong!\nNOT saved.\n");
-	}
 }

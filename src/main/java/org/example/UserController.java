@@ -262,11 +262,7 @@ public class UserController {
 						myList, totalPrice);
 
 				orderCollection.addOrder(order);
-
-				//  Threadstuff
-
 				WriteOrderToFile.save(orderCollection);
-
 
 				//  App update
 				App.setOrderCollection(orderCollection);
