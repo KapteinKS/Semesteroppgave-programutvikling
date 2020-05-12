@@ -35,7 +35,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
+<<<<<<< HEAD
+<<<<<<< HEAD
+        this.task = new ThreadHandler(false, "",null,null,null);
+=======
         this.task = new ThreadHandler();
+>>>>>>> parent of 60cf4b8... Working on saving threads!
+=======
+        this.task = new ThreadHandler();
+>>>>>>> parent of 60cf4b8... Working on saving threads!
         Thread th = new Thread(this.task);
         this.task.setOnSucceeded(this::threadSucceeded);
         this.task.setOnFailed(this::threadFailed);

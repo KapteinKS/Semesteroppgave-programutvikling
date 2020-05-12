@@ -2,10 +2,12 @@ package org.example;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.componentClasses.*;
+import org.example.io.ThreadHandler;
 import org.example.logicAndClasses.*;
 
 import java.io.IOException;
@@ -21,6 +23,7 @@ public class UserController {
 	private ObservableList<Component> currentSelectedList;
 	private double totalPrice;
 	private boolean buildIsCompatible;
+	private ThreadHandler task;
 
 
 	@FXML
@@ -71,6 +74,11 @@ public class UserController {
 	@FXML
 	private TextArea txtPreview;
 
+	@FXML
+	private Button btnPlaceOrder;
+
+	@FXML
+	private Button btnAnalyzeOrder;
 
 	@FXML
 	void loadOrder(ActionEvent event) {
@@ -254,6 +262,20 @@ public class UserController {
 
 				orderCollection.addOrder(order);
 
+				//  Threadstuff
+
+				task = new ThreadHandler(true,"saveOrders",null,null,orderCollection);
+				this.task.setOnSucceeded(this::threadSucceeded);
+				this.task.setOnFailed(this::threadFailed);
+				Thread td = new Thread(this.task);
+				td.start();
+				btnAnalyzeOrder.setDisable(true);
+				btnPlaceOrder.setDisable(true);
+
+
+				//  App update
+				App.setOrderCollection(orderCollection);
+
 
 				DialogueBoxes.information("Success!",
 						"Order has been placed!\nThank you for your purchase!\nOrder info below:",
@@ -342,4 +364,16 @@ public class UserController {
 	void previousOrders(ActionEvent event) throws IOException{
 		App.setRoot("orders", 625, 525, "Previous Orders");
 	}
+
+	private void threadSucceeded(WorkerStateEvent workerStateEvent) {
+		btnAnalyzeOrder.setDisable(false);
+		btnPlaceOrder.setDisable(false);
+		System.out.println("\nUser saved.\n");
+	}
+	private void threadFailed(WorkerStateEvent workerStateEvent) {
+		btnAnalyzeOrder.setDisable(false);
+		btnPlaceOrder.setDisable(false);
+		System.out.println("\nERROR something went wrong!\nUser NOT saved.\n");
+	}
+
 }

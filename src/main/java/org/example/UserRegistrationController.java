@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.example.io.ThreadHandler;
 import org.example.logicAndClasses.EndUser;
 import org.example.logicAndClasses.UserCollection;
 
@@ -115,7 +116,27 @@ public class UserRegistrationController {
 			if (goodToGo){
 				EndUser newUser = new EndUser((String.format("%05d",App.getNewUserID())),firstName, lastName, address,
 						postCode, postArea, phoneNumber, email, password);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				userCollection.addUser(newUser);
+
+				//New stuff, saving in new thread
+				task = new ThreadHandler(true,"saveUsers",null,userCollection,null);
+				this.task.setOnSucceeded(this::threadSucceeded);
+				this.task.setOnFailed(this::threadFailed);
+				Thread td = new Thread(this.task);
+				td.start();
+
+				//task.saveUsers(userCollection.getUsers());
+
+
+				App.setUserCollection(userCollection);
+=======
 				App.saveToUserCollection(newUser);
+>>>>>>> parent of 60cf4b8... Working on saving threads!
+=======
+				App.saveToUserCollection(newUser);
+>>>>>>> parent of 60cf4b8... Working on saving threads!
 				App.setCurrentUser(newUser);
 				App.setRoot("user", 700, 640, "End User");
 			}
