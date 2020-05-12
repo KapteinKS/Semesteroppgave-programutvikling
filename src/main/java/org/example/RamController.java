@@ -50,7 +50,7 @@ public class RamController {
             String name = inName.getText(), manufacturer = inManufac.getText(), type = inType.getText();
 
             try {
-                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int size = exHan.checkRAM(Integer.parseInt(inSize.getText()));
                 int amount = exHan.checkRAMPieces(Integer.parseInt(inAmount.getText()));
 

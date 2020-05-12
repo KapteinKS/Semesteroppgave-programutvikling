@@ -52,7 +52,7 @@ public class KeyboardController {
             connectionType = inConnection.getText();
 
             try {
-                Double price = exHand.priceCheck(Double.parseDouble(inPrice.getText()));
+                Double price = exHand.checkPrice(Double.parseDouble(inPrice.getText()));
 
                 Keyboard keyboard = new Keyboard(name, manufacturer, 0, price, switches, language, connectionType);
 

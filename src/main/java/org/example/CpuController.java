@@ -58,7 +58,7 @@ public class CpuController {
                 //New
                 double wattsRequired = Double.parseDouble(inWatts.getText());
 
-                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 int threads = exHan.checkThreads(Integer.parseInt(inThreads.getText()));
                 double clockspeed = exHan.checkClockSpeed(Double.parseDouble(inClockSpeed.getText()));
 

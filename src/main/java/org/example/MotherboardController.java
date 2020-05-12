@@ -58,7 +58,7 @@ public class MotherboardController {
                     ramType = inRamType.getText(),
                     mbFormFactor = inMbFormFactor.getText();
             try {
-                double price = exHan.priceCheck(Double.parseDouble(inPrice.getText()));
+                double price = exHan.checkPrice(Double.parseDouble(inPrice.getText()));
                 double wattsRequired = exHan.checkWatts(Double.parseDouble(inWatts.getText()));
                 Motherboard motherboard = new Motherboard(name, manufacturer, wattsRequired, price, mbFormFactor, socket, ramType);
                 App.saveToCollection(motherboard);
