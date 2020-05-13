@@ -65,6 +65,7 @@ public class App extends Application {
         }
     }
 
+    // This method opens a secondary window
     public static void newWindow(String fxml, String title) throws IOException{
         stage2 = new Stage();
         scene2 = new Scene(loadFXML(fxml));
@@ -74,13 +75,14 @@ public class App extends Application {
         stage2.show();
     }
 
+    // Closes the secondary window
     public static void closeWindow(){
         if(stage2 != null) {
             stage2.close();
         }
     }
 
-    // Method for changing view, via setRoot
+    // Method for changing view, via setRoot, and resizes the window to it's correct size
     public static void setRoot(String fxml, double width, double height, String title) throws IOException {
         if (fxml.equals("user")){
             //  If we load into the user GUI, we need to populate the drop-down menus there
@@ -106,6 +108,8 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+
+    // Checks to see if the secondary window is open, necessary for som other methods
     public static boolean isWindowShowing(){
         if(stage2.isShowing()){
             return true;

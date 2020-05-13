@@ -56,6 +56,7 @@ public class AdminController implements Initializable {
 	@FXML
 	private TableColumn<TableView<Component>, String> tvInfo;
 
+	//these methods start the component creators, and disable the admin gui while the component creator window is open
 	@FXML
 	void createCPU(ActionEvent event) throws IOException {
 		App.newWindow("cpu", "Register CPU");
@@ -186,6 +187,8 @@ public class AdminController implements Initializable {
 		}
 	}
 
+	//onEditStart and onEditCancel methods, these call other methods that change the size of the columns
+	//to make the Info column more readable on one line
 	@FXML
 	void widenColumn(TableColumn.CellEditEvent<TableView<Component>, String> event) {
 		widenColumns();
@@ -196,11 +199,13 @@ public class AdminController implements Initializable {
 		unWidenColumns();
 	}
 
+	//this method allows the admin user to switch to end user view
 	@FXML
 	void changeToUser(ActionEvent event) throws IOException {
 		App.setRoot("user", 700, 640, "End User");
 	}
 
+	//this method manually saves the component list to a .jobj file (should be redundant)
 	@FXML
 	void saveCollection(ActionEvent event) throws IOException {
 		Writer.saveComponents(componentCollection.getArrayList());
@@ -224,6 +229,7 @@ public class AdminController implements Initializable {
 		tvPrice.setCellFactory(TextFieldTableCell.forTableColumn(doubleStringConverter));
 	}
 
+	//see @FXML methods with the same names
 	void widenColumns(){
 		tvInfo.setPrefWidth(500.0);
 		tvPrice.setPrefWidth(0);
@@ -237,6 +243,7 @@ public class AdminController implements Initializable {
 		tvInfo.setPrefWidth(190.0);
 	}
 
+	//These methods keep the admin GUI disabled while the secondary window is open
 	void enableGUI(){
 		menuBar.setDisable(false);
 		tableView.setDisable(false);
@@ -244,6 +251,9 @@ public class AdminController implements Initializable {
 		filterBox.setDisable(false);
 		filterArea.setDisable(false);
 	}
+
+	//This method starts a thread that continuously checks if the secondary window is showing,
+	//then enables the GUI once the secondary window closes (See org.example.logicAndClasses.SecondaryWindowThread)
 	void disableGUI(){
 		this.task = new SecondaryWindowThread();
 		this.task.setOnSucceeded(this::threadSucceeded);

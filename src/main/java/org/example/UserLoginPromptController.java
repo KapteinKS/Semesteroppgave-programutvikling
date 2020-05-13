@@ -41,7 +41,7 @@ public class UserLoginPromptController {
 				App.setCurrentUser(user);
 			}
 		} else {
-			//  If we can't find the user, we indicate an error by changing the input-border to be red
+			//  If we can't find the user, we indicate an error by changing the input-borders to be red
 			txtEmail.setStyle("-fx-text-box-border: #ff0000");
 			txtPassword.setStyle("-fx-text-box-border: #ff0000");
 		}

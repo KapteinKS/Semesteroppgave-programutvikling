@@ -41,7 +41,8 @@ public class PowersupplyController {
 
     @FXML
     void registerPowerSupply(ActionEvent event) throws IOException {
-        //  Checking that input is not empty
+        //  Checking that text inputs are not empty, number inputs validated within try block
+        //  A component cannot be registered with any empty fields
         if (!inName.getText().isEmpty() && !inManufac.getText().isEmpty()) {
             String name = inName.getText(), manufacturer = inManufac.getText();
             //  Input validation

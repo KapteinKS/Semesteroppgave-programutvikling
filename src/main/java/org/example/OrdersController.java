@@ -27,12 +27,12 @@ public class OrdersController {
     @FXML
     void btnOpenOrder(ActionEvent event) {
         String currentUserID = App.getCurrentUser().getUserID();
-        //  Henter ordrene til brukeren vha. deres currentUserID
+        //  Displays the current user's previous orders
         out = orders.printOrders(currentUserID);
         if (out.equals("")) {
             DialogueBoxes.alert("Feil!", "Du har ingen tidligere ordre!");
         } else {
-            lblOrderList.setText("Ordrene til kunde: "+currentUserID);
+            lblOrderList.setText("Ordrene til kunde: " + currentUserID);
             lblOrderList.setText(out);
         }
     }

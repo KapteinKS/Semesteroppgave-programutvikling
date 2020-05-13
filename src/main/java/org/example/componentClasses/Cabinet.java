@@ -89,7 +89,7 @@ public class Cabinet extends Component {
         return "Høyde: " + getHeight() + " cm \nBredde: " + getWidth() + " cm \nDybde: " + getDepth() +
                 " cm \nVekt: " + getWeight() + " kg";
     }
-    //  setInfo does some input validation
+    //  setInfo does some input validation, further validated in other setters
     public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,10}: ");
         for(int i = 1; i < split.length; i++){

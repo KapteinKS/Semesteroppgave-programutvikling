@@ -52,6 +52,9 @@ public class UserRegistrationController {
 
 	}
 
+	//  This method creates a new user and add them to the stored list of users
+	//	Method can only create EndUsers, as this is intended for the end users to see
+	//	AdminUsers have to be hard coded
 	@FXML
 	void registerNewCustomer(ActionEvent event) throws IOException, InterruptedException {
 
@@ -84,7 +87,7 @@ public class UserRegistrationController {
 				txtLastName.setStyle("-fx-text-box-border: #ff0000");
 				goodToGo = false;
 			}
-			if (address.isEmpty()) { //Address regex needed
+			if (address.isEmpty()) {
 				txtAddress.setStyle("-fx-text-box-border: #ff0000");
 				goodToGo = false;
 			}
