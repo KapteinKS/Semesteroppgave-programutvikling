@@ -28,9 +28,9 @@
                </Menu>
            </menus>
        </MenuBar>
-      <ScrollPane layoutX="28.0" layoutY="78.0" prefHeight="376.0" prefWidth="303.0">
+      <ScrollPane layoutX="28.0" layoutY="78.0" prefHeight="376.0" prefWidth="367.0">
          <content>
-            <GridPane prefHeight="476.0" prefWidth="284.0">
+            <GridPane prefHeight="481.0" prefWidth="356.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="97.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="187.0" />
@@ -55,7 +55,7 @@
               </rowConstraints>
                <children>
                   <Label text="Kabinett" />
-                  <ComboBox fx:id="cbCabinet" prefHeight="27.0" prefWidth="186.0" GridPane.columnIndex="1">
+                  <ComboBox fx:id="cbCabinet" prefHeight="27.0" prefWidth="290.0" GridPane.columnIndex="1">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Item1" />
@@ -65,7 +65,7 @@
                       </items>
                   </ComboBox>
                   <Label text="Hovedkort" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="cbMotherboard" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <ComboBox fx:id="cbMotherboard" prefHeight="25.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                       <items>
                       <FXCollections fx:factory="observableArrayList">
                           <String fx:value="Item1" />
@@ -75,7 +75,7 @@
                   </items>
                   </ComboBox>
                   <Label text="Prosessor" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="cbCPU" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <ComboBox fx:id="cbCPU" prefHeight="25.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Item1" />
@@ -85,7 +85,7 @@
                       </items>
                   </ComboBox>
                   <Label text="Skjermkort" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="cbGPU1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <ComboBox fx:id="cbGPU1" prefHeight="25.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Item1" />
@@ -96,38 +96,38 @@
                   </ComboBox>
                    <!-- I stopped here, for testing purposes-->
                   <Label text="Skjermkort" GridPane.rowIndex="4" />
-                  <ComboBox fx:id="cbGPU2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cbGPU2" prefHeight="25.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label text="Minne (RAM)" GridPane.rowIndex="5" />
-                  <ComboBox fx:id="cbRAM1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cbRAM1" prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label text="Minne (RAM)" GridPane.rowIndex="6" />
-                  <ComboBox fx:id="cbRAM2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ComboBox fx:id="cbRAM2" prefHeight="25.0" prefWidth="216.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Label text="Lagring" GridPane.rowIndex="7" />
-                  <ComboBox fx:id="cbStorage1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <ComboBox fx:id="cbStorage1" prefHeight="25.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <Label text="Lagring" GridPane.rowIndex="8" />
-                  <ComboBox fx:id="cbStorage2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <ComboBox fx:id="cbStorage2" prefHeight="25.0" prefWidth="310.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <Label text="Kraftforsyning" GridPane.rowIndex="9" />
-                  <ComboBox fx:id="cbPSU" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <ComboBox fx:id="cbPSU" prefHeight="25.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                   <Label text="Vifte" GridPane.rowIndex="10" />
-                  <ComboBox fx:id="cbFan1" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <Label text="vifte" GridPane.rowIndex="11" />
-                  <ComboBox fx:id="cbFan2" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <ComboBox fx:id="cbFan1" prefHeight="25.0" prefWidth="357.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Label text="Vifte" GridPane.rowIndex="11" />
+                  <ComboBox fx:id="cbFan2" prefHeight="25.0" prefWidth="351.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                   <Label text="Monitor" GridPane.rowIndex="12" />
-                  <ComboBox fx:id="cbMonitor" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <ComboBox fx:id="cbMonitor" prefHeight="25.0" prefWidth="445.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                   <Label text="Tastatur" GridPane.rowIndex="13" />
-                  <ComboBox fx:id="cbTastatur" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                  <ComboBox fx:id="cbTastatur" prefHeight="25.0" prefWidth="478.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                   <Label text="Mus" GridPane.rowIndex="14" />
-                  <ComboBox fx:id="cbMus" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                  <ComboBox fx:id="cbMus" prefHeight="25.0" prefWidth="537.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                </children>
             </GridPane>
          </content>
       </ScrollPane>
-      <TextArea fx:id="txtPreview" editable="false" layoutX="358.0" layoutY="78.0" prefHeight="476.0" prefWidth="319.0" />
-      <Button fx:id="btnPlaceOrder" layoutX="182.0" layoutY="480.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="118.0" text="Plasser Ordre" />
-      <Button fx:id="btnAnalyzeOrder" layoutX="54.0" layoutY="480.0" mnemonicParsing="false" onAction="#analyzeOrder" prefHeight="27.0" prefWidth="118.0" text="Analyser Ordre" />
-      <Line endX="33.0" endY="204.0" layoutX="299.0" layoutY="267.0" startX="-272.0" startY="204.0" />
+      <TextArea fx:id="txtPreview" editable="false" layoutX="402.0" layoutY="78.0" prefHeight="476.0" prefWidth="275.0" />
+      <Button fx:id="btnPlaceOrder" layoutX="225.0" layoutY="496.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="27.0" prefWidth="118.0" text="Plasser Ordre" />
+      <Button fx:id="btnAnalyzeOrder" layoutX="77.0" layoutY="496.0" mnemonicParsing="false" onAction="#analyzeOrder" prefHeight="27.0" prefWidth="118.0" text="Analyser Ordre" />
+      <Line endX="93.0" endY="204.0" layoutX="299.0" layoutY="267.0" startX="-272.0" startY="204.0" />
       <Label layoutX="108.0" layoutY="48.0" text="VELG KOMPONENTER" />
-      <Label layoutX="485.0" layoutY="48.0" text="DIN ORDRE" />
-      <Button layoutX="508.0" layoutY="566.0" mnemonicParsing="false" onAction="#previousOrders" prefHeight="27.0" prefWidth="169.0" text="Se Tidligere Ordrer" />
+      <Label layoutX="509.0" layoutY="48.0" text="DIN ORDRE" />
+      <Button layoutX="455.0" layoutY="563.0" mnemonicParsing="false" onAction="#previousOrders" prefHeight="27.0" prefWidth="169.0" text="Se Tidligere Ordrer" />
 
    </children>
 </AnchorPane>
