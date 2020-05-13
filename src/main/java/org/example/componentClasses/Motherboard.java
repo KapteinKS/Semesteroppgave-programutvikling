@@ -43,10 +43,12 @@ public class Motherboard extends Component implements Serializable {
 		this.ramType.set(ramType);
 	}
 
+	//  getInfo returns the non-universal attributes, formatted neatly
 	public String getInfo(){
 		return "Socket: " + getSocket() + "\nRamtype: " + getRamType() + "\nNødvendig energi: " + getWattsRequired() + " W";
 	}
 
+	//  setInfo does some input validation, further validated in other setters
 	public boolean setInfo(String info){
 		String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
 		for (int i = 1; i < split.length; i++){

@@ -55,10 +55,12 @@ public class GraphicCard extends Component implements Serializable {
         }
     }
 
+    //  getInfo returns the non-universal attributes, formatted neatly
     public String getInfo(){
         return "RAM: " + getRam() + " GB \nRamtype: " + getRamType() + " \nKlokkehastighet: " + getClockSpeed() + " MHz";
     }
 
+    //  setInfo does some input validation, further validated in other setters
     public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
         for (int i = 1; i < split.length; i++){

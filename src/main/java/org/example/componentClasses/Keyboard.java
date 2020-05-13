@@ -43,14 +43,16 @@ public class Keyboard extends Component implements Serializable {
         this.keyboardConnectionType.set(keyboardConnectionType);
     }
 
-    public String getInfo(){
-        return "Grensesnitt: " + getKeyboardConnectionType() + "\nSpråk: " + getKeyboardLanguage() + "\nType taster: " + getKeyboardSwitches();
-    }
-
     public String getType() {
         return "Keyboard";
     }
 
+    //  getInfo returns the non-universal attributes, formatted neatly
+    public String getInfo(){
+        return "Grensesnitt: " + getKeyboardConnectionType() + "\nSpråk: " + getKeyboardLanguage() + "\nType taster: " + getKeyboardSwitches();
+    }
+
+    //  setInfo does some input validation, further validated in other setters
     public boolean setInfo(String info){
         String [] split = info.split("[A-ZÆØÅ][a-zæøå ]{1,20}: ");
         try {

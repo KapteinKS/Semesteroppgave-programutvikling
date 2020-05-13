@@ -42,11 +42,13 @@ public class PowerSupply extends Component implements Serializable {
         }
     }
 
+    //  getInfo returns the non-universal attributes, formatted neatly
     public String getInfo() {
         return "Energiforbruk: " + getWattsRequired() + " W \nSpenning inn: " + getInVoltage() +
                 " V \nSpenning ut: " + getOutVoltage() + " V";
     }
 
+    //  setInfo does some input validation, further validated in other setters
     public boolean setInfo(String info){
         String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
         for (int i = 1; i < split.length; i++){

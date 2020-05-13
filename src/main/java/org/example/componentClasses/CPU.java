@@ -54,10 +54,12 @@ public class CPU extends Component {
 		this.socket.set(socket);
 	}
 
+	//  getInfo returns the non-universal attributes, formatted neatly
 	public String getInfo(){
 		return "Tråder: " + getThreads() + "\nKlokkehastighet: " + getClockSpeed() + "\nSocket: " + getSocket();
 	}
 
+	//  setInfo does some input validation, further validated in other setters
 	public boolean setInfo(String info) throws IOException {
 		String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,20}: ");
 		try {

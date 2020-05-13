@@ -70,11 +70,13 @@ public class Monitor extends Component implements Serializable {
         this.monitorScreenType.set(monitorScreenType);
     }
 
+    //  getInfo returns the non-universal attributes, formatted neatly
     public String getInfo(){
         return "Size: " + getMonitorSize() + " \" \nRefresh Rate: " + getMonitorRefreshRate() + " Hz\nResponstid: "
                 + getMonitorResponseTime() + " ms\nSkjermtype: " + getMonitorScreenType();
     }
 
+    //  setInfo does some input validation, further validated in other setters
     public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅ][a-zæøå `\"]{1,20}: ");
         for (int i = 1; i < split.length; i++){

@@ -49,10 +49,12 @@ public class Storage extends Component implements Serializable {
         this.capacityType.set(capacityType);
     }
 
+    //  getInfo returns the non-universal attributes, formatted neatly
     public String getInfo(){
         return "Minnetype: " + getStoragetype() + " \nKapasitet: " + getCapacity() + " " + getCapacityType();
     }
 
+    //  setInfo does some input validation, further validated in other setters
     public boolean setInfo(String info){
         String [] split = info.split("[A-ZÆØÅa-zæøå]{1,20}: ");
         try {

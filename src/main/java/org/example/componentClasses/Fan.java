@@ -59,11 +59,13 @@ public class Fan extends Component implements Serializable {
         }
     }
 
+    //  getInfo returns the non-universal attributes, formatted neatly
     public String getInfo(){
         return "Diameter: " + getDiameter() + " mm \nLufttrykk: " + getAirPressure() +
                 " mm \nHøyeste støyvolum: " + getMaxNoiseVolume() + " dBA";
     }
 
+    //  setInfo does some input validation, further validated in other setters
     public boolean setInfo(String info) throws IOException {
         String [] split = info.split("[A-ZÆØÅ][a-zæøå]{1,20}: ");
 
