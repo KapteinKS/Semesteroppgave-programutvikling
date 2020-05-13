@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-//  Superclass User, containing universal (and most of the) attributes & methods for users
+//  Superclass User, containing all attributes & methods for users, sub classes used for access controll
 public abstract class User implements Serializable {
     private transient SimpleStringProperty userID;
     private transient SimpleStringProperty firstName;
