@@ -62,9 +62,9 @@ public class Order {
 				+ "\n" + "Dato: " + date
 				+ "\n" + "Komponenter bestilt:" + "\n";
 		for (int i = 0; i < componentsOrdered.size() - 1; i++){
-			out += componentsOrdered.get(i)+ ",  ";
+			out += componentsOrdered.get(i)+ "\n";
 		}
-		out += "\n\nTotal Pris: " + fullPrice + "\n----------------------\n";
+		out += "\nTotal Pris: " + fullPrice + "\n----------------------\n";
 		return out;
 	}
 	//  toString() formats as .csv
