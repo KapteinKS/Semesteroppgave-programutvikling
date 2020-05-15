@@ -188,8 +188,8 @@ public class App extends Application {
         componentCollection.add(new Keyboard("Huntsman", "Razer", 0, 1100, "Mechanical Green", "Nordic", "USB-A" ));
         componentCollection.add(new Monitor("27`` 4k LCD", "Acer", 0, 2400, 27, 144, 2, "LCD"));
         componentCollection.add(new Mouse("Naga", "Razer", 0, 899, 1600, "USB-A", 16));
-        ArrayList<String> orderList = new ArrayList<>(); orderList.add("WD Mobile Black, 807.00 NOK"); orderList.add("Seasonic Focus GX 750, 1499.00 NOK");
-        orderCollection.addOrder(new Order("00000","000000","Tue May 12 10:00:00 CEST 2020", orderList, 2306.00));
+        ArrayList<String> orderList = new ArrayList<>(); orderList.add("WD Mobile Black, 807.00 NOK");
+        orderCollection.addOrder(new Order("99999","000000","Tue May 12 10:00:00 CEST 2020", orderList, 807.00));
         Writer.saveComponents(componentCollection.getArrayList());
         Writer.saveUsers(userCollection.getUsers());
     }
