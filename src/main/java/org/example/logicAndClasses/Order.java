@@ -7,14 +7,14 @@ public class Order {
 	private String orderID;
 	private String date;
 	private ArrayList<String> componentsOrdered;
-	private double price;
+	private double fullPrice;
 
-	public Order(String userID, String orderID, String date, ArrayList<String>componentsOrdered, double price){
+	public Order(String userID, String orderID, String date, ArrayList<String>componentsOrdered, double fullPrice){
 		this.userID = userID;
 		this.orderID = orderID;
 		this.date = date;
 		this.componentsOrdered = componentsOrdered;
-		this.price = price;
+		this.fullPrice = fullPrice;
 	}
 
 	public String getUserID() {
@@ -49,22 +49,22 @@ public class Order {
 		this.componentsOrdered = componentsOrdered;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getFullPrice() {
+		return fullPrice;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setFullPrice(double fullPrice) {
+		this.fullPrice = fullPrice;
 	}
 	//  Method to display an order neatly
 	public String printOrder(){
 		String out = "OrderID: " + orderID
 				+ "\n" + "Dato: " + date
 				+ "\n" + "Komponenter bestilt:" + "\n";
-		for (String cmpnnt : componentsOrdered){
-			out += cmpnnt + "\n";
+		for (int i = 0; i < componentsOrdered.size() - 1; i++){
+			out += componentsOrdered.get(i)+ ",  ";
 		}
-		out += "Pris: " + price + "\n----------------------\n";
+		out += "\n\nTotal Pris: " + fullPrice + "\n----------------------\n";
 		return out;
 	}
 	//  toString() formats as .csv
@@ -74,7 +74,7 @@ public class Order {
 		for (String cmpnnt : componentsOrdered){
 			out += cmpnnt + ",";
 		}
-		out += price + ",";
+		out += fullPrice + ",";
 		return out;
 	}
 }

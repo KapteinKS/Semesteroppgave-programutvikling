@@ -32,7 +32,7 @@ public class OrdersController {
         if (out.equals("")) {
             DialogueBoxes.alert("Feil!", "Du har ingen tidligere ordre!");
         } else {
-            lblOrderList.setText("Ordrene til kunde: " + currentUserID);
+            lblOrderList.setText("Ordrene til kunde: " + currentUserID + "" + "\n----------------------\n");
             lblOrderList.setText(out);
         }
     }
